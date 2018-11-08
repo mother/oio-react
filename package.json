@@ -1,0 +1,64 @@
+{
+  "name": "oio-react",
+  "version": "0.0.1",
+  "description": "OIO for React",
+  "scripts": {
+    "build": "rm -rf dist && webpack --config config/webpack.config.js && gulp",
+    "demo": "node ./demo/server",
+    "lint": "git diff HEAD --name-only --diff-filter=ACM | grep '.js$' | xargs node ./node_modules/eslint/bin/eslint.js --quiet",
+    "lint-full": "node ./node_modules/eslint/bin/eslint.js .",
+    "precommit": "npm run lint",
+    "prettier": "prettier --write src/OIO/index.js",
+    "postmerge": "npm install",
+    "postreceive": "npm install",
+    "postrewrite": "npm install"
+  },
+  "main": "index.js",
+  "keywords": [
+    "OIO"
+  ],
+  "author": "Mother Co.",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-loader": "8.0.4",
+    "classnames": "2.2.5",
+    "css-loader": "0.28.11",
+    "emotion": "9.1.1",
+    "eslint-config-mother": "2.0.11",
+    "eslint-plugin-jest": "21.27.1",
+    "express": "4.16.2",
+    "husky": "0.13.2",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "23.6.0",
+    "jsdom": "12.0.0",
+    "jsdom-global": "3.0.2",
+    "less": "3.0.1",
+    "less-loader": "4.1.0",
+    "prettier": "1.15.1",
+    "prop-types": "15.6.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-router-dom": "4.2.2",
+    "react-testing-library": "5.2.3",
+    "resolve-url-loader": "2.3.0",
+    "style-loader": "0.20.3",
+    "webpack": "4.17.1",
+    "webpack-bundle-analyzer": "2.11.1",
+    "webpack-cli": "2.0.13",
+    "webpack-dev-middleware": "3.1.0",
+    "webpack-hot-middleware": "2.21.2"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-export-default-from": "7.0.0"
+  }
+}
