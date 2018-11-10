@@ -12,6 +12,7 @@ export default class OIO extends Component {
       className: PropTypes.string,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
+      // fontWeights: PropTypes.object,
       style: PropTypes.object
    }
 
@@ -20,6 +21,13 @@ export default class OIO extends Component {
       className: '',
       fontFamily: 'sans-serif',
       fontSize: '16px',
+      // fontWeights: {
+      //    light: '300',
+      //    normal: '400',
+      //    medium: '500',
+      //    semibold: '600',
+      //    bold: '700'
+      // },
       style: {}
    }
 
