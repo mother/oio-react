@@ -1,3 +1,12 @@
+// =======================================================
+// Generators used as decorators that create covver common
+// patterns across all OIO components
+// Rating: 3
+// Action Items:
+// - generateStyleObject can be optmized, especially to ensure
+// smallest footprint object created as possible
+// =======================================================
+
 import React from 'react'
 import { breakpoints, getAttributeValueForCurrentBreakpoint } from './breakpoints'
 

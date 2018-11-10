@@ -1,3 +1,10 @@
+// =======================================================
+// Breakpoint-related config/functions
+// Rating: 4
+// Action Items: getAttributeValueForCurrentBreakpoint
+// function can likely be optimized
+// =======================================================
+
 export const breakpoints = {
    a: '@media (min-width: 0px) and (max-width: 420px)',
    b: '@media (min-width: 420px) and (max-width: 720px)',

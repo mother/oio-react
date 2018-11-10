@@ -1,3 +1,11 @@
+// =======================================================
+// Text
+// Foundational component that is used as Root
+// component for may other OIO components
+// Rating: 3
+// Fairly feature-complete, needs to be field-tested
+// =======================================================
+
 import React, { Component } from 'react'
 import { css, cx } from 'emotion'
 import PropTypes from 'prop-types'
