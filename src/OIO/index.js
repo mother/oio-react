@@ -12,6 +12,7 @@ export default class OIO extends Component {
       children: PropTypes.node,
       className: PropTypes.string,
       fontFamily: PropTypes.string,
+      fontSize: PropTypes.string,
       fontWeights: PropTypes.object,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
@@ -22,6 +23,7 @@ export default class OIO extends Component {
       children: null,
       className: '',
       fontFamily: 'sans-serif',
+      fontSize: '16px',
       fontWeights: {
          light: '300',
          normal: '400',
@@ -39,6 +41,7 @@ export default class OIO extends Component {
          children,
          className,
          fontFamily,
+         fontSize,
          fontWeights,
          style,
          textSizeScaleRatio,
@@ -47,6 +50,7 @@ export default class OIO extends Component {
 
       const contextProps = {
          fontFamily,
+         fontSize,
          fontWeights,
          textSizeScaleRatio,
          textSizeMultiplier
@@ -56,7 +60,7 @@ export default class OIO extends Component {
          <OIOContext.Provider value={contextProps}>
             <div
                className={className}
-               style={{ fontFamily, ...style }}>
+               style={{ fontFamily, fontSize, ...style }}>
                {children}
             </div>
          </OIOContext.Provider>
