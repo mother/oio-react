@@ -23,20 +23,15 @@ export default class OIO extends Component {
       style: {}
    }
 
-   componentDidMount() {
-      const { fontSize } = this.props
-      // Set Root Document font size (for font-sizes using rem units)
-      document.documentElement.setAttribute('style', `font-size: ${fontSize}`)
-   }
-
    render() {
-      const { children, className, fontFamily, style } = this.props
+      const { children, className, fontFamily, fontSize, style } = this.props
 
       return (
          <div
             className={className}
             style={{
                fontFamily,
+               fontSize,
                ...style
             }}>
             {children}
