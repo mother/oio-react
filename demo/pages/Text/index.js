@@ -42,26 +42,18 @@ export default class OIOContainer extends Component {
                </thead>
                <tbody>
                   <tr>
-                     <td>
-                        <b>autoScale</b>
-                     </td>
+                     <td><b>autoScale</b></td>
                      <td>boolean</td>
-                     <td>
-                        <code>false</code>
-                     </td>
+                     <td><code>false</code></td>
                      <td>
                         When set to <code>true</code>, Text will scale dynamically proportionally
                          to the browser screen size
                      </td>
                   </tr>
                   <tr>
-                     <td>
-                        <b>className</b>
-                     </td>
+                     <td><b>className</b></td>
                      <td>String</td>
-                     <td>
-                        <code>&#123;&#125;</code>
-                     </td>
+                     <td><code>&#123;&#125;</code></td>
                      <td>
                         Pass a
                         <code>className</code>
@@ -69,41 +61,45 @@ export default class OIOContainer extends Component {
                      </td>
                   </tr>
                   <tr>
-                     <td>
-                        <b>fontFamily</b>
-                     </td>
+                     <td><b>color</b></td>
                      <td>String</td>
+                     <td>-</td>
                      <td>
-                        <code>sans-serif</code>
+                        Pass any css compatible color string
                      </td>
+                  </tr>
+                  <tr>
+                     <td><b>fontFamily</b></td>
+                     <td>String</td>
+                     <td><code>sans-serif</code></td>
                      <td>
                         Default font-family used for all text inside this OIO Container
                      </td>
                   </tr>
                   <tr>
-                     <td>
-                        <b>size</b>
-                     </td>
-                     <td>Number</td>
-                     <td>
-                        <code>1</code>
-                     </td>
+                     <td><b>size</b></td>
+                     <td>String</td>
+                     <td><code>1</code></td>
                      <td>
                         Set the <code>Text</code> component size using a number between
                         <code>1-15</code>
                      </td>
                   </tr>
                   <tr>
-                     <td>
-                        <b>style</b>
-                     </td>
+                     <td><b>style</b></td>
                      <td>Object</td>
-                     <td>
-                        <code>&#123;&#125;</code>
-                     </td>
+                     <td><code>&#123;&#125;</code></td>
                      <td>
                         Pass a style <code>object</code>
                          to customize inline style of the <code>Text</code> component
+                     </td>
+                  </tr>
+                  <tr>
+                     <td><b>uppercase</b></td>
+                     <td>Boolean</td>
+                     <td><code>false</code></td>
+                     <td>
+                        Set to <code>true</code> to transform text characters to uppercase
                      </td>
                   </tr>
                </tbody>
