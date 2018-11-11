@@ -10,41 +10,39 @@ import { css, cx } from 'emotion'
 import PropTypes from 'prop-types'
 import generateStyleObject from '../utils/generateStyleObject'
 
-/* eslint-disable object-property-newline */
-@generateStyleObject(({
-   display, float, position, top, left, right, bottom, flex, flexFlow, justifyContent,
-   height, width, maxHeight, maxWidth, minHeight, minWidth,
-   margin, marginBottom, marginLeft, marginRight, marginTop,
-   padding, paddingHorizontal, paddingVertical,
-   paddingBottom, paddingLeft, paddingRight, paddingTop,
-   backgroundColor, scroll
-}) => {
-   const styleObject = {
-      display, float, position, top, left, right, bottom, flex, flexFlow, justifyContent,
-      height, width, maxHeight, maxWidth, minHeight, minWidth,
-      margin, marginBottom, marginLeft, marginRight, marginTop,
-      padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
-      backgroundColor
-   }
+const noTransformProps = [
+   'display', 'float', 'position', 'top', 'left', 'right', 'bottom',
+   'flex', 'flexFlow', 'justifyContent',
+   'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
+   'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
+   'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
+   'backgroundColor', 'textAlign'
+]
 
-   if (scroll === 'on') {
+@generateStyleObject((props) => {
+   const styleObject = {}
+
+   noTransformProps.forEach((prop) => {
+      styleObject[prop] = props[prop]
+   })
+
+   if (props.scroll === 'on') {
       styleObject.overflow = 'auto'
       styleObject['-webkit-overflow-scrolling'] = 'touch'
    }
 
-   if (paddingHorizontal) {
-      styleObject.paddingLeft = paddingHorizontal
-      styleObject.paddingRight = paddingHorizontal
+   if (props.paddingHorizontal) {
+      styleObject.paddingLeft = props.paddingHorizontal
+      styleObject.paddingRight = props.paddingHorizontal
    }
 
-   if (paddingVertical) {
-      styleObject.paddingTop = paddingVertical
-      styleObject.paddingBottom = paddingVertical
+   if (props.paddingVertical) {
+      styleObject.paddingTop = props.paddingVertical
+      styleObject.paddingBottom = props.paddingVertical
    }
 
    return styleObject
 })
-/* eslint-enable */
 
 export default class View extends Component {
    /* eslint-disable */
@@ -86,6 +84,7 @@ export default class View extends Component {
       position: PropTypes.string,
       scroll: PropTypes.string,
       style: PropTypes.object,
+      textAlign: PropTypes.string,
       top: PropTypes.string,
       left: PropTypes.string,
       right: PropTypes.string,
