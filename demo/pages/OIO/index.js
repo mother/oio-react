@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
+import { Text } from '../../../src'
 import style from '../../style.less'
 
 const codeSnippet1 = `
@@ -41,13 +42,14 @@ export default class OIOContainer extends PureComponent {
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <h1>OIO Container</h1>
-                  <p>
+                  <Text size="12" weight="medium">OIO Container</Text>
+                  <br />
+                  <Text size="5" weight="light">
                      To use OIO components, you must wrap all components inside a <code>OIO</code>
                       Container. <code>OIO</code> containers arer used to reuseable and cohesive
                         props to all components within its scope. <code>OIO</code>
                          containers can be nested.
-                  </p>
+                  </Text>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter

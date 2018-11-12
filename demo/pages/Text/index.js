@@ -5,6 +5,8 @@ import { Text } from '../../../src'
 import style from '../../style.less'
 
 const codeSnippet1 = `
+// Text, sizes 1 to 15!
+
 <Text size="15">Size 15 Text</Text>
 <Text size="14">Size 14 Text</Text>
 <Text size="13">Size 13 Text</Text>
@@ -23,6 +25,8 @@ const codeSnippet1 = `
 `
 
 const codeSnippet2 = `
+// Text with autoScale
+
 <Text size="9" color="#111" weight="medium" autoScale>
    Salmon Leek Pasta
 </Text>
@@ -32,6 +36,8 @@ const codeSnippet2 = `
 `
 
 const codeSnippet3 = `
+// Text weights
+
 <Text size="6" weight="bold">Hot Apple Cider (Bold)</Text>
 <Text size="6" weight="semibold">Hot Apple Cider (Semibold)</Text>
 <Text size="6" weight="medium">Hot Apple Cider (Medium)</Text>
@@ -82,10 +88,9 @@ export default class OIOContainer extends Component {
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <Text size="10" weight="medium">
+                  <Text size="14" weight="medium">
                      Text
                   </Text>
-                  <br />
                   <br />
                   <Text size="5" weight="medium">
                      Text Sizes
