@@ -19,6 +19,7 @@ import generateStyleObject from '../utils/generateStyleObject'
    baseAutoScaleFontSize,
    color,
    fontFamily,
+   lineHeight,
    OIOContext,
    size,
    sizeMultiplier,
@@ -32,13 +33,20 @@ import generateStyleObject from '../utils/generateStyleObject'
    const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
    const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
    const baseTextSize = autoScale ? parseFloat(baseAutoScaleFontSize) : parseFloat(baseFontSize)
+   let calculatedLineHeight = '120%'
+
+   if (size > 9) {
+      calculatedLineHeight = '100%'
+   } else if (size > 5) {
+      calculatedLineHeight = '110%'
+   }
 
    return ({
       color,
       fontFamily,
       fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
       fontWeight: OIOContext.fontWeights[weight],
-      lineHeight: size > 5 ? '120%' : '130%',
+      lineHeight: lineHeight || calculatedLineHeight,
       textTransform: uppercase && 'uppercase'
    })
 })
@@ -54,6 +62,7 @@ export default class Text extends Component {
       color: PropTypes.string,
       fontFamily: PropTypes.string,
       generatedStyleObject: PropTypes.object.isRequired,
+      lineHeight: PropTypes.string,
       size: PropTypes.string,
       sizeMultiplier: PropTypes.number,
       style: PropTypes.object,
@@ -65,7 +74,8 @@ export default class Text extends Component {
    static defaultProps = {
       autoScale: false,
       baseFontSize: '11px',
-      baseAutoScaleFontSize: '2.5[a] 1.75[b] 1.25[c] 1[d] 0.75[e] 0.625[f]',
+      baseAutoScaleFontSize: '2.5[a] 1.75[b] 1.2[c] 1[d] 0.75[e] 0.625[f]',
+      className: '',
       size: '3',
       sizeMultiplier: 1,
       style: {},
