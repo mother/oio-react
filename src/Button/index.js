@@ -131,7 +131,7 @@ export default class Button extends Component {
             onClick={onClick}>
             <Text
                size={OIOContext.buttonTextSize[size]}
-               weight="medium"
+               weight="semibold"
                uppercase={textUppercase ? 'uppercase' : OIOContext.buttonTextUppercase}>
                {name}
             </Text>

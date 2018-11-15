@@ -27,7 +27,7 @@ export default class OIO extends Component {
    static defaultProps = {
       buttonTextSize: {
          lg: '3',
-         md: '2',
+         md: '1.5',
          sm: '0.9',
          xs: '0.8'
       },
@@ -43,7 +43,7 @@ export default class OIO extends Component {
       elementHeights: {
          lg: '54px',
          md: '42px',
-         sm: '30px',
+         sm: '36px',
          xs: '24px'
       },
       fontFamily: 'sans-serif',
