@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "OIO for React",
   "scripts": {
-    "build": "rm -rf dist && webpack --config config/webpack.config.js && gulp",
+    "build": "rm -rf dist && webpack --config config/webpack.config.js",
     "demo": "node ./demo/server",
     "lint": "git diff HEAD --name-only --diff-filter=ACM | grep '.js$' | xargs node ./node_modules/eslint/bin/eslint.js --quiet",
     "lint-full": "node ./node_modules/eslint/bin/eslint.js .",
@@ -13,7 +13,7 @@
     "postreceive": "npm install",
     "postrewrite": "npm install"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [
     "OIO"
   ],
@@ -56,6 +56,7 @@
     "react-testing-library": "5.2.3",
     "resolve-url-loader": "2.3.0",
     "style-loader": "0.20.3",
+    "tinycolor2": "1.4.1",
     "webpack": "4.17.1",
     "webpack-bundle-analyzer": "2.11.1",
     "webpack-cli": "2.0.13",

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, NavLink, Route } from 'react-router-dom'
 import { OIO } from '../src'
+import Button from './pages/Button'
 import OIOContainer from './pages/OIO'
 import Text from './pages/Text'
 import style from './style.less'
@@ -24,6 +25,7 @@ ReactDOM.render((
             </h1>
             <div className={style.nav}>
                <NavLink exact to="/" activeClassName={style.active}>OIO Container</NavLink>
+               <NavLink to="/button" activeClassName={style.active}>Button</NavLink>
                <NavLink to="/text" activeClassName={style.active}>Text</NavLink>
             </div>
          </div>
@@ -36,6 +38,7 @@ ReactDOM.render((
                overflow: 'auto'
             }}>
             <Route exact path="/" component={OIOContainer} />
+            <Route path="/button" component={Button} />
             <Route path="/text" component={Text} />
          </div>
       </OIO>
