@@ -16,6 +16,7 @@ const noTransformProps = [
    'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
    'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
+   'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
    'backgroundColor', 'textAlign'
 ]
 
