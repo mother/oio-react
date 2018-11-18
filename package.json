@@ -20,7 +20,7 @@
       "post-rewrite": "npm install"
     }
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "keywords": [
     "OIO"
   ],
