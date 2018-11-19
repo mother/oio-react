@@ -1,3 +1,5 @@
+export Grid from './Grid'
+export GridCell from './GridCell'
 export OIO from './OIO'
 export Text from './Text'
 export View from './View'
