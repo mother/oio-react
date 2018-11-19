@@ -1,4 +1,5 @@
 const path = require('path')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 module.exports = {
    mode: 'production',
@@ -6,8 +7,9 @@ module.exports = {
       main: './src/index.js'
    },
    output: {
-      path: path.resolve(__dirname, '../dist'),
+      path: path.resolve(__dirname, '../../dist'),
       filename: 'index.js',
+      library: 'oio',
       libraryTarget: 'umd'
    },
    externals: {
@@ -33,10 +35,13 @@ module.exports = {
          }
       ]
    },
+   plugins: [
+      new ProgressBarPlugin()
+   ],
    resolve: {
       alias: {
-         react: path.resolve(__dirname, '../node_modules/react'),
-         'react-dom': path.resolve(__dirname, '../node_modules/react-dom')
+         react: path.resolve(__dirname, '../../node_modules/react'),
+         'react-dom': path.resolve(__dirname, '../../node_modules/react-dom')
       }
    }
 }
