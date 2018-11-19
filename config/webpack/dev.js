@@ -1,4 +1,5 @@
 const path = require('path')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
       './demo/index.js'
    ],
    output: {
-      path: path.resolve(__dirname, '../dist'),
+      path: path.resolve(__dirname, '../../dist'),
       filename: 'bundle.js',
       publicPath: '/dist/'
    },
@@ -21,18 +22,18 @@ module.exports = {
          },
          {
             test: /\.less$/,
-            // include: /^demo\//,
+            include: path.join(__dirname, '../../demo'),
             use: [
                'style-loader',
                'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-               'resolve-url-loader',
                'less-loader'
             ]
          }
       ]
    },
    plugins: [
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new ProgressBarPlugin()
    ],
    resolve: {
       extensions: ['.js'],
