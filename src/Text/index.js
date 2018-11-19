@@ -74,7 +74,7 @@ export default class Text extends Component {
    static defaultProps = {
       autoScale: false,
       baseFontSize: '11px',
-      baseAutoScaleFontSize: '2.5[a] 1.75[b] 1.2[c] 1[d] 0.75[e] 0.625[f]',
+      baseAutoScaleFontSize: '2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]',
       className: '',
       size: '3',
       sizeMultiplier: 1,
