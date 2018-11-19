@@ -6,9 +6,9 @@
 // =======================================================
 
 export const breakpoints = {
-   a: '@media (min-width: 0px) and (max-width: 420px)',
-   b: '@media (min-width: 420px) and (max-width: 720px)',
-   c: '@media (min-width: 720px) and (max-width: 1000px)',
+   a: '@media (min-width: 0px) and (max-width: 475px)',
+   b: '@media (min-width: 475px) and (max-width: 675px)',
+   c: '@media (min-width: 675px) and (max-width: 1000px)',
    d: '@media (min-width: 1000px) and (max-width: 1350px)',
    e: '@media (min-width: 1350px) and (max-width: 1700px)',
    f: '@media (min-width: 1700px)'
