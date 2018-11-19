@@ -12,7 +12,7 @@ import generateStyleObject from '../utils/generateStyleObject'
 
 const noTransformProps = [
    'display', 'float', 'position', 'top', 'left', 'right', 'bottom',
-   'flex', 'flexFlow', 'justifyContent',
+   'flex', 'flexFlow', 'justifyContent', 'alignItems',
    'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
    'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',

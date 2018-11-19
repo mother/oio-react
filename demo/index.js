@@ -5,6 +5,7 @@ import { OIO } from '../src'
 import Button from './pages/Button'
 import OIOContainer from './pages/OIO'
 import Text from './pages/Text'
+import View from './pages/View'
 import style from './style.less'
 
 ReactDOM.render((
@@ -27,6 +28,7 @@ ReactDOM.render((
                <NavLink exact to="/" activeClassName={style.active}>OIO Container</NavLink>
                <NavLink to="/button" activeClassName={style.active}>Button</NavLink>
                <NavLink to="/text" activeClassName={style.active}>Text</NavLink>
+               <NavLink to="/view" activeClassName={style.active}>View</NavLink>
             </div>
          </div>
          <div
@@ -40,6 +42,7 @@ ReactDOM.render((
             <Route exact path="/" component={OIOContainer} />
             <Route path="/button" component={Button} />
             <Route path="/text" component={Text} />
+            <Route path="/view" component={View} />
          </div>
       </OIO>
    </BrowserRouter>
