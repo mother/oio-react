@@ -10,7 +10,9 @@ module.exports = {
       path: path.resolve(__dirname, '../../dist'),
       filename: 'index.js',
       library: 'oio',
-      libraryTarget: 'umd'
+      libraryTarget: 'umd',
+      libraryExport: 'default',
+      globalObject: 'typeof self !== \'undefined\' ? self : this'
    },
    externals: {
       react: {
