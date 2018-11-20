@@ -8,7 +8,7 @@ import style from './style.less'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIO fontFamily="Helvetica Neue, sans-serif">
+      <OIO fontFamily="Helvetica Neue, sans-serif" nonce="cd7b0a50-f223-4aaf-9aee-44fbd8329c69">
          <div
             style={{
                position: 'absolute',

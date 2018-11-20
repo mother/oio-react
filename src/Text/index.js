@@ -7,7 +7,6 @@
 // =======================================================
 
 import React, { Component } from 'react'
-import { css, cx } from 'emotion'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIO/context'
 import generateStyleObject from '../utils/generateStyleObject'
@@ -60,6 +59,8 @@ export default class Text extends Component {
       children: PropTypes.node,
       className: PropTypes.string,
       color: PropTypes.string,
+      // TODO: USE REAL EMOTION INSTANCE
+      emotion: PropTypes.object.isRequired,
       fontFamily: PropTypes.string,
       generatedStyleObject: PropTypes.object.isRequired,
       lineHeight: PropTypes.string,
@@ -84,6 +85,7 @@ export default class Text extends Component {
    }
 
    render() {
+      const { css, cx } = this.props.emotion
       const styles = {
          ...this.props.style,
          ...this.props.generatedStyleObject
