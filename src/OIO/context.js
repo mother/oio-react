@@ -2,10 +2,11 @@ import React from 'react'
 
 const OIOContext = React.createContext()
 
+// TODO: CLEAN THIS UP
 const withOIOContext = WrappedComponent => props => (
    <OIOContext.Consumer>
-      {theme => (
-         <WrappedComponent {...props} OIOContext={theme} />
+      {({ emotion, ...theme }) => (
+         <WrappedComponent {...props} emotion={emotion} OIOContext={theme} />
       )}
    </OIOContext.Consumer>
 )

@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+import createEmotion from 'create-emotion'
 import PropTypes from 'prop-types'
 import { OIOContext } from './context'
 import normalize from './normalize'
-
-// Normalize
-injectGlobal`${normalize}` // eslint-disable-line no-unused-expressions
 
 export default class OIO extends Component {
    static propTypes = {
@@ -14,6 +11,7 @@ export default class OIO extends Component {
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
       fontWeights: PropTypes.object,
+      nonce: PropTypes.string,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
       textSizeMultiplier: PropTypes.number
@@ -31,10 +29,23 @@ export default class OIO extends Component {
          semibold: '600',
          bold: '700'
       },
+      nonce: undefined,
       style: {},
       textSizeScaleRatio: 1.125,
       textSizeMultiplier: 1
    }
+
+   constructor(props) {
+      super(props)
+      this.emotion = createEmotion({
+         nonce: props.nonce
+      })
+
+      // eslint-disable-next-line no-unused-expressions
+      this.emotion.injectGlobal`${normalize}`
+   }
+
+   emotion = null
 
    render() {
       const {
@@ -49,6 +60,7 @@ export default class OIO extends Component {
       } = this.props
 
       const contextProps = {
+         emotion: this.emotion,
          fontFamily,
          fontSize,
          fontWeights,
