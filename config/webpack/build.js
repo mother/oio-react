@@ -11,8 +11,7 @@ module.exports = {
       filename: 'index.js',
       library: 'oio',
       libraryTarget: 'umd',
-      libraryExport: 'default',
-      globalObject: 'typeof self !== \'undefined\' ? self : this'
+      globalObject: 'this'
    },
    externals: {
       react: {
