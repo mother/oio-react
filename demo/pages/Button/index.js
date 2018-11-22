@@ -5,23 +5,28 @@ import { Button, Text } from '../../../src'
 import style from '../../style.less'
 
 const codeSnippet1 = `
-// Text, sizes 1 to 15!
+// Button sizes
+<Button name="Button (lg)" size="lg" />
+<Button name="Button (md)" size="md" />
+<Button name="Button (sm)" size="sm" />
+<Button name="Button (xs)" size="xs" />
+`
 
-<Text size="15">Size 15 Text</Text>
-<Text size="14">Size 14 Text</Text>
-<Text size="13">Size 13 Text</Text>
-<Text size="12">Size 12 Text</Text>
-<Text size="11">Size 11 Text</Text>
-<Text size="10">Size 10 Text</Text>
-<Text size="9">Size 9 Text</Text>
-<Text size="8">Size 8 Text</Text>
-<Text size="7">Size 7 Text</Text>
-<Text size="6">Size 6 Text</Text>
-<Text size="5">Size 5 Text</Text>
-<Text size="4">Size 4 Text</Text>
-<Text size="3">Size 3 Text</Text>
-<Text size="2">Size 2 Text</Text>
-<Text size="1">Size 1 Text</Text>
+const codeSnippet2 = `
+// Some button styles
+<Button name="Button (no radius)" size="sm" borderRadius="0px" />
+<Button name="Button uppercase" size="sm" textUppercase />
+<Button name="Button Rounded" size="sm" rounded />
+<Button name="Button (with width)" size="sm" width="300px" />
+<Button name="Button (with custom padding)" size="sm" padding="12px" />
+<Button name="Button with Color" size="sm" color="#3a3045" textColor="#b4435e" />
+<Button name="Button Outline" size="sm" outline />
+`
+
+const codeSnippet3 = `
+// Text, sizes 1 to 15!
+<Button name="Button Outline" color="#3a3045" textColor="#b4435e" />
+<Button name="Button Rounded" color="#3a3045" textColor="#b4435e" rounded />
 `
 
 const apiOptions = [{
@@ -64,6 +69,11 @@ const apiOptions = [{
    type: 'Boolean',
    default: '<code>false</code>',
    description: 'Set to <code>true</code>, gives the button an outline appearance'
+}, {
+   name: 'padding',
+   type: 'String',
+   default: '-',
+   description: 'Set the horizontal padding of the button'
 }, {
    name: 'rounded',
    type: 'Boolean',
@@ -170,6 +180,7 @@ export default class OIOContainer extends Component {
                         <Button name="Button uppercase" size="sm" textUppercase />
                         <Button name="Button Rounded" size="sm" rounded />
                         <Button name="Button (with width)" size="sm" width="300px" />
+                        <Button name="Button (with custom padding)" size="sm" padding="12px" />
                         <Button name="Button with Color" size="sm" color="#3a3045" textColor="#b4435e" />
                         <Button name="Button Outline" size="sm" outline />
                      </div>
@@ -180,7 +191,7 @@ export default class OIOContainer extends Component {
                      language="jsx"
                      style={duotoneForest}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet1}
+                     {codeSnippet2}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -209,7 +220,7 @@ export default class OIOContainer extends Component {
                      language="jsx"
                      style={duotoneForest}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet1}
+                     {codeSnippet3}
                   </SyntaxHighlighter>
                </div>
             </div>
