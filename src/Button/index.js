@@ -24,6 +24,7 @@ import Text from '../Text'
    fontFamily,
    OIOContext,
    outline,
+   padding,
    rounded,
    size,
    sizeMultiplier,
@@ -31,6 +32,10 @@ import Text from '../Text'
    width
 }) => {
    const primaryButtonColor = color || OIOContext.highlightColor
+   const defaultButtonPadding = width === 'auto'
+      ? `0px ${OIOContext.elementHeights[size]}`
+      : '0px'
+
    const buttonStyle = {
       fontFamily,
       width,
@@ -40,7 +45,7 @@ import Text from '../Text'
       color: textColor,
       minHeight: OIOContext.elementHeights[size],
       minWidth: OIOContext.elementHeights[size],
-      padding: `0px ${OIOContext.elementHeights[size]}`,
+      padding: padding ? `0px ${padding}` : defaultButtonPadding,
       '&:hover': {
          backgroundColor: tinycolor(primaryButtonColor).lighten(7).toString()
       }
@@ -73,6 +78,7 @@ export default class Button extends Component {
       name: PropTypes.node,
       OIOContext: PropTypes.object.isRequired,
       onClick: PropTypes.func,
+      padding: PropTypes.string,
       size: PropTypes.string,
       sizeMultiplier: PropTypes.number,
       style: PropTypes.object,
@@ -111,7 +117,7 @@ export default class Button extends Component {
          ...style,
          ...generatedStyleObject,
          '&:active': {
-            transform: 'translateY(1px)'
+            transform: 'translateY(3px)'
          }
       }
 
