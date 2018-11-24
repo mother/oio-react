@@ -11,18 +11,24 @@ import { withGridContext } from '../Grid/context'
 import generateStyleObject from '../utils/generateStyleObject'
 
 @withGridContext
-@generateStyleObject(({
-   colspan,
-   gridContext
-}) => {
-   const spacing = gridContext.spacing
-   const cellWidth = (colspan / gridContext.columns) * 100
+@generateStyleObject({
+   calculatedProps: ({
+      colspan,
+      gridContext
+   }) => {
+      const spacing = gridContext.spacing
+      const cellWidth = (colspan / gridContext.columns) * 100
 
-   return ({
-      width: `calc(${cellWidth}% - ${spacing})`,
-      marginBottom: spacing,
-      marginLeft: spacing
-   })
+      return ({
+         width: `calc(${cellWidth}% - ${spacing})`,
+         marginBottom: spacing,
+         marginLeft: spacing
+      })
+   },
+   excludeProps: ['children', 'className', 'style'],
+   contextProps: {
+      gridContext: ['columns', 'spacing']
+   }
 })
 
 export default class GridCell extends Component {

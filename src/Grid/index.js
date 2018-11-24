@@ -10,13 +10,15 @@ import PropTypes from 'prop-types'
 import { GridContext } from './context'
 import generateStyleObject from '../utils/generateStyleObject'
 
-@generateStyleObject(({
-   columns,
-   spacing
-}) => ({
-   width: `calc(100% + ${spacing})`,
-   marginLeft: `-${spacing}`
-}))
+@generateStyleObject({
+   calculatedProps: ({
+      columns,
+      spacing
+   }) => ({
+      width: `calc(100% + ${spacing})`,
+      marginLeft: `-${spacing}`
+   })
+})
 
 export default class Grid extends Component {
    /* eslint-disable */
