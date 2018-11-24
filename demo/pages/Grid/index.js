@@ -74,7 +74,7 @@ export default class OIOContainer extends PureComponent {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <Grid columns="2" spacing="12px">
+                     <Grid columns="1[a-d] 2[e-f]" spacing="12px">
                         <GridCell>
                            <View backgroundColor="#aaa">
                               Cell 1
@@ -85,7 +85,7 @@ export default class OIOContainer extends PureComponent {
                               Cell 2
                            </View>
                         </GridCell>
-                        <GridCell colspan="2">
+                        <GridCell colspan="1[a-d] 2[e-f]">
                            <View backgroundColor="#aaa">
                               Cell 3
                            </View>

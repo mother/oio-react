@@ -1,11 +1,15 @@
 import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
-import { Text } from '../../../src'
+import { Text, View } from '../../../src'
 import style from '../../style.less'
 
 const codeSnippet1 = `
-<View>
+<View
+   backgroundColor="#ebfff2"
+   border="1px solid #36f4a4"
+   borderRadius="6px"
+   padding="30px">
    Hello World
 </View>
 `
@@ -213,6 +217,17 @@ export default class OIOContainer extends PureComponent {
                         application. You can think of the <code>View</code> component
                          as OIO&apos;s take on a <code>div</code>.
                   </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <View
+                        backgroundColor="#ebfff2"
+                        border="1px solid #36f4a4"
+                        borderRadius="6px"
+                        padding="30px">
+                        Hello World
+                     </View>
+                  </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
