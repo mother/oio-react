@@ -17,32 +17,34 @@ const noTransformProps = [
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
    'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
-   'backgroundColor', 'textAlign'
+   'backgroundColor', 'borderRadius', 'textAlign'
 ]
 
-@generateStyleObject((props) => {
-   const styleObject = {}
+@generateStyleObject({
+   calculatedProps: (props) => {
+      const styleObject = {}
 
-   noTransformProps.forEach((prop) => {
-      styleObject[prop] = props[prop]
-   })
+      noTransformProps.forEach((prop) => {
+         styleObject[prop] = props[prop]
+      })
 
-   if (props.scroll === 'on') {
-      styleObject.overflow = 'auto'
-      styleObject['-webkit-overflow-scrolling'] = 'touch'
+      if (props.scroll === 'on') {
+         styleObject.overflow = 'auto'
+         styleObject['-webkit-overflow-scrolling'] = 'touch'
+      }
+
+      if (props.paddingHorizontal) {
+         styleObject.paddingLeft = props.paddingHorizontal
+         styleObject.paddingRight = props.paddingHorizontal
+      }
+
+      if (props.paddingVertical) {
+         styleObject.paddingTop = props.paddingVertical
+         styleObject.paddingBottom = props.paddingVertical
+      }
+
+      return styleObject
    }
-
-   if (props.paddingHorizontal) {
-      styleObject.paddingLeft = props.paddingHorizontal
-      styleObject.paddingRight = props.paddingHorizontal
-   }
-
-   if (props.paddingVertical) {
-      styleObject.paddingTop = props.paddingVertical
-      styleObject.paddingBottom = props.paddingVertical
-   }
-
-   return styleObject
 })
 
 export default class View extends Component {
@@ -52,6 +54,7 @@ export default class View extends Component {
       backgroundColor: PropTypes.string,
       border: PropTypes.string,
       borderTop: PropTypes.string,
+      borderRadius: PropTypes.string,
       borderRight: PropTypes.string,
       borderBottom: PropTypes.string,
       borderLeft: PropTypes.string,
