@@ -13,42 +13,48 @@ import { withOIOContext } from '../OIO/context'
 import generateStyleObject from '../utils/generateStyleObject'
 
 @withOIOContext
-@generateStyleObject(({
-   autoScale,
-   baseFontSize,
-   baseAutoScaleFontSize,
-   color,
-   fontFamily,
-   lineHeight,
-   OIOContext,
-   size,
-   sizeMultiplier,
-   uppercase,
-   weight
-}) => {
-   // CALCULATE REAL FONT SIZE
-   // Dynamically calculate font size - this is a number based on a combination of
-   // text size, scaling ratios and multipliers (multipliers are useful for theming)
-   const textSizeScaleRatio = OIOContext.textSizeScaleRatio
-   const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
-   const baseTextSize = autoScale ? parseFloat(baseAutoScaleFontSize) : parseFloat(baseFontSize)
-   let calculatedLineHeight = '120%'
-
-   if (size > 9) {
-      calculatedLineHeight = '100%'
-   } else if (size > 5) {
-      calculatedLineHeight = '110%'
-   }
-
-   return ({
+@generateStyleObject({
+   calculatedProps: ({
+      autoScale,
+      baseFontSize,
+      baseAutoScaleFontSize,
       color,
       fontFamily,
-      fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
-      fontWeight: OIOContext.fontWeights[weight],
-      lineHeight: lineHeight || calculatedLineHeight,
-      textTransform: uppercase && 'uppercase'
-   })
+      lineHeight,
+      OIOContext,
+      size,
+      sizeMultiplier,
+      uppercase,
+      weight
+   }) => {
+      // CALCULATE REAL FONT SIZE
+      // Dynamically calculate font size - this is a number based on a combination of
+      // text size, scaling ratios and multipliers (multipliers are useful for theming)
+      const textSizeScaleRatio = OIOContext.textSizeScaleRatio
+      const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
+      const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
+      const baseTextSize = autoScale ? parseFloat(baseAutoScaleFontSize) : parseFloat(baseFontSize)
+      let calculatedLineHeight = '120%'
+
+      if (size > 9) {
+         calculatedLineHeight = '100%'
+      } else if (size > 5) {
+         calculatedLineHeight = '110%'
+      }
+
+      return ({
+         color,
+         fontFamily,
+         fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
+         fontWeight: OIOContext.fontWeights[weight],
+         lineHeight: lineHeight || calculatedLineHeight,
+         textTransform: uppercase && 'uppercase'
+      })
+   },
+   excludeProps: ['children', 'className', 'style'],
+   contextProps: {
+      OIOContext: ['fontWeights', 'textSizeMultiplier', 'textSizeScaleRatio']
+   }
 })
 
 export default class Text extends Component {
