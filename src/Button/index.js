@@ -18,52 +18,58 @@ import generateStyleObject from '../utils/generateStyleObject'
 import Text from '../Text'
 
 @withOIOContext
-@generateStyleObject(({
-   borderRadius,
-   color,
-   fontFamily,
-   OIOContext,
-   outline,
-   padding,
-   rounded,
-   size,
-   sizeMultiplier,
-   textColor,
-   width
-}) => {
-   const primaryButtonColor = color || OIOContext.highlightColor
-   const defaultButtonPadding = width === 'auto'
-      ? `0px ${OIOContext.elementHeights[size]}`
-      : '0px'
-
-   const buttonStyle = {
+@generateStyleObject({
+   calculatedProps: ({
+      borderRadius,
+      color,
       fontFamily,
-      width,
-      backgroundColor: primaryButtonColor,
-      border: 'none',
-      borderRadius: borderRadius || OIOContext.elementBorderRadius[size],
-      color: textColor,
-      minHeight: OIOContext.elementHeights[size],
-      minWidth: OIOContext.elementHeights[size],
-      padding: padding ? `0px ${padding}` : defaultButtonPadding,
-      '&:hover': {
-         backgroundColor: tinycolor(primaryButtonColor).lighten(7).toString()
+      OIOContext,
+      outline,
+      padding,
+      rounded,
+      size,
+      sizeMultiplier,
+      textColor,
+      width
+   }) => {
+      const primaryButtonColor = color || OIOContext.highlightColor
+      const defaultButtonPadding = width === 'auto'
+         ? `0px ${OIOContext.elementHeights[size]}`
+         : '0px'
+
+      const buttonStyle = {
+         fontFamily,
+         width,
+         backgroundColor: primaryButtonColor,
+         border: 'none',
+         borderRadius: borderRadius || OIOContext.elementBorderRadius[size],
+         color: textColor,
+         minHeight: OIOContext.elementHeights[size],
+         minWidth: OIOContext.elementHeights[size],
+         padding: padding ? `0px ${padding}` : defaultButtonPadding,
+         '&:hover': {
+            backgroundColor: tinycolor(primaryButtonColor).lighten(7).toString()
+         }
       }
-   }
 
-   if (rounded) {
-      buttonStyle.borderRadius = parseInt(OIOContext.elementHeights[size], 10) / 2
-   }
+      if (rounded) {
+         buttonStyle.borderRadius = parseInt(OIOContext.elementHeights[size], 10) / 2
+      }
 
-   if (outline) {
-      buttonStyle.border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.5).toString()}`
-      buttonStyle.backgroundColor = 'transparent'
-      buttonStyle['&:hover'].backgroundColor = 'transparent'
-      buttonStyle['&:hover'].border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
-      buttonStyle.color = primaryButtonColor
-   }
+      if (outline) {
+         buttonStyle.border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.5).toString()}`
+         buttonStyle.backgroundColor = 'transparent'
+         buttonStyle['&:hover'].backgroundColor = 'transparent'
+         buttonStyle['&:hover'].border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
+         buttonStyle.color = primaryButtonColor
+      }
 
-   return buttonStyle
+      return buttonStyle
+   },
+   excludeProps: ['className', 'link', 'name', 'onClick', 'style'],
+   contextProps: {
+      OIOContext: ['elementBorderRadius', 'elementHeights', 'highlightColor']
+   }
 })
 
 export default class Button extends Component {
