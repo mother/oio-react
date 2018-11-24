@@ -4,25 +4,35 @@
 // Rating: 3
 // Action Items:
 // - generateStyleObject can be optmized, especially to ensure
-// smallest footprint object created as possible
+// smallest footprint object created as possible and optimize performance
+// too many loops right now
 // =======================================================
 
 import React from 'react'
 import { breakpoints, getAttributeValueForCurrentBreakpoint } from './breakpoints'
 
-const generateStyleObject = calculateStyleProps => WrappedComponent => (props) => {
+const generateStyleObject = options => WrappedComponent => (props) => {
+   // ============================================================================
+   // Props
+   // ============================================================================
+
+   const OIOBreakpoints = ['a', 'b', 'c', 'd', 'e', 'f']
    const propsIncludingDefaults = {
       ...WrappedComponent.defaultProps,
       ...props
    }
 
-   // object to store all prop values by breakpoint regardless of
-   // css style applicability
-   const breakpointProps = { a: {}, b: {}, c: {}, d: {}, e: {}, f: {} }
+   // Props that are not needed in any way for calculating the style
+   const excludeProps = options.excludeProps || []
+   const propsToCalculate = Object.keys(propsIncludingDefaults).filter(p => (
+      !excludeProps.includes(p)
+   ))
 
+   // object to store all prop values by breakpoint
+   const allPropsByBreakpoint = { a: {}, b: {}, c: {}, d: {}, e: {}, f: {} }
    // object to store actual style props. This object will be passed to
-   // the WrappedComponent as calculatedStyleProps
-   const styleObj = {
+   // the WrappedComponent as generatedStyleObject
+   const generatedStyleObject = {
       [breakpoints.a]: {},
       [breakpoints.b]: {},
       [breakpoints.c]: {},
@@ -31,38 +41,67 @@ const generateStyleObject = calculateStyleProps => WrappedComponent => (props) =
       [breakpoints.f]: {}
    }
 
+   // ============================================================================
+   // Context
+   // ============================================================================
+   // Only context props that are specified are used
+   // (so we don't loop through all the props)
+   const contextProps = options.contextProps || {}
+   // object to store all context values by breakpoint (such as OIO context)
+   const contextPropsByBreakpoint = { a: {}, b: {}, c: {}, d: {}, e: {}, f: {} }
+
+   Object.keys(contextProps).forEach((context) => {
+      const contextObject = props[context]
+      const contextObjectProps = contextProps[context]
+
+      OIOBreakpoints.forEach((breakpoint) => {
+         contextPropsByBreakpoint[breakpoint][context] = {}
+
+         contextObjectProps.forEach((prop) => {
+            const propValue = contextObject[prop]
+            const getBreakpointValue = isResponsiveStringValue(propValue)
+
+            contextPropsByBreakpoint[breakpoint][context][prop] = getBreakpointValue
+               ? getAttributeValueForCurrentBreakpoint(breakpoint, propValue)
+               : propValue
+         })
+      })
+   })
+
+   // ============================================================================
+   // Style by Breakpoint
+   // ============================================================================
    // Determine applicable prop values for each breakpoint
-   Object.keys(breakpoints).forEach((breakpoint) => {
-      // Sort attribute values by breakpoint to breakpointProps object
-      // regardless of prop keys (this means we will assign even none-css related
-      // props like children - this does not make an opinion about how to use
-      // any of the corresponding component's values)
-      Object.keys(propsIncludingDefaults).forEach((attribute) => {
+   OIOBreakpoints.forEach((breakpoint) => {
+      // Sort attribute values by breakpoint to allPropsByBreakpoint object
+      propsToCalculate.forEach((attribute) => {
          const attributeValue = propsIncludingDefaults[attribute]
 
-         // If attribute value exists and is a string,
-         // check for [a-f] attribute values specific to a breakpoint
-         breakpointProps[breakpoint][attribute] = attributeValue && typeof attributeValue === 'string'
+         allPropsByBreakpoint[breakpoint][attribute] = isResponsiveStringValue(attributeValue)
             ? getAttributeValueForCurrentBreakpoint(breakpoint, attributeValue)
             : attributeValue
       })
 
       // For each breakpoint, calculate real ACTUAL css Style props
-      // Calculation is based on args passed from WrappedComponent
-      styleObj[breakpoints[breakpoint]] = calculateStyleProps(breakpointProps[breakpoint])
-
-      // Remove any redundant fields with values of null or undefined or auto
-      Object.keys(styleObj[breakpoints[breakpoint]]).forEach((a) => {
-         const attribute = styleObj[breakpoints[breakpoint]][a]
-         if (!attribute || attribute === 'auto') {
-            delete styleObj[breakpoints[breakpoint]][attribute]
-         }
+      // Calculation is based on args passed from WrappedComponent decorator
+      const calculatedBreakpointProps = options.calculatedProps({
+         ...allPropsByBreakpoint[breakpoint],
+         ...contextPropsByBreakpoint[breakpoint]
       })
+
+      generatedStyleObject[breakpoints[breakpoint]] = calculatedBreakpointProps
    })
 
    return (
-      <WrappedComponent {...props} generatedStyleObject={styleObj} />
+      <WrappedComponent {...props} generatedStyleObject={generatedStyleObject} />
    )
+}
+
+// Is Value a OIO Responsive string ie: 100%[a-d] 50%[e-f]
+function isResponsiveStringValue(value) {
+   if (value && typeof propValue === 'string' && value.match(/(.+?)\[([abcdef,-]+)\]/ig)) {
+      return true
+   }
 }
 
 export default generateStyleObject
