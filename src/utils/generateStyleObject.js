@@ -99,7 +99,7 @@ const generateStyleObject = options => WrappedComponent => (props) => {
 
 // Is Value a OIO Responsive string ie: 100%[a-d] 50%[e-f]
 function isResponsiveStringValue(value) {
-   if (value && typeof propValue === 'string' && value.match(/(.+?)\[([abcdef,-]+)\]/ig)) {
+   if (value && typeof value === 'string' && value.match(/(.+?)\[([abcdef,-]+)\]/ig)) {
       return true
    }
 }
