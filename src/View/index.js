@@ -17,7 +17,8 @@ const noTransformProps = [
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
    'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
-   'backgroundColor', 'borderRadius', 'textAlign'
+   'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize',
+   'borderRadius', 'textAlign'
 ]
 
 @generateStyleObject({
@@ -52,6 +53,9 @@ export default class View extends Component {
    static propTypes = {
       alignItems: PropTypes.string,
       backgroundColor: PropTypes.string,
+      backgroundImage: PropTypes.string,
+      backgroundPosition: PropTypes.string,
+      backgroundSize: PropTypes.string,
       border: PropTypes.string,
       borderTop: PropTypes.string,
       borderRadius: PropTypes.string,

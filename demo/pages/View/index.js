@@ -97,6 +97,21 @@ const appearanceApiOptions = [{
    default: '-',
    description: 'Use any valid css color'
 }, {
+   name: 'backgroundImage',
+   type: 'String',
+   default: '-',
+   description: 'specifiy a background imagee'
+}, {
+   name: 'backgroundPosition',
+   type: 'String',
+   default: '-',
+   description: 'Use valid CSS <code>background-position</code> values'
+}, {
+   name: 'backgroundSize',
+   type: 'String',
+   default: '-',
+   description: 'Use valid CSS <code>background-size</code> values'
+}, {
    name: 'border',
    type: 'String',
    default: '-',
