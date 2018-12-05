@@ -8,6 +8,7 @@
 import React, { Component } from 'react'
 import { css, cx } from 'emotion'
 import PropTypes from 'prop-types'
+import forwardRefToWrappedComponent from '../utils/forwardRef'
 import generateStyleObject from '../utils/generateStyleObject'
 
 const noTransformProps = [
@@ -48,6 +49,8 @@ const noTransformProps = [
    }
 })
 
+@forwardRefToWrappedComponent
+
 export default class View extends Component {
    /* eslint-disable */
    static propTypes = {
@@ -68,6 +71,10 @@ export default class View extends Component {
       flex: PropTypes.string,
       flexFlow: PropTypes.string,
       float: PropTypes.string,
+      forwardedRef: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+      ]),
       generatedStyleObject: PropTypes.object.isRequired,
       height: PropTypes.string,
       justifyContent: PropTypes.string,
@@ -116,7 +123,7 @@ export default class View extends Component {
 
       return (
          <div
-            ref={(node) => { this.node = node }}
+            ref={this.props.forwardedRef}
             className={cx(css(styles), this.props.className)}
             onClick={this.props.onClick}
             onScroll={this.props.onScroll}>
