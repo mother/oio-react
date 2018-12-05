@@ -8,10 +8,10 @@
 // too many loops right now
 // =======================================================
 
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { breakpoints, getAttributeValueForCurrentBreakpoint } from './breakpoints'
 
-const generateStyleObject = options => WrappedComponent => (props) => {
+const generateStyleObject = options => WrappedComponent => forwardRef((props, ref) => {
    // ============================================================================
    // Props
    // ============================================================================
@@ -93,9 +93,9 @@ const generateStyleObject = options => WrappedComponent => (props) => {
    })
 
    return (
-      <WrappedComponent {...props} generatedStyleObject={generatedStyleObject} />
+      <WrappedComponent {...props} ref={ref} generatedStyleObject={generatedStyleObject} />
    )
-}
+})
 
 // Is Value a OIO Responsive string ie: 100%[a-d] 50%[e-f]
 function isResponsiveStringValue(value) {
