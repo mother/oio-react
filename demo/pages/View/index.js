@@ -217,7 +217,7 @@ const paddingMarginApiOptions = [{
    description: ''
 }]
 
-export default class OIOContainer extends PureComponent {
+export default class DemoView extends PureComponent {
    render() {
       return (
          <div className={style.docs}>
@@ -255,7 +255,7 @@ export default class OIOContainer extends PureComponent {
             </div>
             <div className={style.block}>
                <div className={style.columnFull}>
-                  <Text size="6" weight="bold">Basic API Options</Text>
+                  <Text size="6" weight="bold">Basic Formatting API Options</Text>
                   <br /><br />
                   <table className={style.table}>
                      <thead>
