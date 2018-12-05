@@ -22,6 +22,7 @@ const noTransformProps = [
    'borderRadius', 'textAlign'
 ]
 
+@forwardRefToWrappedComponent
 @generateStyleObject({
    calculatedProps: (props) => {
       const styleObject = {}
@@ -48,8 +49,6 @@ const noTransformProps = [
       return styleObject
    }
 })
-
-@forwardRefToWrappedComponent
 
 export default class View extends Component {
    /* eslint-disable */
