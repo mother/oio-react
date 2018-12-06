@@ -1,3 +1,10 @@
+// =======================================================
+// OIO Container
+// All OIO components must be nested inside an OIO Container
+// You can nest OIO containers inside other OIO containers
+// This component will be a Context provider in future PR
+// =======================================================
+
 import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'

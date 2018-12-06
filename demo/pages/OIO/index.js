@@ -21,7 +21,7 @@ const apiOptions = [{
 }, {
    name: 'fontFamily',
    type: 'String',
-   default: '<code>sans-serf</code>',
+   default: '<code>sans-serif</code>',
    description: 'Default font-family used for all text inside this OIO Container'
 }, {
    name: 'fontSize',
