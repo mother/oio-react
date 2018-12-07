@@ -29,6 +29,9 @@ export default class OIOProvider extends Component {
 
    componentDidMount() {
       // Reset Styles
+      // TODO: Upgrade to emotion 10 to use <Global /> component
+      // The following will inject styles globally and remain even
+      // if this component is unmounted
       injectGlobal`${normalizationStyles}` // eslint-disable-line no-unused-expressions
    }
 
