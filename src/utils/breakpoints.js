@@ -14,6 +14,7 @@ export const breakpoints = {
    f: '@media (min-width: 1700px)'
 }
 
+// The following was copied from original oio
 /* eslint-disable */
 export const getAttributeValueForCurrentBreakpoint = (currentSize, attributeValue) => {
    let fragments = attributeValue.match(/(.+?)\[([abcdef,-]+)\]/ig)

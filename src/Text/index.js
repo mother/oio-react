@@ -58,7 +58,7 @@ import generateStyleObject from '../utils/generateStyleObject'
 })
 
 export default class Text extends Component {
-   /* eslint-disable */
+   /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
       baseFontSize: PropTypes.string,
@@ -81,7 +81,11 @@ export default class Text extends Component {
       autoScale: false,
       baseFontSize: '11px',
       baseAutoScaleFontSize: '2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]',
+      children: null,
       className: '',
+      color: null,
+      fontFamily: null,
+      lineHeight: null,
       size: '3',
       sizeMultiplier: 1,
       style: {},
