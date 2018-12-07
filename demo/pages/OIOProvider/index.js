@@ -45,11 +45,9 @@ export default class OIOProviderPage extends PureComponent {
                   <Text size="12" weight="medium">OIOProvider</Text>
                   <br />
                   <Text size="5" weight="light">
-                     To use OIO components, you must wrap all components inside
-                      a <code>OIOProvider</code> component. <code>OIOProvider</code> components
-                       are used to propagate reuseable and cohesive
-                        props to all components within its scope. <code>OIOProvider</code>
-                         components can be nested.
+                     {/* eslint-disable max-len */}
+                     To use OIO components, you must wrap all components inside a <code>OIOProvider</code> component. <code>OIOProvider</code> components are used to propagate reuseable and cohesive props to all components within its scope. <code>OIOProvider</code> components can be nested.
+                     {/* eslint-enable max-len */}
                   </Text>
                </div>
                <div className={style.columnHalfCode}>

@@ -9,10 +9,7 @@ import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
 import { OIOContext } from './context'
-import resetStyles from './resetStyles'
-
-// Reset Styles
-injectGlobal`${resetStyles}` // eslint-disable-line no-unused-expressions
+import normalizationStyles from './normalizationStyles'
 
 export default class OIOProvider extends Component {
    static propTypes = {
@@ -41,6 +38,14 @@ export default class OIOProvider extends Component {
       style: {},
       textSizeScaleRatio: 1.125,
       textSizeMultiplier: 1
+   }
+
+   componentDidMount() {
+      // Reset Styles
+      // TODO: Upgrade to emotion 10 to use <Global /> component
+      // The following will inject styles globally and remain even
+      // if this component is unmounted
+      injectGlobal`${normalizationStyles}` // eslint-disable-line no-unused-expressions
    }
 
    render() {

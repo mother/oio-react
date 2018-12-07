@@ -97,12 +97,9 @@ export default class TextPage extends Component {
                   </Text>
                   <br />
                   <Text>
-                     You can set the size of the <code>Text</code> component by using the
-                      prop <code>size</code>
-                      The default size for the Text component is <code>3</code>.
-                       As a general guideline, when using multiple text sizes,
-                        it recommended to use sizes at least 3 size units apart (ie. 3,6,9).
-                         This helps create better legebility and visual hierarchy.
+                     {/* eslint-disable max-len */}
+                     You can set the size of the <code>Text</code> component by using the prop <code>size</code>. The default size for the Text component is <code>3</code>. As a general guideline, when using multiple text sizes, it recommended to use sizes at least 3 size units apart (ie. 3,6,9). This helps create better legebility and visual hierarchy.
+                     {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
@@ -140,14 +137,9 @@ export default class TextPage extends Component {
                   </Text>
                   <br />
                   <Text>
-                     Sometimes, you might want to have text that scales proportionally to
-                      the current browser window size. This is especially useful for larger text
-                       elements like titles and headings.
-                     <br /><br />
-                        You can make the <code>Text</code> component
-                        scale proportionally by setting the prop <code>autoScale</code>
-                         to <code>true</code>. Resize your browser window and you can see how
-                          the text below scales accordingly.
+                     {/* eslint-disable max-len */}
+                     Sometimes, you might want to have text that scales proportionally to the current browser window size. This is especially useful for larger text elements like titles and headings. <br /><br /> You can make the <code>Text</code> component scale proportionally by setting the prop <code>autoScale</code> to <code>true</code>. Resize your browser window and you can see how the text below scales accordingly.
+                     {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
@@ -172,14 +164,9 @@ export default class TextPage extends Component {
                   </Text>
                   <br />
                   <Text>
-                     Sometimes, you might want to have text that scales proportionally to
-                      the current browser window size. This is especially useful for larger text
-                       elements like titles and headings.
-                     <br /><br />
-                        You can make the <code>Text</code> component
-                        scale proportionally by setting the prop <code>autoScale</code>
-                         to <code>true</code>. Resize your browser window and you can see how
-                          the text below scales accordingly.
+                     {/* eslint-disable max-len */}
+                     Sometimes, you might want to have text that scales proportionally to the current browser window size. This is especially useful for larger text elements like titles and headings.<br /><br />You can make the <code>Text</code> component scale proportionally by setting the prop <code>autoScale</code> to <code>true</code>. Resize your browser window and you can see how the text below scales accordingly.
+                     {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
