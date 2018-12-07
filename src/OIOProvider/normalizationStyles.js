@@ -1,4 +1,4 @@
-const resetStyles = `
+const normalizationStyles = `
    *{
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent; // "turn off" link highlight
@@ -95,4 +95,4 @@ const resetStyles = `
 
 `
 
-export default resetStyles
+export default normalizationStyles

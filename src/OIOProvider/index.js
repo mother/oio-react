@@ -8,10 +8,7 @@
 import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
-import resetStyles from './resetStyles'
-
-// Reset Styles
-injectGlobal`${resetStyles}` // eslint-disable-line no-unused-expressions
+import normalizationStyles from './normalizationStyles'
 
 export default class OIOProvider extends Component {
    static propTypes = {
@@ -28,6 +25,11 @@ export default class OIOProvider extends Component {
       fontFamily: 'sans-serif',
       fontSize: '16px',
       style: {}
+   }
+
+   componentDidMount() {
+      // Reset Styles
+      injectGlobal`${normalizationStyles}` // eslint-disable-line no-unused-expressions
    }
 
    render() {
