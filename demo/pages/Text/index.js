@@ -82,7 +82,7 @@ const apiOptions = [{
    description: 'Set to <code>true</code> to transform text characters to uppercase'
 }]
 
-export default class OIOContainer extends Component {
+export default class TextPage extends Component {
    render() {
       return (
          <div className={style.docs}>

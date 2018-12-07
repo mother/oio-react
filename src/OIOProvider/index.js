@@ -1,13 +1,20 @@
+// =======================================================
+// OIOProvider
+// All OIO components must be nested inside an OIOProvider
+// You can nest OIOProvider inside other OIOProvider
+// This component will be a Context provider in future PR
+// =======================================================
+
 import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
 import { OIOContext } from './context'
-import normalize from './normalize'
+import resetStyles from './resetStyles'
 
-// Normalize
-injectGlobal`${normalize}` // eslint-disable-line no-unused-expressions
+// Reset Styles
+injectGlobal`${resetStyles}` // eslint-disable-line no-unused-expressions
 
-export default class OIO extends Component {
+export default class OIOProvider extends Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
