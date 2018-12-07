@@ -32,7 +32,7 @@ const server = app.listen(8000, () => {
    const pattern = Array(80).join('=')
    /* eslint-disable no-console */
    console.log(`\n${pattern}`)
-   console.log(`Starting OIO Demo on port ${port} at ${new Date()}`)
+   console.log(`Starting OIO Docs on port ${port} at ${new Date()}`)
    console.log(`${pattern}\n`)
    /* eslint-enable no-console */
 })

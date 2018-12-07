@@ -4,7 +4,7 @@
   "description": "OIO for React",
   "scripts": {
     "build": "NODE_ENV=production rm -rf dist && webpack --config config/webpack/build.js",
-    "docs": "NODE_ENV=development node ./demo/server",
+    "docs": "NODE_ENV=development node ./docs/server",
     "lint": "git diff HEAD --name-only --diff-filter=ACM | grep '.js$' | xargs node ./node_modules/eslint/bin/eslint.js --quiet",
     "lint-full": "node ./node_modules/eslint/bin/eslint.js .",
     "test": "jest",
