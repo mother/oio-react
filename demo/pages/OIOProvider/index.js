@@ -4,49 +4,51 @@ import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
 import style from '../../style.less'
 
 const codeSnippet1 = `
-// All OIO components must be wrapped in an OIO Container
+// All OIO components must be wrapped in an OIOProvider
 const myComponent = () => (
-   <OIO>
+   <OIOProvider>
       <Text>
          Hello World
       </Text>
-   </OIO>
+   </OIOProvider>
 )`
 
 const apiOptions = [{
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container'
+   description: 'Pass a <code>className</code> to customize className of the OIOProvider'
 }, {
    name: 'fontFamily',
    type: 'String',
    default: '<code>sans-serif</code>',
-   description: 'Default font-family used for all text inside this OIO Container'
+   description: 'Default font-family used for all text inside this OIOProvider'
 }, {
    name: 'fontSize',
    type: 'String',
    default: '<code>16px</code>',
-   description: 'Default font-size used inside this OIO container'
+   description: 'Default font-size used inside this OIOProvider component'
 }, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the OIO Container'
+   description: 'Pass a <code>style</code> object to customize inline style of the OIOProvider'
 }]
 
-export default class OIOContainer extends PureComponent {
+export default class OIOProviderPage extends PureComponent {
    render() {
       return (
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <h1>OIO Container</h1>
+                  <h1>OIOProvider</h1>
+                  <br />
                   <p>
-                     To use OIO components, you must wrap all components inside a <code>OIO</code>
-                      Container. <code>OIO</code> containers arer used to reuseable and cohesive
-                        props to all components within its scope. <code>OIO</code>
-                         containers can be nested.
+                     To use OIO components, you must wrap all components inside
+                      a <code>OIOProvider</code> component. <code>OIOProvider</code> components
+                       are used to propagate reuseable and cohesive
+                        props to all components within its scope. <code>OIOProvider</code>
+                         components can be nested.
                   </p>
                </div>
                <div className={style.columnHalfCode}>

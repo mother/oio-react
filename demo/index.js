@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, NavLink, Route } from 'react-router-dom'
-import { OIO } from '../src'
-import OIOContainer from './pages/OIO'
+import { OIOProvider } from '../src'
+import OIOProviderPage from './pages/OIOProvider'
 import style from './style.less'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIO fontFamily="Helvetica Neue, sans-serif">
+      <OIOProvider fontFamily="Helvetica Neue, sans-serif">
          <div
             style={{
                position: 'absolute',
@@ -22,7 +22,7 @@ ReactDOM.render((
                OIO
             </h1>
             <div className={style.nav}>
-               <NavLink to="/" activeClassName={style.active}>OIO Container</NavLink>
+               <NavLink to="/" activeClassName={style.active}>OIOProvider</NavLink>
             </div>
          </div>
          <div
@@ -33,9 +33,9 @@ ReactDOM.render((
                height: '100%',
                overflow: 'auto'
             }}>
-            <Route exact path="/" component={OIOContainer} />
+            <Route exact path="/" component={OIOProviderPage} />
          </div>
-      </OIO>
+      </OIOProvider>
    </BrowserRouter>
 ), document.getElementById('container'))
 
