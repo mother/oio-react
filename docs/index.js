@@ -23,7 +23,7 @@ ReactDOM.render((
                OIO
             </h1>
             <div className={style.nav}>
-               <NavLink to="/" activeClassName={style.active}>OIOProvider</NavLink>
+               <NavLink exact to="/" activeClassName={style.active}>OIOProvider</NavLink>
                <NavLink to="/text" activeClassName={style.active}>Text</NavLink>
             </div>
          </div>

@@ -10,4 +10,4 @@ const withOIOContext = WrappedComponent => props => (
    </OIOContext.Consumer>
 )
 
-export { OIOContext, withOIOContext }
+export { OIOContext as default, withOIOContext }

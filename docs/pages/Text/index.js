@@ -48,7 +48,7 @@ const codeSnippet3 = `
 const apiOptions = [{
    name: 'autoScale',
    type: 'Boolean',
-   default: 'false',
+   default: '<code>false</code>',
    description: 'When set to <code>true</code>, text will scale dynamically proportionally to the browser screen size'
 }, {
    name: 'className',
@@ -165,7 +165,7 @@ export default class TextPage extends Component {
                   <br />
                   <Text>
                      {/* eslint-disable max-len */}
-                     Sometimes, you might want to have text that scales proportionally to the current browser window size. This is especially useful for larger text elements like titles and headings.<br /><br />You can make the <code>Text</code> component scale proportionally by setting the prop <code>autoScale</code> to <code>true</code>. Resize your browser window and you can see how the text below scales accordingly.
+                     You can set the weight of the <code>Text</code> component by using the prop <code>weight</code>. The default weight for the Text component is <code>normal</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />

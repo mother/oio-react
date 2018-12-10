@@ -8,7 +8,7 @@
 import React, { Component } from 'react'
 import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
-import { OIOContext } from './context'
+import OIOContext from './context'
 import normalizationStyles from './normalizationStyles'
 
 export default class OIOProvider extends Component {
@@ -17,7 +17,13 @@ export default class OIOProvider extends Component {
       className: PropTypes.string,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
-      fontWeights: PropTypes.object,
+      fontWeights: PropTypes.shape({
+         light: PropTypes.string.isRequired,
+         normal: PropTypes.string.isRequired,
+         medium: PropTypes.string.isRequired,
+         semibold: PropTypes.string.isRequired,
+         bold: PropTypes.string.isRequired
+      }),
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
       textSizeMultiplier: PropTypes.number
@@ -56,16 +62,16 @@ export default class OIOProvider extends Component {
          fontSize,
          fontWeights,
          style,
-         textSizeScaleRatio,
-         textSizeMultiplier
+         textSizeMultiplier,
+         textSizeScaleRatio
       } = this.props
 
       const contextProps = {
          fontFamily,
          fontSize,
          fontWeights,
-         textSizeScaleRatio,
-         textSizeMultiplier
+         textSizeMultiplier,
+         textSizeScaleRatio
       }
 
       return (

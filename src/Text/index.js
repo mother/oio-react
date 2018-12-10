@@ -27,7 +27,7 @@ import generateStyleObject from '../utils/generateStyleObject'
       uppercase,
       weight
    }) => {
-      // CALCULATE REAL FONT SIZE
+      // Calculate real font size
       // Dynamically calculate font size - this is a number based on a combination of
       // text size, scaling ratios and multipliers (multipliers are useful for theming)
       const textSizeScaleRatio = OIOContext.textSizeScaleRatio
