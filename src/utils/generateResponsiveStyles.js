@@ -29,6 +29,7 @@ const generateStyles = (responsiveObjects) => {
       [breakpoints.f]: {}
    }
 
+   // TODO: Handle strings
    Object.keys(responsiveObjects).forEach((styleKey) => {
       Object.keys(responsiveObjects[styleKey]).forEach((breakpointKey) => {
          // TODO: Optimize responsiveObjects where `breakpointsWereSet === false`
