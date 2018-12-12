@@ -96,7 +96,7 @@ test('Breakpoint strings with an invalid range fails (no start bound)', () => {
    expect(console.error).toHaveBeenCalledTimes(1)
 })
 
-test('Breakpoint string without valid breakpoints are not trandformed (stuff in brackets)', () => {
+test('Breakpoint string without valid breakpoints are not transformed (stuff in brackets)', () => {
    const result = r('500px[boogieboogie]')
    expect(result).toEqual({
       a: '500px[boogieboogie]',
@@ -109,7 +109,7 @@ test('Breakpoint string without valid breakpoints are not trandformed (stuff in 
    })
 })
 
-test('Breakpoint string without valid breakpoints are not trandformed (empty brackets)', () => {
+test('Breakpoint string without valid breakpoints are not transformed (empty brackets)', () => {
    const result = r('500px[]')
    expect(result).toEqual({
       a: '500px[]',
