@@ -11,6 +11,7 @@ function oioResponsiveStringMacro({ references, state, babel }) {
       // Find where the macro was invoked as a function
       if (path.parentPath.type === 'CallExpression') {
          // Get the input string that was passed in to our macro
+         // TODO: Handle TemplateLiteral expressions
          const responsiveString = path.parentPath.node.arguments[0].value
 
          // Convert it to a responsive object using our trusty
