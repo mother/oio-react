@@ -6,15 +6,20 @@
 // =======================================================
 
 import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+import { css, cx, injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
 import normalizationStyles from './normalizationStyles'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 
 export default class OIOProvider extends Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
-      fontFamily: PropTypes.string,
+      // TODO: OIOResponsiveObjectPropType
+      fontFamily: PropTypes.oneOfType([
+         PropTypes.object,
+         PropTypes.string
+      ]),
       fontSize: PropTypes.string,
       style: PropTypes.object
    }
@@ -36,13 +41,16 @@ export default class OIOProvider extends Component {
    }
 
    render() {
-      const { children, className, fontFamily, fontSize, style } = this.props
+      const { children, className, fontSize, style } = this.props
+
+      // Responsive Styles
+      const { fontFamily } = this.props
+      const responsiveStyles = generateResponsiveStyles({ fontFamily })
 
       return (
          <div
-            className={className}
+            className={cx(css(responsiveStyles), className)}
             style={{
-               fontFamily,
                fontSize,
                ...style
             }}>

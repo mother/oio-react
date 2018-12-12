@@ -38,6 +38,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
+    "babel-plugin-macros": "2.4.2",
     "classnames": "2.2.6",
     "css-loader": "1.0.1",
     "emotion": "9.1.1",

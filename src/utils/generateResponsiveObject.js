@@ -70,4 +70,4 @@ const generateResponsiveObject = (input) => {
    return result
 }
 
-export default generateResponsiveObject
+module.exports = generateResponsiveObject
