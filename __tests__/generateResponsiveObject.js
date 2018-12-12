@@ -47,7 +47,7 @@ test('It will only parse breakpoints that were set', () => {
    })
 })
 
-test('Input breakpoint strings with mixed spacing is parsed corectly', () => {
+test('Input breakpoint strings with mixed spacing are parsed corectly', () => {
    const result = r(`
       100px  500px  [c]
       25 pt  [d-e]
