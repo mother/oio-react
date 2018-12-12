@@ -5,14 +5,18 @@
 //    d: String,
 //    e: String,
 //    f: String,
-//    isResponsiveObject: Boolean
+//    breakpointsWereSet: Boolean
 // }
 
 const breakpoints = ['a', 'b', 'c', 'd', 'e', 'f']
 
-const generateResponsiveObject = (inputStr) => {
+const generateResponsiveObject = (input) => {
+   const inputStr = typeof input === 'string'
+      ? input
+      : String(input)
+
    const fragments = inputStr.match(/(.+?)\[([abcdef-]+)\]/ig)
-   const result = { isResponsiveObject: fragments !== null }
+   const result = { breakpointsWereSet: fragments !== null }
 
    // If no breakpoints were specified, then exit early with
    // the result for all breakpoints the same as the inputStr
@@ -25,16 +29,20 @@ const generateResponsiveObject = (inputStr) => {
    }
 
    for (let i = fragments.length - 1; i >= 0; i -= 1) {
-      const breakpointStr = fragments[i].trim()
+      const breakpointStr = fragments[i]
       const breakpointCharMatch = breakpointStr.match(/\[([abcdef-]+)\]/i)
       const breakpointChars = breakpointCharMatch[1]
-      const breakpointVal = breakpointStr.replace(breakpointCharMatch[0], '')
+      const breakpointVal = breakpointStr.replace(breakpointCharMatch[0], '').trim()
 
       for (let j = 0; j < breakpointChars.length; j += 1) {
          if (breakpointChars[j] === '-') {
             // TODO: HANDLE BOUNDARY ISSUES
             const startCharCode = breakpointChars.charCodeAt(j - 1)
             const endCharCode = breakpointChars.charCodeAt(j + 1)
+            if (isNaN(startCharCode) || isNaN(endCharCode)) {
+               throw new Error('Improperly bounded input')
+            }
+
             for (let k = startCharCode + 1; k < endCharCode; k += 1) {
                result[String.fromCharCode(k)] = breakpointVal
             }
