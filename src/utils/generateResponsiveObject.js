@@ -1,3 +1,8 @@
+// This utility takes a string as an input, and creates
+// an object from it based on the breakpoint fragments
+// specified in the string.
+
+// Format of object returned is:
 // {
 //    a: String,
 //    b: String,
@@ -7,6 +12,10 @@
 //    f: String,
 //    breakpointsWereSet: Boolean
 // }
+
+// Possible future enhancements:
+// - Ability to change breakpoints
+// - Ability to change delimiter chars from [] to something else
 
 const breakpoints = ['a', 'b', 'c', 'd', 'e', 'f']
 
@@ -36,11 +45,17 @@ const generateResponsiveObject = (input) => {
 
       for (let j = 0; j < breakpointChars.length; j += 1) {
          if (breakpointChars[j] === '-') {
-            // TODO: HANDLE BOUNDARY ISSUES
             const startCharCode = breakpointChars.charCodeAt(j - 1)
             const endCharCode = breakpointChars.charCodeAt(j + 1)
             if (isNaN(startCharCode) || isNaN(endCharCode)) {
-               throw new Error('Improperly bounded input')
+               // eslint-disable-next-line no-console
+               console.error('Warning: Responsive breakpoint string improperly formatted')
+               result.breakpointsWereSet = false
+               for (let k = breakpoints.length - 1; k >= 0; k -= 1) {
+                  result[breakpoints[k]] = inputStr
+               }
+
+               return result
             }
 
             for (let k = startCharCode + 1; k < endCharCode; k += 1) {

@@ -1,5 +1,13 @@
 import r from '../src/utils/generateResponsiveObject'
 
+beforeEach(() => {
+   jest.spyOn(console, 'error').mockImplementation(() => {})
+})
+
+afterEach(() => {
+   jest.restoreAllMocks()
+})
+
 test('It will parse correctly if a non-breakpoint string is passed in', () => {
    const result = r('500px')
    expect(result).toEqual({
@@ -39,32 +47,6 @@ test('It will only parse breakpoints that were set', () => {
    })
 })
 
-// test('Improperly bounded breakpoint strings fail', () => {
-//    const result = r('500px[a-]')
-//    expect(result).toEqual({
-//       a: '500px',
-//       b: undefined,
-//       c: undefined,
-//       d: undefined,
-//       e: undefined,
-//       f: undefined,
-//       breakpointsWereSet: true
-//    })
-// })
-//
-// test('Improperly bounded breakpoint strings fail', () => {
-//    const result = r('500px[-f]')
-//    expect(result).toEqual({
-//       a: undefined,
-//       b: undefined,
-//       c: undefined,
-//       d: undefined,
-//       e: undefined,
-//       f: '500px',
-//       breakpointsWereSet: true
-//    })
-// })
-
 test('Input breakpoint strings with mixed spacing is parsed corectly', () => {
    const result = r(`
       100px  500px  [c]
@@ -82,7 +64,39 @@ test('Input breakpoint strings with mixed spacing is parsed corectly', () => {
    })
 })
 
-test('Invalid breakpoint strings are not parsed as a breakpoint string', () => {
+test('Breakpoint strings with an invalid range fails (no end bound)', () => {
+   const result = r('500px[a-]')
+   expect(result).toEqual({
+      a: '500px[a-]',
+      b: '500px[a-]',
+      c: '500px[a-]',
+      d: '500px[a-]',
+      e: '500px[a-]',
+      f: '500px[a-]',
+      breakpointsWereSet: false
+   })
+
+   // eslint-disable-next-line no-console
+   expect(console.error).toHaveBeenCalledTimes(1)
+})
+
+test('Breakpoint strings with an invalid range fails (no start bound)', () => {
+   const result = r('500px[-f]')
+   expect(result).toEqual({
+      a: '500px[-f]',
+      b: '500px[-f]',
+      c: '500px[-f]',
+      d: '500px[-f]',
+      e: '500px[-f]',
+      f: '500px[-f]',
+      breakpointsWereSet: false
+   })
+
+   // eslint-disable-next-line no-console
+   expect(console.error).toHaveBeenCalledTimes(1)
+})
+
+test('Breakpoint string without valid breakpoints are not trandformed (stuff in brackets)', () => {
    const result = r('500px[boogieboogie]')
    expect(result).toEqual({
       a: '500px[boogieboogie]',
@@ -95,7 +109,7 @@ test('Invalid breakpoint strings are not parsed as a breakpoint string', () => {
    })
 })
 
-test('Invalid breakpoint strings are not parsed as a breakpoint string', () => {
+test('Breakpoint string without valid breakpoints are not trandformed (empty brackets)', () => {
    const result = r('500px[]')
    expect(result).toEqual({
       a: '500px[]',
