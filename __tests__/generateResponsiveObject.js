@@ -147,3 +147,43 @@ test('Booleans are parsed as strings', () => {
       breakpointsWereSet: false
    })
 })
+
+test('Breakpoint values can be overridden by successive breakpoint fragments', () => {
+   const result = r('100[a] 200[ab] 300[b-d]')
+   expect(result).toEqual({
+      a: '200',
+      b: '300',
+      c: '300',
+      d: '300',
+      e: undefined,
+      f: undefined,
+      breakpointsWereSet: true
+   })
+})
+
+test('Unparsed literal goes in to an `extra` param', () => {
+   const result = r('100[a] 200[bc] 200 px ', { trim: false })
+   expect(result).toEqual({
+      a: '100',
+      b: ' 200',
+      c: ' 200',
+      d: undefined,
+      e: undefined,
+      f: undefined,
+      breakpointsWereSet: true,
+      extra: ' 200 px '
+   })
+})
+
+test('It works with input strings where breakpoint keys are specified but no values', () => {
+   const result = r('[cd]')
+   expect(result).toEqual({
+      a: undefined,
+      b: undefined,
+      c: '',
+      d: '',
+      e: undefined,
+      f: undefined,
+      breakpointsWereSet: true
+   })
+})

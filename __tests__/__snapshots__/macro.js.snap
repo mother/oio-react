@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`macros works with ordinary string literals: works with ordinary string literals 1`] = `
+"
+import OIOResponsiveStringMacro from '../macro'
+const result = OIOResponsiveStringMacro('100[a] 200[b]')
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = {
+  breakpointsWereSet: true,
+  a: \\"100\\",
+  b: \\"200\\"
+};
+"
+`;
