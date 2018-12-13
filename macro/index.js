@@ -1,6 +1,9 @@
 const { createMacro } = require('babel-plugin-macros')
 const generateResponsiveObject = require('../src/utils/generateResponsiveObject')
 
+// TODO: MOVE TO CONSTANTS
+const breakpointKeys = ['a', 'b', 'c', 'd', 'e', 'f']
+
 module.exports = createMacro(oioResponsiveStringMacro)
 
 function oioResponsiveStringMacro({ references, state, babel }) {
@@ -26,25 +29,11 @@ function oioResponsiveStringMacro({ references, state, babel }) {
             )
          }
 
-         // TODO: YES NEEDED
-         // eg. r`a ${x} b`
-         // 1. Form a string just using the quasis so that we know what are the breakpoints upfront
-         // (Breakpoint keys must always be in the quasis, never the expressions!)
-
-         // const incompleteResponsiveStr =
-         //   templateLiteralQuasi.quasis.map(q => q.value.raw).join('')
-         // const incompleteResponsiveObj = generateResponsiveObject(incompleteResponsiveStr)
-         //
-         // if (!incompleteResponsiveObj.breakpointsWereSet) {
-         //    return incompleteResponsiveObj
-         // }
-
          // We will be generating responsive object fragments for each of the quasis,
          // while leaving the expressions as they are. As we loop through the quasis
          // and expressions, we will progressively build our responsive object. Each
          // responsive object fragment will give us a bit of information about the
          // previous and next breakpoints.
-
          const result = {}
 
          // Since we are parsing from left-to-right, we may have quasis and
@@ -52,7 +41,6 @@ function oioResponsiveStringMacro({ references, state, babel }) {
          // just yet. Those quasis and expressions will be stored in this array until
          // a breakpoint has been parsed, at which point our queue will be emptied, and
          // the process will be repeated for the next breakpoint.
-
          let unassociatedQueue = []
 
          templateLiteralQuasi.quasis.forEach((quasi, i) => {
@@ -70,7 +58,7 @@ function oioResponsiveStringMacro({ references, state, babel }) {
                for (let j = 0; j < responsiveObjFragment.parsePath.length; j += 1) {
                   // Since multiple breakpoint keys can be set at once, we want to apply
                   // the same actions to all breakpoints that were set together
-                  // eg: ['a', 'b']
+                  // eg: 'ab' from the outter loop would become => ['a', 'b']
                   for (let k = 0; k < responsiveObjFragment.parsePath[j].length; k += 1) {
                      const breakpointKey = responsiveObjFragment.parsePath[j][k]
 
@@ -109,15 +97,32 @@ function oioResponsiveStringMacro({ references, state, babel }) {
             }
 
             if (i < templateLiteralQuasi.quasis.length - 1) {
-               // TODO: HANDLE OTHER EXPRESSIONS (eg. MemberExpression)
-               // May be able to just use existing one rather than creating a new one
-               // console.log('expresion', i, templateLiteralQuasi.expressions[i])
-               unassociatedQueue.push(t.identifier(templateLiteralQuasi.expressions[i].name))
+               // Queue the expression following the most recently processed quasi
+               unassociatedQueue.push(templateLiteralQuasi.expressions[i])
             }
          })
 
+         const parsedBreakpointKeys = Object.keys(result)
+
+         // Determine whether breakpoints were specified
+         if (parsedBreakpointKeys.length > 0) {
+            result.breakpointsWereSet = true
+
+         // If we still have items in our unassociated queue,
+         // and no breakpoint keys were specified, we assign to the template
+         // literal to all breakpoints
+         } else if (unassociatedQueue.length > 0) {
+            for (let i = 0; i < breakpointKeys.length; i += 1) {
+               const key = breakpointKeys[i]
+               result[key] = unassociatedQueue
+            }
+
+            parsedBreakpointKeys.push(...breakpointKeys)
+            result.breakpointsWereSet = false
+         }
+
          // It's gotta be a quasi/expression/quasi sandwich
-         Object.keys(result).forEach((key) => {
+         parsedBreakpointKeys.forEach((key) => {
             if (!t.isTemplateElement(result[key][0])) {
                result[key].unshift(t.templateElement({
                   raw: '',
@@ -137,7 +142,7 @@ function oioResponsiveStringMacro({ references, state, babel }) {
 
          // Our result object is already made up of a bunch of quasis and expressions,
          // we just need to create proper AST constructs from this result object.
-         const breakpointObjASTExpressions = Object.keys(result).map((key) => {
+         const breakpointObjASTExpressions = parsedBreakpointKeys.map((key) => {
             const templateLiteral = t.templateLiteral(
                result[key].filter(n => t.isTemplateElement(n)), // quasis
                result[key].filter(n => !t.isTemplateElement(n)) // expressions
@@ -149,13 +154,19 @@ function oioResponsiveStringMacro({ references, state, babel }) {
             )
          })
 
+         // Add our `breakpointsWereSet` meta to the resulting AST
+         breakpointObjASTExpressions.push(
+            t.objectProperty(
+               t.identifier('breakpointsWereSet'),
+               t.booleanLiteral(result.breakpointsWereSet)
+            )
+         )
+
          // Replace the entire function call with our responsive object
          path.parentPath.replaceWith(
             t.objectExpression(breakpointObjASTExpressions)
          )
       }
-
-      // TODO: REMOVE
 
       // Find where the macro was invoked as a function
       // if (path.parentPath.type === 'CallExpression') {
