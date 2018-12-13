@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`macros #1 - works with template literals that have no expressions: #1 - works with template literals that have no expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`100[a] 200[b]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  breakpointsWereSet: true,
+  a: \\"100\\",
+  b: \\"200\\"
+};
+"
+`;
+
+exports[`macros #2 - works with tagged template literals with mixed quasis and expressions: #2 - works with tagged template literals with mixed quasis and expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`200 \${size} \${unit}px [ab] 100px [c]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`200 \${size} \${unit}px \`,
+  b: \`200 \${size} \${unit}px \`,
+  c: \` 100px \`,
+  breakpointsWereSet: true
+};
+"
+`;
+
+exports[`macros #3 - works with tagged template literals with mixed only expressions: #3 - works with tagged template literals with mixed only expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`\${a}[a]\${b}[b]\${c}\${d}\${e}[cde]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`\${a}\`,
+  b: \`\${b}\`,
+  c: \`\${c}\${d}\${e}\`,
+  d: \`\${c}\${d}\${e}\`,
+  e: \`\${c}\${d}\${e}\`,
+  breakpointsWereSet: true
+};
+"
+`;
+
+exports[`macros #4 - works with various expression types: #4 - works with various expression types 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`
+   \${this.props.a} [a]
+   \${callFunc()} [b]
+   \${boolExpr ? 'red' : 'white'} [c]
+   \${val || defaultVal} [d]
+   \${null} [e]
+   \${'cucumber'} [f]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`
+   \${this.props.a} \`,
+  b: \`\${callFunc()} \`,
+  c: \`\${boolExpr ? 'red' : 'white'} \`,
+  d: \`\${val || defaultVal} \`,
+  e: \`\${null} \`,
+  f: \`\${'cucumber'} \`,
+  breakpointsWereSet: true
+};
+"
+`;
+
+exports[`macros #5 - works when quasis and expressions are used, but no breakpoints specified: #5 - works when quasis and expressions are used, but no breakpoints specified 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`5 \${unit} red\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`5 \${unit} red\`,
+  b: \`5 \${unit} red\`,
+  c: \`5 \${unit} red\`,
+  d: \`5 \${unit} red\`,
+  e: \`5 \${unit} red\`,
+  f: \`5 \${unit} red\`,
+  breakpointsWereSet: false
+};
+"
+`;
