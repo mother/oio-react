@@ -10,16 +10,14 @@ import { css, cx, injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
 import normalizationStyles from './normalizationStyles'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import r from '../../macro'
 
 export default class OIOProvider extends Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
-      // TODO: OIOResponsiveObjectPropType
-      fontFamily: PropTypes.oneOfType([
-         PropTypes.object,
-         PropTypes.string
-      ]),
+      fontFamily: OIOResponsiveObjectPropType,
       fontSize: PropTypes.string,
       style: PropTypes.object
    }
@@ -27,7 +25,7 @@ export default class OIOProvider extends Component {
    static defaultProps = {
       children: null,
       className: '',
-      fontFamily: 'sans-serif',
+      fontFamily: r`sans-serif`,
       fontSize: '16px',
       style: {}
    }
