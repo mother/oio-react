@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
+import { breakpointKeys } from '../../config/constants'
+
+const breakpointPropTypes = {}
+breakpointKeys.forEach((key) => {
+   breakpointPropTypes[key] = PropTypes.string
+})
 
 const OIOResponsiveObjectPropType = PropTypes.shape({
-   a: PropTypes.string,
-   b: PropTypes.string,
-   c: PropTypes.string,
-   d: PropTypes.string,
-   e: PropTypes.string,
-   f: PropTypes.string,
+   ...breakpointPropTypes,
    breakpointsWereSet: PropTypes.bool.isRequired,
    extra: PropTypes.string,
    parsePath: PropTypes.arrayOf(PropTypes.string)

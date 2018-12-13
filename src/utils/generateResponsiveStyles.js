@@ -1,3 +1,6 @@
+// NOTE: This utility is currently considered EXPERIMENTAL, and is not
+// ready for production yet. Likely to change significantly in following PRs.
+
 // TODO: Move this to a constants file
 const breakpoints = {
    a: '@media (min-width: 0px) and (max-width: 475px)',

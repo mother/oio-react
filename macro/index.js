@@ -1,12 +1,10 @@
 const { createMacro } = require('babel-plugin-macros')
+const { breakpointKeys } = require('../config/constants')
 const generateResponsiveObject = require('../src/utils/generateResponsiveObject')
 
-// TODO: MOVE TO CONSTANTS
-const breakpointKeys = ['a', 'b', 'c', 'd', 'e', 'f']
+module.exports = createMacro(OIOResponsiveStringMacro)
 
-module.exports = createMacro(oioResponsiveStringMacro)
-
-function oioResponsiveStringMacro({ references, state, babel }) {
+function OIOResponsiveStringMacro({ references, state, babel }) {
    // See https://babeljs.io/docs/en/babel-types
    // Also see TemplateElement spec:
    // https://github.com/babel/babel/blob/master/packages/babel-parser/ast/spec.md#templateelement
@@ -68,7 +66,6 @@ function oioResponsiveStringMacro({ references, state, babel }) {
                      // Fold in expressions and unparsed extras (if applicable)
                      // in to the first breakpoint(s) specified in the current
                      // responsive string fragment
-                     // TODO: DON'T USE SPREAD OPERATOR
                      if (j === 0 && unassociatedQueue.length > 0) {
                         result[breakpointKey].push(...unassociatedQueue)
                      }

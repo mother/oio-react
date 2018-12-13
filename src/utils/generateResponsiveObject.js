@@ -19,8 +19,7 @@
 // - Ability to change breakpoints
 // - Ability to change delimiter chars from [] to something else
 
-// TODO: MOVE TO CONSTANTS
-const breakpoints = ['a', 'b', 'c', 'd', 'e', 'f']
+const { breakpointKeys, responsiveStrFragmentRegexPattern } = require('../../config/constants')
 
 const generateResponsiveObject = (input, {
    trim: shouldTrim = true,
@@ -34,7 +33,7 @@ const generateResponsiveObject = (input, {
       ? inputStrUntrimmed.trim()
       : inputStrUntrimmed
 
-   const fragmentRegex = /(.*?)\[([abcdef-]+)\]/ig
+   const fragmentRegex = new RegExp(responsiveStrFragmentRegexPattern, 'g')
    let fragments = fragmentRegex.exec(inputStr)
 
    const result = { breakpointsWereSet: fragments !== null }
@@ -45,8 +44,8 @@ const generateResponsiveObject = (input, {
    // If no breakpoints were specified, then exit early with
    // the result for all breakpoints the same as the inputStr
    if (fragments === null) {
-      for (let i = breakpoints.length - 1; i >= 0; i -= 1) {
-         result[breakpoints[i]] = inputStr
+      for (let i = 0; i < breakpointKeys.length; i += 1) {
+         result[breakpointKeys[i]] = inputStr
       }
 
       return result
@@ -69,8 +68,8 @@ const generateResponsiveObject = (input, {
                // eslint-disable-next-line no-console
                console.error('Warning: Responsive breakpoint string improperly formatted')
                result.breakpointsWereSet = false
-               for (let k = breakpoints.length - 1; k >= 0; k -= 1) {
-                  result[breakpoints[k]] = inputStr
+               for (let k = 0; k < breakpointKeys.length; k += 1) {
+                  result[breakpointKeys[k]] = inputStr
                }
 
                return result
