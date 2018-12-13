@@ -15,7 +15,7 @@ function OIOResponsiveStringMacro({ references, state, babel }) {
          const templateLiteralQuasi = path.parentPath.node.quasi
 
          // Structure of a template literal is that `expressions` (which are the variable parts)
-         // are sandwhiched between `quasis` (the stringy literal parts). Therefore,
+         // are sandwiched between `quasis` (the stringy literal parts). Therefore,
          // quasis.length === expressions.length + 1 all the time.
 
          if (templateLiteralQuasi.expressions.length === 0) {
