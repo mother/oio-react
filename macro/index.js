@@ -26,7 +26,8 @@ function oioResponsiveStringMacro({ references, state, babel }) {
             )
          }
 
-         // TODO: THIS IS PROLLY NOT NECESSSARY, REMOVE
+         // TODO: YES NEEDED
+         // eg. r`a ${x} b`
          // 1. Form a string just using the quasis so that we know what are the breakpoints upfront
          // (Breakpoint keys must always be in the quasis, never the expressions!)
 
@@ -108,7 +109,9 @@ function oioResponsiveStringMacro({ references, state, babel }) {
             }
 
             if (i < templateLiteralQuasi.quasis.length - 1) {
-               // console.log('expresion', i, templateLiteralQuasi.expressions[i].name)
+               // TODO: HANDLE OTHER EXPRESSIONS (eg. MemberExpression)
+               // May be able to just use existing one rather than creating a new one
+               // console.log('expresion', i, templateLiteralQuasi.expressions[i])
                unassociatedQueue.push(t.identifier(templateLiteralQuasi.expressions[i].name))
             }
          })
