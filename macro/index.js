@@ -44,7 +44,6 @@ function oioResponsiveStringMacro({ references, state, babel }) {
          let unassociatedQueue = []
 
          templateLiteralQuasi.quasis.forEach((quasi, i) => {
-            // console.log('quasi', i, quasi.value)
             const responsiveStringFragment = quasi.value.raw
             const responsiveObjFragment = generateResponsiveObject(
                responsiveStringFragment,
