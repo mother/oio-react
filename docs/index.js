@@ -8,7 +8,7 @@ import r from '../macro'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIOProvider fontFamily={r('Helvetica Neue, sans-serif [d-f] serif [a-c]')}>
+      <OIOProvider fontFamily={r`Helvetica Neue, sans-serif [d-f] serif [a-c]`}>
          <div
             style={{
                position: 'absolute',
