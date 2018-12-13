@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`macros #1 - works with template literals that have no expressions: #1 - works with template literals that have no expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`100[a] 200[b]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  breakpointsWereSet: true,
+  a: \\"100\\",
+  b: \\"200\\"
+};
+"
+`;
+
+exports[`macros #2 - works with tagged template literals with mixed quasis and expressions: #2 - works with tagged template literals with mixed quasis and expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`200 \${size} \${unit}px [ab] 100px [c]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`200 \${size} \${unit}px \`,
+  b: \`200 \${size} \${unit}px \`,
+  c: \` 100px \`
+};
+"
+`;
+
+exports[`macros #3 - works with tagged template literals with mixed only expressions: #3 - works with tagged template literals with mixed only expressions 1`] = `
+"
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+import OIOResponsiveStringMacro from '../../macro'
+const result = OIOResponsiveStringMacro\`\${a}[a]\${b}[b]\${c}\${d}\${e}[cde]\`
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+/* eslint-disable no-unused-vars,no-undef,import/newline-after-import */
+const result = {
+  a: \`\${a}\`,
+  b: \`\${b}\`,
+  c: \`\${c}\${d}\${e}\`,
+  d: \`\${c}\${d}\${e}\`,
+  e: \`\${c}\${d}\${e}\`
+};
+"
+`;

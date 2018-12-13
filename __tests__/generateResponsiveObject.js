@@ -187,3 +187,17 @@ test('It works with input strings where breakpoint keys are specified but no val
       breakpointsWereSet: true
    })
 })
+
+test('Parses breakpoints in the correct order', () => {
+   const result = r('1[cd] 2[ae] 3[fb]', { returnParsePath: true })
+   expect(result).toEqual({
+      a: '2',
+      b: '3',
+      c: '1',
+      d: '1',
+      e: '2',
+      f: '3',
+      breakpointsWereSet: true,
+      parsePath: ['cd', 'ae', 'fb']
+   })
+})

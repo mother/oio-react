@@ -11,21 +11,26 @@
 //    e: String,
 //    f: String,
 //    breakpointsWereSet: Boolean,
-//    extra: String
+//    extra: String,
+//    parsePath: Array[String]
 // }
 
 // Possible future enhancements:
 // - Ability to change breakpoints
 // - Ability to change delimiter chars from [] to something else
 
+// TODO: MOVE TO CONSTANTS
 const breakpoints = ['a', 'b', 'c', 'd', 'e', 'f']
 
-const generateResponsiveObject = (input, options = { trim: true }) => {
+const generateResponsiveObject = (input, {
+   trim: shouldTrim = true,
+   returnParsePath = false
+} = {}) => {
    const inputStrUntrimmed = typeof input === 'string'
       ? input
       : String(input)
 
-   const inputStr = options.trim
+   const inputStr = shouldTrim
       ? inputStrUntrimmed.trim()
       : inputStrUntrimmed
 
@@ -33,6 +38,9 @@ const generateResponsiveObject = (input, options = { trim: true }) => {
    let fragments = fragmentRegex.exec(inputStr)
 
    const result = { breakpointsWereSet: fragments !== null }
+   if (returnParsePath) {
+      result.parsePath = []
+   }
 
    // If no breakpoints were specified, then exit early with
    // the result for all breakpoints the same as the inputStr
@@ -45,10 +53,11 @@ const generateResponsiveObject = (input, options = { trim: true }) => {
    }
 
    do {
+      let fragmentParsePath = ''
       let breakpointVal = fragments[1]
       const breakpointChars = fragments[2].trim()
 
-      if (options.trim) {
+      if (shouldTrim) {
          breakpointVal = breakpointVal.trim()
       }
 
@@ -69,10 +78,17 @@ const generateResponsiveObject = (input, options = { trim: true }) => {
 
             for (let k = startCharCode + 1; k < endCharCode; k += 1) {
                result[String.fromCharCode(k)] = breakpointVal
+               fragmentParsePath += String.fromCharCode(k)
             }
          } else {
             result[breakpointChars[j]] = breakpointVal
+            fragmentParsePath += breakpointChars[j]
          }
+      }
+
+      // Commit the parse path for this fragment/iteration
+      if (returnParsePath) {
+         result.parsePath.push(fragmentParsePath)
       }
 
       // Match the next fragment
@@ -83,7 +99,7 @@ const generateResponsiveObject = (input, options = { trim: true }) => {
       fragments = fragmentRegex.exec(inputStr)
       if (fragments === null) {
          let extra = inputStr.substring(lastMatchEndIndex)
-         if (options.trim) {
+         if (shouldTrim) {
             extra = extra.trim()
          }
 
