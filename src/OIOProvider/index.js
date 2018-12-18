@@ -10,9 +10,7 @@ import { injectGlobal } from 'emotion'
 import PropTypes from 'prop-types'
 import normalizationStyles from './normalizationStyles'
 
-import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
-
-class OIOProvider extends Component {
+export default class OIOProvider extends Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
@@ -53,4 +51,3 @@ class OIOProvider extends Component {
       )
    }
 }
-export default withResponsiveObjectProps(['fontFamily', 'fontSize'])(OIOProvider)

@@ -4,11 +4,10 @@ import { BrowserRouter, NavLink, Route } from 'react-router-dom'
 import { OIOProvider } from '../src'
 import OIOProviderPage from './pages/OIOProvider'
 import style from './style.less'
-import r from '../macro'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIOProvider fontFamily="Helvetica Neue, sans-serif" fontSize={r`1[a] 2[b-f]`}>
+      <OIOProvider fontFamily="Helvetica Neue, sans-serif">
          <div
             style={{
                position: 'absolute',
