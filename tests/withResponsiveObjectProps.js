@@ -37,12 +37,14 @@ test('Will run `generateResponsiveObject` on props that aren\'t responsive objec
       </ResponsiveTextTest>
    )
 
-   // TODO: BE MORE SPECIFIC
-   expect(generateResponsiveObject).toHaveBeenCalledTimes(2)
    expect(getByTestId('span')).toHaveStyle(`
       font-family: sans-serif;
       font-size: 12px;
    `)
+
+   expect(generateResponsiveObject).toHaveBeenCalledTimes(2)
+   expect(generateResponsiveObject.mock.calls[0][0]).toBe('sans-serif')
+   expect(generateResponsiveObject.mock.calls[1][0]).toBe('12px')
 })
 
 test('Will only run `generateResponsiveObject` on props that aren\'t responsive objects (Mixed)', () => {
@@ -52,10 +54,11 @@ test('Will only run `generateResponsiveObject` on props that aren\'t responsive 
       </ResponsiveTextTest>
    )
 
-   // TODO: BE MORE SPECIFIC
-   expect(generateResponsiveObject).toHaveBeenCalledTimes(1)
    expect(getByTestId('span')).toHaveStyle(`
       font-family: serif;
       font-size: 16pt;
    `)
+
+   expect(generateResponsiveObject).toHaveBeenCalledTimes(1)
+   expect(generateResponsiveObject.mock.calls[0][0]).toBe('serif')
 })
