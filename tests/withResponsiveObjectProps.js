@@ -4,6 +4,7 @@ import { render } from 'react-testing-library'
 import OIOResponsiveObjectPropType from '../src/utils/PropType'
 import withResponsiveObjectProps from '../src/utils/withResponsiveObjectProps'
 
+// Wrap `generateResponsiveObject` with a mock function so we can spy on it
 jest.mock('../src/utils/generateResponsiveObject', () => {
    const generateResponsiveObject = jest.requireActual('../src/utils/generateResponsiveObject')
    return jest.fn(generateResponsiveObject)
@@ -16,24 +17,34 @@ afterEach(() => {
    jest.clearAllMocks()
 })
 
+// Test Fixture
+
 let ResponsiveTextTest = ({ children, fontFamily, fontSize }) => (
-   <span data-testid="span" style={{ fontFamily: fontFamily.c, fontSize: fontSize.d }}>
+   <span data-testid="span" style={{ fontFamily: fontFamily.c, fontSize: fontSize && fontSize.d }}>
       {children}
    </span>
 )
 
 ResponsiveTextTest.propTypes = {
    children: PropTypes.node.isRequired,
-   fontFamily: OIOResponsiveObjectPropType.isRequired,
-   fontSize: OIOResponsiveObjectPropType.isRequired
+   fontFamily: OIOResponsiveObjectPropType,
+   fontSize: OIOResponsiveObjectPropType
+}
+
+ResponsiveTextTest.defaultProps = {
+   children: PropTypes.node.isRequired,
+   fontFamily: null,
+   fontSize: null
 }
 
 ResponsiveTextTest = withResponsiveObjectProps(['fontFamily', 'fontSize'])(ResponsiveTextTest)
 
+// Tests
+
 test('Will run `generateResponsiveObject` on props that aren\'t responsive objects (All Props)', () => {
    const { getByTestId } = render(
       <ResponsiveTextTest fontFamily="sans-serif" fontSize="12px">
-         Gopher
+         Cardamom
       </ResponsiveTextTest>
    )
 
@@ -50,7 +61,7 @@ test('Will run `generateResponsiveObject` on props that aren\'t responsive objec
 test('Will only run `generateResponsiveObject` on props that aren\'t responsive objects (Mixed)', () => {
    const { getByTestId } = render(
       <ResponsiveTextTest fontFamily="serif" fontSize={{ d: '16pt', breakpointsWereSet: true }}>
-         Gopher
+         Nutmeg
       </ResponsiveTextTest>
    )
 
@@ -58,6 +69,21 @@ test('Will only run `generateResponsiveObject` on props that aren\'t responsive 
       font-family: serif;
       font-size: 16pt;
    `)
+
+   expect(generateResponsiveObject).toHaveBeenCalledTimes(1)
+   expect(generateResponsiveObject.mock.calls[0][0]).toBe('serif')
+})
+
+test('Doesn\'t fail if a prop is undefined', () => {
+   const { getByTestId } = render(
+      <ResponsiveTextTest fontFamily="serif">
+         Cumin
+      </ResponsiveTextTest>
+   )
+
+   const span = getByTestId('span')
+   expect(span).toHaveStyle('font-family: serif;')
+   expect(span.getAttribute('style')).toEqual(expect.not.stringContaining('font-size:'))
 
    expect(generateResponsiveObject).toHaveBeenCalledTimes(1)
    expect(generateResponsiveObject.mock.calls[0][0]).toBe('serif')

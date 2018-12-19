@@ -4,12 +4,14 @@ import generateResponsiveObject from './generateResponsiveObject'
 const withResponsiveObjectProps = responsivePropKeys => Component => forwardRef((props, ref) => {
    const responsiveProps = {}
    responsivePropKeys.forEach((responsivePropKey) => {
-      const isResponsiveObject = typeof props[responsivePropKey] === 'object' &&
-         props[responsivePropKey].breakpointsWereSet
+      if (typeof props[responsivePropKey] !== 'undefined' && props[responsivePropKey] !== null) {
+         const isResponsiveObject = typeof props[responsivePropKey] === 'object' &&
+            props[responsivePropKey].breakpointsWereSet
 
-      responsiveProps[responsivePropKey] = isResponsiveObject
-         ? props[responsivePropKey]
-         : generateResponsiveObject(props[responsivePropKey])
+         responsiveProps[responsivePropKey] = isResponsiveObject
+            ? props[responsivePropKey]
+            : generateResponsiveObject(props[responsivePropKey])
+      }
    })
 
    return (
