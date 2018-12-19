@@ -9,7 +9,10 @@ const withDynamicResponsiveProps = iteratorFn => Component => forwardRef((props,
             result[newPropKey] = { breakpointsWereSet: true }
          }
 
-         result[newPropKey][breakpointKey] = String(newPropsAtBreakpoint[newPropKey])
+         const value = newPropsAtBreakpoint[newPropKey]
+         result[newPropKey][breakpointKey] = typeof value !== 'undefined' && value !== null
+            ? String(value)
+            : value
       })
 
       return result

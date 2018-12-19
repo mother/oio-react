@@ -1,6 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Will run \`withDynamicResponsiveProps\` nicely 1`] = `
+exports[`Will not fail if a dynamic prop is only defined on certain breakpoints 1`] = `
+<div>
+  <span
+    style="font-size: 9;"
+  >
+    A [fw=undefined] [lh=undefined]
+  </span>
+  <span
+    style="font-size: 9; font-weight: 10;"
+  >
+    B [fw=10] [lh=undefined]
+  </span>
+  <span
+    style="font-size: 10; line-height: 1.1;"
+  >
+    C [fw=undefined] [lh=1.1]
+  </span>
+  <span
+    style="font-size: 10; font-weight: 10;"
+  >
+    D [fw=10] [lh=undefined]
+  </span>
+  <span
+    style="font-size: 11;"
+  >
+    E [fw=undefined] [lh=undefined]
+  </span>
+  <span
+    style="font-size: 11; font-weight: 10; line-height: 1.1;"
+  >
+    F [fw=10] [lh=1.1]
+  </span>
+</div>
+`;
+
+exports[`Will work when creating dynamic props from props at each breakpoint 1`] = `
 <div>
   <span
     style="font-size: 9; font-weight: 9; line-height: 4.5;"
