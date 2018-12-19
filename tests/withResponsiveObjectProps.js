@@ -41,7 +41,7 @@ ResponsiveTextTest = withResponsiveObjectProps(['fontFamily', 'fontSize'])(Respo
 
 // Tests
 
-test('Will run `generateResponsiveObject` on props that aren\'t responsive objects (All Props)', () => {
+test('Will run `generateResponsiveObject` on props that are not responsive objects (All Props)', () => {
    const { getByTestId } = render(
       <ResponsiveTextTest fontFamily="sans-serif" fontSize="12px">
          Cardamom
@@ -58,7 +58,7 @@ test('Will run `generateResponsiveObject` on props that aren\'t responsive objec
    expect(generateResponsiveObject.mock.calls[1][0]).toBe('12px')
 })
 
-test('Will only run `generateResponsiveObject` on props that aren\'t responsive objects (Mixed)', () => {
+test('Will only run `generateResponsiveObject` on props that are not responsive objects (Mixed)', () => {
    const { getByTestId } = render(
       <ResponsiveTextTest fontFamily="serif" fontSize={{ d: '16pt', breakpointsWereSet: true }}>
          Nutmeg
@@ -74,7 +74,7 @@ test('Will only run `generateResponsiveObject` on props that aren\'t responsive 
    expect(generateResponsiveObject.mock.calls[0][0]).toBe('serif')
 })
 
-test('Doesn\'t fail if a prop is undefined', () => {
+test('Does not fail if a prop is undefined', () => {
    const { getByTestId } = render(
       <ResponsiveTextTest fontFamily="serif">
          Cumin
