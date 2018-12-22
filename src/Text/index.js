@@ -10,68 +10,84 @@ import React, { Component } from 'react'
 import { css, cx } from 'emotion'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIOProvider/context'
-import generateStyleObject from '../utils/generateStyleObject'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import r from '../../macro'
+import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
+import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+
+// ============================================================================
+// Decorators
+// ============================================================================
 
 @withOIOContext
-@generateStyleObject({
-   calculatedProps: ({
-      autoScale,
-      baseFontSize,
-      baseAutoScaleFontSize,
-      color,
-      fontFamily,
-      lineHeight,
-      OIOContext,
-      size,
-      sizeMultiplier,
-      uppercase,
-      weight
-   }) => {
-      // Calculate real font size
-      // Dynamically calculate font size - this is a number based on a combination of
-      // text size, scaling ratios and multipliers (multipliers are useful for theming)
-      const textSizeScaleRatio = OIOContext.textSizeScaleRatio
-      const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-      const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
-      const baseTextSize = autoScale ? parseFloat(baseAutoScaleFontSize) : parseFloat(baseFontSize)
-      let calculatedLineHeight = '120%'
+@withResponsiveObjectProps([
+   'baseAutoScaleFontSize',
+   'baseFontSize',
+   'color',
+   'fontFamily',
+   'lineHeight',
+   'size',
+   'sizeMultiplier',
+   'weight'
+])
 
-      if (size > 9) {
-         calculatedLineHeight = '100%'
-      } else if (size > 5) {
-         calculatedLineHeight = '110%'
-      }
+@withDynamicResponsiveProps((props, breakpoint) => {
+   const { autoScale, OIOContext, sizeMultiplier } = props
 
-      return ({
-         color,
-         fontFamily,
-         fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
-         fontWeight: OIOContext.fontWeights[weight],
-         lineHeight: lineHeight || calculatedLineHeight,
-         textTransform: uppercase && 'uppercase'
-      })
-   },
-   excludeProps: ['children', 'className', 'style'],
-   contextProps: {
-      OIOContext: ['fontWeights', 'textSizeMultiplier', 'textSizeScaleRatio']
+   // Responsive Props
+   const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
+   const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
+   const size = props.size[breakpoint]
+   const uppercase = props.uppercase[breakpoint]
+   const weight = props.weight[breakpoint]
+
+   // Calculate real font size
+   // Dynamically calculate font size - this is a number based on a combination of
+   // text size, scaling ratios and multipliers (multipliers are useful for theming)
+   const textSizeScaleRatio = OIOContext.textSizeScaleRatio
+   const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
+   const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
+
+   // Adjust line-height based on text size
+   let calculatedLineHeight = '120%'
+
+   if (size > 9) {
+      calculatedLineHeight = '100%'
+   } else if (size > 5) {
+      calculatedLineHeight = '110%'
    }
+
+   return ({
+      fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
+      fontWeight: OIOContext.fontWeights[weight],
+      lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
+      textTransform: uppercase && 'uppercase'
+   })
 })
+
+// ============================================================================
+// Component
+// ============================================================================
 
 export default class Text extends Component {
    /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
-      baseFontSize: PropTypes.string,
-      baseAutoScaleFontSize: PropTypes.string,
+      baseFontSize: OIOResponsiveObjectPropType,
+      baseAutoScaleFontSize: OIOResponsiveObjectPropType,
       children: PropTypes.node,
       className: PropTypes.string,
-      color: PropTypes.string,
-      fontFamily: PropTypes.string,
-      generatedStyleObject: PropTypes.object.isRequired,
-      lineHeight: PropTypes.string,
-      size: PropTypes.string,
+      color: OIOResponsiveObjectPropType,
+      fontFamily: OIOResponsiveObjectPropType,
+      fontSize: OIOResponsiveObjectPropType.isRequired,
+      fontWeight: OIOResponsiveObjectPropType.isRequired,
+      lineHeight: OIOResponsiveObjectPropType,
+      size: OIOResponsiveObjectPropType,
       sizeMultiplier: PropTypes.number,
       style: PropTypes.object,
+      textTransform: OIOResponsiveObjectPropType.isRequired,
       uppercase: PropTypes.bool,
       weight: PropTypes.string
    }
@@ -79,29 +95,49 @@ export default class Text extends Component {
 
    static defaultProps = {
       autoScale: false,
-      baseFontSize: '11px',
-      baseAutoScaleFontSize: '2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]',
+      baseFontSize: r`11px`,
+      baseAutoScaleFontSize: r`2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]`,
       children: null,
       className: '',
-      color: null,
-      fontFamily: null,
-      lineHeight: null,
-      size: '3',
+      color: r``,
+      fontFamily: r``,
+      lineHeight: '120%',
+      size: r`3`,
       sizeMultiplier: 1,
       style: {},
       uppercase: false,
-      weight: 'normal'
+      weight: r`normal`
    }
 
    render() {
-      const styles = {
+      const {
+         children,
+         className,
+         color,
+         fontFamily,
+         fontSize,
+         fontWeight,
+         lineHeight,
+         textTransform
+      } = this.props
+
+      const responsiveStyles = generateResponsiveStyles({
+         color,
+         fontFamily,
+         fontSize,
+         fontWeight,
+         lineHeight,
+         textTransform
+      })
+
+      const style = {
          ...this.props.style,
-         ...this.props.generatedStyleObject
+         ...responsiveStyles
       }
 
       return (
-         <div className={cx(css(styles), this.props.className)}>
-            {this.props.children}
+         <div className={cx(css(style), className)}>
+            {children}
          </div>
       )
    }

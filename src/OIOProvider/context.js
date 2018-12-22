@@ -4,8 +4,8 @@ const OIOContext = React.createContext()
 
 const withOIOContext = WrappedComponent => props => (
    <OIOContext.Consumer>
-      {theme => (
-         <WrappedComponent {...props} OIOContext={theme} />
+      {context => (
+         <WrappedComponent {...props} OIOContext={context} />
       )}
    </OIOContext.Consumer>
 )
