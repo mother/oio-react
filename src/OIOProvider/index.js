@@ -5,13 +5,14 @@
 // This component will be a Context provider in future PR
 // =======================================================
 
-import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { Global, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import OIOContext from './context'
 import normalizationStyles from './normalizationStyles'
 
-export default class OIOProvider extends Component {
+export default class OIOProvider extends React.Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
@@ -46,14 +47,6 @@ export default class OIOProvider extends Component {
       textSizeMultiplier: 1
    }
 
-   componentDidMount() {
-      // Reset Styles
-      // TODO: Upgrade to emotion 10 to use <Global /> component
-      // The following will inject styles globally and remain even
-      // if this component is unmounted
-      injectGlobal`${normalizationStyles}` // eslint-disable-line no-unused-expressions
-   }
-
    render() {
       const {
          children,
@@ -76,9 +69,10 @@ export default class OIOProvider extends Component {
 
       return (
          <OIOContext.Provider value={contextProps}>
+            <Global styles={normalizationStyles} />
             <div
                className={className}
-               style={{ fontFamily, fontSize, ...style }}>
+               css={{ fontFamily, fontSize, ...style }}>
                {children}
             </div>
          </OIOContext.Provider>

@@ -2,12 +2,13 @@
 // Text
 // Foundational component that is used as Root
 // component for may other OIO components
-// Rating: 3
+// Rating: 4
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
-import React, { Component } from 'react'
-import { css, cx } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
@@ -39,7 +40,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
    const size = props.size[breakpoint]
-   const uppercase = props.uppercase[breakpoint]
+   const uppercase = props.uppercase
    const weight = props.weight[breakpoint]
 
    // Calculate real font size
@@ -49,6 +50,9 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
    const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
    const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
+   const fontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
+      ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
+      : undefined
 
    // Adjust line-height based on text size
    let calculatedLineHeight = '120%'
@@ -60,10 +64,10 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    }
 
    return ({
-      fontSize: `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`,
+      fontSize,
       fontWeight: OIOContext.fontWeights[weight],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
-      textTransform: uppercase && 'uppercase'
+      textTransform: uppercase ? 'uppercase' : undefined
    })
 })
 
@@ -71,7 +75,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // Component
 // ============================================================================
 
-export default class Text extends Component {
+export default class Text extends React.Component {
    /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
@@ -89,7 +93,7 @@ export default class Text extends Component {
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
       uppercase: PropTypes.bool,
-      weight: PropTypes.string
+      weight: OIOResponsiveObjectPropType.isRequired
    }
    /* eslint-enable */
 
@@ -136,7 +140,7 @@ export default class Text extends Component {
       }
 
       return (
-         <div className={cx(css(style), className)}>
+         <div css={style} className={className}>
             {children}
          </div>
       )
