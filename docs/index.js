@@ -1,16 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, NavLink, Route } from 'react-router-dom'
-import { OIO } from '../src'
-import Grid from './pages/Grid'
-import OIOContainer from './pages/OIO'
-import Text from './pages/Text'
-import View from './pages/View'
+import { OIOProvider } from '../src'
+import OIOProviderPage from './pages/OIOProvider'
+import GridPage from './pages/Grid'
+import TextPage from './pages/Text'
+import ViewPage from './pages/View'
 import style from './style.less'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIO fontFamily="Helvetica Neue, sans-serif">
+      <OIOProvider fontFamily="Helvetica Neue, sans-serif">
          <div
             style={{
                position: 'absolute',
@@ -25,7 +25,7 @@ ReactDOM.render((
                OIO
             </h1>
             <div className={style.nav}>
-               <NavLink exact to="/" activeClassName={style.active}>OIO Container</NavLink>
+               <NavLink exact to="/" activeClassName={style.active}>OIOProvider</NavLink>
                <NavLink to="/grid" activeClassName={style.active}>Grid</NavLink>
                <NavLink to="/text" activeClassName={style.active}>Text</NavLink>
                <NavLink to="/view" activeClassName={style.active}>View</NavLink>
@@ -39,12 +39,12 @@ ReactDOM.render((
                height: '100%',
                overflow: 'auto'
             }}>
-            <Route exact path="/" component={OIOContainer} />
-            <Route path="/grid" component={Grid} />
-            <Route path="/text" component={Text} />
-            <Route path="/view" component={View} />
+            <Route exact path="/" component={OIOProviderPage} />
+            <Route path="/grid" component={GridPage} />
+            <Route path="/text" component={TextPage} />
+            <Route path="/view" component={ViewPage} />
          </div>
-      </OIO>
+      </OIOProvider>
    </BrowserRouter>
 ), document.getElementById('container'))
 

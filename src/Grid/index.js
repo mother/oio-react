@@ -4,59 +4,66 @@
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
-import React, { Component } from 'react'
-import { css, cx } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { GridContext } from './context'
-import generateStyleObject from '../utils/generateStyleObject'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import r from '../../macro'
+import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
+import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
-@generateStyleObject({
-   calculatedProps: ({
-      columns,
-      spacing
-   }) => ({
+// ============================================================================
+// Decorators
+// ============================================================================
+
+@withResponsiveObjectProps(['columns', 'spacing'])
+@withDynamicResponsiveProps((props, breakpoint) => {
+   const spacing = props.spacing[breakpoint]
+
+   return ({
       width: `calc(100% + ${spacing})`,
       marginLeft: `-${spacing}`
    })
 })
 
-export default class Grid extends Component {
-   /* eslint-disable */
+// ============================================================================
+// Component
+// ============================================================================
+
+export default class Grid extends React.Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
-      columns: PropTypes.string,
-      generatedStyleObject: PropTypes.object.isRequired,
-      spacing: PropTypes.string,
-      style: PropTypes.object,
+      columns: OIOResponsiveObjectPropType,
+      spacing: OIOResponsiveObjectPropType,
+      style: PropTypes.object
    }
-   /* eslint-enable */
 
    static defaultProps = {
       className: '',
-      columns: '12',
-      spacing: '18px',
+      columns: r`12`,
+      spacing: r`18px`,
       style: {}
    }
 
    render() {
-      const { children, className, columns, generatedStyleObject, spacing, style } = this.props
+      const { children, className, columns, marginLeft, spacing, width } = this.props
+      const contextProps = { columns, spacing }
+      const responsiveStyles = generateResponsiveStyles({ width, marginLeft })
 
-      const styles = {
+      const style = {
          float: 'left',
          width: '100%',
-         ...generatedStyleObject,
-         ...style
-      }
-
-      const contextProps = {
-         columns,
-         spacing
+         ...this.props.style,
+         ...responsiveStyles
       }
 
       return (
          <GridContext.Provider value={contextProps}>
-            <div className={cx(css(styles), className)}>
+            <div css={style} className={className}>
                {children}
             </div>
          </GridContext.Provider>

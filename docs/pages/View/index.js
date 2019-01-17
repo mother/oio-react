@@ -97,6 +97,21 @@ const appearanceApiOptions = [{
    default: '-',
    description: 'Use any valid css color'
 }, {
+   name: 'backgroundImage',
+   type: 'String',
+   default: '-',
+   description: 'specifiy a background imagee'
+}, {
+   name: 'backgroundPosition',
+   type: 'String',
+   default: '-',
+   description: 'Use valid CSS <code>background-position</code> values'
+}, {
+   name: 'backgroundSize',
+   type: 'String',
+   default: '-',
+   description: 'Use valid CSS <code>background-size</code> values'
+}, {
    name: 'border',
    type: 'String',
    default: '-',
@@ -202,7 +217,7 @@ const paddingMarginApiOptions = [{
    description: ''
 }]
 
-export default class OIOContainer extends PureComponent {
+export default class DemoView extends PureComponent {
    render() {
       return (
          <div className={style.docs}>
@@ -240,7 +255,7 @@ export default class OIOContainer extends PureComponent {
             </div>
             <div className={style.block}>
                <div className={style.columnFull}>
-                  <Text size="6" weight="bold">Basic API Options</Text>
+                  <Text size="6" weight="bold">Basic Formatting API Options</Text>
                   <br /><br />
                   <table className={style.table}>
                      <thead>

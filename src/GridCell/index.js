@@ -4,60 +4,71 @@
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
-import React, { Component } from 'react'
-import { css, cx } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withGridContext } from '../Grid/context'
-import generateStyleObject from '../utils/generateStyleObject'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import r from '../../macro'
+import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
+import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+
+// ============================================================================
+// Decorators
+// ============================================================================
 
 @withGridContext
-@generateStyleObject({
-   calculatedProps: ({
-      colspan,
-      gridContext
-   }) => {
-      const spacing = gridContext.spacing
-      const cellWidth = (colspan / gridContext.columns) * 100
+@withResponsiveObjectProps(['colspan'])
+@withDynamicResponsiveProps((props, breakpoint) => {
+   const { gridContext } = props
 
-      return ({
-         width: `calc(${cellWidth}% - ${spacing})`,
-         marginBottom: spacing,
-         marginLeft: spacing
-      })
-   },
-   excludeProps: ['children', 'className', 'style'],
-   contextProps: {
-      gridContext: ['columns', 'spacing']
-   }
+   const colspan = props.colspan[breakpoint]
+   const spacing = gridContext.spacing[breakpoint]
+   const cellWidth = (colspan / gridContext.columns[breakpoint]) * 100
+
+   return ({
+      width: `calc(${cellWidth}% - ${spacing})`,
+      marginBottom: spacing,
+      marginLeft: spacing
+   })
 })
 
-export default class GridCell extends Component {
-   /* eslint-disable */
+// ============================================================================
+// Component
+// ============================================================================
+
+export default class GridCell extends React.Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
-      colspan: PropTypes.string,
-      generatedStyleObject: PropTypes.object.isRequired,
-      style: PropTypes.object,
+      colspan: OIOResponsiveObjectPropType,
+      style: PropTypes.object
    }
-   /* eslint-enable */
 
    static defaultProps = {
       className: '',
-      colspan: '1',
+      colspan: r`1`,
       style: {}
    }
 
    render() {
-      const styles = {
+      const { className, marginBottom, marginLeft, width } = this.props
+      const responsiveStyles = generateResponsiveStyles({
+         marginBottom,
+         marginLeft,
+         width
+      })
+
+      const style = {
          float: 'left',
-         width: '100%',
          ...this.props.style,
-         ...this.props.generatedStyleObject
+         ...responsiveStyles
       }
 
       return (
-         <div className={cx(css(styles), this.props.className)}>
+         <div css={style} className={className}>
             {this.props.children}
          </div>
       )
