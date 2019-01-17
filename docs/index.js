@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, NavLink, Route } from 'react-router-dom'
 import { OIOProvider } from '../src'
 import OIOProviderPage from './pages/OIOProvider'
+import GridPage from './pages/Grid'
+import TextPage from './pages/Text'
+import ViewPage from './pages/View'
 import style from './style.less'
 
 ReactDOM.render((
@@ -22,7 +25,10 @@ ReactDOM.render((
                OIO
             </h1>
             <div className={style.nav}>
-               <NavLink to="/" activeClassName={style.active}>OIOProvider</NavLink>
+               <NavLink exact to="/" activeClassName={style.active}>OIOProvider</NavLink>
+               <NavLink to="/grid" activeClassName={style.active}>Grid</NavLink>
+               <NavLink to="/text" activeClassName={style.active}>Text</NavLink>
+               <NavLink to="/view" activeClassName={style.active}>View</NavLink>
             </div>
          </div>
          <div
@@ -34,6 +40,9 @@ ReactDOM.render((
                overflow: 'auto'
             }}>
             <Route exact path="/" component={OIOProviderPage} />
+            <Route path="/grid" component={GridPage} />
+            <Route path="/text" component={TextPage} />
+            <Route path="/view" component={ViewPage} />
          </div>
       </OIOProvider>
    </BrowserRouter>

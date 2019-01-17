@@ -34,13 +34,16 @@ const generateStyles = (responsiveObjects) => {
 
    // TODO: Handle strings
    Object.keys(responsiveObjects).forEach((styleKey) => {
-      Object.keys(responsiveObjects[styleKey]).forEach((breakpointKey) => {
-         // TODO: Optimize responsiveObjects where `breakpointsWereSet === false`
-         if (typeof responsiveObjects[styleKey][breakpointKey] !== 'boolean') {
-            result[breakpoints[breakpointKey]][styleKey] =
+      if (responsiveObjects[styleKey]) {
+         Object.keys(responsiveObjects[styleKey]).forEach((breakpointKey) => {
+            // TODO: Optimize responsiveObjects where `breakpointsWereSet === false`
+            if (typeof responsiveObjects[styleKey][breakpointKey] !== 'boolean' &&
+               responsiveObjects[styleKey][breakpointKey]) {
+               result[breakpoints[breakpointKey]][styleKey] =
                responsiveObjects[styleKey][breakpointKey]
-         }
-      })
+            }
+         })
+      }
    })
 
    return result

@@ -5,18 +5,29 @@
 // This component will be a Context provider in future PR
 // =======================================================
 
-import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { Global, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import OIOContext from './context'
 import normalizationStyles from './normalizationStyles'
 
-export default class OIOProvider extends Component {
+export default class OIOProvider extends React.Component {
    static propTypes = {
       children: PropTypes.node,
       className: PropTypes.string,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
-      style: PropTypes.object
+      fontWeights: PropTypes.shape({
+         light: PropTypes.string.isRequired,
+         normal: PropTypes.string.isRequired,
+         medium: PropTypes.string.isRequired,
+         semibold: PropTypes.string.isRequired,
+         bold: PropTypes.string.isRequired
+      }),
+      style: PropTypes.object,
+      textSizeScaleRatio: PropTypes.number,
+      textSizeMultiplier: PropTypes.number
    }
 
    static defaultProps = {
@@ -24,30 +35,47 @@ export default class OIOProvider extends Component {
       className: '',
       fontFamily: 'sans-serif',
       fontSize: '16px',
-      style: {}
-   }
-
-   componentDidMount() {
-      // Reset Styles
-      // TODO: Upgrade to emotion 10 to use <Global /> component
-      // The following will inject styles globally and remain even
-      // if this component is unmounted
-      injectGlobal`${normalizationStyles}` // eslint-disable-line no-unused-expressions
+      fontWeights: {
+         light: '300',
+         normal: '400',
+         medium: '500',
+         semibold: '600',
+         bold: '700'
+      },
+      style: {},
+      textSizeScaleRatio: 1.125,
+      textSizeMultiplier: 1
    }
 
    render() {
-      const { children, className, fontFamily, fontSize, style } = this.props
+      const {
+         children,
+         className,
+         fontFamily,
+         fontSize,
+         fontWeights,
+         style,
+         textSizeMultiplier,
+         textSizeScaleRatio
+      } = this.props
+
+      const contextProps = {
+         fontFamily,
+         fontSize,
+         fontWeights,
+         textSizeMultiplier,
+         textSizeScaleRatio
+      }
 
       return (
-         <div
-            className={className}
-            style={{
-               fontFamily,
-               fontSize,
-               ...style
-            }}>
-            {children}
-         </div>
+         <OIOContext.Provider value={contextProps}>
+            <Global styles={normalizationStyles} />
+            <div
+               className={className}
+               css={{ fontFamily, fontSize, ...style }}>
+               {children}
+            </div>
+         </OIOContext.Provider>
       )
    }
 }

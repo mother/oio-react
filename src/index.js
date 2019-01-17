@@ -1,5 +1,13 @@
+import Grid from './Grid'
+import GridCell from './GridCell'
 import OIOProvider from './OIOProvider'
+import Text from './Text'
+import View from './View'
 
 export {
-   OIOProvider // eslint-disable-line import/prefer-default-export
+   Grid,
+   GridCell,
+   OIOProvider,
+   Text,
+   View
 }
