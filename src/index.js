@@ -1,3 +1,9 @@
-export OIO from './OIO'
-export Text from './Text'
-export View from './View'
+import OIOProvider from './OIOProvider'
+import Text from './Text'
+import View from './View'
+
+export {
+   OIOProvider,
+   Text,
+   View
+}

@@ -1,0 +1,1363 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text will render at autoScale sizes correctly 1`] = `
+.emotion-6 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 2.8125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 2.025vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 1.6875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 1.125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 0.84375vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 0.703125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    font-size: 3.1640625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    font-size: 2.278125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    font-size: 1.8984375vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    font-size: 1.265625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    font-size: 0.94921875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    font-size: 0.791015625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-2 {
+    font-size: 3.5595703125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-2 {
+    font-size: 2.562890625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-2 {
+    font-size: 2.1357421875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-2 {
+    font-size: 1.423828125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-2 {
+    font-size: 1.06787109375vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-2 {
+    font-size: 0.889892578125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-3 {
+    font-size: 4.0045166015625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-3 {
+    font-size: 2.8832519531250003vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-3 {
+    font-size: 2.4027099609375vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-3 {
+    font-size: 1.601806640625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-3 {
+    font-size: 1.20135498046875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-3 {
+    font-size: 1.001129150390625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-4 {
+    font-size: 4.5050811767578125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-4 {
+    font-size: 3.243658447265625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-4 {
+    font-size: 2.7030487060546875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-4 {
+    font-size: 1.802032470703125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-4 {
+    font-size: 1.3515243530273438vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-4 {
+    font-size: 1.1262702941894531vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-5 {
+    font-size: 2.8125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-5 {
+    font-size: 2.278125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-5 {
+    font-size: 2.1357421875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-5 {
+    font-size: 1.601806640625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-5 {
+    font-size: 1.3515243530273438vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-5 {
+    font-size: 1.2670540809631348vw;
+    font-weight: 400;
+    line-height: 110%;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-6"
+  >
+    <div
+      class=" emotion-0"
+    >
+      AutoScaled Size 1
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      AutoScaled Size 2
+    </div>
+    <div
+      class=" emotion-2"
+    >
+      AutoScaled Size 3
+    </div>
+    <div
+      class=" emotion-3"
+    >
+      AutoScaled Size 4
+    </div>
+    <div
+      class=" emotion-4"
+    >
+      AutoScaled Size 5
+    </div>
+    <div
+      class=" emotion-5"
+    >
+      AutoScaled Responsive Sizes
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render at different font weights correctly 1`] = `
+.emotion-6 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-3 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-4 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-6"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Bold
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      Semibold
+    </div>
+    <div
+      class=" emotion-2"
+    >
+      Medium
+    </div>
+    <div
+      class=" emotion-3"
+    >
+      Normal
+    </div>
+    <div
+      class=" emotion-4"
+    >
+      Light
+    </div>
+    <div
+      class=" emotion-5"
+    >
+      Non Existing Font Weight
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render at different sizes correctly 1`] = `
+.emotion-6 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-2 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-3 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-4 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-5 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-5 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-5 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-5 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-5 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-5 {
+    font-size: 22.300151824951172px;
+    font-weight: 400;
+    line-height: 110%;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-6"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Size 1
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      Size 2
+    </div>
+    <div
+      class=" emotion-2"
+    >
+      Size 3
+    </div>
+    <div
+      class=" emotion-3"
+    >
+      Size 4
+    </div>
+    <div
+      class=" emotion-4"
+    >
+      Size 5
+    </div>
+    <div
+      class=" emotion-5"
+    >
+      Responsive Sizes
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render color correctly 1`] = `
+.emotion-3 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-2 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-3"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Red Text
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      Red Text
+    </div>
+    <div
+      class=" emotion-2"
+    >
+      Red Text
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render incorrect prop values safely 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Non Existing Font Weight
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render uppercase prop correctly 1`] = `
+.emotion-2 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+<div>
+  <div
+    class=" emotion-2"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Uppercase Text
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      Standard Case Text
+    </div>
+  </div>
+</div>
+`;

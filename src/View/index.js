@@ -5,14 +5,18 @@
 // Code to be simplified
 // =======================================================
 
-import React, { Component } from 'react'
-import { css, cx } from 'emotion'
+import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import forwardRefToWrappedComponent from '../utils/forwardRef'
-import generateStyleObject from '../utils/generateStyleObject'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import r from '../../macro'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
+import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
-const noTransformProps = [
-   'display', 'float', 'position', 'top', 'left', 'right', 'bottom',
+@withResponsiveObjectProps([
+   'display', 'float', 'position', 'top', 'left', 'right', 'bottom', 'scroll',
    'flex', 'flexFlow', 'justifyContent', 'alignItems',
    'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
@@ -20,113 +24,128 @@ const noTransformProps = [
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
    'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize',
    'borderRadius', 'textAlign'
-]
+])
 
-@forwardRefToWrappedComponent
-@generateStyleObject({
-   calculatedProps: (props) => {
-      const styleObject = {}
+@withDynamicResponsiveProps((props, breakpoint) => {
+   const { paddingHorizontal, paddingVertical, scroll } = props
+   const styleObject = {}
 
-      noTransformProps.forEach((prop) => {
-         styleObject[prop] = props[prop]
-      })
-
-      if (props.scroll === 'on') {
-         styleObject.overflow = 'auto'
-         styleObject['-webkit-overflow-scrolling'] = 'touch'
-      }
-
-      if (props.paddingHorizontal) {
-         styleObject.paddingLeft = props.paddingHorizontal
-         styleObject.paddingRight = props.paddingHorizontal
-      }
-
-      if (props.paddingVertical) {
-         styleObject.paddingTop = props.paddingVertical
-         styleObject.paddingBottom = props.paddingVertical
-      }
-
-      return styleObject
+   if (scroll && scroll[breakpoint] === 'on') {
+      styleObject.overflow = 'auto'
+      styleObject.WebkitOverflowScrolling = 'touch'
    }
+
+   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
+      styleObject.paddingLeft = paddingHorizontal[breakpoint]
+      styleObject.paddingRight = paddingHorizontal[breakpoint]
+   }
+
+   if (paddingVertical && paddingVertical[breakpoint]) {
+      styleObject.paddingTop = paddingVertical[breakpoint]
+      styleObject.paddingBottom = paddingVertical[breakpoint]
+   }
+
+   return styleObject
 })
 
-export default class View extends Component {
+export default class View extends React.Component {
    /* eslint-disable */
    static propTypes = {
-      alignItems: PropTypes.string,
-      backgroundColor: PropTypes.string,
-      backgroundImage: PropTypes.string,
-      backgroundPosition: PropTypes.string,
-      backgroundSize: PropTypes.string,
-      border: PropTypes.string,
-      borderTop: PropTypes.string,
-      borderRadius: PropTypes.string,
-      borderRight: PropTypes.string,
-      borderBottom: PropTypes.string,
-      borderLeft: PropTypes.string,
+      alignItems: OIOResponsiveObjectPropType,
+      backgroundColor: OIOResponsiveObjectPropType,
+      backgroundImage: OIOResponsiveObjectPropType,
+      backgroundPosition: OIOResponsiveObjectPropType,
+      backgroundSize: OIOResponsiveObjectPropType,
+      border: OIOResponsiveObjectPropType,
+      borderTop: OIOResponsiveObjectPropType,
+      borderRadius: OIOResponsiveObjectPropType,
+      borderRight: OIOResponsiveObjectPropType,
+      borderBottom: OIOResponsiveObjectPropType,
+      borderLeft: OIOResponsiveObjectPropType,
       children: PropTypes.node,
       className: PropTypes.string,
-      display: PropTypes.string,
-      flex: PropTypes.string,
-      flexFlow: PropTypes.string,
-      float: PropTypes.string,
-      forwardedRef: PropTypes.oneOfType([
-        PropTypes.func,
-        PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-      ]),
-      generatedStyleObject: PropTypes.object.isRequired,
-      height: PropTypes.string,
-      justifyContent: PropTypes.string,
-      margin: PropTypes.string,
-      marginTop: PropTypes.string,
-      marginLeft: PropTypes.string,
-      marginRight: PropTypes.string,
-      marginBottom: PropTypes.string,
-      minHeight: PropTypes.string,
-      maxHeight: PropTypes.string,
-      minWidth: PropTypes.string,
-      maxWidth: PropTypes.string,
+      display: OIOResponsiveObjectPropType,
+      flex: OIOResponsiveObjectPropType,
+      flexFlow: OIOResponsiveObjectPropType,
+      float: OIOResponsiveObjectPropType,
+      height: OIOResponsiveObjectPropType,
+      justifyContent: OIOResponsiveObjectPropType,
+      margin: OIOResponsiveObjectPropType,
+      marginTop: OIOResponsiveObjectPropType,
+      marginLeft: OIOResponsiveObjectPropType,
+      marginRight: OIOResponsiveObjectPropType,
+      marginBottom: OIOResponsiveObjectPropType,
+      minHeight: OIOResponsiveObjectPropType,
+      maxHeight: OIOResponsiveObjectPropType,
+      minWidth: OIOResponsiveObjectPropType,
+      maxWidth: OIOResponsiveObjectPropType,
       onClick: PropTypes.func,
       onScroll: PropTypes.func,
-      padding: PropTypes.string,
-      paddingTop: PropTypes.string,
-      paddingLeft: PropTypes.string,
-      paddingRight: PropTypes.string,
-      paddingBottom: PropTypes.string,
-      paddingHorizontal: PropTypes.string,
-      paddingVertical: PropTypes.string,
-      position: PropTypes.string,
-      scroll: PropTypes.string,
+      overflow: OIOResponsiveObjectPropType,
+      padding: OIOResponsiveObjectPropType,
+      paddingTop: OIOResponsiveObjectPropType,
+      paddingLeft: OIOResponsiveObjectPropType,
+      paddingRight: OIOResponsiveObjectPropType,
+      paddingBottom: OIOResponsiveObjectPropType,
+      paddingHorizontal: OIOResponsiveObjectPropType,
+      paddingVertical: OIOResponsiveObjectPropType,
+      position: OIOResponsiveObjectPropType,
+      scroll: OIOResponsiveObjectPropType,
       style: PropTypes.object,
-      textAlign: PropTypes.string,
-      top: PropTypes.string,
-      left: PropTypes.string,
-      right: PropTypes.string,
-      bottom: PropTypes.string,
-      width: PropTypes.string,
+      textAlign: OIOResponsiveObjectPropType,
+      top: OIOResponsiveObjectPropType,
+      left: OIOResponsiveObjectPropType,
+      right: OIOResponsiveObjectPropType,
+      bottom: OIOResponsiveObjectPropType,
+      WebkitOverflowScrolling: OIOResponsiveObjectPropType,
+      width: OIOResponsiveObjectPropType
    }
    /* eslint-enable */
 
    static defaultProps = {
-      display: 'block',
+      className: '',
+      display: r`block`,
       onScroll: () => {},
-      position: 'relative',
+      position: r`relative`,
       style: {}
    }
 
    render() {
-      const styles = {
+      const {
+         children, className,
+         display, float, position, top, left, right, bottom,
+         flex, flexFlow, justifyContent, alignItems,
+         height, width, maxHeight, maxWidth, minHeight, minWidth,
+         margin, marginBottom, marginLeft, marginRight, marginTop,
+         padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
+         border, borderBottom, borderLeft, borderRight, borderTop,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         borderRadius, textAlign,
+         overflow, WebkitOverflowScrolling
+      } = this.props
+
+      /* eslint-disable object-property-newline */
+      const responsiveStyles = generateResponsiveStyles({
+         display, float, position, top, left, right, bottom,
+         flex, flexFlow, justifyContent, alignItems,
+         height, width, maxHeight, maxWidth, minHeight, minWidth,
+         margin, marginBottom, marginLeft, marginRight, marginTop,
+         padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
+         border, borderBottom, borderLeft, borderRight, borderTop,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         borderRadius, textAlign,
+         overflow, WebkitOverflowScrolling
+      })
+      /* eslint-enable */
+
+      const style = {
          ...this.props.style,
-         ...this.props.generatedStyleObject
+         ...responsiveStyles
       }
 
       return (
-         <div
-            ref={this.props.forwardedRef}
-            className={cx(css(styles), this.props.className)}
-            onClick={this.props.onClick}
-            onScroll={this.props.onScroll}>
-            {this.props.children}
+         <div css={style} className={className}>
+            {children}
          </div>
       )
    }
