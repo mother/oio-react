@@ -1,23 +1,34 @@
-import React, { Component } from 'react'
-import { injectGlobal } from 'emotion'
+// =======================================================
+// OIOProvider
+// All OIO components must be nested inside an OIOProvider
+// You can nest OIOProvider inside other OIOProvider
+// This component will be a Context provider in future PR
+// =======================================================
+
+import React from 'react'
+/** @jsx jsx */
+import { Global, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
-import { OIOContext } from './context'
-import normalize from './normalize'
+import OIOContext from './context'
+import normalizationStyles from './normalizationStyles'
 
-// Normalize
-injectGlobal`${normalize}` // eslint-disable-line no-unused-expressions
-
-export default class OIO extends Component {
+export default class OIOProvider extends React.Component {
    static propTypes = {
       buttonTextSize: PropTypes.object,
-      buttonTextUppercase: PropTypes.string,
+      buttonTextUppercase: PropTypes.bool,
       children: PropTypes.node,
       className: PropTypes.string,
       elementBorderRadius: PropTypes.object,
       elementHeights: PropTypes.object,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
-      fontWeights: PropTypes.object,
+      fontWeights: PropTypes.shape({
+         light: PropTypes.string.isRequired,
+         normal: PropTypes.string.isRequired,
+         medium: PropTypes.string.isRequired,
+         semibold: PropTypes.string.isRequired,
+         bold: PropTypes.string.isRequired
+      }),
       highlightColor: PropTypes.string,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
@@ -74,8 +85,8 @@ export default class OIO extends Component {
          fontWeights,
          highlightColor,
          style,
-         textSizeScaleRatio,
-         textSizeMultiplier
+         textSizeMultiplier,
+         textSizeScaleRatio
       } = this.props
 
       const contextProps = {
@@ -87,15 +98,16 @@ export default class OIO extends Component {
          fontSize,
          fontWeights,
          highlightColor,
-         textSizeScaleRatio,
-         textSizeMultiplier
+         textSizeMultiplier,
+         textSizeScaleRatio
       }
 
       return (
          <OIOContext.Provider value={contextProps}>
+            <Global styles={normalizationStyles} />
             <div
                className={className}
-               style={{ fontFamily, fontSize, ...style }}>
+               css={{ fontFamily, fontSize, ...style }}>
                {children}
             </div>
          </OIOContext.Provider>

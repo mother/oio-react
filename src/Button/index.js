@@ -8,111 +8,138 @@
 // - Ability to use icon
 // =======================================================
 
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import { css, cx } from 'emotion'
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
-import { withOIOContext } from '../OIO/context'
-import generateStyleObject from '../utils/generateStyleObject'
+import { withOIOContext } from '../OIOProvider/context'
+import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import OIOResponsiveObjectPropType from '../utils/PropType'
+import r from '../../macro'
+import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
+import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 import Text from '../Text'
 
 @withOIOContext
-@generateStyleObject({
-   calculatedProps: ({
-      borderRadius,
-      color,
-      fontFamily,
+@withResponsiveObjectProps([
+   'borderRadius',
+   'color',
+   'fontFamily',
+   'padding',
+   'size',
+   'sizeMultiplier',
+   'textColor',
+   'width'
+])
+
+@withDynamicResponsiveProps((props, breakpoint) => {
+   const {
       OIOContext,
       outline,
-      padding,
-      rounded,
-      size,
-      sizeMultiplier,
-      textColor,
-      width
-   }) => {
-      const primaryButtonColor = color || OIOContext.highlightColor
-      const defaultButtonPadding = width === 'auto'
-         ? `0px ${OIOContext.elementHeights[size]}`
-         : '0px'
+      rounded
+   } = props
 
-      const buttonStyle = {
-         fontFamily,
-         width,
-         backgroundColor: primaryButtonColor,
-         border: 'none',
-         borderRadius: borderRadius || OIOContext.elementBorderRadius[size],
-         color: textColor,
-         minHeight: OIOContext.elementHeights[size],
-         minWidth: OIOContext.elementHeights[size],
-         padding: padding ? `0px ${padding}` : defaultButtonPadding,
-         '&:hover': {
-            backgroundColor: tinycolor(primaryButtonColor).lighten(7).toString()
-         }
-      }
+   // Responsive Props
+   const borderRadius = props.borderRadius && props.borderRadius[breakpoint]
+   const color = props.color && props.color[breakpoint]
+   const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
+   const padding = props.padding && props.padding[breakpoint]
+   const size = props.size && props.size[breakpoint]
+   const textColor = props.textColor && props.textColor[breakpoint]
+   const width = props.width[breakpoint]
 
-      if (rounded) {
-         buttonStyle.borderRadius = parseInt(OIOContext.elementHeights[size], 10) / 2
-      }
+   const primaryButtonColor = color || OIOContext.highlightColor
+   const defaultButtonPadding = width === 'auto'
+      ? `0px ${OIOContext.elementHeights[size]}`
+      : '0px'
 
-      if (outline) {
-         buttonStyle.border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.5).toString()}`
-         buttonStyle.backgroundColor = 'transparent'
-         buttonStyle['&:hover'].backgroundColor = 'transparent'
-         buttonStyle['&:hover'].border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
-         buttonStyle.color = primaryButtonColor
-      }
-
-      return buttonStyle
-   },
-   excludeProps: ['className', 'link', 'name', 'onClick', 'style'],
-   contextProps: {
-      OIOContext: ['elementBorderRadius', 'elementHeights', 'highlightColor']
+   const buttonStyle = {
+      fontFamily,
+      width,
+      backgroundColor: primaryButtonColor,
+      border: 'none',
+      borderRadius: borderRadius || OIOContext.elementBorderRadius[size],
+      buttonTextSize: OIOContext.buttonTextSize[size],
+      color: textColor,
+      hoverBackgroundColor: tinycolor(primaryButtonColor).lighten(7).toString(),
+      hoverBorder: '',
+      minHeight: OIOContext.elementHeights[size],
+      minWidth: OIOContext.elementHeights[size],
+      padding: padding ? `0px ${padding}` : defaultButtonPadding
    }
+
+   if (rounded) {
+      buttonStyle.borderRadius = `${parseInt(OIOContext.elementHeights[size], 10) / 2}px`
+   }
+
+   if (outline) {
+      buttonStyle.border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.5).toString()}`
+      buttonStyle.backgroundColor = 'transparent'
+      buttonStyle.hoverBackgroundColor = 'transparent'
+      buttonStyle.hoverBorder = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
+      buttonStyle.color = primaryButtonColor
+   }
+
+   return buttonStyle
 })
 
-export default class Button extends Component {
-   /* eslint-disable */
+export default class Button extends React.Component {
    static propTypes = {
-      borderRadius: PropTypes.string,
+      borderRadius: OIOResponsiveObjectPropType,
+      buttonTextSize: OIOResponsiveObjectPropType,
       className: PropTypes.string,
-      color: PropTypes.string,
-      fontFamily: PropTypes.string,
-      generatedStyleObject: PropTypes.object.isRequired,
+      color: OIOResponsiveObjectPropType,
+      fontFamily: OIOResponsiveObjectPropType,
       link: PropTypes.node,
       name: PropTypes.node,
-      OIOContext: PropTypes.object.isRequired,
       onClick: PropTypes.func,
-      padding: PropTypes.string,
-      size: PropTypes.string,
-      sizeMultiplier: PropTypes.number,
+      outline: PropTypes.bool,
+      padding: OIOResponsiveObjectPropType,
+      rounded: PropTypes.bool,
+      size: OIOResponsiveObjectPropType,
       style: PropTypes.object,
-      textColor: PropTypes.string,
+      textColor: OIOResponsiveObjectPropType,
       textUppercase: PropTypes.bool,
       type: PropTypes.oneOf(['button', 'clear', 'submit']),
-      width: PropTypes.string
+      width: OIOResponsiveObjectPropType
    }
-   /* eslint-enable */
 
    static defaultProps = {
-      autoScale: false,
       onClick: () => {},
-      size: 'md',
+      outline: false,
+      rounded: false,
+      size: r`md`,
       style: {},
-      textColor: '#fff',
+      textColor: r`#fff`,
       textUppercase: false,
       type: 'button',
-      width: 'auto'
+      width: r`auto`
    }
 
    render() {
       const {
-         className, generatedStyleObject, name, link,
-         OIOContext, onClick, size, style, textUppercase
+         className, name, link,
+         buttonTextSize, OIOContext, onClick, textUppercase,
+         backgroundColor, border, borderRadius, color, fontFamily,
+         padding, minHeight, minWidth, width,
+         hoverBackgroundColor, hoverBorder
       } = this.props
 
-      const styles = {
+      /* eslint-disable object-property-newline */
+      const responsiveStyles = generateResponsiveStyles({
+         backgroundColor, border, borderRadius, color, fontFamily,
+         padding, minHeight, minWidth, width
+      })
+
+      const hoverResponsiveStyles = generateResponsiveStyles({
+         backgroundColor: hoverBackgroundColor,
+         border: hoverBorder
+      })
+      /* eslint-enable */
+
+      const style = {
          alignItems: 'center',
          cursor: 'pointer',
          display: 'flex',
@@ -120,8 +147,11 @@ export default class Button extends Component {
          justifyContent: 'center',
          transition: '200ms',
          outline: 'none',
-         ...style,
-         ...generatedStyleObject,
+         ...this.props.style,
+         ...responsiveStyles,
+         '&:hover': {
+            ...hoverResponsiveStyles
+         },
          '&:active': {
             transform: 'translateY(3px)'
          }
@@ -139,12 +169,13 @@ export default class Button extends Component {
       return (
          <ButtonElement
             {...buttonLinkObj}
-            className={cx(css(styles), className)}
+            css={style}
+            className={className}
             onClick={onClick}>
             <Text
-               size={OIOContext.buttonTextSize[size]}
+               size={buttonTextSize}
                weight="semibold"
-               uppercase={textUppercase ? 'uppercase' : OIOContext.buttonTextUppercase}>
+               uppercase={textUppercase ? true : OIOContext.buttonTextUppercase}>
                {name}
             </Text>
          </ButtonElement>
