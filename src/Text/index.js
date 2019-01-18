@@ -108,7 +108,7 @@ export default class Text extends React.Component {
       fontFamily: r``,
       lineHeight: '120%',
       size: r`3`,
-      sizeMultiplier: 1,
+      sizeMultiplier: r`1`,
       style: {},
       uppercase: false,
       weight: r`normal`
