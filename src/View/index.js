@@ -9,12 +9,14 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import forwardRefToWrappedComponent from '../utils/forwardRef'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import r from '../../macro'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
+@forwardRefToWrappedComponent
 @withResponsiveObjectProps([
    'display', 'float', 'position', 'top', 'left', 'right', 'bottom', 'scroll',
    'flex', 'flexFlow', 'justifyContent', 'alignItems',
@@ -144,7 +146,7 @@ export default class View extends React.Component {
       }
 
       return (
-         <div css={style} className={className}>
+         <div ref={this.props.forwardedRef} css={style} className={className}>
             {children}
          </div>
       )
