@@ -34,12 +34,13 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { autoScale, OIOContext, sizeMultiplier } = props
+   const { autoScale, OIOContext } = props
 
    // Responsive Props
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
    const size = props.size[breakpoint]
+   const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
    const uppercase = props.uppercase
    const weight = props.weight[breakpoint]
 
