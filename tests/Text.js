@@ -1,11 +1,7 @@
 import React from 'react'
-import serializer from 'jest-emotion'
 import { render } from 'react-testing-library'
 import OIOProvider from '../src/OIOProvider'
 import Text from '../src/Text'
-
-// To show emotion styles in snapshot teset
-expect.addSnapshotSerializer(serializer)
 
 test('Text will render at different sizes correctly', () => {
    const { container } = render(

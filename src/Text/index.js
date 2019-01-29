@@ -2,7 +2,6 @@
 // Text
 // Foundational component that is used as Root
 // component for may other OIO components
-// Rating: 4
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
@@ -12,8 +11,8 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
-import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
+import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
@@ -77,7 +76,6 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // ============================================================================
 
 export default class Text extends React.Component {
-   /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
       baseFontSize: OIOResponsiveObjectPropType,
@@ -96,7 +94,6 @@ export default class Text extends React.Component {
       uppercase: PropTypes.bool,
       weight: OIOResponsiveObjectPropType.isRequired
    }
-   /* eslint-enable */
 
    static defaultProps = {
       autoScale: false,

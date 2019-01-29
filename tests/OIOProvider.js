@@ -1,11 +1,7 @@
 import React from 'react'
-import serializer from 'jest-emotion'
 import { render } from 'react-testing-library'
 import OIOContext from '../src/OIOProvider/context'
 import OIOProvider from '../src/OIOProvider'
-
-// To show emotion styles in snapshot teset
-expect.addSnapshotSerializer(serializer)
 
 test('OIO Provider provides context props correctly', () => {
    let contextProps = ''
