@@ -75,7 +75,7 @@ test('Text will render uppercase prop correctly', () => {
    expect(container).toMatchSnapshot()
 })
 
-test('Text will render incorrect prop values safely', () => {
+test('Invalid prop values passed to Text component will be ignored', () => {
    const { container } = render(
       <OIOProvider>
          <Text
