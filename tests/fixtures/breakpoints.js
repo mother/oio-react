@@ -1,31 +1,31 @@
 export default [
    {
-      name: 'sizeA',
+      name: 'Size A',
       width: 375,
       height: 667
    },
    {
-      name: 'sizeB',
+      name: 'Size B',
       width: 500,
       height: 735
    },
    {
-      name: 'sizeC',
+      name: 'Size C',
       width: 768,
       height: 1024
    },
    {
-      name: 'sizeD',
+      name: 'Size D',
       width: 1024,
       height: 768
    },
    {
-      name: 'sizeE',
+      name: 'Size E',
       width: 1440,
       height: 800
    },
    {
-      name: 'sizeF',
+      name: 'Size F',
       width: 1920,
       height: 900
    }

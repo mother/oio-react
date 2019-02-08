@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
-import style from '../../style.less'
+import style from '../style.less'
 
 const codeSnippet1 = `
 // All OIO components must be wrapped in an OIOProvider
