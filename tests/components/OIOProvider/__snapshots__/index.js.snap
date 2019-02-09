@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OIO Provider renders as expected 1`] = `
+<body>
+  <div>
+    <div
+      style="font-family: sans-serif; font-size: 16px;"
+    >
+      Hello World
+    </div>
+  </div>
+</body>
+`;

@@ -21,7 +21,7 @@ export default class OIOProvider extends Component {
 
    static defaultProps = {
       children: null,
-      className: '',
+      className: null,
       fontFamily: 'sans-serif',
       fontSize: '16px',
       style: {}
