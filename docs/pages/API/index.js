@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
 import OIOProviderPage from './OIOProvider'
 import style from './style.less'
 
 export default class Docs extends Component {
+   static propTypes = {
+      match: PropTypes.object.isRequired
+   }
+
    render() {
+      const { match } = this.props
+
       return (
          <div>
             <div
@@ -17,11 +24,9 @@ export default class Docs extends Component {
                   borderRight: '1px solid #ddd',
                   overflow: 'auto'
                }}>
-               <h1>
-                  OIO
-               </h1>
+               <h1>OIO</h1>
                <div className={style.nav}>
-                  <NavLink to="/api" activeClassName={style.active}>OIOProvider</NavLink>
+                  <NavLink to={match.url} activeClassName={style.active}>OIOProvider</NavLink>
                </div>
             </div>
             <div
@@ -32,7 +37,7 @@ export default class Docs extends Component {
                   height: '100%',
                   overflow: 'auto'
                }}>
-               <Route exact path="/api" component={OIOProviderPage} />
+               <Route exact path={match.url} component={OIOProviderPage} />
             </div>
          </div>
       )
