@@ -7,8 +7,7 @@
     "docs": "NODE_ENV=development node ./docs/server",
     "lint": "git diff HEAD --name-only --diff-filter=ACM | grep '.js$' | xargs node ./node_modules/eslint/bin/eslint.js --quiet",
     "lint-full": "node ./node_modules/eslint/bin/eslint.js .",
-    "test": "npm run test:jest && npm run test:screenshots",
-    "test:jest": "jest --config ./config/jest/config.js",
+    "test": "jest --config ./config/jest/config.js",
     "test:runner": "cypress open --project config/cypress --env name=runner",
     "test:cy-headless-screenshots": "cypress run --project config/cypress --env name=headless",
     "test:screenshots": "PORT=8001 start-test docs 8001 test:cy-headless-screenshots",
@@ -16,7 +15,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm audit",
+      "pre-commit": "npm run lint && npm audit && npm run test",
       "post-merge": "npm install",
       "post-receive": "npm install",
       "post-rewrite": "npm install"
