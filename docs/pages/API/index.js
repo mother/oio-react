@@ -4,7 +4,7 @@ import { NavLink, Route } from 'react-router-dom'
 import OIOProviderPage from './OIOProvider'
 import style from './style.less'
 
-export default class Docs extends Component {
+export default class API extends Component {
    static propTypes = {
       match: PropTypes.object.isRequired
    }

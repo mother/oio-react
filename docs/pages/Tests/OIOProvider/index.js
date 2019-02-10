@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class Tests extends Component {
+export default class OIOProviderTest extends Component {
    render() {
       return (
          <div style={{ backgroundColor: '#eee' }}>
