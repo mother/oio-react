@@ -1,0 +1,10 @@
+{
+   "baseUrl": "http://localhost:8001",
+   "fixturesFolder": false,
+   "ignoreTestFiles": "**/*.png",
+   "integrationFolder": "../../tests/visual",
+   "pluginsFile": "./plugins/index.js",
+   "supportFile": "./support/index.js",
+   "trashAssetsBeforeRuns": true,
+   "video": false
+}

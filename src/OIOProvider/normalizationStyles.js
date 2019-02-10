@@ -75,24 +75,14 @@ const normalizationStyles = `
       vertical-align: top;
    }
 
-   .clearfix:after {
-      visibility: hidden;
-      display: block;
-      font-size: 0;
-      content: " ";
-      clear: both;
-      height: 0;
+   input, textarea {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      border-radius: 0;
+      -webkit-appearance: none;
    }
-
-   * html .clearfix {
-      zoom: 1;
-   }
-
-   /* IE6 */
-   *:first-child + html .clearfix {
-      zoom: 1;
-   }
-
 `
 
 export default normalizationStyles
