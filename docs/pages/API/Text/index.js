@@ -1,85 +1,61 @@
 import React, { Component } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
-import { Text } from '../../../src'
-import style from '../../style.less'
-
-const codeSnippet1 = `
-// Text, sizes 1 to 15!
-
-<Text size="15">Size 15 Text</Text>
-<Text size="14">Size 14 Text</Text>
-<Text size="13">Size 13 Text</Text>
-<Text size="12">Size 12 Text</Text>
-<Text size="11">Size 11 Text</Text>
-<Text size="10">Size 10 Text</Text>
-<Text size="9">Size 9 Text</Text>
-<Text size="8">Size 8 Text</Text>
-<Text size="7">Size 7 Text</Text>
-<Text size="6">Size 6 Text</Text>
-<Text size="5">Size 5 Text</Text>
-<Text size="4">Size 4 Text</Text>
-<Text size="3">Size 3 Text</Text>
-<Text size="2">Size 2 Text</Text>
-<Text size="1">Size 1 Text</Text>
-`
-
-const codeSnippet2 = `
-// Text with autoScale
-
-<Text size="9" color="#111" weight="medium" autoScale>
-   Salmon Leek Pasta
-</Text>
-<Text size="3" autoScale>
-   For cozy winter nights
-</Text>
-`
-
-const codeSnippet3 = `
-// Text weights
-
-<Text size="6" weight="bold">Hot Apple Cider (Bold)</Text>
-<Text size="6" weight="semibold">Hot Apple Cider (Semibold)</Text>
-<Text size="6" weight="medium">Hot Apple Cider (Medium)</Text>
-<Text size="6" weight="normal">Hot Apple Cider (Normal)</Text>
-<Text size="6" weight="light">Hot Apple Cider (Light)</Text>
-`
+import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
+import { Text } from '../../../../src'
+import TextAutoScaleSpecimen from '../../../specimens/TextAutoScale'
+import TextColorSpecimen from '../../../specimens/TextColor'
+import TextSizesSpecimen from '../../../specimens/TextSizes'
+import TextWeightsSpecimen from '../../../specimens/TextWeights'
+import style from '../style.less'
 
 const apiOptions = [{
    name: 'autoScale',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'When set to <code>true</code>, text will scale dynamically proportionally to the browser screen size'
+   description: 'When set to <code>true</code>, text will scale dynamically proportionally to the browser screen size',
+   responsive: true
 }, {
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the component'
+   description: 'Pass a <code>className</code> to customize className of the component',
+   responsive: false
 }, {
    name: 'color',
    type: 'String',
    default: '-',
-   description: 'Pass any css compatible color value'
+   description: 'Pass any css compatible color value',
+   responsive: true
 }, {
    name: 'fontFamily',
    type: 'String',
    default: '-',
-   description: 'Apply a specific font-family to the text within this component'
+   description: 'Apply a specific font-family to the text within this component',
+   responsive: true
+}, {
+   name: 'lineHeight',
+   type: 'String',
+   default: '120%',
+   description: 'Set line-height for Text. Any compatible css line-height values are valid',
+   responsive: true
 }, {
    name: 'size',
    type: 'String',
    default: '<code>3</code>',
-   description: 'Set the <code>Text</code> component size using a number between <code>1-15</code>'
+   description: 'Set the <code>Text</code> component size using any number. While you may use decimal numbers, it is recommended that whole numbers are used for visual consistency.',
+   responsive: true
 }, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the component'
+   description: 'Pass a style <code>object</code> to customize inline style of the component',
+   responsive: false
 }, {
    name: 'uppercase',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'Set to <code>true</code> to transform text characters to uppercase'
+   description: 'Set to <code>true</code> to transform text characters to uppercase',
+   responsive: false
 }]
 
 export default class TextPage extends Component {
@@ -104,29 +80,15 @@ export default class TextPage extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <Text size="15">Size 15 Text</Text>
-                     <Text size="14">Size 14 Text</Text>
-                     <Text size="13">Size 13 Text</Text>
-                     <Text size="12">Size 12 Text</Text>
-                     <Text size="11">Size 11 Text</Text>
-                     <Text size="10">Size 10 Text</Text>
-                     <Text size="9">Size 9 Text</Text>
-                     <Text size="8">Size 8 Text</Text>
-                     <Text size="7">Size 7 Text</Text>
-                     <Text size="6">Size 6 Text</Text>
-                     <Text size="5">Size 5 Text</Text>
-                     <Text size="4">Size 4 Text</Text>
-                     <Text size="3">Size 3 Text</Text>
-                     <Text size="2">Size 2 Text</Text>
-                     <Text size="1">Size 1 Text</Text>
+                     <TextSizesSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet1}
+                     {TextSizesSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -144,16 +106,15 @@ export default class TextPage extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <Text size="9" color="#111" weight="medium" autoScale>Salmon Leek Pasta</Text>
-                     <Text size="3" autoScale>For cozy winter nights</Text>
+                     <TextAutoScaleSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet2}
+                     {TextAutoScaleSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -171,19 +132,41 @@ export default class TextPage extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <Text size="6" weight="bold">Hot Apple Cider (Bold)</Text>
-                     <Text size="6" weight="semibold">Hot Apple Cider (Semibold)</Text>
-                     <Text size="6" weight="medium">Hot Apple Cider (Medium)</Text>
-                     <Text size="6" weight="normal">Hot Apple Cider (Normal)</Text>
-                     <Text size="6" weight="light">Hot Apple Cider (Light)</Text>
+                     <TextWeightsSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet3}
+                     {TextWeightsSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Text Color
+                  </Text>
+                  <br />
+                  <Text>
+                     {/* eslint-disable max-len */}
+                     You can set the color of the <code>Text</code> component by using the prop <code>color</code>. Any css compatible color values are valid.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <TextColorSpecimen />
+                  </div>
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {TextColorSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -201,6 +184,7 @@ export default class TextPage extends Component {
                            <th width="150px">Prop Type</th>
                            <th width="150px">Default Value</th>
                            <th>Description/Options</th>
+                           <th>Responsive</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -213,6 +197,9 @@ export default class TextPage extends Component {
                               </td>
                               <td>
                                  <div dangerouslySetInnerHTML={{ __html: option.description }} />
+                              </td>
+                              <td>
+                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
                               </td>
                            </tr>
                         ))}

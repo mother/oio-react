@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { render } from 'react-testing-library'
-import OIOResponsiveObjectPropType from '../src/utils/PropType'
-import generateResponsiveObject from '../src/utils/generateResponsiveObject'
-import withDynamicResponsiveProps from '../src/utils/withDynamicResponsiveProps'
-import { breakpointKeys } from '../config/constants'
+import OIOResponsiveObjectPropType from '../../../src/utils/PropType'
+import generateResponsiveObject from '../../../src/utils/generateResponsiveObject'
+import withDynamicResponsiveProps from '../../../src/utils/withDynamicResponsiveProps'
+import { breakpointKeys } from '../../../config/constants'
 
 // Test Fixture
 

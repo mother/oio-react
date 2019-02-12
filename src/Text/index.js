@@ -65,7 +65,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    return ({
       fontSize,
-      fontWeight: OIOContext.fontWeights[weight],
+      fontWeight: OIOContext[`fontWeight${weight.charAt(0).toUpperCase()}${weight.slice(1)}`],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
       textTransform: uppercase ? 'uppercase' : undefined
    })
@@ -88,7 +88,7 @@ export default class Text extends React.Component {
       fontWeight: OIOResponsiveObjectPropType.isRequired,
       lineHeight: OIOResponsiveObjectPropType,
       size: OIOResponsiveObjectPropType,
-      sizeMultiplier: PropTypes.number,
+      sizeMultiplier: OIOResponsiveObjectPropType,
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
       uppercase: PropTypes.bool,

@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { render } from 'react-testing-library'
-import OIOResponsiveObjectPropType from '../src/utils/PropType'
-import withResponsiveObjectProps from '../src/utils/withResponsiveObjectProps'
+import OIOResponsiveObjectPropType from '../../../src/utils/PropType'
+import withResponsiveObjectProps from '../../../src/utils/withResponsiveObjectProps'
 
 // Wrap `generateResponsiveObject` with a mock function so we can spy on it
-jest.mock('../src/utils/generateResponsiveObject', () => {
-   const generateResponsiveObject = jest.requireActual('../src/utils/generateResponsiveObject')
+jest.mock('../../../src/utils/generateResponsiveObject', () => {
+   const generateResponsiveObject = jest.requireActual('../../../src/utils/generateResponsiveObject')
    return jest.fn(generateResponsiveObject)
 })
 
 // eslint-disable-next-line import/first
-import generateResponsiveObject from '../src/utils/generateResponsiveObject'
+import generateResponsiveObject from '../../../src/utils/generateResponsiveObject'
 
 afterEach(() => {
    jest.clearAllMocks()

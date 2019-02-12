@@ -1,22 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OIO Provider provides context props correctly 1`] = `
+exports[`OIO Provider context props are received as expected from context consumer 1`] = `
 Object {
   "fontFamily": "sans-serif",
   "fontSize": "16px",
-  "fontWeights": Object {
-    "bold": "700",
-    "light": "300",
-    "medium": "500",
-    "normal": "400",
-    "semibold": "600",
-  },
+  "fontWeightBold": "700",
+  "fontWeightLight": "300",
+  "fontWeightMedium": "500",
+  "fontWeightNormal": "400",
+  "fontWeightSemibold": "600",
   "textSizeMultiplier": 1,
   "textSizeScaleRatio": 1.125,
 }
 `;
 
-exports[`OIO Provider will render correctly 1`] = `
+exports[`OIO Provider renders as expected 1`] = `
 .emotion-0 {
   font-family: sans-serif;
   font-size: 16px;
@@ -25,7 +23,7 @@ exports[`OIO Provider will render correctly 1`] = `
 <body>
   <div>
     <div
-      class=" emotion-0"
+      class="emotion-0"
     >
       Hello World
     </div>

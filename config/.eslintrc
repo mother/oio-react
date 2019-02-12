@@ -4,8 +4,7 @@
       "plugin:cypress/recommended"
    ],
    "env": {
-     "cypress/globals": true,
-     "jest/globals": true
+     "cypress/globals": true
    },
-   "plugins": ["cypress", "jest"]
+   "plugins": ["cypress"]
 }

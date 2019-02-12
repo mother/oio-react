@@ -1,0 +1,456 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Invalid prop values passed to Text component will be ignored 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Non Existing Font Weight
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render at autoScale sizes correctly 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 2.8125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 2.278125vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 2.1357421875vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 1.601806640625vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 1.3515243530273438vw;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 1.2670540809631348vw;
+    font-weight: 400;
+    line-height: 110%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      AutoScaled Responsive Sizes
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render at different font weights correctly 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 500;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 300;
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Text Weights
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render at different sizes correctly 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 12.375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 13.921875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 17.619873046875px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 19.822357177734375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 22.300151824951172px;
+    font-weight: 400;
+    line-height: 110%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Responsive Sizes
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render color correctly 1`] = `
+.emotion-1 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    color: red;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    color: #ff0000;
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    color: rgba(255,0,0,1);
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-1"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Red Text
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text will render uppercase prop correctly 1`] = `
+.emotion-2 {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-0 {
+    font-size: 14.0958984375px;
+    font-weight: 400;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width:0px) and (max-width:475px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:475px) and (max-width:675px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:675px) and (max-width:1000px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1350px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1350px) and (max-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+@media (min-width:1700px) {
+  .emotion-1 {
+    font-size: 15.662109375px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+}
+
+<div>
+  <div
+    class="emotion-2"
+  >
+    <div
+      class=" emotion-0"
+    >
+      Uppercase Text
+    </div>
+    <div
+      class=" emotion-1"
+    >
+      Standard Case Text
+    </div>
+  </div>
+</div>
+`;

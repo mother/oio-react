@@ -1,4 +1,4 @@
-import r from '../src/utils/generateResponsiveObject'
+import r from '../../../src/utils/generateResponsiveObject'
 
 beforeEach(() => {
    jest.spyOn(console, 'error').mockImplementation(() => {})

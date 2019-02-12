@@ -1,9 +1,19 @@
 import React from 'react'
 import { render } from 'react-testing-library'
-import OIOContext from '../src/OIOProvider/context'
-import OIOProvider from '../src/OIOProvider'
+import OIOContext from '../../../src/OIOProvider/context'
+import OIOProvider from '../../../src/OIOProvider'
 
-test('OIO Provider provides context props correctly', () => {
+test('OIO Provider renders as expected', () => {
+   const { baseElement } = render(
+      <OIOProvider>
+         Hello World
+      </OIOProvider>
+   )
+
+   expect(baseElement).toMatchSnapshot()
+})
+
+test('OIO Provider context props are received as expected from context consumer', () => {
    let contextProps = ''
 
    render(
@@ -20,14 +30,4 @@ test('OIO Provider provides context props correctly', () => {
    )
 
    expect(contextProps).toMatchSnapshot()
-})
-
-test('OIO Provider will render correctly', () => {
-   const { baseElement } = render(
-      <OIOProvider>
-         Hello World
-      </OIOProvider>
-   )
-
-   expect(baseElement).toMatchSnapshot()
 })
