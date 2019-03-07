@@ -1,7 +1,2 @@
-import OIOProvider from './OIOProvider'
-import Text from './Text'
-
-export {
-   OIOProvider,
-   Text
-}
+export { default as OIOProvider } from './OIOProvider'
+export { default as Text } from './Text'

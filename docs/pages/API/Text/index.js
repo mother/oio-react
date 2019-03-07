@@ -35,7 +35,7 @@ const apiOptions = [{
 }, {
    name: 'lineHeight',
    type: 'String',
-   default: '120%',
+   default: '<code>120%</code>',
    description: 'Set line-height for Text. Any compatible css line-height values are valid',
    responsive: true
 }, {
