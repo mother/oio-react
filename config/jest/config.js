@@ -1,6 +1,6 @@
 module.exports = {
    rootDir: '../../',
-   setupTestFrameworkScriptFile: require.resolve('./setup.js'),
+   setupFilesAfterEnv: ['<rootDir>/config/jest/setup.js'],
    testMatch: ['<rootDir>/tests/**/*.js'],
    testPathIgnorePatterns: ['fixtures', 'visual']
 }
