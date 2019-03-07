@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Route, Switch } from 'react-router-dom'
 import OIOProvider from './OIOProvider'
-import TextColor from '../../specimens/TextColor'
+import TextColors from '../../specimens/TextColors'
 import TextSizes from '../../specimens/TextSizes'
 import TextWeights from '../../specimens/TextWeights'
 
@@ -17,7 +17,7 @@ export default class Tests extends Component {
       return (
          <Switch>
             <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
-            <Route path={`${match.url}/text-color`} component={TextColor} />
+            <Route path={`${match.url}/text-colors`} component={TextColors} />
             <Route path={`${match.url}/text-sizes`} component={TextSizes} />
             <Route path={`${match.url}/text-weights`} component={TextWeights} />
          </Switch>

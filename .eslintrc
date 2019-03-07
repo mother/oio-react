@@ -3,8 +3,11 @@
    "plugins": ["emotion"],
    "rules": {
       "import/no-extraneous-dependencies": [
-       "error", {"devDependencies": true,
-       "optionalDependencies": false, "peerDependencies": true}
+         "error", {
+            "devDependencies": true,
+            "optionalDependencies": false,
+            "peerDependencies": true
+         }
       ],
       "emotion/jsx-import": "error"
    }

@@ -3,7 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
 import TextAutoScaleSpecimen from '../../../specimens/TextAutoScale'
-import TextColorSpecimen from '../../../specimens/TextColor'
+import TextColorsSpecimen from '../../../specimens/TextColors'
 import TextSizesSpecimen from '../../../specimens/TextSizes'
 import TextWeightsSpecimen from '../../../specimens/TextWeights'
 import style from '../style.less'
@@ -56,6 +56,12 @@ const apiOptions = [{
    default: '<code>false</code>',
    description: 'Set to <code>true</code> to transform text characters to uppercase',
    responsive: false
+}, {
+   name: 'weight',
+   type: 'String',
+   default: '<code>normal</code>',
+   description: 'Valid values include: <code>light</code>, <code>normal</code>, <code>medium</code>, <code>semibold</code>, <code>bold</code>',
+   responsive: true
 }]
 
 export default class TextPage extends Component {
@@ -158,7 +164,7 @@ export default class TextPage extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <TextColorSpecimen />
+                     <TextColorsSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
@@ -166,7 +172,7 @@ export default class TextPage extends Component {
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {TextColorSpecimen.codeSnippet}
+                     {TextColorsSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>

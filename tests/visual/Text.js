@@ -3,14 +3,14 @@ context('Text', () => {
       cy.viewport(500, 500)
    })
 
-   it('Renders at different sizes as expected', () => {
+   it('Renders at different text sizes as expected', () => {
       cy.visit('/tests/text-sizes')
       cy.testImageSnapshot('Text Sizes')
    })
 
-   it('Renders colors as expected', () => {
-      cy.visit('/tests/text-color')
-      cy.testImageSnapshot('Text Color')
+   it('Renders text colors as expected', () => {
+      cy.visit('/tests/text-colors')
+      cy.testImageSnapshot('Text Colors')
    })
 
    it('Renders different font-weights as expected', () => {
