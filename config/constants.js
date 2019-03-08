@@ -27,7 +27,7 @@ const breakpointMediaQueries = {
    c: `@media (min-width: ${breakpoints.b}px) and (max-width: ${breakpoints.c}px)`,
    d: `@media (min-width: ${breakpoints.c}px) and (max-width: ${breakpoints.d}px)`,
    e: `@media (min-width: ${breakpoints.d}px) and (max-width: ${breakpoints.e}px)`,
-   f: `@media (min-width: ${breakpoints.e}px`
+   f: `@media (min-width: ${breakpoints.e}px)`
 }
 
 // =======================================================
