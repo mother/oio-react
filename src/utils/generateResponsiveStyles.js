@@ -1,7 +1,6 @@
 // NOTE: This utility is currently considered EXPERIMENTAL, and is not
 // ready for production yet. Likely to change significantly in following PRs.
-import { breakpointMediaQueries } from '../../config/constants'
-
+const { breakpointMediaQueries } = require('../../config/constants')
 // responsiveObjects = {
 //    fontFamily: {
 //       a: 'Arial',
