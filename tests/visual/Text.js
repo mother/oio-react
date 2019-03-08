@@ -1,5 +1,5 @@
 context('Text', () => {
-   beforeEach(() => {
+   before(() => {
       cy.viewport(500, 500)
    })
 

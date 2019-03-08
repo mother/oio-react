@@ -1,8 +1,5 @@
 // =======================================================
 // View
-// Foundational component for structuring layouts
-// Rating: ?
-// Code to be simplified
 // =======================================================
 
 import React from 'react'
