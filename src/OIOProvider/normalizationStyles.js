@@ -1,4 +1,6 @@
-const normalizationStyles = `
+import { css } from '@emotion/core'
+
+const normalizationStyles = css`
    *{
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent; // "turn off" link highlight

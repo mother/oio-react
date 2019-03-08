@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
+import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
+import { Text } from '../../../../src'
 import style from '../style.less'
 
 const codeSnippet1 = `
@@ -41,18 +42,18 @@ export default class OIOProviderPage extends PureComponent {
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <h1>OIOProvider</h1>
+                  <Text size="12" weight="medium">OIOProvider</Text>
                   <br />
-                  <p>
+                  <Text size="5" weight="light">
                      {/* eslint-disable max-len */}
                      To use OIO components, you must wrap all components inside a <code>OIOProvider</code> component. <code>OIOProvider</code> components are used to propagate reuseable and cohesive props to all components within its scope. <code>OIOProvider</code> components can be nested.
                      {/* eslint-enable max-len */}
-                  </p>
+                  </Text>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {codeSnippet1}
                   </SyntaxHighlighter>

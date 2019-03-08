@@ -1,5 +1,2 @@
-import OIOProvider from './OIOProvider'
-
-export {
-   OIOProvider // eslint-disable-line import/prefer-default-export
-}
+export { default as OIOProvider } from './OIOProvider'
+export { default as Text } from './Text'

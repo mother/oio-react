@@ -1,6 +1,14 @@
 {
-    "extends": "mother",
-    "rules": {
-       "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": true}]
-    }
+   "extends": "mother",
+   "plugins": ["emotion"],
+   "rules": {
+      "import/no-extraneous-dependencies": [
+         "error", {
+            "devDependencies": true,
+            "optionalDependencies": false,
+            "peerDependencies": true
+         }
+      ],
+      "emotion/jsx-import": "error"
+   }
 }
