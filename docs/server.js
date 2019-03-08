@@ -27,7 +27,7 @@ app.get('*', (req, res, next) => {
    res.sendFile('index.html', { root: `${__dirname}/` })
 })
 
-const server = app.listen(8000, () => {
+const server = app.listen(process.env.PORT || 8000, () => {
    const port = server.address().port
    const pattern = Array(80).join('=')
    /* eslint-disable no-console */

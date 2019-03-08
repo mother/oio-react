@@ -1,9 +1,3 @@
-import OIOProvider from './OIOProvider'
-import Text from './Text'
-import View from './View'
-
-export {
-   OIOProvider,
-   Text,
-   View
-}
+export { default as OIOProvider } from './OIOProvider'
+export { default as Text } from './Text'
+export { default as View } from './View'

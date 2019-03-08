@@ -2,7 +2,6 @@
 // Text
 // Foundational component that is used as Root
 // component for may other OIO components
-// Rating: 4
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
@@ -12,8 +11,8 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
-import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
+import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
@@ -34,12 +33,13 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { autoScale, OIOContext, sizeMultiplier } = props
+   const { autoScale, OIOContext } = props
 
    // Responsive Props
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
    const size = props.size[breakpoint]
+   const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
    const uppercase = props.uppercase
    const weight = props.weight[breakpoint]
 
@@ -65,7 +65,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    return ({
       fontSize,
-      fontWeight: OIOContext.fontWeights[weight],
+      fontWeight: OIOContext[`fontWeight${weight.charAt(0).toUpperCase()}${weight.slice(1)}`],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
       textTransform: uppercase ? 'uppercase' : undefined
    })
@@ -76,7 +76,6 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // ============================================================================
 
 export default class Text extends React.Component {
-   /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
       baseFontSize: OIOResponsiveObjectPropType,
@@ -89,13 +88,12 @@ export default class Text extends React.Component {
       fontWeight: OIOResponsiveObjectPropType.isRequired,
       lineHeight: OIOResponsiveObjectPropType,
       size: OIOResponsiveObjectPropType,
-      sizeMultiplier: PropTypes.number,
+      sizeMultiplier: OIOResponsiveObjectPropType,
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
       uppercase: PropTypes.bool,
       weight: OIOResponsiveObjectPropType.isRequired
    }
-   /* eslint-enable */
 
    static defaultProps = {
       autoScale: false,
@@ -107,7 +105,7 @@ export default class Text extends React.Component {
       fontFamily: r``,
       lineHeight: '120%',
       size: r`3`,
-      sizeMultiplier: 1,
+      sizeMultiplier: r`1`,
       style: {},
       uppercase: false,
       weight: r`normal`
