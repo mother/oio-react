@@ -49,10 +49,11 @@ test('Text will render color correctly', () => {
    expect(container).toMatchSnapshot()
 })
 
-test('Text will render uppercase prop correctly', () => {
+test('Text will render text transforms correctly', () => {
    const { container } = render(
       <OIOProvider>
          <Text uppercase>Uppercase Text</Text>
+         <Text capitalize>capitalized text</Text>
          <Text>Standard Case Text</Text>
       </OIOProvider>
    )
