@@ -5,6 +5,7 @@ import { Text } from '../../../../src'
 import TextAutoScaleSpecimen from '../../../specimens/TextAutoScale'
 import TextColorsSpecimen from '../../../specimens/TextColors'
 import TextSizesSpecimen from '../../../specimens/TextSizes'
+import TextTransformsSpecimen from '../../../specimens/TextTransforms'
 import TextWeightsSpecimen from '../../../specimens/TextWeights'
 import style from '../style.less'
 
@@ -14,6 +15,12 @@ const apiOptions = [{
    default: '<code>false</code>',
    description: 'When set to <code>true</code>, text will scale dynamically proportionally to the browser screen size',
    responsive: true
+}, {
+   name: 'capitalize',
+   type: 'Boolean',
+   default: '<code>false</code>',
+   description: 'Set to <code>true</code> to apply the css equivalent of <code>text-transform: capitalize;</code>',
+   responsive: false
 }, {
    name: 'className',
    type: 'String',
@@ -31,6 +38,12 @@ const apiOptions = [{
    type: 'String',
    default: '-',
    description: 'Apply a specific font-family to the text within this component',
+   responsive: true
+}, {
+   name: 'letterSpacing',
+   type: 'String',
+   default: '<code>0</code>',
+   description: 'Set letter-spacing for Text. Any compatible css letter-spacing values are valid',
    responsive: true
 }, {
    name: 'lineHeight',
@@ -54,7 +67,7 @@ const apiOptions = [{
    name: 'uppercase',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'Set to <code>true</code> to transform text characters to uppercase',
+   description: 'Set to <code>true</code> to apply the css equivalent of <code>text-transform: uppercase;</code>',
    responsive: false
 }, {
    name: 'weight',
@@ -173,6 +186,32 @@ export default class TextPage extends Component {
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {TextColorsSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Text Transforms
+                  </Text>
+                  <br />
+                  <Text>
+                     {/* eslint-disable max-len */}
+                     You can set text transformations on <code>Text</code> content to be capitalized or uppercase.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <TextTransformsSpecimen />
+                  </div>
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {TextTransformsSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>

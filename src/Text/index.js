@@ -26,6 +26,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'baseFontSize',
    'color',
    'fontFamily',
+   'letterSpacing',
    'lineHeight',
    'size',
    'sizeMultiplier',
@@ -38,6 +39,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    // Responsive Props
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
+   const capitalize = props.capitalize
    const size = props.size[breakpoint]
    const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
    const uppercase = props.uppercase
@@ -54,8 +56,17 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
       : undefined
 
+   // Set if text is capitalized or uppercase
+   let textTransform
+
+   if (capitalize) {
+      textTransform = 'capitalize'
+   } else if (uppercase) {
+      textTransform = 'uppercase'
+   }
+
    // Adjust line-height based on text size
-   let calculatedLineHeight = '120%'
+   let calculatedLineHeight = '130%'
 
    if (size > 9) {
       calculatedLineHeight = '100%'
@@ -67,7 +78,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       fontSize,
       fontWeight: OIOContext[`fontWeight${weight.charAt(0).toUpperCase()}${weight.slice(1)}`],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
-      textTransform: uppercase ? 'uppercase' : undefined
+      textTransform
    })
 })
 
@@ -80,12 +91,14 @@ export default class Text extends React.Component {
       autoScale: PropTypes.bool,
       baseFontSize: OIOResponsiveObjectPropType,
       baseAutoScaleFontSize: OIOResponsiveObjectPropType,
+      capitalize: PropTypes.bool,
       children: PropTypes.node,
       className: PropTypes.string,
       color: OIOResponsiveObjectPropType,
       fontFamily: OIOResponsiveObjectPropType,
       fontSize: OIOResponsiveObjectPropType.isRequired,
       fontWeight: OIOResponsiveObjectPropType.isRequired,
+      letterSpacing: OIOResponsiveObjectPropType,
       lineHeight: OIOResponsiveObjectPropType,
       size: OIOResponsiveObjectPropType,
       sizeMultiplier: OIOResponsiveObjectPropType,
@@ -99,10 +112,12 @@ export default class Text extends React.Component {
       autoScale: false,
       baseFontSize: r`11px`,
       baseAutoScaleFontSize: r`2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]`,
+      capitalize: false,
       children: null,
       className: '',
       color: r``,
       fontFamily: r``,
+      letterSpacing: r``,
       lineHeight: '120%',
       size: r`3`,
       sizeMultiplier: r`1`,
@@ -119,6 +134,7 @@ export default class Text extends React.Component {
          fontFamily,
          fontSize,
          fontWeight,
+         letterSpacing,
          lineHeight,
          textTransform
       } = this.props
@@ -128,6 +144,7 @@ export default class Text extends React.Component {
          fontFamily,
          fontSize,
          fontWeight,
+         letterSpacing,
          lineHeight,
          textTransform
       })
