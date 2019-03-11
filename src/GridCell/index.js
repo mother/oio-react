@@ -1,7 +1,5 @@
 // =======================================================
-// Grid
-// Rating: 3
-// Fairly feature-complete, needs to be field-tested
+// GridCell
 // =======================================================
 
 import React from 'react'
