@@ -37,8 +37,7 @@ const generateStyles = (responsiveObjects) => {
       if (responsiveObjects[styleKey]) {
          Object.keys(responsiveObjects[styleKey]).forEach((breakpointKey) => {
             // TODO: Optimize responsiveObjects where `breakpointsWereSet === false`
-            if (typeof responsiveObjects[styleKey][breakpointKey] !== 'boolean' &&
-               responsiveObjects[styleKey][breakpointKey]) {
+            if (typeof responsiveObjects[styleKey][breakpointKey] !== 'boolean') {
                result[breakpoints[breakpointKey]][styleKey] =
                responsiveObjects[styleKey][breakpointKey]
             }

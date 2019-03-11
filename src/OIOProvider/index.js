@@ -18,13 +18,11 @@ export default class OIOProvider extends React.Component {
       className: PropTypes.string,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
-      fontWeights: PropTypes.shape({
-         light: PropTypes.string.isRequired,
-         normal: PropTypes.string.isRequired,
-         medium: PropTypes.string.isRequired,
-         semibold: PropTypes.string.isRequired,
-         bold: PropTypes.string.isRequired
-      }),
+      fontWeightLight: PropTypes.string.isRequired,
+      fontWeightNormal: PropTypes.string.isRequired,
+      fontWeightMedium: PropTypes.string.isRequired,
+      fontWeightSemibold: PropTypes.string.isRequired,
+      fontWeightBold: PropTypes.string.isRequired,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
       textSizeMultiplier: PropTypes.number
@@ -32,16 +30,14 @@ export default class OIOProvider extends React.Component {
 
    static defaultProps = {
       children: null,
-      className: '',
+      className: undefined,
       fontFamily: 'sans-serif',
       fontSize: '16px',
-      fontWeights: {
-         light: '300',
-         normal: '400',
-         medium: '500',
-         semibold: '600',
-         bold: '700'
-      },
+      fontWeightLight: '300',
+      fontWeightNormal: '400',
+      fontWeightMedium: '500',
+      fontWeightSemibold: '600',
+      fontWeightBold: '700',
       style: {},
       textSizeScaleRatio: 1.125,
       textSizeMultiplier: 1
@@ -53,16 +49,25 @@ export default class OIOProvider extends React.Component {
          className,
          fontFamily,
          fontSize,
-         fontWeights,
+         fontWeightLight,
+         fontWeightNormal,
+         fontWeightMedium,
+         fontWeightSemibold,
+         fontWeightBold,
          style,
          textSizeMultiplier,
          textSizeScaleRatio
       } = this.props
 
+      // Props available to OIO Context Consumer
       const contextProps = {
          fontFamily,
          fontSize,
-         fontWeights,
+         fontWeightLight,
+         fontWeightNormal,
+         fontWeightMedium,
+         fontWeightSemibold,
+         fontWeightBold,
          textSizeMultiplier,
          textSizeScaleRatio
       }
