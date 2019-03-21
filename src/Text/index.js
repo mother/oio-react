@@ -81,7 +81,6 @@ export default class Text extends React.Component {
       autoScale: PropTypes.bool,
       baseFontSize: OIOResponsiveObjectPropType,
       baseAutoScaleFontSize: OIOResponsiveObjectPropType,
-      capitalize: PropTypes.bool,
       children: PropTypes.node,
       className: PropTypes.string,
       color: OIOResponsiveObjectPropType,
@@ -95,7 +94,6 @@ export default class Text extends React.Component {
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
       transform: OIOResponsiveObjectPropType,
-      uppercase: PropTypes.bool,
       weight: OIOResponsiveObjectPropType.isRequired
    }
 
@@ -103,7 +101,6 @@ export default class Text extends React.Component {
       autoScale: false,
       baseFontSize: r`11px`,
       baseAutoScaleFontSize: r`2.5[a] 1.8[b] 1.5[c] 1[d] 0.75[e] 0.625[f]`,
-      capitalize: false,
       children: null,
       className: '',
       color: r``,
