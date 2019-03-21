@@ -30,6 +30,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'lineHeight',
    'size',
    'sizeMultiplier',
+   'transform',
    'weight'
 ])
 
@@ -39,10 +40,8 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    // Responsive Props
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
-   const capitalize = props.capitalize
    const size = props.size[breakpoint]
    const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
-   const uppercase = props.uppercase
    const weight = props.weight[breakpoint]
 
    // Calculate real font size
@@ -50,20 +49,11 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    // text size, scaling ratios and multipliers (multipliers are useful for theming)
    const textSizeScaleRatio = OIOContext.textSizeScaleRatio
    const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier
    const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
    const fontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
       ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
       : undefined
-
-   // Set if text is capitalized or uppercase
-   let textTransform
-
-   if (capitalize) {
-      textTransform = 'capitalize'
-   } else if (uppercase) {
-      textTransform = 'uppercase'
-   }
 
    // Adjust line-height based on text size
    let calculatedLineHeight = '130%'
@@ -78,7 +68,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       fontSize,
       fontWeight: OIOContext[`fontWeight${weight.charAt(0).toUpperCase()}${weight.slice(1)}`],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
-      textTransform
+      textTransform: props.transform[breakpoint]
    })
 })
 
@@ -104,6 +94,7 @@ export default class Text extends React.Component {
       sizeMultiplier: OIOResponsiveObjectPropType,
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
+      transform: OIOResponsiveObjectPropType,
       uppercase: PropTypes.bool,
       weight: OIOResponsiveObjectPropType.isRequired
    }
@@ -122,7 +113,7 @@ export default class Text extends React.Component {
       size: r`3`,
       sizeMultiplier: r`1`,
       style: {},
-      uppercase: false,
+      transform: r``,
       weight: r`normal`
    }
 

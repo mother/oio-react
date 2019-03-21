@@ -52,8 +52,8 @@ test('Text will render color correctly', () => {
 test('Text will render text transforms correctly', () => {
    const { container } = render(
       <OIOProvider>
-         <Text uppercase>Uppercase Text</Text>
-         <Text capitalize>capitalized text</Text>
+         <Text transform="uppercase">Uppercase Text</Text>
+         <Text transform="capitalize">capitalized text</Text>
          <Text>Standard Case Text</Text>
       </OIOProvider>
    )

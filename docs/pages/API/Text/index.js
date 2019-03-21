@@ -16,12 +16,6 @@ const apiOptions = [{
    description: 'When set to <code>true</code>, text will scale dynamically proportionally to the browser screen size',
    responsive: true
 }, {
-   name: 'capitalize',
-   type: 'Boolean',
-   default: '<code>false</code>',
-   description: 'Set to <code>true</code> to apply the css equivalent of <code>text-transform: capitalize;</code>',
-   responsive: false
-}, {
    name: 'className',
    type: 'String',
    default: '-',
@@ -64,11 +58,11 @@ const apiOptions = [{
    description: 'Pass a style <code>object</code> to customize inline style of the component',
    responsive: false
 }, {
-   name: 'uppercase',
-   type: 'Boolean',
-   default: '<code>false</code>',
-   description: 'Set to <code>true</code> to apply the css equivalent of <code>text-transform: uppercase;</code>',
-   responsive: false
+   name: 'transform',
+   type: 'String',
+   default: '<code>normal</code>',
+   description: 'Set text transformations for Text. Any compatible css <code>text-transform</code> values are valid, including: <code>capitalize</code>, <code>lowercase</code>, <code>uppercase</code>',
+   responsive: true
 }, {
    name: 'weight',
    type: 'String',
