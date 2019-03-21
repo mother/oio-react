@@ -23,7 +23,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'paddingHorizontal', 'paddingVertical',
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
    'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize',
-   'borderRadius', 'boxShadow', 'textAlign', 'zIndex'
+   'borderRadius', 'boxShadow', 'opacity', 'textAlign', 'transform', 'transition', 'zIndex'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
@@ -99,6 +99,7 @@ export default class View extends React.Component {
       onTouchMove: PropTypes.func,
       onTouchStart: PropTypes.func,
       onTransitionEnd: PropTypes.func,
+      opacity: OIOResponsiveObjectPropType,
       order: OIOResponsiveObjectPropType,
       overflow: OIOResponsiveObjectPropType,
       padding: OIOResponsiveObjectPropType,
@@ -113,6 +114,8 @@ export default class View extends React.Component {
       style: PropTypes.object,
       textAlign: OIOResponsiveObjectPropType,
       top: OIOResponsiveObjectPropType,
+      transform: OIOResponsiveObjectPropType,
+      transition: OIOResponsiveObjectPropType,
       left: OIOResponsiveObjectPropType,
       right: OIOResponsiveObjectPropType,
       bottom: OIOResponsiveObjectPropType,
@@ -158,7 +161,7 @@ export default class View extends React.Component {
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
-         borderRadius, boxShadow, textAlign, zIndex,
+         borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling,
          onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
@@ -175,7 +178,7 @@ export default class View extends React.Component {
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
-         borderRadius, boxShadow, textAlign, zIndex,
+         borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling
       })
 

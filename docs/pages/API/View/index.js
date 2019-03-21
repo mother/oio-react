@@ -90,11 +90,29 @@ const apiOptions = [{
    description: 'css equivalent value',
    responsive: true
 }, {
+   name: 'opacity',
+   type: 'Object',
+   default: '-',
+   description: 'css equivalent value',
+   responsive: true
+}, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
    description: 'Pass a style <code>object</code> to customize inline style of the OIO Container',
    responsive: false
+}, {
+   name: 'transform',
+   type: 'Object',
+   default: '-',
+   description: 'css equivalent value',
+   responsive: true
+}, {
+   name: 'transition',
+   type: 'Object',
+   default: '-',
+   description: 'css equivalent value',
+   responsive: true
 }, {
    name: 'zIndex',
    type: 'String',
@@ -302,6 +320,35 @@ export default class ViewPage extends PureComponent {
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {ViewBasicSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Supported Events
+                  </Text>
+                  <br />
+                  <Text>
+                     {/* eslint-disable max-len */}
+                     The <code>View</code> component supports the following React  events:
+                     <br /><br />
+                     <code>
+                        onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+                        onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
+                        onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
+                     </code>
+                     <br /><br />
+                     (Visit <a href="https://reactjs.org/docs/events.html">https://reactjs.org/docs/events.html</a> for more information about React SyntheticEvents)
+                     {/* eslint-enable max-len */}
+                  </Text>
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {'<View onClick={doSomething}>Synthetic Events</View>'}
                   </SyntaxHighlighter>
                </div>
             </div>
