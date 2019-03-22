@@ -60,8 +60,8 @@ const apiOptions = [{
 }, {
    name: 'transform',
    type: 'String',
-   default: '<code>normal</code>',
-   description: 'Set text transformations for Text. Any compatible css <code>text-transform</code> values are valid, including: <code>capitalize</code>, <code>lowercase</code>, <code>uppercase</code>',
+   default: '<code>none</code>',
+   description: 'Set text transformations for Text. Any compatible css <code>text-transform</code> values are valid, including: <code>capitalize</code>, <code>initial</code>, <code>inherit</code>, <code>lowercase</code>, <code>none</code>, <code>uppercase</code>',
    responsive: true
 }, {
    name: 'weight',
