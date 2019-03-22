@@ -1,14 +1,6 @@
 import generateResponsiveStyles from '../../../src/utils/generateResponsiveStyles'
 
-beforeEach(() => {
-   jest.spyOn(console, 'error').mockImplementation(() => {})
-})
-
-afterEach(() => {
-   jest.restoreAllMocks()
-})
-
-test('It will correctly transform a responsive object in to responsive styles', () => {
+test('It will correctly transform responsive objects in to responsive styles', () => {
    const responsiveObject = {
       fontFamily: {
          a: 'Arial',
@@ -31,21 +23,49 @@ test('It will correctly transform a responsive object in to responsive styles', 
       },
       '@media (min-width: 675px) and (max-width: 1000px)': {
          color: 'blue'
-      },
-      '@media (min-width: 1000px) and (max-width: 1350px)': {},
-      '@media (min-width: 1350px) and (max-width: 1700px)': {},
-      '@media (min-width: 1700px)': {}
+      }
    })
 })
 
 test('It should provide an empty responsive style if no object is provided', () => {
    const result = generateResponsiveStyles()
+   expect(result).toEqual({})
+})
+
+test('It should ignore non POJOs', () => {
+   const result = generateResponsiveStyles({
+      fontFamily: undefined,
+      color: null,
+      c: new Map()
+   })
+
+   expect(result).toEqual({})
+})
+
+test('It should optimize transforming responsive objects where no breakpoints were set', () => {
+   const result = generateResponsiveStyles({
+      fontFamily: {
+         a: 'Arial',
+         b: 'Helvtica'
+      },
+      size: {
+         a: '100',
+         b: '100',
+         c: '100',
+         d: '100',
+         e: '100',
+         f: '100',
+         breakpointsWereSet: false
+      }
+   })
+
    expect(result).toEqual({
-      '@media (min-width: 0px) and (max-width: 475px)': {},
-      '@media (min-width: 475px) and (max-width: 675px)': {},
-      '@media (min-width: 675px) and (max-width: 1000px)': {},
-      '@media (min-width: 1000px) and (max-width: 1350px)': {},
-      '@media (min-width: 1350px) and (max-width: 1700px)': {},
-      '@media (min-width: 1700px)': {}
+      size: '100',
+      '@media (min-width: 0px) and (max-width: 475px)': {
+         fontFamily: 'Arial'
+      },
+      '@media (min-width: 475px) and (max-width: 675px)': {
+         fontFamily: 'Helvtica'
+      }
    })
 })
