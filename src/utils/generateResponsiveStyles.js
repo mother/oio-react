@@ -12,7 +12,7 @@ const { breakpointMediaQueries } = require('../../config/constants')
 //    }
 // }
 
-const generateStyles = (responsiveObjects) => {
+const generateStyles = (responsiveObjects = {}) => {
    const result = {
       [breakpointMediaQueries.a]: {},
       [breakpointMediaQueries.b]: {},

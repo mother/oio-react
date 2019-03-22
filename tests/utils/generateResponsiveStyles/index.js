@@ -37,3 +37,15 @@ test('It will correctly transform a responsive object in to responsive styles', 
       '@media (min-width: 1700px)': {}
    })
 })
+
+test('It should provide an empty responsive style if no object is provided', () => {
+   const result = generateResponsiveStyles()
+   expect(result).toEqual({
+      '@media (min-width: 0px) and (max-width: 475px)': {},
+      '@media (min-width: 475px) and (max-width: 675px)': {},
+      '@media (min-width: 675px) and (max-width: 1000px)': {},
+      '@media (min-width: 1000px) and (max-width: 1350px)': {},
+      '@media (min-width: 1350px) and (max-width: 1700px)': {},
+      '@media (min-width: 1700px)': {}
+   })
+})
