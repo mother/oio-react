@@ -4,7 +4,7 @@
 // responsiveObjects = {
 //    fontFamily: {
 //       a: 'Arial',
-//       b: 'Helvtica'
+//       b: 'Helvetica'
 //    },
 //    color: {
 //       a: 'red',
@@ -19,7 +19,7 @@
 //    color: 'red'
 // },
 // '@media (min-width: 475px) and (max-width: 675px)': {
-//    fontFamily: 'Helvtica'
+//    fontFamily: 'Helvetica'
 // },
 // '@media (min-width: 675px) and (max-width: 1000px)': {
 //    color: 'blue'

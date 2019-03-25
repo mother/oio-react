@@ -4,7 +4,7 @@ test('It will correctly transform responsive objects in to responsive styles', (
    const responsiveObject = {
       fontFamily: {
          a: 'Arial',
-         b: 'Helvtica'
+         b: 'Helvetica'
       },
       color: {
          a: 'red',
@@ -19,7 +19,7 @@ test('It will correctly transform responsive objects in to responsive styles', (
          color: 'red'
       },
       '@media (min-width: 475px) and (max-width: 675px)': {
-         fontFamily: 'Helvtica'
+         fontFamily: 'Helvetica'
       },
       '@media (min-width: 675px) and (max-width: 1000px)': {
          color: 'blue'
@@ -46,7 +46,7 @@ test('It should optimize transforming responsive objects where no breakpoints we
    const result = generateResponsiveStyles({
       fontFamily: {
          a: 'Arial',
-         b: 'Helvtica'
+         b: 'Helvetica'
       },
       size: {
          a: '100',
@@ -65,7 +65,7 @@ test('It should optimize transforming responsive objects where no breakpoints we
          fontFamily: 'Arial'
       },
       '@media (min-width: 475px) and (max-width: 675px)': {
-         fontFamily: 'Helvtica'
+         fontFamily: 'Helvetica'
       }
    })
 })
