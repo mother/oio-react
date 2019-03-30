@@ -17,4 +17,9 @@ context('Text', () => {
       cy.visit('/tests/text-weights')
       cy.testImageSnapshot('Text Weights')
    })
+
+   it('Renders text transformations as expected', () => {
+      cy.visit('/tests/text-transforms')
+      cy.testImageSnapshot('Text Transforms')
+   })
 })
