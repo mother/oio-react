@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
 import OIOProviderPage from './OIOProvider'
 import TextPage from './Text'
+import ViewPage from './View'
 import style from './style.less'
 
 export default class API extends Component {
@@ -33,6 +34,9 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/text`} activeClassName={style.active}>
                      Text
                   </NavLink>
+                  <NavLink to={`${match.url}/view`} activeClassName={style.active}>
+                     View
+                  </NavLink>
                </div>
             </div>
             <div
@@ -45,6 +49,7 @@ export default class API extends Component {
                }}>
                <Route exact path={match.url} component={OIOProviderPage} />
                <Route path={`${match.url}/text`} component={TextPage} />
+               <Route path={`${match.url}/view`} component={ViewPage} />
             </div>
          </div>
       )
