@@ -1,6 +1,6 @@
-// =======================================================
+// ============================================================================
 // Grid
-// =======================================================
+// ============================================================================
 
 import React from 'react'
 /** @jsx jsx */
@@ -36,6 +36,7 @@ export default class Grid extends React.Component {
       children: PropTypes.node,
       className: PropTypes.string,
       columns: OIOResponsiveObjectPropType,
+      id: PropTypes.string,
       spacing: OIOResponsiveObjectPropType,
       style: PropTypes.object
    }
@@ -43,12 +44,13 @@ export default class Grid extends React.Component {
    static defaultProps = {
       className: '',
       columns: r`12`,
+      id: undefined,
       spacing: r`18px`,
       style: {}
    }
 
    render() {
-      const { children, className, columns, marginLeft, spacing, width } = this.props
+      const { children, className, columns, id, marginLeft, spacing, width } = this.props
       const contextProps = { columns, spacing }
       const responsiveStyles = generateResponsiveStyles({ width, marginLeft })
 
@@ -61,7 +63,7 @@ export default class Grid extends React.Component {
 
       return (
          <GridContext.Provider value={contextProps}>
-            <div css={style} className={className}>
+            <div id={id} css={style} className={className}>
                {children}
             </div>
          </GridContext.Provider>

@@ -1,6 +1,6 @@
-// =======================================================
+// ============================================================================
 // GridCell
-// =======================================================
+// ============================================================================
 
 import React from 'react'
 /** @jsx jsx */
@@ -42,17 +42,19 @@ export default class GridCell extends React.Component {
       children: PropTypes.node,
       className: PropTypes.string,
       colspan: OIOResponsiveObjectPropType,
+      id: PropTypes.string,
       style: PropTypes.object
    }
 
    static defaultProps = {
       className: '',
       colspan: r`1`,
+      id: undefined,
       style: {}
    }
 
    render() {
-      const { className, marginBottom, marginLeft, width } = this.props
+      const { className, id, marginBottom, marginLeft, width } = this.props
       const responsiveStyles = generateResponsiveStyles({
          marginBottom,
          marginLeft,
@@ -66,7 +68,7 @@ export default class GridCell extends React.Component {
       }
 
       return (
-         <div css={style} className={className}>
+         <div id={id} css={style} className={className}>
             {this.props.children}
          </div>
       )
