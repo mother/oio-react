@@ -5,6 +5,7 @@ import GridResponsive from '../../specimens/GridResponsive'
 import OIOProvider from '../../specimens/OIOProvider'
 import TextColors from '../../specimens/TextColors'
 import TextSizes from '../../specimens/TextSizes'
+import TextTransforms from '../../specimens/TextTransforms'
 import TextWeights from '../../specimens/TextWeights'
 import ViewKitchenSink from '../../specimens/ViewKitchenSink'
 
@@ -22,6 +23,7 @@ export default class Tests extends Component {
             <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
             <Route path={`${match.url}/text-colors`} component={TextColors} />
             <Route path={`${match.url}/text-sizes`} component={TextSizes} />
+            <Route path={`${match.url}/text-transforms`} component={TextTransforms} />
             <Route path={`${match.url}/text-weights`} component={TextWeights} />
             <Route path={`${match.url}/view-kitchen-sink`} component={ViewKitchenSink} />
          </Switch>

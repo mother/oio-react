@@ -23,7 +23,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'paddingHorizontal', 'paddingVertical',
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
    'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize',
-   'borderRadius', 'boxShadow', 'textAlign', 'zIndex'
+   'borderRadius', 'boxShadow', 'opacity', 'textAlign', 'transform', 'transition', 'zIndex'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
@@ -69,6 +69,7 @@ export default class View extends React.Component {
       flexFlow: OIOResponsiveObjectPropType,
       float: OIOResponsiveObjectPropType,
       height: OIOResponsiveObjectPropType,
+      id: PropTypes.string,
       justifyContent: OIOResponsiveObjectPropType,
       margin: OIOResponsiveObjectPropType,
       marginTop: OIOResponsiveObjectPropType,
@@ -80,8 +81,25 @@ export default class View extends React.Component {
       minWidth: OIOResponsiveObjectPropType,
       maxWidth: OIOResponsiveObjectPropType,
       onClick: PropTypes.func,
+      onCopy: PropTypes.func,
+      onCut: PropTypes.func,
+      onPaste: PropTypes.func,
+      onDoubleClick: PropTypes.func,
+      onKeyDown: PropTypes.func,
+      onKeyPress: PropTypes.func,
       onKeyUp: PropTypes.func,
+      onMouseDown: PropTypes.func,
+      onMouseMove: PropTypes.func,
+      onMouseOut: PropTypes.func,
+      onMouseOver: PropTypes.func,
+      onMouseUp: PropTypes.func,
       onScroll: PropTypes.func,
+      onTouchCancel: PropTypes.func,
+      onTouchEnd: PropTypes.func,
+      onTouchMove: PropTypes.func,
+      onTouchStart: PropTypes.func,
+      onTransitionEnd: PropTypes.func,
+      opacity: OIOResponsiveObjectPropType,
       order: OIOResponsiveObjectPropType,
       overflow: OIOResponsiveObjectPropType,
       padding: OIOResponsiveObjectPropType,
@@ -96,6 +114,8 @@ export default class View extends React.Component {
       style: PropTypes.object,
       textAlign: OIOResponsiveObjectPropType,
       top: OIOResponsiveObjectPropType,
+      transform: OIOResponsiveObjectPropType,
+      transition: OIOResponsiveObjectPropType,
       left: OIOResponsiveObjectPropType,
       right: OIOResponsiveObjectPropType,
       bottom: OIOResponsiveObjectPropType,
@@ -107,16 +127,33 @@ export default class View extends React.Component {
    static defaultProps = {
       className: '',
       display: r`block`,
-      onClick: () => {},
-      onKeyUp: () => {},
-      onScroll: () => {},
+      id: undefined,
+      onClick: undefined,
+      onCopy: undefined,
+      onCut: undefined,
+      onPaste: undefined,
+      onDoubleClick: undefined,
+      onKeyDown: undefined,
+      onKeyPress: undefined,
+      onKeyUp: undefined,
+      onMouseDown: undefined,
+      onMouseMove: undefined,
+      onMouseOut: undefined,
+      onMouseOver: undefined,
+      onMouseUp: undefined,
+      onScroll: undefined,
+      onTouchCancel: undefined,
+      onTouchEnd: undefined,
+      onTouchMove: undefined,
+      onTouchStart: undefined,
+      onTransitionEnd: undefined,
       position: r`relative`,
       style: {}
    }
 
    render() {
       const {
-         children, className,
+         children, className, id,
          display, float, position, top, left, right, bottom,
          flex, flexFlow, justifyContent, alignItems, order,
          height, width, maxHeight, maxWidth, minHeight, minWidth,
@@ -124,9 +161,11 @@ export default class View extends React.Component {
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
-         borderRadius, boxShadow, textAlign, zIndex,
+         borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling,
-         onClick, onKeyUp, onScroll
+         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
+         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
       } = this.props
 
       // Generate CSS responsive styles with Emotion
@@ -139,22 +178,28 @@ export default class View extends React.Component {
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
-         borderRadius, boxShadow, textAlign, zIndex,
+         borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling
       })
-      /* eslint-enable */
+
+      const eventHandlers = {
+         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
+         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
+      }
+
+      /* eslint-enable object-property-newline */
 
       return (
          <div
+            {...eventHandlers}
+            id={id}
             ref={this.props.forwardedRef}
             css={{
                ...this.props.style,
                ...responsiveStyles
             }}
-            className={className}
-            onClick={onClick}
-            onKeyUp={onKeyUp}
-            onScroll={onScroll}>
+            className={className}>
             {children}
          </div>
       )

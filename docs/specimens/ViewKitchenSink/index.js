@@ -8,7 +8,7 @@ const ViewKitchenSinkSpecimen = () => (
       left="30px"
       width="1300px"
       height="800px"
-      scroll="on">
+      style={{ overflow: 'hidden' }}>
       <View
          position="absolute"
          top="0px"
