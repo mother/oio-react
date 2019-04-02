@@ -2,7 +2,6 @@
 // Text
 // Foundational component that is used as Root
 // component for may other OIO components
-// Rating: 4
 // Fairly feature-complete, needs to be field-tested
 // =======================================================
 
@@ -12,8 +11,8 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
-import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
+import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
@@ -27,20 +26,22 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'baseFontSize',
    'color',
    'fontFamily',
+   'letterSpacing',
    'lineHeight',
    'size',
    'sizeMultiplier',
+   'transform',
    'weight'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { autoScale, OIOContext, sizeMultiplier } = props
+   const { autoScale, OIOContext } = props
 
    // Responsive Props
    const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
    const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
    const size = props.size[breakpoint]
-   const uppercase = props.uppercase
+   const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
    const weight = props.weight[breakpoint]
 
    // Calculate real font size
@@ -48,14 +49,14 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    // text size, scaling ratios and multipliers (multipliers are useful for theming)
    const textSizeScaleRatio = OIOContext.textSizeScaleRatio
    const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * (uppercase ? 0.9 : 1)
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier
    const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
    const fontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
       ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
       : undefined
 
    // Adjust line-height based on text size
-   let calculatedLineHeight = '120%'
+   let calculatedLineHeight = '130%'
 
    if (size > 9) {
       calculatedLineHeight = '100%'
@@ -65,9 +66,9 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    return ({
       fontSize,
-      fontWeight: OIOContext.fontWeights[weight],
+      fontWeight: OIOContext[`fontWeight${weight.charAt(0).toUpperCase()}${weight.slice(1)}`],
       lineHeight: props.lineHeight[breakpoint] || calculatedLineHeight,
-      textTransform: uppercase ? 'uppercase' : undefined
+      textTransform: props.transform[breakpoint]
    })
 })
 
@@ -76,7 +77,6 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // ============================================================================
 
 export default class Text extends React.Component {
-   /* eslint-disable react/no-unused-prop-types */
    static propTypes = {
       autoScale: PropTypes.bool,
       baseFontSize: OIOResponsiveObjectPropType,
@@ -87,15 +87,15 @@ export default class Text extends React.Component {
       fontFamily: OIOResponsiveObjectPropType,
       fontSize: OIOResponsiveObjectPropType.isRequired,
       fontWeight: OIOResponsiveObjectPropType.isRequired,
+      letterSpacing: OIOResponsiveObjectPropType,
       lineHeight: OIOResponsiveObjectPropType,
       size: OIOResponsiveObjectPropType,
-      sizeMultiplier: PropTypes.number,
+      sizeMultiplier: OIOResponsiveObjectPropType,
       style: PropTypes.object,
       textTransform: OIOResponsiveObjectPropType.isRequired,
-      uppercase: PropTypes.bool,
+      transform: OIOResponsiveObjectPropType,
       weight: OIOResponsiveObjectPropType.isRequired
    }
-   /* eslint-enable */
 
    static defaultProps = {
       autoScale: false,
@@ -105,11 +105,12 @@ export default class Text extends React.Component {
       className: '',
       color: r``,
       fontFamily: r``,
+      letterSpacing: r``,
       lineHeight: '120%',
       size: r`3`,
-      sizeMultiplier: 1,
+      sizeMultiplier: r`1`,
       style: {},
-      uppercase: false,
+      transform: r``,
       weight: r`normal`
    }
 
@@ -121,6 +122,7 @@ export default class Text extends React.Component {
          fontFamily,
          fontSize,
          fontWeight,
+         letterSpacing,
          lineHeight,
          textTransform
       } = this.props
@@ -130,6 +132,7 @@ export default class Text extends React.Component {
          fontFamily,
          fontSize,
          fontWeight,
+         letterSpacing,
          lineHeight,
          textTransform
       })

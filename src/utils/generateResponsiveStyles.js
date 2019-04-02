@@ -1,47 +1,68 @@
-// NOTE: This utility is currently considered EXPERIMENTAL, and is not
-// ready for production yet. Likely to change significantly in following PRs.
+// Transforms responsive objects into responsive styles
 
-// TODO: Move this to a constants file
-const breakpoints = {
-   a: '@media (min-width: 0px) and (max-width: 475px)',
-   b: '@media (min-width: 475px) and (max-width: 675px)',
-   c: '@media (min-width: 675px) and (max-width: 1000px)',
-   d: '@media (min-width: 1000px) and (max-width: 1350px)',
-   e: '@media (min-width: 1350px) and (max-width: 1700px)',
-   f: '@media (min-width: 1700px)'
-}
-
+// eg.
 // responsiveObjects = {
 //    fontFamily: {
 //       a: 'Arial',
-//       b: 'Helvtica'
+//       b: 'Helvetica'
 //    },
 //    color: {
 //       a: 'red',
 //       c: 'blue'
 //    }
 // }
+//
+// becomes
+//
+// '@media (min-width: 0px) and (max-width: 475px)': {
+//    fontFamily: 'Arial',
+//    color: 'red'
+// },
+// '@media (min-width: 475px) and (max-width: 675px)': {
+//    fontFamily: 'Helvetica'
+// },
+// '@media (min-width: 675px) and (max-width: 1000px)': {
+//    color: 'blue'
+// }
 
-const generateStyles = (responsiveObjects) => {
-   const result = {
-      [breakpoints.a]: {},
-      [breakpoints.b]: {},
-      [breakpoints.c]: {},
-      [breakpoints.d]: {},
-      [breakpoints.e]: {},
-      [breakpoints.f]: {}
-   }
+const { breakpointMediaQueries } = require('../../config/constants')
+
+// Plain Javascript Object Check
+
+const objPrototype = Object.prototype
+const getObjPrototype = Object.getPrototypeOf
+const isPOJO = obj => (
+   typeof obj !== 'object' || obj === null
+      ? false
+      : getObjPrototype(obj) === objPrototype
+)
+
+// Main Util
+
+const generateStyles = (responsiveObjects = {}) => {
+   const result = {}
 
    // TODO: Handle strings
    Object.keys(responsiveObjects).forEach((styleKey) => {
-      Object.keys(responsiveObjects[styleKey]).forEach((breakpointKey) => {
-         // TODO: Optimize responsiveObjects where `breakpointsWereSet === false`
-         if (typeof responsiveObjects[styleKey][breakpointKey] !== 'boolean' &&
-            responsiveObjects[styleKey][breakpointKey]) {
-            result[breakpoints[breakpointKey]][styleKey] =
-               responsiveObjects[styleKey][breakpointKey]
+      const responsiveObject = responsiveObjects[styleKey]
+      if (isPOJO(responsiveObject)) {
+         // Optimize responsiveObjects where `breakpointsWereSet === false`
+         if (responsiveObject.breakpointsWereSet === false) {
+            result[styleKey] = responsiveObject.a
+         } else {
+            Object.keys(responsiveObject).forEach((breakpointKey) => {
+               if (typeof responsiveObject[breakpointKey] !== 'boolean') {
+                  // If the breakpoint key doesn't exist in our result object, initialize it
+                  if (typeof result[breakpointMediaQueries[breakpointKey]] === 'undefined') {
+                     result[breakpointMediaQueries[breakpointKey]] = {}
+                  }
+
+                  result[breakpointMediaQueries[breakpointKey]][styleKey] =
+                     responsiveObject[breakpointKey]
+               }
+            })
          }
-      })
+      }
    })
 
    return result

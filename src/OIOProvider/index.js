@@ -22,13 +22,11 @@ export default class OIOProvider extends React.Component {
       elementHeights: PropTypes.object,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
-      fontWeights: PropTypes.shape({
-         light: PropTypes.string.isRequired,
-         normal: PropTypes.string.isRequired,
-         medium: PropTypes.string.isRequired,
-         semibold: PropTypes.string.isRequired,
-         bold: PropTypes.string.isRequired
-      }),
+      fontWeightLight: PropTypes.string.isRequired,
+      fontWeightNormal: PropTypes.string.isRequired,
+      fontWeightMedium: PropTypes.string.isRequired,
+      fontWeightSemibold: PropTypes.string.isRequired,
+      fontWeightBold: PropTypes.string.isRequired,
       highlightColor: PropTypes.string,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
@@ -44,7 +42,7 @@ export default class OIOProvider extends React.Component {
       },
       buttonTextUppercase: false,
       children: null,
-      className: '',
+      className: undefined,
       elementBorderRadius: {
          lg: '4px',
          md: '4px',
@@ -59,13 +57,11 @@ export default class OIOProvider extends React.Component {
       },
       fontFamily: 'sans-serif',
       fontSize: '16px',
-      fontWeights: {
-         light: '300',
-         normal: '400',
-         medium: '500',
-         semibold: '600',
-         bold: '700'
-      },
+      fontWeightLight: '300',
+      fontWeightNormal: '400',
+      fontWeightMedium: '500',
+      fontWeightSemibold: '600',
+      fontWeightBold: '700',
       highlightColor: '#2a383e',
       style: {},
       textSizeScaleRatio: 1.125,
@@ -82,13 +78,18 @@ export default class OIOProvider extends React.Component {
          elementHeights,
          fontFamily,
          fontSize,
-         fontWeights,
+         fontWeightLight,
+         fontWeightNormal,
+         fontWeightMedium,
+         fontWeightSemibold,
+         fontWeightBold,
          highlightColor,
          style,
          textSizeMultiplier,
          textSizeScaleRatio
       } = this.props
 
+      // Props available to OIO Context Consumer
       const contextProps = {
          buttonTextSize,
          buttonTextUppercase,
@@ -96,7 +97,11 @@ export default class OIOProvider extends React.Component {
          elementHeights,
          fontFamily,
          fontSize,
-         fontWeights,
+         fontWeightLight,
+         fontWeightNormal,
+         fontWeightMedium,
+         fontWeightSemibold,
+         fontWeightBold,
          highlightColor,
          textSizeMultiplier,
          textSizeScaleRatio

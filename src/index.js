@@ -1,9 +1,5 @@
-import OIOProvider from './OIOProvider'
-import Button from './Button'
-import Text from './Text'
-
-export {
-   OIOProvider,
-   Button,
-   Text
-}
+export { breakpoints } from '../config/constants'
+export { default as Button } from './Button'
+export { default as OIOProvider } from './OIOProvider'
+export { default as Text } from './Text'
+export { default as View } from './View'
