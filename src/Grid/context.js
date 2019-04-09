@@ -4,8 +4,8 @@ const GridContext = React.createContext()
 
 const withGridContext = WrappedComponent => props => (
    <GridContext.Consumer>
-      {theme => (
-         <WrappedComponent {...props} gridContext={theme} />
+      {context => (
+         <WrappedComponent {...props} gridContext={context} />
       )}
    </GridContext.Consumer>
 )

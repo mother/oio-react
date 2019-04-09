@@ -9,39 +9,46 @@ const gridApiOptions = [{
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container'
+   description: 'Pass a <code>className</code> to customize className of the OIO Container',
+   responsive: false
 }, {
    name: 'columns',
    type: 'String',
    default: '<code>12</code>',
-   description: 'Number of <code>GridCell</code> components that will fit in one row'
+   description: 'Number of <code>GridCell</code> components that will fit in one row',
+   responsive: true
 }, {
    name: 'spacing',
    type: 'String',
    default: '<code>18px</code>',
-   description: 'spacing between <code>GridCell</code> components'
+   description: 'spacing between <code>GridCell</code> components',
+   responsive: true
 }, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the OIO Container'
+   description: 'Pass a style <code>object</code> to customize inline style of the <code>Grid</code> component',
+   responsive: false
 }]
 
 const gridCellApiOptions = [{
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container'
+   description: 'Pass a <code>className</code> to customize className of the OIO Container',
+   responsive: false
 }, {
    name: 'colspan',
    type: 'String',
    default: '<code>1</code>',
-   description: 'Number of columns that the cell will span across inside <code>Grid</code> component.'
+   description: 'Number of columns that the cell will span across inside <code>Grid</code> component.',
+   responsive: true
 }, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the OIO Container'
+   description: 'Pass a style <code>object</code> to customize inline style of the <code>GridCell</code> component',
+   responsive: false
 }]
 
 export default class OIOContainer extends PureComponent {
@@ -86,6 +93,7 @@ export default class OIOContainer extends PureComponent {
                            <th width="90px">Prop Type</th>
                            <th width="150px">Default Value</th>
                            <th>Description/Options</th>
+                           <th>Responsive</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -98,6 +106,9 @@ export default class OIOContainer extends PureComponent {
                               </td>
                               <td>
                                  <div dangerouslySetInnerHTML={{ __html: option.description }} />
+                              </td>
+                              <td>
+                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
                               </td>
                            </tr>
                         ))}
@@ -117,6 +128,7 @@ export default class OIOContainer extends PureComponent {
                            <th width="90px">Prop Type</th>
                            <th width="150px">Default Value</th>
                            <th>Description/Options</th>
+                           <th>Responsive</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -129,6 +141,9 @@ export default class OIOContainer extends PureComponent {
                               </td>
                               <td>
                                  <div dangerouslySetInnerHTML={{ __html: option.description }} />
+                              </td>
+                              <td>
+                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
                               </td>
                            </tr>
                         ))}
