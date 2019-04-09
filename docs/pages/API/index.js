@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
+import GridPage from './Grid'
 import OIOProviderPage from './OIOProvider'
 import TextPage from './Text'
 import ViewPage from './View'
@@ -37,6 +38,9 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/view`} activeClassName={style.active}>
                      View
                   </NavLink>
+                  <NavLink to={`${match.url}/grid`} activeClassName={style.active}>
+                     Grid
+                  </NavLink>
                </div>
             </div>
             <div
@@ -50,6 +54,7 @@ export default class API extends Component {
                <Route exact path={match.url} component={OIOProviderPage} />
                <Route path={`${match.url}/text`} component={TextPage} />
                <Route path={`${match.url}/view`} component={ViewPage} />
+               <Route path={`${match.url}/grid`} component={GridPage} />
             </div>
          </div>
       )
