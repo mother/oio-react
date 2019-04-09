@@ -22,10 +22,10 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 @withDynamicResponsiveProps((props, breakpoint) => {
    const { gridContext } = props
 
-   const gridColumns = gridContext.columns[breakpoint]
    const colspan = props.colspan[breakpoint]
+   const numGridColumns = gridContext.columns[breakpoint]
    const spacing = gridContext.spacing[breakpoint]
-   const cellWidth = (colspan / gridColumns) * 100
+   const cellWidth = (colspan / numGridColumns) * 100
 
    return ({
       width: `calc(${cellWidth}% - ${spacing})`,
