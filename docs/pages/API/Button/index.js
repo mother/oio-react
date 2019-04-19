@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
-import { Button, Text } from '../../../src'
-import style from '../../style.less'
+import { Button, Text } from '../../../../src'
+import style from '../style.less'
 
 const codeSnippet1 = `
 // Button sizes
