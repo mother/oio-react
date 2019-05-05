@@ -187,6 +187,7 @@ export default class Button extends React.Component {
       } else if (mode === 'loading') {
          textStyle.opacity = 0
          style.cursor = 'default'
+         specialButtonProps.disabled = true
       } else if (mode === 'pulsing') {
          style.animation = `${pulsingAnimation} 2000ms infinite linear`
       }
