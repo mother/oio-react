@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { duotoneForest } from 'react-syntax-highlighter/dist/styles/prism'
+import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Button, Text } from '../../../../src'
 import style from '../style.less'
 
@@ -117,7 +117,7 @@ export default class OIOContainer extends Component {
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <Text size="14" weight="medium">
+                  <Text size="10" weight="medium">
                      Button
                   </Text>
                   <br />
@@ -153,7 +153,7 @@ export default class OIOContainer extends Component {
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {codeSnippet1}
                   </SyntaxHighlighter>
@@ -189,7 +189,7 @@ export default class OIOContainer extends Component {
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {codeSnippet2}
                   </SyntaxHighlighter>
@@ -218,10 +218,35 @@ export default class OIOContainer extends Component {
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
-                     style={duotoneForest}
+                     style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {codeSnippet3}
                   </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Button Modes
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
+                        <Button size="sm" name="Disabled" mode="disabled" />
+                        <Button size="sm" name="Loading" mode="loading" />
+                        <Button size="sm" name="Normal" mode="normal" />
+                        <Button size="sm" name="Pulsing" mode="pulsing" />
+                     </div>
+                  </div>
+               </div>
+               <div className={style.columnHalfCode}>
+                  {/* <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {codeSnippet3}
+                  </SyntaxHighlighter> */}
                </div>
             </div>
             <div className={style.block}>

@@ -1,17 +1,7 @@
-// =======================================================
-// Button
-// Rating: 2
-// TODO:
-// - needs lots of field testing
-// - button modes
-// - plain version
-// - Ability to use icon
-// =======================================================
-
 import React from 'react'
 import { Link } from 'react-router-dom'
 /** @jsx jsx */
-import { jsx } from '@emotion/core'
+import { jsx, keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import { withOIOContext } from '../OIOProvider/context'
@@ -20,7 +10,19 @@ import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import Spinner from '../Spinner'
 import Text from '../Text'
+import View from '../View'
+
+const pulsingAnimation = keyframes`
+   0% { opacity: 0.5; }
+   50% { opacity: 1; }
+   100% { opacity: 0.5; }
+`
+
+// ============================================================================
+// Decorators
+// ============================================================================
 
 @withOIOContext
 @withResponsiveObjectProps([
@@ -85,14 +87,20 @@ import Text from '../Text'
    return buttonStyle
 })
 
+// ============================================================================
+// Component
+// ============================================================================
+
 export default class Button extends React.Component {
    static propTypes = {
       borderRadius: OIOResponsiveObjectPropType,
       buttonTextSize: OIOResponsiveObjectPropType,
+      buttonTextTransform: PropTypes.string,
       className: PropTypes.string,
       color: OIOResponsiveObjectPropType,
       fontFamily: OIOResponsiveObjectPropType,
       link: PropTypes.node,
+      mode: PropTypes.oneOf(['disabled', 'normal', 'pulsing', 'loading']),
       name: PropTypes.node,
       onClick: PropTypes.func,
       outline: PropTypes.bool,
@@ -101,27 +109,27 @@ export default class Button extends React.Component {
       size: OIOResponsiveObjectPropType,
       style: PropTypes.object,
       textColor: OIOResponsiveObjectPropType,
-      textUppercase: PropTypes.bool,
       type: PropTypes.oneOf(['button', 'clear', 'submit']),
       width: OIOResponsiveObjectPropType
    }
 
    static defaultProps = {
+      buttonTextTransform: 'none',
+      mode: 'normal',
       onClick: () => {},
       outline: false,
       rounded: false,
       size: r`md`,
       style: {},
       textColor: r`#fff`,
-      textUppercase: false,
       type: 'button',
       width: r`auto`
    }
 
    render() {
       const {
-         className, name, link,
-         buttonTextSize, OIOContext, onClick, textUppercase,
+         className, link, mode, name, type,
+         buttonTextSize, buttonTextTransform, onClick,
          backgroundColor, border, borderRadius, color, fontFamily,
          padding, minHeight, minWidth, width,
          hoverBackgroundColor, hoverBorder
@@ -139,7 +147,9 @@ export default class Button extends React.Component {
       })
       /* eslint-enable */
 
+      const textStyle = {}
       const style = {
+         position: 'relative',
          alignItems: 'center',
          cursor: 'pointer',
          display: 'flex',
@@ -148,36 +158,72 @@ export default class Button extends React.Component {
          transition: '200ms',
          outline: 'none',
          ...this.props.style,
-         ...responsiveStyles,
-         '&:hover': {
-            ...hoverResponsiveStyles
-         },
-         '&:active': {
-            transform: 'translateY(3px)'
-         }
+         ...responsiveStyles
       }
 
+      // ====================================================
+      // Element
+      // ====================================================
+
       let ButtonElement = 'button'
-      let buttonLinkObj = null
+      let specialButtonProps = null
 
       // Buttons might be used as a html <button> or <Link>
       if (link) {
          ButtonElement = Link
-         buttonLinkObj = { to: link }
+         specialButtonProps = { to: link }
+      } else {
+         specialButtonProps = { type }
+      }
+
+      // ====================================================
+      // Mode
+      // ====================================================
+
+      if (mode === 'disabled') {
+         style.opacity = '0.3'
+         style.cursor = 'default'
+         specialButtonProps.disabled = true
+      } else if (mode === 'loading') {
+         textStyle.opacity = 0
+         style.cursor = 'default'
+      } else if (mode === 'pulsing') {
+         style.animation = `${pulsingAnimation} 2000ms infinite linear`
+      }
+
+      // Enable hover and active styles for normal and pulsing button modes
+      if (mode === 'normal' || mode === 'pulsing') {
+         style['&:hover'] = {
+            ...hoverResponsiveStyles
+         }
+         style['&:active'] = {
+            transform: 'translateY(3px)'
+         }
       }
 
       return (
          <ButtonElement
-            {...buttonLinkObj}
+            {...specialButtonProps}
             css={style}
             className={className}
             onClick={onClick}>
             <Text
                size={buttonTextSize}
                weight="semibold"
-               uppercase={textUppercase ? true : OIOContext.buttonTextUppercase}>
+               transform={buttonTextTransform}
+               style={textStyle}>
                {name}
             </Text>
+            {mode === 'loading' && (
+               <View
+                  position="absolute"
+                  top="calc(50% - 7px)"
+                  left="calc(50% - 9px)"
+                  width="18px"
+                  height="18px">
+                  <Spinner width="80%" height="80%" />
+               </View>
+            )}
          </ButtonElement>
       )
    }
