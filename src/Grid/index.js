@@ -25,7 +25,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    return ({
       width: `calc(100% + ${spacing})`,
-      marginLeft: `-${spacing}`
+      marginLeft: `calc(-1 * ${spacing})`
    })
 })
 
