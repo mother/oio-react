@@ -50,39 +50,39 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    }
 
    if (zoom !== 1) {
-      if (height && height[breakpoint] && height[breakpoint].includes('px')) {
+      if (height && height[breakpoint] && !height[breakpoint].includes('%')) {
          styleObject.height = `calc(${height[breakpoint]} * ${zoom})`
       }
 
-      if (width && width[breakpoint] && width[breakpoint].includes('px')) {
+      if (width && width[breakpoint] && !width[breakpoint].includes('%')) {
          styleObject.width = `calc(${width[breakpoint]} * ${zoom})`
       }
 
-      if (paddingTop && paddingTop[breakpoint] && paddingTop[breakpoint].includes('px')) {
+      if (paddingTop && paddingTop[breakpoint] && !paddingTop[breakpoint].includes('%')) {
          styleObject.paddingTop = `calc(${paddingTop[breakpoint]} * ${zoom})`
       }
 
-      if (paddingBottom && paddingBottom[breakpoint] && paddingBottom[breakpoint].includes('px')) {
+      if (paddingBottom && paddingBottom[breakpoint] && !paddingBottom[breakpoint].includes('%')) {
          styleObject.paddingBottom = `calc(${paddingBottom[breakpoint]} * ${zoom})`
       }
 
-      if (paddingLeft && paddingLeft[breakpoint] && paddingLeft[breakpoint].includes('px')) {
+      if (paddingLeft && paddingLeft[breakpoint] && !paddingLeft[breakpoint].includes('%')) {
          styleObject.paddingLeft = `calc(${paddingLeft[breakpoint]} * ${zoom})`
       }
 
-      if (paddingRight && paddingRight[breakpoint] && paddingRight[breakpoint].includes('px')) {
+      if (paddingRight && paddingRight[breakpoint] && !paddingRight[breakpoint].includes('%')) {
          styleObject.paddingRight = `calc(${paddingRight[breakpoint]} * ${zoom})`
       }
    }
 
    if (paddingHorizontal && paddingHorizontal[breakpoint]) {
-      const zoomLevel = paddingHorizontal[breakpoint].includes('px') ? zoom : 1
+      const zoomLevel = !paddingHorizontal[breakpoint].includes('%') ? zoom : 1
       styleObject.paddingLeft = `calc(${paddingHorizontal[breakpoint]} * ${zoomLevel})`
       styleObject.paddingRight = `calc(${paddingHorizontal[breakpoint]} * ${zoomLevel})`
    }
 
    if (paddingVertical && paddingVertical[breakpoint]) {
-      const zoomLevel = paddingVertical[breakpoint].includes('px') ? zoom : 1
+      const zoomLevel = !paddingVertical[breakpoint].includes('%') ? zoom : 1
       styleObject.paddingTop = `calc(${paddingVertical[breakpoint]} * ${zoomLevel})`
       styleObject.paddingBottom = `calc(${paddingVertical[breakpoint]} * ${zoomLevel})`
    }
