@@ -51,38 +51,38 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    if (zoom !== 1) {
       if (height && height[breakpoint]) {
-         styleObject.height = height[breakpoint]
+         styleObject.height = `calc(${height[breakpoint]} * ${zoom})`
       }
 
       if (width && width[breakpoint]) {
-         styleObject.width = width[breakpoint]
+         styleObject.width = `calc(${width[breakpoint]} * ${zoom})`
       }
 
       if (paddingTop && paddingTop[breakpoint]) {
-         styleObject.paddingTop = paddingTop[breakpoint]
+         styleObject.paddingTop = `calc(${paddingTop[breakpoint]} * ${zoom})`
       }
 
       if (paddingBottom && paddingBottom[breakpoint]) {
-         styleObject.paddingBottom = paddingBottom[breakpoint]
+         styleObject.paddingBottom = `calc(${paddingBottom[breakpoint]} * ${zoom})`
       }
 
       if (paddingLeft && paddingLeft[breakpoint]) {
-         styleObject.paddingLeft = paddingLeft[breakpoint]
+         styleObject.paddingLeft = `calc(${paddingLeft[breakpoint]} * ${zoom})`
       }
 
       if (paddingRight && paddingRight[breakpoint]) {
-         styleObject.paddingRight = paddingRight[breakpoint]
+         styleObject.paddingRight = `calc(${paddingRight[breakpoint]} * ${zoom})`
       }
    }
 
    if (paddingHorizontal && paddingHorizontal[breakpoint]) {
-      styleObject.paddingLeft = paddingHorizontal[breakpoint] * zoom
-      styleObject.paddingRight = paddingHorizontal[breakpoint] * zoom
+      styleObject.paddingLeft = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
+      styleObject.paddingRight = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
    }
 
    if (paddingVertical && paddingVertical[breakpoint]) {
-      styleObject.paddingTop = paddingVertical[breakpoint] * zoom
-      styleObject.paddingBottom = paddingVertical[breakpoint] * zoom
+      styleObject.paddingTop = `calc(${paddingVertical[breakpoint]} * ${zoom})`
+      styleObject.paddingBottom = `calc(${paddingVertical[breakpoint]} * ${zoom})`
    }
 
    return styleObject

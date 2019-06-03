@@ -21,11 +21,11 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 @withOIOContext
 @withResponsiveObjectProps(['columns', 'spacing'])
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const spacing = parseInt(props.spacing[breakpoint], 10) * props.OIOContext.zoom
+   const spacing = `calc(${props.spacing[breakpoint]} * ${props.OIOContext.zoom})`
 
    return ({
-      width: `calc(100% + ${spacing}px)`,
-      marginLeft: `-${spacing}px`
+      width: `calc(100% + ${spacing})`,
+      marginLeft: `-${spacing}`
    })
 })
 

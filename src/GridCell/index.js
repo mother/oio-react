@@ -26,13 +26,13 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    const colspan = props.colspan[breakpoint]
    const numGridColumns = gridContext.columns[breakpoint]
-   const spacing = parseInt(gridContext.spacing[breakpoint], 10) * OIOContext.zoom
+   const spacing = `calc(${gridContext.spacing[breakpoint]} * ${OIOContext.zoom})`
    const cellWidth = (colspan / numGridColumns) * 100
 
    return ({
-      width: `calc(${cellWidth}% - ${spacing}px)`,
-      marginBottom: `${spacing}px`,
-      marginLeft: `${spacing}px`
+      width: `calc(${cellWidth}% - ${spacing})`,
+      marginBottom: spacing,
+      marginLeft: spacing
    })
 })
 
