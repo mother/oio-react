@@ -7,6 +7,7 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withGridContext } from '../Grid/context'
+import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
@@ -17,20 +18,21 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // Decorators
 // ============================================================================
 
+@withOIOContext
 @withGridContext
 @withResponsiveObjectProps(['colspan'])
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { gridContext } = props
+   const { gridContext, OIOContext } = props
 
    const colspan = props.colspan[breakpoint]
    const numGridColumns = gridContext.columns[breakpoint]
-   const spacing = gridContext.spacing[breakpoint]
+   const spacing = parseInt(gridContext.spacing[breakpoint], 10) * OIOContext.zoom
    const cellWidth = (colspan / numGridColumns) * 100
 
    return ({
-      width: `calc(${cellWidth}% - ${spacing})`,
-      marginBottom: spacing,
-      marginLeft: spacing
+      width: `calc(${cellWidth}% - ${spacing}px)`,
+      marginBottom: `${spacing}px`,
+      marginLeft: `${spacing}px`
    })
 })
 

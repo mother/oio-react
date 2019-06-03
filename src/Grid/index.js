@@ -7,6 +7,7 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { GridContext } from './context'
+import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
@@ -17,13 +18,14 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // Decorators
 // ============================================================================
 
+@withOIOContext
 @withResponsiveObjectProps(['columns', 'spacing'])
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const spacing = props.spacing[breakpoint]
+   const spacing = parseInt(props.spacing[breakpoint], 10) * props.OIOContext.zoom
 
    return ({
-      width: `calc(100% + ${spacing})`,
-      marginLeft: `-${spacing}`
+      width: `calc(100% + ${spacing}px)`,
+      marginLeft: `-${spacing}px`
    })
 })
 

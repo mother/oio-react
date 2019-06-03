@@ -6,6 +6,7 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { withOIOContext } from '../OIOProvider/context'
 import forwardRefToWrappedComponent from '../utils/forwardRef'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import r from '../../macro'
@@ -13,6 +14,7 @@ import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
+@withOIOContext
 @forwardRefToWrappedComponent
 @withResponsiveObjectProps([
    'display', 'float', 'position', 'top', 'left', 'right', 'bottom', 'scroll',
@@ -27,7 +29,19 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { paddingHorizontal, paddingVertical, scroll } = props
+   const {
+      height,
+      paddingBottom,
+      paddingHorizontal,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
+      paddingVertical,
+      scroll,
+      width,
+      OIOContext
+   } = props
+   const zoom = OIOContext.zoom
    const styleObject = {}
 
    if (scroll && scroll[breakpoint] === 'on') {
@@ -35,14 +49,40 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       styleObject.WebkitOverflowScrolling = 'touch'
    }
 
+   if (zoom !== 1) {
+      if (height && height[breakpoint]) {
+         styleObject.height = height[breakpoint]
+      }
+
+      if (width && width[breakpoint]) {
+         styleObject.width = width[breakpoint]
+      }
+
+      if (paddingTop && paddingTop[breakpoint]) {
+         styleObject.paddingTop = paddingTop[breakpoint]
+      }
+
+      if (paddingBottom && paddingBottom[breakpoint]) {
+         styleObject.paddingBottom = paddingBottom[breakpoint]
+      }
+
+      if (paddingLeft && paddingLeft[breakpoint]) {
+         styleObject.paddingLeft = paddingLeft[breakpoint]
+      }
+
+      if (paddingRight && paddingRight[breakpoint]) {
+         styleObject.paddingRight = paddingRight[breakpoint]
+      }
+   }
+
    if (paddingHorizontal && paddingHorizontal[breakpoint]) {
-      styleObject.paddingLeft = paddingHorizontal[breakpoint]
-      styleObject.paddingRight = paddingHorizontal[breakpoint]
+      styleObject.paddingLeft = paddingHorizontal[breakpoint] * zoom
+      styleObject.paddingRight = paddingHorizontal[breakpoint] * zoom
    }
 
    if (paddingVertical && paddingVertical[breakpoint]) {
-      styleObject.paddingTop = paddingVertical[breakpoint]
-      styleObject.paddingBottom = paddingVertical[breakpoint]
+      styleObject.paddingTop = paddingVertical[breakpoint] * zoom
+      styleObject.paddingBottom = paddingVertical[breakpoint] * zoom
    }
 
    return styleObject
