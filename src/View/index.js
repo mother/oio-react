@@ -50,37 +50,37 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    }
 
    if (zoom !== 1) {
-      if (height && height[breakpoint]) {
+      if (height && height[breakpoint] && height[breakpoint].includes('px')) {
          styleObject.height = `calc(${height[breakpoint]} * ${zoom})`
       }
 
-      if (width && width[breakpoint]) {
+      if (width && width[breakpoint] && width[breakpoint].includes('px')) {
          styleObject.width = `calc(${width[breakpoint]} * ${zoom})`
       }
 
-      if (paddingTop && paddingTop[breakpoint]) {
+      if (paddingTop && paddingTop[breakpoint] && paddingTop[breakpoint].includes('px')) {
          styleObject.paddingTop = `calc(${paddingTop[breakpoint]} * ${zoom})`
       }
 
-      if (paddingBottom && paddingBottom[breakpoint]) {
+      if (paddingBottom && paddingBottom[breakpoint] && paddingBottom[breakpoint].includes('px')) {
          styleObject.paddingBottom = `calc(${paddingBottom[breakpoint]} * ${zoom})`
       }
 
-      if (paddingLeft && paddingLeft[breakpoint]) {
+      if (paddingLeft && paddingLeft[breakpoint] && paddingLeft[breakpoint].includes('px')) {
          styleObject.paddingLeft = `calc(${paddingLeft[breakpoint]} * ${zoom})`
       }
 
-      if (paddingRight && paddingRight[breakpoint]) {
+      if (paddingRight && paddingRight[breakpoint] && paddingRight[breakpoint].includes('px')) {
          styleObject.paddingRight = `calc(${paddingRight[breakpoint]} * ${zoom})`
       }
    }
 
-   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
+   if (paddingHorizontal && paddingHorizontal[breakpoint] && paddingHorizontal[breakpoint].includes('px')) {
       styleObject.paddingLeft = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
       styleObject.paddingRight = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
    }
 
-   if (paddingVertical && paddingVertical[breakpoint]) {
+   if (paddingVertical && paddingVertical[breakpoint] && paddingVertical[breakpoint].includes('px')) {
       styleObject.paddingTop = `calc(${paddingVertical[breakpoint]} * ${zoom})`
       styleObject.paddingBottom = `calc(${paddingVertical[breakpoint]} * ${zoom})`
    }
