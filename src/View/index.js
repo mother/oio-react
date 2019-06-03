@@ -75,14 +75,16 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       }
    }
 
-   if (paddingHorizontal && paddingHorizontal[breakpoint] && paddingHorizontal[breakpoint].includes('px')) {
-      styleObject.paddingLeft = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
-      styleObject.paddingRight = `calc(${paddingHorizontal[breakpoint]} * ${zoom})`
+   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
+      const zoomLevel = paddingHorizontal[breakpoint].includes('px') ? zoom : 1
+      styleObject.paddingLeft = `calc(${paddingHorizontal[breakpoint]} * ${zoomLevel})`
+      styleObject.paddingRight = `calc(${paddingHorizontal[breakpoint]} * ${zoomLevel})`
    }
 
-   if (paddingVertical && paddingVertical[breakpoint] && paddingVertical[breakpoint].includes('px')) {
-      styleObject.paddingTop = `calc(${paddingVertical[breakpoint]} * ${zoom})`
-      styleObject.paddingBottom = `calc(${paddingVertical[breakpoint]} * ${zoom})`
+   if (paddingVertical && paddingVertical[breakpoint]) {
+      const zoomLevel = paddingVertical[breakpoint].includes('px') ? zoom : 1
+      styleObject.paddingTop = `calc(${paddingVertical[breakpoint]} * ${zoomLevel})`
+      styleObject.paddingBottom = `calc(${paddingVertical[breakpoint]} * ${zoomLevel})`
    }
 
    return styleObject
