@@ -1,114 +1,122 @@
 import React, { Component } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
-import { Button, Text } from '../../../../src'
+import { Text } from '../../../../src'
+import ButtonChildrenSpecimen from '../../../specimens/ButtonChildren'
+import ButtonCustomizationsSpecimen from '../../../specimens/ButtonCustomizations'
+import ButtonModesSpecimen from '../../../specimens/ButtonModes'
+import ButtonSizesSpecimen from '../../../specimens/ButtonSizes'
+import ButtonStylesSpecimen from '../../../specimens/ButtonStyles'
 import style from '../style.less'
-
-const codeSnippet1 = `
-// Button sizes
-<Button name="Button (lg)" size="lg" />
-<Button name="Button (md)" size="md" />
-<Button name="Button (sm)" size="sm" />
-<Button name="Button (xs)" size="xs" />
-`
-
-const codeSnippet2 = `
-// Some button styles
-<Button name="Button (no radius)" size="sm" borderRadius="0px" />
-<Button name="Button uppercase" size="sm" textUppercase />
-<Button name="Button Rounded" size="sm" rounded />
-<Button name="Button (with width)" size="sm" width="300px" />
-<Button name="Button (with custom padding)" size="sm" padding="12px" />
-<Button name="Button with Color" size="sm" color="#3a3045" textColor="#b4435e" />
-<Button name="Button Outline" size="sm" outline />
-`
-
-const codeSnippet3 = `
-// Text, sizes 1 to 15!
-<Button name="Button Outline" color="#3a3045" textColor="#b4435e" />
-<Button name="Button Rounded" color="#3a3045" textColor="#b4435e" rounded />
-`
 
 const apiOptions = [{
    name: 'borderRadius',
    type: 'String',
    default: '4px',
-   description: 'Set the border-radius of the button. By default, all buttons inherit their borderRadius from the <code>elementBorderRadius</code> prop set on the parent <code>OIO</code> container.'
+   description: 'Set the border-radius of the button. By default, all buttons inherit their borderRadius from the <code>elementBorderRadius</code> prop set on the parent <code>OIO</code> container.',
+   responsive: true
 }, {
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the component'
+   description: 'Pass a <code>className</code> to customize className of the component',
+   responsive: false
 }, {
    name: 'color',
    type: 'String',
    default: '-',
-   description: 'The primary button color (usually its background color). Pass any css compatible color value. By default, all buttons inherit their color from the <code>highlightColor</code> prop set on the parent <code>OIO</code> container.'
+   description: 'The primary button color (usually its background color). Pass any css compatible color value. By default, all buttons inherit their color from the <code>highlightColor</code> prop set on the parent <code>OIO</code> container.',
+   responsive: true
 }, {
    name: 'fontFamily',
    type: 'String',
    default: '-',
-   description: 'Apply a specific font-family to the text within this component. By default, all buttons inherit the <code>fontFamily</code> set on the parent <code>OIO</code> container'
+   description: 'Apply a specific font-family to the text within this component. By default, all buttons inherit the <code>fontFamily</code> set on the parent <code>OIO</code> container',
+   responsive: true
 }, {
-   name: 'link',
-   type: 'String',
+   name: 'mode',
+   type: 'Enum',
    default: '-',
-   description: 'If a link value is passed <code>Button</code> will trigger a <code>Route</code> change on click'
+   description: 'Availalble options include: <code>disabled</code>, <code>normal</code>, <code>pulsing</code>, <code>loading</code>',
+   responsive: true
 }, {
    name: 'name',
    type: 'String',
    default: '-',
-   description: 'Text that appears inside the button'
+   description: 'Text that appears inside the button',
+   responsive: true
 }, {
    name: 'onClick',
    type: 'Function',
    default: '-',
-   description: 'Function to execute on mouse click'
+   description: 'Function to execute on mouse click',
+   responsive: false
 }, {
    name: 'outline',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'Set to <code>true</code>, gives the button an outline appearance'
+   description: 'Set to <code>true</code>, gives the button an outline appearance',
+   responsive: true
 }, {
    name: 'padding',
    type: 'String',
    default: '-',
-   description: 'Set the horizontal padding of the button'
+   description: 'Set the horizontal padding of the button',
+   responsive: true
 }, {
    name: 'rounded',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'Set to <code>true</code>, gives the button a rounded pill-like appearance'
+   description: 'Set to <code>true</code>, gives the button a rounded pill-like appearance',
+   responsive: true
 }, {
    name: 'size',
-   type: 'String',
+   type: 'Enum',
    default: '<code>3</code>',
-   description: 'Set the <code>Text</code> component size using a number between <code>1-15</code>'
+   description: 'Set the <code>Button</code> component size. Available values include:  <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>',
+   responsive: true
 }, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the component'
+   description: 'Pass a style <code>object</code> to customize inline style of the <code>Button</code> component',
+   responsive: true
 }, {
    name: 'textColor',
    type: 'String',
    default: '<code>#fff</code>',
-   description: 'The color of the button&apos;s text. Pass any css compatible color value.'
+   description: 'The color of the button&apos;s text. Pass any css compatible color value.',
+   responsive: true
 }, {
-   name: 'textUppercase',
-   type: 'Boolean',
-   default: '<code>false</code>',
-   description: 'Set to <code>true</code> to transform text characters to uppercase. To set all buttons to have uppercase text, you can  set <code>buttonTextUppercase</code> to <code>true</code> on the parent <code>OIO</code> container'
+   name: 'textSize',
+   type: 'String',
+   default: '<code>3</code>',
+   description: 'Set the size of the text inside button using a number between <code>1-15</code>',
+   responsive: true
+}, {
+   name: 'textTransform',
+   type: 'String',
+   default: '<code>none</code>',
+   description: 'Set text transformations for Text. Any compatible css <code>text-transform</code> values are valid, including: <code>capitalize</code>, <code>initial</code>, <code>inherit</code>, <code>lowercase</code>, <code>none</code>, <code>uppercase</code>',
+   responsive: true
+}, {
+   name: 'textWeight',
+   type: 'Enum',
+   default: '<code>normal</code>',
+   description: 'Valid values include: <code>light</code>, <code>normal</code>, <code>medium</code>, <code>semibold</code>, <code>bold</code>',
+   responsive: true
 }, {
    name: 'type',
    type: 'Enum',
    default: '<code>button</code>',
-   description: 'Can be one of: <code>button</code>, <code>clear</code> or <code>submit</code>'
+   description: 'Can be one of: <code>button</code>, <code>clear</code> or <code>submit</code>',
+   responsive: true
 }, {
    name: 'width',
    type: 'String',
    default: '-',
-   description: 'Set the <code>Button</code> to be a specific width'
+   description: 'Set the <code>Button</code> to be a specific width',
+   responsive: true
 }]
 
 export default class OIOContainer extends Component {
@@ -136,18 +144,7 @@ export default class OIOContainer extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button (lg)" size="lg" />
-                     </div>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button (md)" size="md" />
-                     </div>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button (sm)" size="sm" />
-                     </div>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button (xs)" size="xs" />
-                     </div>
+                     <ButtonSizesSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
@@ -155,7 +152,7 @@ export default class OIOContainer extends Component {
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet1}
+                     {ButtonSizesSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -175,15 +172,7 @@ export default class OIOContainer extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button (no radius)" size="sm" borderRadius="0px" />
-                        <Button name="Button uppercase" size="sm" textUppercase />
-                        <Button name="Button Rounded" size="sm" rounded />
-                        <Button name="Button (with width)" size="sm" width="300px" />
-                        <Button name="Button (with custom padding)" size="sm" padding="12px" />
-                        <Button name="Button with Color" size="sm" color="#3a3045" textColor="#b4435e" />
-                        <Button name="Button Outline" size="sm" outline />
-                     </div>
+                     <ButtonCustomizationsSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
@@ -191,7 +180,7 @@ export default class OIOContainer extends Component {
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet2}
+                     {ButtonCustomizationsSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -209,10 +198,7 @@ export default class OIOContainer extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button name="Button Outline" color="#3a3045" textColor="#b4435e" />
-                        <Button name="Button Rounded" color="#3a3045" textColor="#b4435e" rounded />
-                     </div>
+                     <ButtonStylesSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
@@ -220,7 +206,7 @@ export default class OIOContainer extends Component {
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet3}
+                     {ButtonStylesSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
@@ -232,21 +218,40 @@ export default class OIOContainer extends Component {
                   <br />
                   <br />
                   <div className={style.exampleContainer}>
-                     <div style={{ float: 'left', display: 'block', width: '100%', marginBottom: '3px' }}>
-                        <Button size="sm" name="Disabled" mode="disabled" />
-                        <Button size="sm" name="Loading" mode="loading" />
-                        <Button size="sm" name="Normal" mode="normal" />
-                        <Button size="sm" name="Pulsing" mode="pulsing" />
-                     </div>
+                     <ButtonModesSpecimen />
                   </div>
                </div>
                <div className={style.columnHalfCode}>
-                  {/* <SyntaxHighlighter
+                  <SyntaxHighlighter
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {codeSnippet3}
-                  </SyntaxHighlighter> */}
+                     {ButtonModesSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Button with Children
+                  </Text>
+                  <br />
+                  <Text>
+                     Nest <code>children</code> inside <code>Button</code> component.
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <ButtonChildrenSpecimen />
+                  </div>
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {ButtonChildrenSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
                </div>
             </div>
             <div className={style.block}>
@@ -275,6 +280,9 @@ export default class OIOContainer extends Component {
                               </td>
                               <td>
                                  <div dangerouslySetInnerHTML={{ __html: option.description }} />
+                              </td>
+                              <td>
+                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
                               </td>
                            </tr>
                         ))}

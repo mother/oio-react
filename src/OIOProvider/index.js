@@ -14,12 +14,8 @@ import normalizationStyles from './normalizationStyles'
 
 export default class OIOProvider extends React.Component {
    static propTypes = {
-      buttonTextSize: PropTypes.object,
-      buttonTextUppercase: PropTypes.bool,
       children: PropTypes.node,
       className: PropTypes.string,
-      elementBorderRadius: PropTypes.object,
-      elementHeights: PropTypes.object,
       fontFamily: PropTypes.string,
       fontSize: PropTypes.string,
       fontWeightLight: PropTypes.string.isRequired,
@@ -34,27 +30,8 @@ export default class OIOProvider extends React.Component {
    }
 
    static defaultProps = {
-      buttonTextSize: {
-         lg: '3',
-         md: '1.5',
-         sm: '0.9',
-         xs: '0.8'
-      },
-      buttonTextUppercase: false,
       children: null,
       className: undefined,
-      elementBorderRadius: {
-         lg: '4px',
-         md: '4px',
-         sm: '4px',
-         xs: '4px'
-      },
-      elementHeights: {
-         lg: '54px',
-         md: '42px',
-         sm: '36px',
-         xs: '24px'
-      },
       fontFamily: 'sans-serif',
       fontSize: '16px',
       fontWeightLight: '300',
@@ -70,12 +47,8 @@ export default class OIOProvider extends React.Component {
 
    render() {
       const {
-         buttonTextSize,
-         buttonTextUppercase,
          children,
          className,
-         elementBorderRadius,
-         elementHeights,
          fontFamily,
          fontSize,
          fontWeightLight,
@@ -91,10 +64,6 @@ export default class OIOProvider extends React.Component {
 
       // Props available to OIO Context Consumer
       const contextProps = {
-         buttonTextSize,
-         buttonTextUppercase,
-         elementBorderRadius,
-         elementHeights,
          fontFamily,
          fontSize,
          fontWeightLight,

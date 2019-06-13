@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 /** @jsx jsx */
 import { jsx, keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
@@ -13,6 +12,29 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 import Spinner from '../Spinner'
 import Text from '../Text'
 import View from '../View'
+
+// ============================================================================
+// Button Constants and Defaults
+// ============================================================================
+
+const buttonSizeDefaults = {
+   lg: {
+      height: '54px',
+      textSize: '3'
+   },
+   md: {
+      height: '42px',
+      textSize: '1.5'
+   },
+   sm: {
+      height: '36px',
+      textSize: '0.9'
+   },
+   xs: {
+      height: '24px',
+      textSize: '0.8'
+   }
+}
 
 const pulsingAnimation = keyframes`
    0% { opacity: 0.5; }
@@ -33,6 +55,9 @@ const pulsingAnimation = keyframes`
    'size',
    'sizeMultiplier',
    'textColor',
+   'textSize',
+   'textTransform',
+   'textWeight',
    'width'
 ])
 
@@ -49,31 +74,37 @@ const pulsingAnimation = keyframes`
    const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
    const padding = props.padding && props.padding[breakpoint]
    const size = props.size && props.size[breakpoint]
-   const textColor = props.textColor && props.textColor[breakpoint]
+
+   const height = buttonSizeDefaults[size].height
    const width = props.width[breakpoint]
 
+   const textColor = props.textColor && props.textColor[breakpoint]
+   const textSize = props.textSize && props.textSize[breakpoint]
+   const textTransform = props.textTransform && props.textTransform[breakpoint]
+   const textWeight = props.textWeight && props.textWeight[breakpoint]
+
    const primaryButtonColor = color || OIOContext.highlightColor
-   const defaultButtonPadding = width === 'auto'
-      ? `0px ${OIOContext.elementHeights[size]}`
-      : '0px'
+   const defaultButtonPadding = width === 'auto' ? `0px ${height}` : '0px'
 
    const buttonStyle = {
+      borderRadius,
       fontFamily,
+      textColor,
+      textTransform,
+      textWeight,
       width,
       backgroundColor: primaryButtonColor,
       border: 'none',
-      borderRadius: borderRadius || OIOContext.elementBorderRadius[size],
-      buttonTextSize: OIOContext.buttonTextSize[size],
-      color: textColor,
+      textSize: textSize || buttonSizeDefaults[size].textSize,
       hoverBackgroundColor: tinycolor(primaryButtonColor).lighten(7).toString(),
       hoverBorder: '',
-      minHeight: OIOContext.elementHeights[size],
-      minWidth: OIOContext.elementHeights[size],
+      minHeight: height,
+      minWidth: height,
       padding: padding ? `0px ${padding}` : defaultButtonPadding
    }
 
    if (rounded) {
-      buttonStyle.borderRadius = `${parseInt(OIOContext.elementHeights[size], 10) / 2}px`
+      buttonStyle.borderRadius = `${parseInt(height, 10) / 2}px`
    }
 
    if (outline) {
@@ -81,7 +112,7 @@ const pulsingAnimation = keyframes`
       buttonStyle.backgroundColor = 'transparent'
       buttonStyle.hoverBackgroundColor = 'transparent'
       buttonStyle.hoverBorder = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
-      buttonStyle.color = primaryButtonColor
+      buttonStyle.textColor = primaryButtonColor
    }
 
    return buttonStyle
@@ -94,12 +125,10 @@ const pulsingAnimation = keyframes`
 export default class Button extends React.Component {
    static propTypes = {
       borderRadius: OIOResponsiveObjectPropType,
-      buttonTextSize: OIOResponsiveObjectPropType,
-      buttonTextTransform: PropTypes.string,
+      children: PropTypes.node,
       className: PropTypes.string,
       color: OIOResponsiveObjectPropType,
       fontFamily: OIOResponsiveObjectPropType,
-      link: PropTypes.node,
       mode: PropTypes.oneOf(['disabled', 'normal', 'pulsing', 'loading']),
       name: PropTypes.node,
       onClick: PropTypes.func,
@@ -108,28 +137,37 @@ export default class Button extends React.Component {
       rounded: PropTypes.bool,
       size: OIOResponsiveObjectPropType,
       style: PropTypes.object,
+      tagName: PropTypes.oneOf(['button', 'div', 'span']),
       textColor: OIOResponsiveObjectPropType,
+      textSize: OIOResponsiveObjectPropType,
+      textTransform: OIOResponsiveObjectPropType,
+      textWeight: OIOResponsiveObjectPropType,
       type: PropTypes.oneOf(['button', 'clear', 'submit']),
       width: OIOResponsiveObjectPropType
    }
 
    static defaultProps = {
-      buttonTextTransform: 'none',
+      borderRadius: r`4px`,
+      children: undefined,
       mode: 'normal',
       onClick: () => {},
       outline: false,
       rounded: false,
       size: r`md`,
       style: {},
+      tagName: 'button',
       textColor: r`#fff`,
+      textSize: undefined,
+      textTransform: r`none`,
+      textWeight: r`medium`,
       type: 'button',
       width: r`auto`
    }
 
    render() {
       const {
-         className, link, mode, name, type,
-         buttonTextSize, buttonTextTransform, onClick,
+         children, className, mode, name, tagName, type,
+         textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, border, borderRadius, color, fontFamily,
          padding, minHeight, minWidth, width,
          hoverBackgroundColor, hoverBorder
@@ -148,15 +186,15 @@ export default class Button extends React.Component {
       /* eslint-enable */
 
       const textStyle = {}
-      const style = {
-         position: 'relative',
+      const buttonStyle = {
          alignItems: 'center',
          cursor: 'pointer',
          display: 'flex',
          float: 'left',
          justifyContent: 'center',
-         transition: '200ms',
          outline: 'none',
+         position: 'relative',
+         transition: '200ms',
          ...this.props.style,
          ...responsiveStyles
       }
@@ -165,15 +203,13 @@ export default class Button extends React.Component {
       // Element
       // ====================================================
 
-      let ButtonElement = 'button'
-      let specialButtonProps = null
+      // Abilty to use custom tag (div, button, span)
+      const ButtonElement = tagName
+      const conditionalButtonProps = {}
 
-      // Buttons might be used as a html <button> or <Link>
-      if (link) {
-         ButtonElement = Link
-         specialButtonProps = { to: link }
-      } else {
-         specialButtonProps = { type }
+      // If Button is used <button>, add type attribute
+      if (tagName === 'button') {
+         conditionalButtonProps.type = type
       }
 
       // ====================================================
@@ -181,40 +217,45 @@ export default class Button extends React.Component {
       // ====================================================
 
       if (mode === 'disabled') {
-         style.opacity = '0.3'
-         style.cursor = 'default'
-         specialButtonProps.disabled = true
+         buttonStyle.opacity = '0.3'
+         buttonStyle.cursor = 'default'
+         conditionalButtonProps.disabled = true
       } else if (mode === 'loading') {
          textStyle.opacity = 0
-         style.cursor = 'default'
-         specialButtonProps.disabled = true
+         buttonStyle.cursor = 'default'
+         conditionalButtonProps.disabled = true
       } else if (mode === 'pulsing') {
-         style.animation = `${pulsingAnimation} 2000ms infinite linear`
+         buttonStyle.animation = `${pulsingAnimation} 2000ms infinite linear`
       }
 
       // Enable hover and active styles for normal and pulsing button modes
+      // No hover/active styles for modes: loading or disabled
       if (mode === 'normal' || mode === 'pulsing') {
-         style['&:hover'] = {
+         buttonStyle['&:hover'] = {
             ...hoverResponsiveStyles
          }
-         style['&:active'] = {
+         buttonStyle['&:active'] = {
             transform: 'translateY(3px)'
          }
       }
 
       return (
          <ButtonElement
-            {...specialButtonProps}
-            css={style}
+            {...conditionalButtonProps}
+            css={buttonStyle}
             className={className}
             onClick={onClick}>
-            <Text
-               size={buttonTextSize}
-               weight="semibold"
-               transform={buttonTextTransform}
-               style={textStyle}>
-               {name}
-            </Text>
+            {children}
+            {name && (
+               <Text
+                  color={textColor}
+                  size={textSize}
+                  style={textStyle}
+                  transform={textTransform}
+                  weight={textWeight}>
+                  {name}
+               </Text>
+            )}
             {mode === 'loading' && (
                <View
                   position="absolute"
