@@ -189,8 +189,7 @@ export default class Button extends React.Component {
       const buttonStyle = {
          alignItems: 'center',
          cursor: 'pointer',
-         display: 'flex',
-         float: 'left',
+         display: 'inline-flex',
          justifyContent: 'center',
          outline: 'none',
          position: 'relative',
