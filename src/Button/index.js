@@ -89,6 +89,7 @@ const pulsingAnimation = keyframes`
    const buttonStyle = {
       borderRadius,
       fontFamily,
+      height,
       textColor,
       textTransform,
       textWeight,
@@ -98,7 +99,6 @@ const pulsingAnimation = keyframes`
       textSize: textSize || buttonSizeDefaults[size].textSize,
       hoverBackgroundColor: tinycolor(primaryButtonColor).lighten(7).toString(),
       hoverBorder: '',
-      minHeight: height,
       minWidth: height,
       padding: padding ? `0px ${padding}` : defaultButtonPadding
    }
@@ -169,14 +169,14 @@ export default class Button extends React.Component {
          children, className, mode, name, tagName, type,
          textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, border, borderRadius, color, fontFamily,
-         padding, minHeight, minWidth, width,
+         height, padding, minWidth, width,
          hoverBackgroundColor, hoverBorder
       } = this.props
 
       /* eslint-disable object-property-newline */
       const responsiveStyles = generateResponsiveStyles({
          backgroundColor, border, borderRadius, color, fontFamily,
-         padding, minHeight, minWidth, width
+         height, padding, minWidth, width
       })
 
       const hoverResponsiveStyles = generateResponsiveStyles({
