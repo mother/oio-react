@@ -23,17 +23,23 @@ export default [{
    description: 'Apply a specific font-family to the text within this component. By default, all buttons inherit the <code>fontFamily</code> set on the parent <code>OIO</code> container',
    responsive: true
 }, {
+   name: 'id',
+   type: 'String',
+   default: '-',
+   description: '',
+   responsive: false
+}, {
    name: 'mode',
-   type: 'Enum',
-   default: 'normal',
-   description: 'Availalble options include: <code>disabled</code>, <code>normal</code>, <code>pulsing</code>, <code>loading</code>',
-   responsive: true
+   type: 'String (Enum)',
+   default: '<code>normal</code>',
+   description: 'Availalble options include: <code>disabled</code>, <code>normal</code>, <code>pulsing</code>, <code>loading</code>.<br /><br /><b>Note</b>: When mode is set to <code>loading</code>, the <code>Button</code> will retain the same size were its <code>mode</code> set to <code>normal</code>',
+   responsive: false
 }, {
    name: 'name',
    type: 'String',
    default: '-',
    description: 'Text that appears inside the button',
-   responsive: true
+   responsive: false
 }, {
    name: 'onClick',
    type: 'Function',
@@ -44,8 +50,8 @@ export default [{
    name: 'outline',
    type: 'Boolean',
    default: '<code>false</code>',
-   description: 'Set to <code>true</code>, gives the button an outline appearance',
-   responsive: true
+   description: 'Set to <code>true</code>, gives the button an outline appearance. The <code>textColor</code> attribute will not be applicable when <code>outline</code> is set to <code>true</code>',
+   responsive: false
 }, {
    name: 'padding',
    type: 'String',
@@ -57,11 +63,11 @@ export default [{
    type: 'Boolean',
    default: '<code>false</code>',
    description: 'Set to <code>true</code>, gives the button a rounded pill-like appearance',
-   responsive: true
+   responsive: false
 }, {
    name: 'size',
-   type: 'Enum',
-   default: '<code>3</code>',
+   type: 'String (Enum)',
+   default: '<code>md</code>',
    description: 'Set the <code>Button</code> component size. Available values include:  <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>',
    responsive: true
 }, {
@@ -69,12 +75,18 @@ export default [{
    type: 'Object',
    default: '<code>{}</code>',
    description: 'Pass a style <code>object</code> to customize inline style of the <code>Button</code> component',
-   responsive: true
+   responsive: false
+}, {
+   name: 'tagName',
+   type: 'String',
+   default: '<code>button</code>',
+   description: 'Set <code>Button</code> component to render with alternate html tagName such as: a, div, span.',
+   responsive: false
 }, {
    name: 'textColor',
    type: 'String',
    default: '<code>#fff</code>',
-   description: 'The color of the button&apos;s text. Pass any css compatible color value.',
+   description: 'The color of the button&apos;s text. Pass any css compatible color value. This attribute is not applicable when the <code>outline</code> on <code>Button</code> component is set to <code>true</code>',
    responsive: true
 }, {
    name: 'textSize',
@@ -90,16 +102,16 @@ export default [{
    responsive: true
 }, {
    name: 'textWeight',
-   type: 'Enum',
+   type: 'String (Enum)',
    default: '<code>normal</code>',
    description: 'Valid values include: <code>light</code>, <code>normal</code>, <code>medium</code>, <code>semibold</code>, <code>bold</code>',
    responsive: true
 }, {
    name: 'type',
-   type: 'Enum',
+   type: 'String (Enum)',
    default: '<code>button</code>',
-   description: 'Can be one of: <code>button</code>, <code>clear</code> or <code>submit</code>',
-   responsive: true
+   description: 'Can be one of: <code>button</code>, <code>clear</code> or <code>submit</code>. This attribute is only applicable if tagName is set as <code>button<code>',
+   responsive: false
 }, {
    name: 'width',
    type: 'String',

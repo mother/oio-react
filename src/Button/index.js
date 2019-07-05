@@ -17,6 +17,16 @@ import View from '../View'
 // Button Constants and Defaults
 // ============================================================================
 
+const buttonStyleDefaults = {
+   alignItems: 'center',
+   cursor: 'pointer',
+   display: 'inline-flex',
+   justifyContent: 'center',
+   outline: 'none',
+   position: 'relative',
+   transition: '200ms'
+}
+
 const buttonSizeDefaults = {
    lg: {
       height: '54px',
@@ -73,7 +83,12 @@ const pulsingAnimation = keyframes`
    const color = props.color && props.color[breakpoint]
    const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
    const padding = props.padding && props.padding[breakpoint]
-   const size = props.size && props.size[breakpoint]
+   let size = props.size && props.size[breakpoint]
+
+   // If user passes invalid button 'size', use size 'md' instead
+   if (!['xs', 'sm', 'md', 'lg'].includes(size)) {
+      size = 'md'
+   }
 
    const height = buttonSizeDefaults[size].height
    const width = props.width[breakpoint]
@@ -129,6 +144,7 @@ export default class Button extends React.Component {
       className: PropTypes.string,
       color: OIOResponsiveObjectPropType,
       fontFamily: OIOResponsiveObjectPropType,
+      id: PropTypes.string,
       mode: PropTypes.oneOf(['disabled', 'normal', 'pulsing', 'loading']),
       name: PropTypes.node,
       onClick: PropTypes.func,
@@ -149,6 +165,7 @@ export default class Button extends React.Component {
    static defaultProps = {
       borderRadius: r`4px`,
       children: undefined,
+      id: undefined,
       mode: 'normal',
       onClick: undefined,
       outline: false,
@@ -166,7 +183,7 @@ export default class Button extends React.Component {
 
    render() {
       const {
-         children, className, mode, name, tagName, type,
+         children, className, id, mode, name, tagName, type,
          textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, border, borderRadius, color, fontFamily,
          height, padding, minWidth, width,
@@ -183,17 +200,11 @@ export default class Button extends React.Component {
          backgroundColor: hoverBackgroundColor,
          border: hoverBorder
       })
-      /* eslint-enable */
+      /* eslint-enable object-property-newline */
 
       const textStyle = {}
       const buttonStyle = {
-         alignItems: 'center',
-         cursor: 'pointer',
-         display: 'inline-flex',
-         justifyContent: 'center',
-         outline: 'none',
-         position: 'relative',
-         transition: '200ms',
+         ...buttonStyleDefaults,
          ...this.props.style,
          ...responsiveStyles
       }
@@ -206,7 +217,7 @@ export default class Button extends React.Component {
       const ButtonElement = tagName
       const buttonProps = {}
 
-      // If Button is used as <button>, add type attribute
+      // If Button component has tagName button, ie: <button>, add type attribute
       if (tagName === 'button') {
          buttonProps.type = type
       }
@@ -233,7 +244,7 @@ export default class Button extends React.Component {
 
       // Enable hover and active styles for normal and pulsing button modes
       // No hover/active styles for modes: loading or disabled
-      if (mode === 'normal' || mode === 'pulsing') {
+      if (['normal', 'pulsing'].includes(mode)) {
          buttonStyle['&:hover'] = {
             ...hoverResponsiveStyles
          }
@@ -245,6 +256,7 @@ export default class Button extends React.Component {
       return (
          <ButtonElement
             {...buttonProps}
+            id={id}
             css={buttonStyle}
             className={className}>
             {children}
