@@ -47,9 +47,9 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    const cellWidth = (colspan / numGridColumns) * 100
 
    const styleObject = {
-      width: `calc(${cellWidth}% - ${spacing})`,
+      marginLeft: spacing,
       marginTop: spacing,
-      marginLeft: spacing
+      width: `calc(${cellWidth}% - ${spacing})`
    }
 
    if (paddingHorizontal && paddingHorizontal[breakpoint]) {
@@ -98,7 +98,6 @@ export default class GridCell extends React.Component {
       className: '',
       colspan: r`1`,
       id: undefined,
-      padding: r``,
       style: {}
    }
 
