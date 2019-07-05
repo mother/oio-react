@@ -2,7 +2,7 @@ export default [{
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container',
+   description: 'Pass a <code>className</code> to customize className of the <code>Grid</code> component',
    responsive: false
 }, {
    name: 'columns',
@@ -10,6 +10,12 @@ export default [{
    default: '<code>12</code>',
    description: 'Number of <code>GridCell</code> components that will fit in one row',
    responsive: true
+}, {
+   name: 'id',
+   type: 'String',
+   default: '-',
+   description: '',
+   responsive: false
 }, {
    name: 'spacing',
    type: 'String',

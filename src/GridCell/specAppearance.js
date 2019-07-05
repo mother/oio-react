@@ -2,31 +2,31 @@ export default [{
    name: 'backgroundColor',
    type: 'String',
    default: '-',
-   description: 'Use any valid css color',
+   description: 'css equivalent value',
    responsive: true
 }, {
    name: 'backgroundImage',
    type: 'String',
    default: '-',
-   description: 'specifiy a background image',
+   description: 'css equivalent value',
    responsive: true
 }, {
    name: 'backgroundPosition',
    type: 'String',
    default: '-',
-   description: 'Use valid CSS <code>background-position</code> values',
+   description: 'css equivalent value',
    responsive: true
 }, {
    name: 'backgroundSize',
    type: 'String',
    default: '-',
-   description: 'Use valid CSS <code>background-size</code> values',
+   description: 'css equivalent value',
    responsive: true
 }, {
    name: 'border',
    type: 'String',
    default: '-',
-   description: 'Use css format, ie: <code>1px solid red</code>',
+   description: 'css equivalent value',
    responsive: true
 }, {
    name: 'borderBottom',
@@ -62,6 +62,6 @@ export default [{
    name: 'textAlign',
    type: 'String',
    default: '-',
-   description: 'options: <code>left</code>, <code>center</code>, <code>right</code>',
+   description: 'css equivalent value',
    responsive: true
 }]

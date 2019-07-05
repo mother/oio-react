@@ -2,7 +2,7 @@ export default [{
    name: 'className',
    type: 'String',
    default: '-',
-   description: 'Pass a <code>className</code> to customize className of the GridCell',
+   description: 'Pass a <code>className</code> to customize className of the <code>GridCell</code>',
    responsive: false
 }, {
    name: 'colspan',
