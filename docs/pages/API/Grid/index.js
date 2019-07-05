@@ -3,53 +3,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import GridBasicSpecimen from '../../../specimens/GridBasic'
 import { Text } from '../../../../src'
+import gridSpec from '../../../../src/Grid/spec'
+import gridCellSpecAppearance from '../../../../src/GridCell/specAppearance'
+import gridCellSpecBasic from '../../../../src/GridCell/specBasic'
 import style from '../style.less'
-
-const gridApiOptions = [{
-   name: 'className',
-   type: 'String',
-   default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container',
-   responsive: false
-}, {
-   name: 'columns',
-   type: 'String',
-   default: '<code>12</code>',
-   description: 'Number of <code>GridCell</code> components that will fit in one row',
-   responsive: true
-}, {
-   name: 'spacing',
-   type: 'String',
-   default: '<code>18px</code>',
-   description: 'spacing between <code>GridCell</code> components',
-   responsive: true
-}, {
-   name: 'style',
-   type: 'Object',
-   default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the <code>Grid</code> component',
-   responsive: false
-}]
-
-const gridCellApiOptions = [{
-   name: 'className',
-   type: 'String',
-   default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container',
-   responsive: false
-}, {
-   name: 'colspan',
-   type: 'String',
-   default: '<code>1</code>',
-   description: 'Number of columns that the cell will span across inside <code>Grid</code> component.',
-   responsive: true
-}, {
-   name: 'style',
-   type: 'Object',
-   default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the <code>GridCell</code> component',
-   responsive: false
-}]
 
 export default class OIOContainer extends PureComponent {
    render() {
@@ -97,7 +54,7 @@ export default class OIOContainer extends PureComponent {
                         </tr>
                      </thead>
                      <tbody>
-                        {gridApiOptions.map(option => (
+                        {gridSpec.map(option => (
                            <tr key={option.name}>
                               <td><b>{option.name}</b></td>
                               <td>{option.type}</td>
@@ -117,7 +74,7 @@ export default class OIOContainer extends PureComponent {
                   <br />
                   <br />
                   <Text size="5" weight="medium">
-                     GridCell Component API
+                     GridCell - Basic API Options
                   </Text>
                   <br />
                   <br />
@@ -132,7 +89,42 @@ export default class OIOContainer extends PureComponent {
                         </tr>
                      </thead>
                      <tbody>
-                        {gridCellApiOptions.map(option => (
+                        {gridCellSpecBasic.map(option => (
+                           <tr key={option.name}>
+                              <td><b>{option.name}</b></td>
+                              <td>{option.type}</td>
+                              <td>
+                                 <div dangerouslySetInnerHTML={{ __html: option.default }} />
+                              </td>
+                              <td>
+                                 <div dangerouslySetInnerHTML={{ __html: option.description }} />
+                              </td>
+                              <td>
+                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
+                              </td>
+                           </tr>
+                        ))}
+                     </tbody>
+                  </table>
+                  <br />
+                  <br />
+                  <Text size="5" weight="medium">
+                     GridCell - Appearance API Options
+                  </Text>
+                  <br />
+                  <br />
+                  <table className={style.table}>
+                     <thead>
+                        <tr>
+                           <th width="150px">Prop</th>
+                           <th width="90px">Prop Type</th>
+                           <th width="150px">Default Value</th>
+                           <th>Description/Options</th>
+                           <th>Responsive</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {gridCellSpecAppearance.map(option => (
                            <tr key={option.name}>
                               <td><b>{option.name}</b></td>
                               <td>{option.type}</td>
