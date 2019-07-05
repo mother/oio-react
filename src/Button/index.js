@@ -150,7 +150,7 @@ export default class Button extends React.Component {
       borderRadius: r`4px`,
       children: undefined,
       mode: 'normal',
-      onClick: () => {},
+      onClick: undefined,
       outline: false,
       rounded: false,
       size: r`md`,
@@ -204,11 +204,15 @@ export default class Button extends React.Component {
 
       // Abilty to use custom tag (div, button, span)
       const ButtonElement = tagName
-      const conditionalButtonProps = {}
+      const buttonProps = {}
 
-      // If Button is used <button>, add type attribute
+      // If Button is used as <button>, add type attribute
       if (tagName === 'button') {
-         conditionalButtonProps.type = type
+         buttonProps.type = type
+      }
+
+      if (onClick) {
+         buttonProps.onClick = onClick
       }
 
       // ====================================================
@@ -218,11 +222,11 @@ export default class Button extends React.Component {
       if (mode === 'disabled') {
          buttonStyle.opacity = '0.3'
          buttonStyle.cursor = 'default'
-         conditionalButtonProps.disabled = true
+         buttonProps.disabled = true
       } else if (mode === 'loading') {
          textStyle.opacity = 0
          buttonStyle.cursor = 'default'
-         conditionalButtonProps.disabled = true
+         buttonProps.disabled = true
       } else if (mode === 'pulsing') {
          buttonStyle.animation = `${pulsingAnimation} 2000ms infinite linear`
       }
@@ -240,10 +244,9 @@ export default class Button extends React.Component {
 
       return (
          <ButtonElement
-            {...conditionalButtonProps}
+            {...buttonProps}
             css={buttonStyle}
-            className={className}
-            onClick={onClick}>
+            className={className}>
             {children}
             {name && (
                <Text
