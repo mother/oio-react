@@ -5,6 +5,12 @@ export default [{
    description: 'Set the border-radius of the button. By default, all buttons inherit their borderRadius from the <code>elementBorderRadius</code> prop set on the parent <code>OIO</code> container.',
    responsive: true
 }, {
+   name: 'children',
+   type: 'node',
+   default: '-',
+   description: 'Nest <code>children</code> inside <code>Button</code> component. <code>children</code> will appear next to Button <code>name</code> (if set). Not visible when <code>mode</code> is set to <code>loading</code>',
+   responsive: false
+}, {
    name: 'className',
    type: 'String',
    default: '-',
@@ -32,13 +38,13 @@ export default [{
    name: 'mode',
    type: 'String (Enum)',
    default: '<code>normal</code>',
-   description: 'Availalble options include: <code>disabled</code>, <code>normal</code>, <code>pulsing</code>, <code>loading</code>.<br /><br /><b>Note</b>: When mode is set to <code>loading</code>, the <code>Button</code> will retain the same size were its <code>mode</code> set to <code>normal</code>',
+   description: 'Availalble options include: <code>disabled</code>, <code>normal</code>, <code>pulsing</code>, <code>loading</code>.<br /><br /><b>Note</b>: When mode is set to <code>loading</code>, the <code>Button</code> will retain the same size were its <code>mode</code> set to <code>normal</code> (assuming <code>children</code> and <code>name</code> stay the same when the <code>children</code> changes to/from <code>loading</code>)',
    responsive: false
 }, {
    name: 'name',
    type: 'String',
    default: '-',
-   description: 'Text that appears inside the button',
+   description: 'Text that appears inside the button. Not visible when <code>mode</code> is set to <code>loading</code>',
    responsive: false
 }, {
    name: 'onClick',

@@ -18,10 +18,8 @@ import View from '../View'
 // ============================================================================
 
 const buttonStyleDefaults = {
-   alignItems: 'center',
    cursor: 'pointer',
-   display: 'inline-flex',
-   justifyContent: 'center',
+   display: 'inline-block',
    outline: 'none',
    position: 'relative',
    transition: '200ms'
@@ -83,11 +81,12 @@ const pulsingAnimation = keyframes`
    const color = props.color && props.color[breakpoint]
    const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
    const padding = props.padding && props.padding[breakpoint]
-   let size = props.size && props.size[breakpoint]
+   const size = props.size && props.size[breakpoint]
 
    // If user passes invalid button 'size', use size 'md' instead
    if (!['xs', 'sm', 'md', 'lg'].includes(size)) {
-      size = 'md'
+      // eslint-disable-next-line no-console
+      console.error('OIO Button: Invalid size prop provided. Valid values include: xs, sm, md, lg')
    }
 
    const height = buttonSizeDefaults[size].height
@@ -202,7 +201,6 @@ export default class Button extends React.Component {
       })
       /* eslint-enable object-property-newline */
 
-      const textStyle = {}
       const buttonStyle = {
          ...buttonStyleDefaults,
          ...this.props.style,
@@ -235,7 +233,6 @@ export default class Button extends React.Component {
          buttonStyle.cursor = 'default'
          buttonProps.disabled = true
       } else if (mode === 'loading') {
-         textStyle.opacity = 0
          buttonStyle.cursor = 'default'
          buttonProps.disabled = true
       } else if (mode === 'pulsing') {
@@ -259,17 +256,22 @@ export default class Button extends React.Component {
             id={id}
             css={buttonStyle}
             className={className}>
-            {children}
-            {name && (
-               <Text
-                  color={textColor}
-                  size={textSize}
-                  style={textStyle}
-                  transform={textTransform}
-                  weight={textWeight}>
-                  {name}
-               </Text>
-            )}
+            <View
+               display="flex"
+               justifyContent="center"
+               alignItems="center"
+               opacity={mode === 'loading' ? 0 : 1}>
+               {children}
+               {name && (
+                  <Text
+                     color={textColor}
+                     size={textSize}
+                     transform={textTransform}
+                     weight={textWeight}>
+                     {name}
+                  </Text>
+               )}
+            </View>
             {mode === 'loading' && (
                <View
                   position="absolute"

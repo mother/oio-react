@@ -40,7 +40,7 @@ const Spinner = ({
          display: 'inline-block',
          borderRadius: '50%',
          boxShadow: `0px 0px 0px 2px ${tinycolor(color).setAlpha('.1').toString()},
-         1px 0px 2px ${tinycolor(color).setAlpha('.8').toString()}`,
+         2px 0px 2px ${tinycolor(color).setAlpha('.8').toString()}`,
          animation: `${spinningAnimation} 1s infinite linear`
       }}
    />
