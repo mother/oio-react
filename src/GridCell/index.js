@@ -20,6 +20,9 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 @withGridContext
 @withResponsiveObjectProps([
    'backgroundColor',
+   'backgroundImage',
+   'backgroundPosition',
+   'backgroundSize',
    'border',
    'borderBottom',
    'borderLeft',
@@ -72,6 +75,9 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 export default class GridCell extends React.Component {
    static propTypes = {
       backgroundColor: PropTypes.string,
+      backgroundImage: OIOResponsiveObjectPropType,
+      backgroundPosition: OIOResponsiveObjectPropType,
+      backgroundSize: OIOResponsiveObjectPropType,
       border: OIOResponsiveObjectPropType,
       borderTop: OIOResponsiveObjectPropType,
       borderRadius: OIOResponsiveObjectPropType,
