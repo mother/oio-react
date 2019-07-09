@@ -83,8 +83,8 @@ const pulsingAnimation = keyframes`
    const padding = props.padding && props.padding[breakpoint]
    const size = props.size && props.size[breakpoint]
 
-   // If user passes invalid button 'size', use size 'md' instead
-   if (!['xs', 'sm', 'md', 'lg'].includes(size)) {
+   // If user passes invalid button 'size'
+   if (!Object.keys(buttonSizeDefaults).includes(size)) {
       throw new Error('OIO Button: Invalid size prop provided. Valid values include: xs, sm, md, lg')
    }
 
