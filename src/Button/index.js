@@ -85,8 +85,7 @@ const pulsingAnimation = keyframes`
 
    // If user passes invalid button 'size', use size 'md' instead
    if (!['xs', 'sm', 'md', 'lg'].includes(size)) {
-      // eslint-disable-next-line no-console
-      console.error('OIO Button: Invalid size prop provided. Valid values include: xs, sm, md, lg')
+      throw new Error('OIO Button: Invalid size prop provided. Valid values include: xs, sm, md, lg')
    }
 
    const height = buttonSizeDefaults[size].height
