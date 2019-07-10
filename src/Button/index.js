@@ -84,8 +84,9 @@ const pulsingAnimation = keyframes`
    const size = props.size && props.size[breakpoint]
 
    // If user passes invalid button 'size'
-   if (!Object.keys(buttonSizeDefaults).includes(size)) {
-      throw new Error('OIO Button: Invalid size prop provided. Valid values include: xs, sm, md, lg')
+   const sizeOptions = Object.keys(buttonSizeDefaults)
+   if (!sizeOptions.includes(size)) {
+      throw new Error(`OIO Button: Invalid size prop provided. Valid values include: ${sizeOptions.join(', ')}`)
    }
 
    const height = buttonSizeDefaults[size].height
