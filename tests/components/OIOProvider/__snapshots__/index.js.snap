@@ -9,6 +9,7 @@ Object {
   "fontWeightMedium": "500",
   "fontWeightNormal": "400",
   "fontWeightSemibold": "600",
+  "highlightColor": "#2a383e",
   "textSizeMultiplier": 1,
   "textSizeScaleRatio": 1.125,
 }

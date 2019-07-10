@@ -23,6 +23,7 @@ export default class OIOProvider extends React.Component {
       fontWeightMedium: PropTypes.string.isRequired,
       fontWeightSemibold: PropTypes.string.isRequired,
       fontWeightBold: PropTypes.string.isRequired,
+      highlightColor: PropTypes.string,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
       textSizeMultiplier: PropTypes.number
@@ -38,6 +39,7 @@ export default class OIOProvider extends React.Component {
       fontWeightMedium: '500',
       fontWeightSemibold: '600',
       fontWeightBold: '700',
+      highlightColor: '#2a383e',
       style: {},
       textSizeScaleRatio: 1.125,
       textSizeMultiplier: 1
@@ -54,6 +56,7 @@ export default class OIOProvider extends React.Component {
          fontWeightMedium,
          fontWeightSemibold,
          fontWeightBold,
+         highlightColor,
          style,
          textSizeMultiplier,
          textSizeScaleRatio
@@ -68,6 +71,7 @@ export default class OIOProvider extends React.Component {
          fontWeightMedium,
          fontWeightSemibold,
          fontWeightBold,
+         highlightColor,
          textSizeMultiplier,
          textSizeScaleRatio
       }
