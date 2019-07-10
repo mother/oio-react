@@ -17,6 +17,12 @@ export default [{
    description: 'css equivalent value',
    responsive: true
 }, {
+   name: 'backgroundRepeat',
+   type: 'String',
+   default: '-',
+   description: 'css equivalent value',
+   responsive: true
+}, {
    name: 'backgroundSize',
    type: 'String',
    default: '-',

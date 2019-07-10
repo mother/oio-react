@@ -22,6 +22,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    'backgroundColor',
    'backgroundImage',
    'backgroundPosition',
+   'backgroundRepeat',
    'backgroundSize',
    'border',
    'borderBottom',
@@ -77,6 +78,7 @@ export default class GridCell extends React.Component {
       backgroundColor: PropTypes.string,
       backgroundImage: OIOResponsiveObjectPropType,
       backgroundPosition: OIOResponsiveObjectPropType,
+      backgroundRepeat: OIOResponsiveObjectPropType,
       backgroundSize: OIOResponsiveObjectPropType,
       border: OIOResponsiveObjectPropType,
       borderTop: OIOResponsiveObjectPropType,
@@ -110,7 +112,7 @@ export default class GridCell extends React.Component {
    render() {
       const {
          className, id,
-         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
          border, borderBottom, borderLeft, borderRadius, borderRight, borderTop,
          marginTop, marginLeft,
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
@@ -120,7 +122,7 @@ export default class GridCell extends React.Component {
 
       /* eslint-disable object-property-newline */
       const responsiveStyles = generateResponsiveStyles({
-         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
          border, borderBottom, borderLeft, borderRadius, borderRight, borderTop,
          marginTop, marginLeft,
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,

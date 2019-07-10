@@ -6,6 +6,7 @@ import ButtonCustomizationsSpecimen from '../../specimens/ButtonCustomizations'
 import ButtonModesSpecimen from '../../specimens/ButtonModes'
 import ButtonSizesSpecimen from '../../specimens/ButtonSizes'
 import ButtonStylesSpecimen from '../../specimens/ButtonStyles'
+import GridCellBackgroundImage from '../../specimens/GridCellBackgroundImage'
 import GridResponsive from '../../specimens/GridResponsive'
 import OIOProvider from '../../specimens/OIOProvider'
 import TextColors from '../../specimens/TextColors'
@@ -30,6 +31,7 @@ export default class Tests extends Component {
             <Route path={`${match.url}/button-sizes`} component={ButtonSizesSpecimen} />
             <Route path={`${match.url}/button-styles`} component={ButtonStylesSpecimen} />
 
+            <Route path={`${match.url}/grid-cell-bg-img`} component={GridCellBackgroundImage} />
             <Route path={`${match.url}/grid-responsive`} component={GridResponsive} />
             <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
             <Route path={`${match.url}/text-colors`} component={TextColors} />

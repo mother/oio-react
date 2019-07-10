@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import GridBasicSpecimen from '../../../specimens/GridBasic'
+import GridCellBackgroundImageSpecimen from '../../../specimens/GridCellBackgroundImage'
 import { Text } from '../../../../src'
 import gridSpec from '../../../../src/Grid/spec'
 import gridCellSpecAppearance from '../../../../src/GridCell/specAppearance'
@@ -33,6 +34,33 @@ export default class OIOContainer extends PureComponent {
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
                      {GridBasicSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">
+                     Grid Cell Backgrounds
+                  </Text>
+                  <br />
+                  <Text>
+                     <p>
+                        You can set various background options for the
+                         the <code>GridCell</code> component.
+                     </p>
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <GridCellBackgroundImageSpecimen />
+                  </div>
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {GridCellBackgroundImageSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
