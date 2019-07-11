@@ -75,7 +75,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
 export default class GridCell extends React.Component {
    static propTypes = {
-      backgroundColor: PropTypes.string,
+      backgroundColor: OIOResponsiveObjectPropType,
       backgroundImage: OIOResponsiveObjectPropType,
       backgroundPosition: OIOResponsiveObjectPropType,
       backgroundRepeat: OIOResponsiveObjectPropType,
@@ -99,7 +99,7 @@ export default class GridCell extends React.Component {
       paddingHorizontal: OIOResponsiveObjectPropType,
       paddingVertical: OIOResponsiveObjectPropType,
       style: PropTypes.object,
-      textAlign: PropTypes.string
+      textAlign: OIOResponsiveObjectPropType
    }
 
    static defaultProps = {
