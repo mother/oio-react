@@ -2,29 +2,27 @@ import React from 'react'
 import { Spacer, Text, View } from '../../../src'
 
 const ViewBasicSpecimen = () => (
-   <View display="flex">
-      <View backgroundColor="#ddd">
+   <div>
+      <View display="inline-block" backgroundColor="#ddd">
          <Text>View A</Text>
       </View>
       <Spacer size="3" orientation="vertical" />
-      <View backgroundColor="#ddd">
+      <View display="inline-block" backgroundColor="#ddd">
          <Text>View B</Text>
       </View>
-   </View>
+   </div>
 )
 
 ViewBasicSpecimen.codeSnippet = `
 // Spacer between 2 views with vertical orientaion
-<View display="flex">
-   <View backgroundColor="#ddd">
-      <Text>View A</Text>
-   </View>
+<View display="inline-block" backgroundColor="#ddd">
+   <Text>View A</Text>
+</View>
 
-   <Spacer size="3" orientation="vertical" />
+<Spacer size="3" orientation="vertical" />
 
-   <View backgroundColor="#ddd">
-      <Text>View B</Text>
-   </View>
+<View display="inline-block" backgroundColor="#ddd">
+   <Text>View B</Text>
 </View>
 `
 

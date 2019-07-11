@@ -7,7 +7,6 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
-import r from '../../macro'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
@@ -17,20 +16,19 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // ============================================================================
 
 @withResponsiveObjectProps([
-   'float',
    'orientation',
    'size'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { float, orientation } = props
+   const { orientation } = props
    const size = parseInt(props.size[breakpoint], 10)
-   const convertedSize = `${size * 6}px`
+   const calculatedSpacerSize = `${size * 6}px`
 
    return ({
-      float,
-      height: orientation === 'vertical' ? '100%' : convertedSize,
-      width: orientation === 'horizontal' ? '100%' : convertedSize
+      display: orientation === 'horizontal' ? 'block' : 'inline-block',
+      height: orientation === 'vertical' ? '100%' : calculatedSpacerSize,
+      width: orientation === 'horizontal' ? '100%' : calculatedSpacerSize
    })
 })
 
@@ -40,7 +38,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
 export default class Spacer extends React.Component {
    static propTypes = {
-      float: OIOResponsiveObjectPropType,
+      display: OIOResponsiveObjectPropType,
       height: OIOResponsiveObjectPropType.isRequired,
       orientation: PropTypes.oneOf(['horizontal', 'vertical']),
       size: OIOResponsiveObjectPropType.isRequired,
@@ -49,7 +47,7 @@ export default class Spacer extends React.Component {
    }
 
    static defaultProps = {
-      float: r``,
+      display: undefined,
       orientation: 'horizontal',
       style: {}
    }
@@ -57,14 +55,14 @@ export default class Spacer extends React.Component {
    render() {
       const {
          className,
-         float,
+         display,
          height,
          style,
          width
       } = this.props
 
       const responsiveStyles = generateResponsiveStyles({
-         float,
+         display,
          height,
          width
       })
@@ -72,7 +70,6 @@ export default class Spacer extends React.Component {
       return (
          <div
             css={{
-               display: 'block',
                minWidth: '1px',
                minHeight: '1px',
                ...style,

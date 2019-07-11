@@ -2,35 +2,10 @@ import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
+import spacerSpec from '../../../../src/Spacer/spec'
 import SpacerHorizontalSpecimen from '../../../specimens/SpacerHorizontal'
 import SpacerVerticalSpecimen from '../../../specimens/SpacerVertical'
 import style from '../style.less'
-
-const apiOptions = [{
-   name: 'className',
-   type: 'String',
-   default: '-',
-   description: 'Pass a <code>className</code> to customize className of the <code>Spacer</code> component',
-   responsive: false
-}, {
-   name: 'orientation',
-   type: 'Enum',
-   default: '-',
-   description: 'Available values are: <code>horizontal</code> and <code>vertical</code>',
-   responsive: true
-}, {
-   name: 'size',
-   type: 'OIO Responsive String',
-   default: '-',
-   description: 'The value can be any integer larger than <code>1</code>',
-   responsive: true
-}, {
-   name: 'style',
-   type: 'Object',
-   default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style',
-   responsive: false
-}]
 
 export default class SpacerPage extends PureComponent {
    render() {
@@ -43,6 +18,15 @@ export default class SpacerPage extends PureComponent {
                   <Text>
                      {/* eslint-disable max-len */}
                      The Spacer component provides a convenient way to create whitespace between elements. The <code>Spacer</code> component is designed to work in both <code>vertical</code> and <code>horizontal</code> orientations.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <Text size="5" weight="medium">Horizontal Orientation</Text>
+                  <br />
+                  <Text>
+                     {/* eslint-disable max-len */}
+                     The following example shows <code>Spacer</code> component used in <code>horizontal</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows as an html element with <code>display</code>set to <code>block</code>. Note that the sibling <code>View</code> components in this exmample, <code>display</code> is set to <code>block</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
@@ -66,7 +50,7 @@ export default class SpacerPage extends PureComponent {
                   <br />
                   <Text>
                      {/* eslint-disable max-len */}
-                     <code>Spacer</code> component used in <code>vertical</code> <code>orientation</code>.
+                     The following example shows <code>Spacer</code> component used in <code>vertical</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows like an html element with <code>display</code> set to <code>inline-block</code>. Note that the sibling <code>View</code> components in this exmample, <code>display</code> is set to <code>inline-block</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
@@ -99,7 +83,7 @@ export default class SpacerPage extends PureComponent {
                         </tr>
                      </thead>
                      <tbody>
-                        {apiOptions.map(option => (
+                        {spacerSpec.map(option => (
                            <tr key={option.name}>
                               <td><b>{option.name}</b></td>
                               <td>{option.type}</td>

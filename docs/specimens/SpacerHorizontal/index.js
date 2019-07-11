@@ -3,11 +3,11 @@ import { Spacer, Text, View } from '../../../src'
 
 const SpacerHorizontalSpecimen = () => (
    <View>
-      <View backgroundColor="#ddd">
+      <View display="block" backgroundColor="#ddd">
          <Text>View A</Text>
       </View>
       <Spacer size="3" />
-      <View backgroundColor="#ddd">
+      <View display="block" backgroundColor="#ddd">
          <Text>View B</Text>
       </View>
    </View>
@@ -15,13 +15,13 @@ const SpacerHorizontalSpecimen = () => (
 
 SpacerHorizontalSpecimen.codeSnippet = `
 // Spacer between 2 views
-<View backgroundColor="#ddd">
+<View display="block" backgroundColor="#ddd">
    <Text>View A</Text>
 </View>
 
 <Spacer size="3" />
 
-<View backgroundColor="#ddd">
+<View display="block" backgroundColor="#ddd">
    <Text>View B</Text>
 </View>
 `
