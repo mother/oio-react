@@ -70,6 +70,7 @@
     "react-testing-library": "5.2.3",
     "start-server-and-test": "1.7.11",
     "style-loader": "0.23.1",
+    "svg-inline-loader": "0.8.0",
     "tinycolor2": "1.4.1",
     "webpack": "4.25.1",
     "webpack-bundle-analyzer": "3.0.3",
