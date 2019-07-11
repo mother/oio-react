@@ -7,7 +7,7 @@ import {
    View
 } from '../../../src'
 
-const FormSpecimen = () => (
+const FormInputUnderlineSpecimen = () => (
    <View float="left" width="100%" padding="60px" backgroundColor="#f5f5f5">
       <Grid columns="1">
          <GridCell>
@@ -42,7 +42,7 @@ const FormSpecimen = () => (
    </View>
 )
 
-FormSpecimen.codeSnippet = `
+FormInputUnderlineSpecimen.codeSnippet = `
 // Form Input with underline style
 <View float="left" width="100%" padding="60px" backgroundColor="#f5f5f5">
    <Grid columns="1">
@@ -78,4 +78,4 @@ FormSpecimen.codeSnippet = `
 </View>
 `
 
-export default FormSpecimen
+export default FormInputUnderlineSpecimen

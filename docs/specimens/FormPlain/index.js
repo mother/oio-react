@@ -12,7 +12,7 @@ import {
    Textarea
 } from '../../../src'
 
-const FormSpecimen = () => (
+const FormPlainSpecimen = () => (
    <OIOProvider
       formElementAppearance="plain"
       formElementBackgroundColor="#eee"
@@ -57,7 +57,7 @@ const FormSpecimen = () => (
    </OIOProvider>
 )
 
-FormSpecimen.codeSnippet = `
+FormPlainSpecimen.codeSnippet = `
 // Form elements with plain appearance
 <OIOProvider
    formElementAppearance="plain"
@@ -103,4 +103,4 @@ FormSpecimen.codeSnippet = `
 </OIOProvider>
 `
 
-export default FormSpecimen
+export default FormPlainSpecimen

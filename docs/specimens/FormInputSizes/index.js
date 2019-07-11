@@ -7,7 +7,7 @@ import {
    Select
 } from '../../../src'
 
-const FormSpecimen = () => (
+const FormInputSizesSpecimen = () => (
    <OIOProvider
       formElementAppearance="plain"
       formElementBackgroundColor="#eee"
@@ -85,7 +85,7 @@ const FormSpecimen = () => (
    </OIOProvider>
 )
 
-FormSpecimen.codeSnippet = `
+FormInputSizesSpecimen.codeSnippet = `
 // Form Input sizes
 <OIOProvider
    formElementAppearance="plain"
@@ -164,4 +164,4 @@ FormSpecimen.codeSnippet = `
 </OIOProvider>
 `
 
-export default FormSpecimen
+export default FormInputSizesSpecimen

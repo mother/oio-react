@@ -12,7 +12,7 @@ import {
    Textarea
 } from '../../../src'
 
-const FormSpecimen = () => (
+const FormOutlineSpecimen = () => (
    <OIOProvider formElementAppearance="outline">
       <Grid columns="2">
          <GridCell>
@@ -49,7 +49,7 @@ const FormSpecimen = () => (
    </OIOProvider>
 )
 
-FormSpecimen.codeSnippet = `
+FormOutlineSpecimen.codeSnippet = `
 
 
 
@@ -90,4 +90,4 @@ FormSpecimen.codeSnippet = `
 </OIOProvider>
 `
 
-export default FormSpecimen
+export default FormOutlineSpecimen
