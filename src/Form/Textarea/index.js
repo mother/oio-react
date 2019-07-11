@@ -35,13 +35,12 @@ const Textarea = ({
    appearance,
    id,
    label,
-   onChange,
    required,
    size,
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const textareaAppearance = appearance || oioContext.formElementAppearanceStyle
+   const textareaAppearance = appearance || oioContext.formElementAppearance
 
    const appearanceStyles = {
       outline: {
@@ -77,7 +76,7 @@ const Textarea = ({
    // useEffect(() => resizeTextarea(), [autoresize, textareaRef])
 
    return (
-      <View float="left" width="100%">
+      <View width="100%">
          {label && <Label htmlFor={id} required={required}>{label}</Label>}
          <textarea
             {...props}
@@ -88,10 +87,10 @@ const Textarea = ({
                ...sizeStyles[size],
                backgroundColor: oioContext.formElementBackgroundColor,
                borderRadius: oioContext.formElementBorderRadius,
-               fontFamily: 'inherit',
+               color: oioContext.formElementTextColor,
+               fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
-               float: 'left',
                width: '100%',
                transition: '200ms',
                resize: 'none',
@@ -113,7 +112,6 @@ Textarea.propTypes = {
    appearance: PropTypes.string,
    id: PropTypes.string,
    label: PropTypes.string,
-   onChange: PropTypes.func,
    required: PropTypes.bool,
    size: PropTypes.string
 }
@@ -122,7 +120,6 @@ Textarea.defaultProps = {
    appearance: undefined,
    id: undefined,
    label: undefined,
-   onChange: undefined,
    required: false,
    size: 'sm'
 }

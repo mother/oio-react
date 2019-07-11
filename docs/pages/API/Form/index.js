@@ -2,124 +2,19 @@ import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
-import FormSpecimen from '../../../specimens/Form'
+import checkboxSpec from '../../../../src/Form/Checkbox/spec'
+import inputSpec from '../../../../src/Form/Input/spec'
+import labelSpec from '../../../../src/Form/Label/spec'
+import radioSpec from '../../../../src/Form/Radio/spec'
+import selectSpec from '../../../../src/Form/Select/spec'
+import switchSpec from '../../../../src/Form/Switch/spec'
+import textareaSpec from '../../../../src/Form/Textarea/spec'
+import APITableBlock from '../../../components/APITableBlock'
+import FormOutlineSpecimen from '../../../specimens/FormOutline'
+import FormPlainSpecimen from '../../../specimens/FormPlain'
+import FormInputSizesSpecimen from '../../../specimens/FormInputSizes'
+import FormInputUnderlineSpecimen from '../../../specimens/FormInputUnderline'
 import style from '../style.less'
-
-const apiOptions = [{
-   name: 'className',
-   type: 'String',
-   default: '-',
-   description: 'Pass a <code>className</code> to customize className of the OIO Container',
-   responsive: false
-}, {
-   name: 'display',
-   type: 'String',
-   default: '<code>block</code>',
-   description: 'Any css block options can be used including: <code>block</code>, <code>flex</code>, <code>inline-block</code>',
-   responsive: true
-}, {
-   name: 'float',
-   type: 'String',
-   default: '-',
-   description: 'Any css float options can be used including: <code>left</code>, <code>right</code>',
-   responsive: true
-}, {
-   name: 'position',
-   type: 'String',
-   default: '<code>relative</code>',
-   description: 'Any css position options can be used including: <code>relative</code>, <code>absolute</code>, <code>fixed</code>',
-   responsive: true
-}, {
-   name: 'top',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'left',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'right',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'bottom',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'height',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'maxHeight',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'maxWidth',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'minHeight',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'minWidth',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'width',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'opacity',
-   type: 'Object',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'style',
-   type: 'Object',
-   default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style of the OIO Container',
-   responsive: false
-}, {
-   name: 'transform',
-   type: 'Object',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'transition',
-   type: 'Object',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}, {
-   name: 'zIndex',
-   type: 'String',
-   default: '-',
-   description: 'css equivalent value',
-   responsive: true
-}]
 
 export default class FormPage extends PureComponent {
    render() {
@@ -131,56 +26,108 @@ export default class FormPage extends PureComponent {
                   <br />
                   <Text size="3" lineHeight="140%">
                      {/* eslint-disable max-len */}
-                     The View component is probably one of the most important components within OIO. It is the core OIO component you should use to structure your pages, layouts and components for your application. You can think of the <code>View</code> component as OIO&apos;s take on a <code>div</code> with easily accessible css properties.
+                     OIO provides a full suite of styled Form UI elements. In addition to the options specified below, all OIO Form elements can have all of the same attributes as their html counterparts.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
-                  <FormSpecimen />
+                  <Text size="5" weight="medium">Outline Appearance</Text>
+                  <br />
+                  <Text size="2[a-e] 3[f]" lineHeight="140%">
+                     {/* eslint-disable max-len */}
+                     The following is a form styled with the <code>outline</code> appearance (the default). Note that the appearance for all these elements are set through an <code>OIOProvider</code>, and not set individually on each component.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <FormOutlineSpecimen />
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {FormSpecimen.codeSnippet}
+                     {FormOutlineSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
             <div className={style.block}>
-               <div className={style.columnFull}>
-                  <Text size="6" weight="bold">Basic Formatting API Options</Text>
-                  <br /><br />
-                  <table className={style.table}>
-                     <thead>
-                        <tr>
-                           <th width="150px">Prop</th>
-                           <th width="90px">Prop Type</th>
-                           <th width="150px">Default Value</th>
-                           <th>Description/Options</th>
-                           <th>Responsive</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        {apiOptions.map(option => (
-                           <tr key={option.name}>
-                              <td><b>{option.name}</b></td>
-                              <td>{option.type}</td>
-                              <td>
-                                 <div dangerouslySetInnerHTML={{ __html: option.default }} />
-                              </td>
-                              <td>
-                                 <div dangerouslySetInnerHTML={{ __html: option.description }} />
-                              </td>
-                              <td>
-                                 {option.responsive ? <div>Yes</div> : <div>No</div>}
-                              </td>
-                           </tr>
-                        ))}
-                     </tbody>
-                  </table>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">Plain Appearance</Text>
+                  <br />
+                  <Text size="2[a-e] 3[f]" lineHeight="140%">
+                     {/* eslint-disable max-len */}
+                     The following is a form styled with the <code>plain</code> appearance. Note that the appearance for all these elements are set through an <code>OIOProvider</code>, and not set individually on each component. Also note that the <code>Switch</code> component&apos;s appearance is the same as when <code>appearance</code> is set to <code>outline</code>. The following example also has customizations for the form labels.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <FormPlainSpecimen />
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {FormPlainSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
                </div>
             </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">Form Input Sizes</Text>
+                  <br />
+                  <Text size="2[a-e] 3[f]" lineHeight="140%">
+                     {/* eslint-disable max-len */}
+                     You can set the size for the <code>Input</code>, <code>Select</code> , and <code>Textarea</code> components by using the
+                      prop <code>size</code>. The <code>size</code> prop may be available to other form components in the future.
+                      The default size for these components is <code>sm</code>. Availalble
+                       sizes are: <code>xl</code>, <code>lg</code>, <code>md</code>,
+                     <code>sm</code>, <code>xs</code>
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <FormInputSizesSpecimen />
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {FormInputSizesSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <div className={style.block}>
+               <div className={style.columnHalfText}>
+                  <Text size="5" weight="medium">Form Input (with underline appearance)</Text>
+                  <br />
+                  <Text size="2[a-e] 3[f]" lineHeight="140%">
+                     {/* eslint-disable max-len */}
+                     The <code>Input</code> component (and only this component) has an additional <code>appearance</code> option called <code>underline</code>. This must be set on the <code>Input</code> components themselves. Note: this appearance option is not available through the <code>OIOProvider</code>. <code>Input</code> components with the <code>underline</code> <code>appearance</code> will look harmonious next to OIO Form elements with the <code>appearance</code> set to <code>outline</code>.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <FormInputUnderlineSpecimen />
+               </div>
+               <div className={style.columnHalfCode}>
+                  <SyntaxHighlighter
+                     language="jsx"
+                     style={duotoneEarth}
+                     customStyle={{ background: 'transparent' }}>
+                     {FormInputUnderlineSpecimen.codeSnippet}
+                  </SyntaxHighlighter>
+               </div>
+            </div>
+            <APITableBlock spec={checkboxSpec} title="Checkbox API Options" />
+            <APITableBlock spec={inputSpec} title="Input API Options" />
+            <APITableBlock spec={labelSpec} title="Label API Options" />
+            <APITableBlock spec={radioSpec} title="Radio API Options" />
+            <APITableBlock spec={selectSpec} title="Select API Options" />
+            <APITableBlock spec={switchSpec} title="Switch API Options" />
+            <APITableBlock spec={textareaSpec} title="Textarea API Options" />
          </div>
       )
    }

@@ -13,14 +13,15 @@ import checkboxIcon from './checkboxIcon.svg'
 const Checkbox = ({
    appearance,
    highlightColor,
+   id,
    label,
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearanceStyle
+   const inputAppearance = appearance || oioContext.formElementAppearance
    const inputHighlightColor = highlightColor || oioContext.highlightColor
 
-   const appearanceStyleOptions = {
+   const appearanceStyles = {
       outline: {
          borderColor: oioContext.formElementBorderColor,
          borderStyle: 'solid',
@@ -35,12 +36,13 @@ const Checkbox = ({
          alignItems="center"
          float="left"
          width="100%"
-         margin="6px 0px">
+         margin="5px 0px">
          <input
             {...props}
+            id={id}
             type="checkbox"
             css={{
-               ...appearanceStyleOptions[inputAppearance],
+               ...appearanceStyles[inputAppearance],
                flex: '0 0 auto',
                float: 'left',
                borderRadius: '50%',
@@ -68,8 +70,8 @@ const Checkbox = ({
             <View
                flex="1 1 auto"
                float="left"
-               padding="0 18px">
-               <Text size="2.5" color="#555">
+               padding="0 15px">
+               <Text size="2" color={oioContext.formElementTextColor}>
                   {label}
                </Text>
             </View>
@@ -85,12 +87,14 @@ const Checkbox = ({
 Checkbox.propTypes = {
    appearance: PropTypes.oneOf(['outline', 'plain']),
    highlightColor: PropTypes.string,
+   id: PropTypes.string,
    label: PropTypes.string
 }
 
 Checkbox.defaultProps = {
    appearance: undefined,
    highlightColor: undefined,
+   id: undefined,
    label: undefined
 }
 

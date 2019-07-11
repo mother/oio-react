@@ -7,19 +7,72 @@ import { Label, View } from '../../../src'
 import selectArrowIcon from './selectArrowIcon.svg'
 
 // ============================================================================
+// Size Specific Styles
+// ============================================================================
+
+const sizeSpecificStyles = {
+   inherit: {
+      fontSize: 'inherit',
+      backgroundPosition: 'calc(100% - 9px) 50%',
+      backgroundSize: '9px 9px',
+      padding: '0 9px'
+   },
+   xl: {
+      height: '54px',
+      fontSize: '17px',
+      backgroundPosition: 'calc(100% - 18px) 50%',
+      backgroundSize: '12px 12px',
+      padding: '0 18px'
+   },
+   lg: {
+      height: '42px',
+      fontSize: '16px',
+      backgroundPosition: 'calc(100% - 12px) 50%',
+      backgroundSize: '9px 9px',
+      padding: '0 12px'
+   },
+   md: {
+      height: '36px',
+      fontSize: '14px',
+      backgroundPosition: 'calc(100% - 12px) 50%',
+      backgroundSize: '9px 9px',
+      padding: '0 9px'
+   },
+   sm: {
+      height: '30px',
+      fontSize: '13px',
+      backgroundPosition: 'calc(100% - 9px) 50%',
+      backgroundSize: '9px 9px',
+      padding: '0 6px'
+   },
+   xs: {
+      height: '24px',
+      fontSize: '12px',
+      backgroundPosition: 'calc(100% - 9px) 50%',
+      backgroundSize: '9px 9px',
+      padding: '0 6px'
+   }
+}
+
+// ============================================================================
 // Component
 // ============================================================================
 
-const Select = ({ appearance, id, label, ...props }) => {
+const Select = ({
+   appearance,
+   id,
+   label,
+   size,
+   ...props
+}) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearanceStyle
+   const inputAppearance = appearance || oioContext.formElementAppearance
 
-   const appearanceStyleOptions = {
+   const appearanceStyles = {
       outline: {
          borderColor: oioContext.formElementBorderColor,
          borderStyle: 'solid',
          borderWidth: oioContext.formElementBorderWidth,
-         padding: '0 9px',
          '&:focus': {
             borderColor: oioContext.focusBorderColor,
             backgroundColor: oioContext.focusBackgroundColor
@@ -37,19 +90,17 @@ const Select = ({ appearance, id, label, ...props }) => {
             {...props}
             id={id}
             css={{
-               ...appearanceStyleOptions[inputAppearance],
+               ...sizeSpecificStyles[size],
+               ...appearanceStyles[inputAppearance],
                backgroundColor: oioContext.formElementBackgroundColor,
                borderRadius: oioContext.formElementBorderRadius,
-               backgroundPosition: '95% 50%',
                backgroundRepeat: 'no-repeat',
                backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
-               backgroundSize: '4%',
+               color: oioContext.formElementTextColor,
                outline: 'none',
                float: 'left',
+               fontFamily: oioContext.fontFamily,
                width: '100%',
-               height: '36px',
-               fontSize: '14px',
-               padding: '0 9px',
                transition: '200ms',
                '-webkit-appearance': 'none'
             }}
@@ -65,13 +116,15 @@ const Select = ({ appearance, id, label, ...props }) => {
 Select.propTypes = {
    appearance: PropTypes.oneOf(['outline', 'plain']),
    id: PropTypes.string,
-   label: PropTypes.string
+   label: PropTypes.string,
+   size: PropTypes.string
 }
 
 Select.defaultProps = {
    appearance: undefined,
    id: undefined,
-   label: undefined
+   label: undefined,
+   size: 'sm'
 }
 
 export default React.memo(Select)

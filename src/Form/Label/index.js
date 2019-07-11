@@ -16,7 +16,7 @@ const Label = ({
    const oioContext = useContext(OIOContext)
 
    return (
-      <View float="left" width="100%" marginBottom="3px[a-d] 9px[e-f]">
+      <View width="100%" marginBottom="3px[a-d] 9px[e-f]">
          <Text
             size={oioContext.formLabelTextSize}
             color={oioContext.formLabelTextColor}

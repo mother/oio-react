@@ -21,7 +21,6 @@ const Switch = ({ highlightColor, ...props }) => {
          width="54px"
          height="30px"
          borderRadius="15px"
-         marginTop="3px"
          marginBottom="6px">
          <input
             {...props}

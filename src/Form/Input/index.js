@@ -11,23 +11,33 @@ import { Label, View } from '../../../src'
 
 const sizeSpecificStyles = {
    inherit: {
-      fontSize: 'inherit'
+      fontSize: 'inherit',
+      padding: '0 9px'
+   },
+   xl: {
+      height: '54px',
+      fontSize: '17px',
+      padding: '0 18px'
    },
    lg: {
-      height: '54px',
-      fontSize: '17px'
+      height: '42px',
+      fontSize: '16px',
+      padding: '0 12px'
    },
    md: {
-      height: '42px',
-      fontSize: '16px'
+      height: '36px',
+      fontSize: '14px',
+      padding: '0 9px'
    },
    sm: {
-      height: '36px',
-      fontSize: '14px'
+      height: '30px',
+      fontSize: '13px',
+      padding: '0 6px'
    },
    xs: {
-      height: '30px',
-      fontSize: '14px'
+      height: '24px',
+      fontSize: '12px',
+      padding: '0 6px'
    }
 }
 
@@ -44,30 +54,29 @@ const Input = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearanceStyle
+   const inputAppearance = appearance || oioContext.formElementAppearance
    const borderRadius = oioContext.formElementBorderRadius
 
-   const appearanceStyleOptions = {
+   const appearanceStyles = {
       outline: {
          borderRadius,
          borderColor: oioContext.formElementBorderColor,
          borderStyle: 'solid',
-         borderWidth: oioContext.formElementBorderWidth,
-         padding: '0 9px'
+         borderWidth: oioContext.formElementBorderWidth
       },
       plain: {
-         borderRadius,
-         padding: '0 9px'
+         borderRadius
       },
       underline: {
          borderBottomWidth: oioContext.formElementBorderWidth,
          borderColor: oioContext.formElementBorderColor,
-         borderStyle: 'solid'
+         borderStyle: 'solid',
+         padding: '0px'
       }
    }
 
    return (
-      <View float="left" width="100%">
+      <View width="100%">
          {label && <Label htmlFor={id} required={required}>{label}</Label>}
          <input
             {...props}
@@ -75,12 +84,12 @@ const Input = ({
             required={required}
             css={{
                ...sizeSpecificStyles[size],
-               ...appearanceStyleOptions[inputAppearance],
+               ...appearanceStyles[inputAppearance],
                backgroundColor: oioContext.formElementBackgroundColor,
-               fontFamily: 'inherit',
+               color: oioContext.formElementTextColor,
+               fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
-               float: 'left',
                width: '100%',
                transition: '200ms',
                '&:focus': {

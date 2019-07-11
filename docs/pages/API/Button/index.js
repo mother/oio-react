@@ -10,7 +10,7 @@ import ButtonSizesSpecimen from '../../../specimens/ButtonSizes'
 import ButtonStylesSpecimen from '../../../specimens/ButtonStyles'
 import style from '../style.less'
 
-export default class OIOContainer extends Component {
+export default class ButtonPage extends Component {
    render() {
       return (
          <div className={style.docs}>
@@ -29,8 +29,9 @@ export default class OIOContainer extends Component {
                       prop <code>name</code>.
                      You can set the size of the <code>Button</code> component by using the
                       prop <code>size</code>
-                      The default size for the Button component is <code>md</code>. Availalble
-                       sizes are: <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>
+                      The default size for the Button component is <code>sm</code>. Availalble
+                       sizes are: <code>xl</code>, <code>lg</code>, <code>md</code>,
+                     <code>sm</code>, <code>xs</code>
                   </Text>
                   <br />
                   <br />

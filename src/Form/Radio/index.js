@@ -12,14 +12,15 @@ import { Text, View } from '../../../src'
 const Radio = ({
    appearance,
    highlightColor,
+   id,
    label,
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
    const inputHighlightColor = highlightColor || oioContext.highlightColor
-   const inputAppearance = appearance || oioContext.formElementAppearanceStyle
+   const inputAppearance = appearance || oioContext.formElementAppearance
 
-   const appearanceStyleOptions = {
+   const appearanceStyles = {
       outline: {
          borderColor: oioContext.formElementBorderColor,
          borderStyle: 'solid',
@@ -34,12 +35,13 @@ const Radio = ({
          alignItems="center"
          float="left"
          width="100%"
-         margin="6px 0px">
+         margin="5px 0px">
          <input
             {...props}
+            id={id}
             type="radio"
             css={{
-               ...appearanceStyleOptions[inputAppearance],
+               ...appearanceStyles[inputAppearance],
                backgroundColor: oioContext.formElementBackgroundColor,
                borderRadius: '50%',
                flex: '0 0 auto',
@@ -63,8 +65,8 @@ const Radio = ({
             <View
                flex="1 1 auto"
                float="left"
-               padding="0 18px">
-               <Text size="2.5" color="#555">
+               padding="0 15px">
+               <Text size="2" color={oioContext.formElementTextColor}>
                   {label}
                </Text>
             </View>
@@ -80,12 +82,14 @@ const Radio = ({
 Radio.propTypes = {
    appearance: PropTypes.oneOf(['outline', 'plain']),
    highlightColor: PropTypes.string,
+   id: PropTypes.string,
    label: PropTypes.string
 }
 
 Radio.defaultProps = {
    appearance: undefined,
    highlightColor: undefined,
+   id: undefined,
    label: undefined
 }
 
