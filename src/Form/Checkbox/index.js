@@ -18,6 +18,7 @@ const Checkbox = ({
 }) => {
    const oioContext = useContext(OIOContext)
    const inputAppearance = appearance || oioContext.formElementAppearanceStyle
+   const inputHighlightColor = highlightColor || oioContext.highlightColor
 
    const appearanceStyleOptions = {
       outline: {
@@ -56,10 +57,10 @@ const Checkbox = ({
                   borderColor: '#aaa'
                },
                '&:checked': {
-                  backgroundColor: `${highlightColor}`,
+                  backgroundColor: `${inputHighlightColor}`,
                   backgroundImage: `url('data:image/svg+xml;utf8,${checkboxIcon}')`,
                   backgroundSize: '50%',
-                  borderColor: highlightColor
+                  borderColor: inputHighlightColor
                }
             }}
          />
@@ -89,7 +90,7 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
    appearance: undefined,
-   highlightColor: '#0087de',
+   highlightColor: undefined,
    label: undefined
 }
 

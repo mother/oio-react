@@ -85,7 +85,7 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
    appearance: undefined,
-   highlightColor: '#0087de',
+   highlightColor: undefined,
    label: undefined
 }
 

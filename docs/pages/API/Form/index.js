@@ -129,7 +129,7 @@ export default class FormPage extends PureComponent {
                <div className={style.columnHalfText}>
                   <Text size="12" weight="medium">Forms</Text>
                   <br />
-                  <Text>
+                  <Text size="3" lineHeight="140%">
                      {/* eslint-disable max-len */}
                      The View component is probably one of the most important components within OIO. It is the core OIO component you should use to structure your pages, layouts and components for your application. You can think of the <code>View</code> component as OIO&apos;s take on a <code>div</code> with easily accessible css properties.
                      {/* eslint-enable max-len */}

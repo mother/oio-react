@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
+import { Text } from '../../../src'
 import ButtonPage from './Button'
 import FormPage from './Form'
 import GridPage from './Grid'
@@ -22,14 +23,14 @@ export default class API extends Component {
             <div
                style={{
                   position: 'absolute',
-                  top: '48px',
-                  bottom: '48px',
-                  width: '240px',
-                  padding: '12px 0px 0px 30px',
+                  top: '0px',
+                  bottom: '0px',
+                  width: '210px',
+                  padding: '60px 0px 0px 30px',
                   borderRight: '1px solid #ddd',
                   overflow: 'auto'
                }}>
-               <h1>OIO</h1>
+               <Text size="8" weight="medium">OIO</Text>
                <div className={style.nav}>
                   <NavLink exact to={match.url} activeClassName={style.active}>
                      OIOProvider
@@ -54,7 +55,7 @@ export default class API extends Component {
             <div
                style={{
                   position: 'absolute',
-                  left: '300px',
+                  left: '270px',
                   right: '0px',
                   height: '100%',
                   overflow: 'auto'

@@ -4,14 +4,15 @@
    a {
       float: left;
       width: 100%;
-      color: #666;
+      color: #888;
       padding: 12px 12px;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 500;
    }
 
    .active {
       background: #eee;
-      color: #333;
+      color: #222;
    }
 }
 
@@ -62,12 +63,15 @@
 }
 
 .columnHalfCode {
-   flex: 1 1 auto;
-   padding: 60px;
+   float: left;
+   position: relative;
+   width: 50%;
+   padding: 30px;
    background: #1e2124;
    font-size: 13px;
    font-family: 'Monaco','courier';
    border-bottom: 1px solid #111;
+   overflow: auto;
 
    pre {
       margin: 0px;
