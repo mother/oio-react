@@ -23,6 +23,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
    return ({
       width: `calc(100% + ${spacing})`,
+      marginTop: `-${spacing}`,
       marginLeft: `-${spacing}`
    })
 })
@@ -50,13 +51,13 @@ export default class Grid extends React.Component {
    }
 
    render() {
-      const { children, className, columns, id, marginLeft, spacing, width } = this.props
+      const { children, className, columns, id, marginLeft, marginTop, spacing, width } = this.props
       const contextProps = { columns, spacing }
-      const responsiveStyles = generateResponsiveStyles({ width, marginLeft })
+      const responsiveStyles = generateResponsiveStyles({ marginLeft, marginTop, width })
 
       const style = {
-         float: 'left',
-         width: '100%',
+         display: 'flex',
+         flexWrap: 'wrap',
          ...this.props.style,
          ...responsiveStyles
       }
