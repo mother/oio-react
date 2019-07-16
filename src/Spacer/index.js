@@ -6,6 +6,7 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import r from '../../macro'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
@@ -40,7 +41,7 @@ export default class Spacer extends React.Component {
    static propTypes = {
       display: OIOResponsiveObjectPropType,
       height: OIOResponsiveObjectPropType.isRequired,
-      orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+      orientation: OIOResponsiveObjectPropType,
       size: OIOResponsiveObjectPropType.isRequired,
       style: PropTypes.object,
       width: OIOResponsiveObjectPropType.isRequired
@@ -48,7 +49,7 @@ export default class Spacer extends React.Component {
 
    static defaultProps = {
       display: undefined,
-      orientation: 'horizontal',
+      orientation: r`horizontal`,
       style: {}
    }
 
