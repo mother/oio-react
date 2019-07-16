@@ -2,81 +2,88 @@ import React, { PureComponent } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
-import spec from '../../../../src/NotificationInline/spec'
-import NotificationInlineCustomizedSpecimen from '../../../specimens/NotificationInlineCustomized'
-import NotificationInlineTypesSpecimen from '../../../specimens/NotificationInlineTypes'
+import spacerSpec from '../../../../src/Spacer/spec'
+import SpacerHorizontalSpecimen from '../../../specimens/SpacerHorizontal'
+import SpacerVerticalSpecimen from '../../../specimens/SpacerVertical'
 import style from '../style.less'
 
-export default class NotificationInlinePage extends PureComponent {
+export default class SpacerPage extends PureComponent {
    render() {
       return (
          <div className={style.docs}>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <Text size="8" weight="medium">NotificationInline</Text>
+                  <Text size="12" weight="medium">Spacer</Text>
                   <br />
-                  <Text size="5" weight="medium">
-                     Basic Usage
-                  </Text>
-                  <br />
-                  <Text size="3">
+                  <Text>
                      {/* eslint-disable max-len */}
-                     The <code>NotificationInline</code> component is a message or alert designed to flow inline with other content. It comes in 6 different types: <code>info</code>, <code>loading</code>, <code>prompt</code>, <code>success</code>, <code>warning</code> and <code>error</code>. Setting the <code>type</code> will also automatically set the component&apos;s icon, <code>backgroundColor</code>, <code>iconColor</code> and <code>textColor</code>. In basic usage, you can set the <code>title</code> and <code>message</code> of the notification. More customization options are shown in the examples below.
+                     The Spacer component provides a convenient way to create whitespace between elements. The <code>Spacer</code> component is designed to work in both <code>vertical</code> and <code>horizontal</code> orientations.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
-                  <NotificationInlineTypesSpecimen />
+                  <Text size="5" weight="medium">Horizontal Orientation</Text>
+                  <br />
+                  <Text>
+                     {/* eslint-disable max-len */}
+                     The following example shows <code>Spacer</code> component used in <code>horizontal</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows as an html element with <code>display</code>set to <code>block</code>. Note that the sibling <code>View</code> components in this example, <code>display</code> is set to <code>block</code>.
+                     {/* eslint-enable max-len */}
+                  </Text>
+                  <br />
+                  <br />
+                  <div className={style.exampleContainer}>
+                     <SpacerHorizontalSpecimen />
+                  </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {NotificationInlineTypesSpecimen.codeSnippet}
+                     {SpacerHorizontalSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
             <div className={style.block}>
                <div className={style.columnHalfText}>
-                  <Text size="5" weight="medium">
-                     NotificationInline (with customizations)
-                  </Text>
+                  <Text size="5" weight="medium">Vertical Orientation</Text>
                   <br />
-                  <Text size="3">
+                  <Text>
                      {/* eslint-disable max-len */}
-                     For advanced use-cases, you can customize the <code>NotificationInline</code> component&apos;s <code>backgroundColor</code>, <code>iconColor</code>, <code>textColor</code>, provide <code>buttons</code> as well as pass additional content through <code>children</code>. Content passed through <code>children</code> will appear below the <code>NotificationInline</code> <code>message</code>. You can also set the placement of the <code>buttons</code> with the <code>buttonPlacement</code> prop.
+                     The following example shows <code>Spacer</code> component used in <code>vertical</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows like an html element with <code>display</code> set to <code>inline-block</code>. Note that the sibling <code>View</code> components in this exmample, <code>display</code> is set to <code>inline-block</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
                   <br />
-                  <NotificationInlineCustomizedSpecimen />
+                  <div className={style.exampleContainer}>
+                     <SpacerVerticalSpecimen />
+                  </div>
                </div>
                <div className={style.columnHalfCode}>
                   <SyntaxHighlighter
                      language="jsx"
                      style={duotoneEarth}
                      customStyle={{ background: 'transparent' }}>
-                     {NotificationInlineCustomizedSpecimen.codeSnippet}
+                     {SpacerVerticalSpecimen.codeSnippet}
                   </SyntaxHighlighter>
                </div>
             </div>
             <div className={style.block}>
                <div className={style.columnFull}>
-                  <Text size="6" weight="bold">Basic Formatting API Options</Text>
+                  <Text size="6" weight="bold">Spacer API Options</Text>
                   <br /><br />
                   <table className={style.table}>
                      <thead>
                         <tr>
                            <th width="150px">Prop</th>
-                           <th width="90px">Prop Type</th>
+                           <th width="240px">Prop Type</th>
                            <th width="150px">Default Value</th>
                            <th>Description/Options</th>
                            <th>Responsive</th>
                         </tr>
                      </thead>
                      <tbody>
-                        {spec.map(option => (
+                        {spacerSpec.map(option => (
                            <tr key={option.name}>
                               <td><b>{option.name}</b></td>
                               <td>{option.type}</td>

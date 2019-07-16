@@ -5,7 +5,9 @@ import CloseIcon from '../assets/icons/closeCircled'
 import InfoIcon from '../assets/icons/infoCircled'
 import QuestionIcon from '../assets/icons/questionCircled'
 import WarningIcon from '../assets/icons/warningCircled'
-import { Spinner, Text, View } from '..'
+import Spinner from '../Spinner'
+import Text from '../Text'
+import View from '../View'
 
 // =======================================================
 // Notification Types
@@ -13,28 +15,40 @@ import { Spinner, Text, View } from '..'
 
 const notificationTypes = {
    error: {
-      backgroundColor: 'rgba(236, 78, 68, 0.9)',
-      icon: CloseIcon
+      backgroundColor: 'rgba(247, 145, 132, 0.9)',
+      icon: CloseIcon,
+      iconColor: 'rgb(198, 73, 60)',
+      textColor: 'rgb(102, 36, 36)'
    },
    info: {
-      backgroundColor: 'rgb(43, 159, 255)',
-      icon: InfoIcon
+      backgroundColor: 'rgb(161, 212, 255)',
+      icon: InfoIcon,
+      iconColor: 'rgb(66, 134, 238)',
+      textColor: 'rgb(34, 74, 129)'
    },
    loading: {
-      backgroundColor: 'rgb(255, 255, 255)',
-      icon: Spinner
+      backgroundColor: 'rgb(84, 84, 84)',
+      icon: Spinner,
+      iconColor: 'rgb(134, 134, 134)',
+      textColor: 'rgb(255, 255, 255)'
    },
    prompt: {
-      backgroundColor: 'rgb(56, 207, 179)',
-      icon: QuestionIcon
+      backgroundColor: 'rgb(111, 231, 216)',
+      icon: QuestionIcon,
+      iconColor: 'rgb(11, 181, 181)',
+      textColor: 'rgb(17, 93, 89)'
    },
    success: {
-      backgroundColor: 'rgb(60, 193, 120)',
-      icon: CheckmarkIcon
+      backgroundColor: 'rgb(134, 240, 180)',
+      icon: CheckmarkIcon,
+      iconColor: 'rgb(45, 193, 100)',
+      textColor: 'rgb(16, 65, 42)'
    },
    warning: {
-      backgroundColor: 'rgb(255, 164, 60)',
-      icon: WarningIcon
+      backgroundColor: 'rgb(255, 200, 136)',
+      icon: WarningIcon,
+      iconColor: 'rgb(215, 143, 76)',
+      textColor: 'rgb(102, 66, 19)'
    }
 }
 
@@ -51,39 +65,38 @@ const NotificationInline = ({
    iconColor,
    iconSpacing,
    iconSize,
+   id,
    message,
    paddingHorizontal,
    paddingVertical,
+   style,
    textColor,
    textSize,
    title,
    type
 }) => {
    const notificationBackgroundColor = backgroundColor || notificationTypes[type].backgroundColor
-   const NotificationIcon = notificationTypes[type].icon
+   const notificationIconColor = iconColor || notificationTypes[type].iconColor
+   const notificationTextColor = textColor || notificationTypes[type].textColor
 
+   // TODO: In the future, we will allow users to pass their own custom icon
+   const NotificationIcon = notificationTypes[type].icon
    const notificationButtons = buttons && buttons.length > 0 && (
       <View>
          {buttons.map(button => button)}
       </View>
    )
-   // const notificationButtons = React.Children.map(children, (child, index) => (
-   //    React.cloneElement(child, {
-   //       color: iconColor,
-   //       isFirstChild: index === 0,
-   //       notificationPlacement: placement
-   //    })
-   // ))
 
    return (
       <View
+         id={id}
          display="block"
-         alignItems="center"
          width="100%"
          paddingHorizontal={paddingHorizontal}
          paddingVertical={paddingVertical}
          borderRadius={borderRadius}
-         backgroundColor={notificationBackgroundColor}>
+         backgroundColor={notificationBackgroundColor}
+         style={style}>
          <View display="flex" flex="1 1 auto">
             <View
                flex="0 0 auto"
@@ -91,15 +104,15 @@ const NotificationInline = ({
                alignItems="center"
                justifyContent="center"
                float="left"
-               width="30px[a-d] 36px[e-f]"
-               height="30px[a-d] 36px[e-f]"
+               width={iconSize}
+               height={iconSize}
                borderRadius="50%"
+               marginTop="3px"
                marginRight={iconSpacing}>
                <NotificationIcon
-                  width="60%"
-                  height="60%"
-                  strokeWidth="2px"
-                  color={iconColor}
+                  width="100%"
+                  height="100%"
+                  color={notificationIconColor}
                />
             </View>
             <View
@@ -112,14 +125,14 @@ const NotificationInline = ({
                   <Text
                      size={textSize}
                      weight="bold"
-                     color={textColor}>
+                     color={notificationTextColor}>
                      {title}
                   </Text>
                   <View display="block" width="100%" height="1px" />
                   <Text
                      size={textSize}
                      lineHeight="140%"
-                     color={textColor}
+                     color={notificationTextColor}
                      sizeMultiplier="0.95"
                      style={{ opacity: 0.7 }}>
                      {message}
@@ -151,9 +164,11 @@ NotificationInline.propTypes = {
    iconColor: PropTypes.string,
    iconSpacing: PropTypes.string,
    iconSize: PropTypes.string,
+   id: PropTypes.string,
    message: PropTypes.string.isRequired,
    paddingHorizontal: PropTypes.string,
    paddingVertical: PropTypes.string,
+   style: PropTypes.object,
    textColor: PropTypes.string,
    textSize: PropTypes.string,
    title: PropTypes.string.isRequired,
@@ -173,12 +188,14 @@ NotificationInline.defaultProps = {
    buttonPlacement: 'bottom',
    buttons: undefined,
    children: undefined,
-   iconColor: '#fff',
-   iconSpacing: '12px',
-   iconSize: undefined,
-   paddingHorizontal: '18px',
+   iconColor: undefined,
+   iconSpacing: '18px',
+   iconSize: '18px',
+   id: undefined,
+   paddingHorizontal: '24px',
    paddingVertical: '18px',
-   textColor: '#fff',
+   style: undefined,
+   textColor: undefined,
    textSize: '2'
 }
 

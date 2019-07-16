@@ -5,6 +5,7 @@ import ButtonPage from './Button'
 import GridPage from './Grid'
 import NotificationInlinePage from './NotificationInline'
 import OIOProviderPage from './OIOProvider'
+import SpacerPage from './Spacer'
 import TextPage from './Text'
 import ViewPage from './View'
 import style from './style.less'
@@ -37,17 +38,20 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/button`} activeClassName={style.active}>
                      Button
                   </NavLink>
+                  <NavLink to={`${match.url}/grid`} activeClassName={style.active}>
+                     Grid
+                  </NavLink>
                   <NavLink to={`${match.url}/notification-inline`} activeClassName={style.active}>
                      NotificationInline
+                  </NavLink>
+                  <NavLink to={`${match.url}/spacer`} activeClassName={style.active}>
+                     Spacer
                   </NavLink>
                   <NavLink to={`${match.url}/text`} activeClassName={style.active}>
                      Text
                   </NavLink>
                   <NavLink to={`${match.url}/view`} activeClassName={style.active}>
                      View
-                  </NavLink>
-                  <NavLink to={`${match.url}/grid`} activeClassName={style.active}>
-                     Grid
                   </NavLink>
                </div>
             </div>
@@ -61,10 +65,11 @@ export default class API extends Component {
                }}>
                <Route path={`${match.url}/button`} component={ButtonPage} />
                <Route exact path={match.url} component={OIOProviderPage} />
+               <Route path={`${match.url}/grid`} component={GridPage} />
                <Route path={`${match.url}/notification-inline`} component={NotificationInlinePage} />
+               <Route path={`${match.url}/spacer`} component={SpacerPage} />
                <Route path={`${match.url}/text`} component={TextPage} />
                <Route path={`${match.url}/view`} component={ViewPage} />
-               <Route path={`${match.url}/grid`} component={GridPage} />
             </div>
          </div>
       )
