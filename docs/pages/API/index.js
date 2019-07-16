@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
 import ButtonPage from './Button'
 import GridPage from './Grid'
+import NotificationInlinePage from './NotificationInline'
 import OIOProviderPage from './OIOProvider'
 import TextPage from './Text'
 import ViewPage from './View'
@@ -36,6 +37,9 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/button`} activeClassName={style.active}>
                      Button
                   </NavLink>
+                  <NavLink to={`${match.url}/notification-inline`} activeClassName={style.active}>
+                     NotificationInline
+                  </NavLink>
                   <NavLink to={`${match.url}/text`} activeClassName={style.active}>
                      Text
                   </NavLink>
@@ -57,6 +61,7 @@ export default class API extends Component {
                }}>
                <Route path={`${match.url}/button`} component={ButtonPage} />
                <Route exact path={match.url} component={OIOProviderPage} />
+               <Route path={`${match.url}/notification-inline`} component={NotificationInlinePage} />
                <Route path={`${match.url}/text`} component={TextPage} />
                <Route path={`${match.url}/view`} component={ViewPage} />
                <Route path={`${match.url}/grid`} component={GridPage} />

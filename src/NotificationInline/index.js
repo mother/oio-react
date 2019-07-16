@@ -1,49 +1,39 @@
-import React, {
-   forwardRef,
-   useImperativeHandle,
-   useEffect,
-   useRef,
-   useState
-} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import tinycolor from 'tinycolor2'
-
-import CheckmarkIcon from 'assets/icons/checkmarkCircled'
-import CloseIcon from 'assets/icons/closeCircled'
-import Dialog from 'src/components/Dialog'
-import InfoIcon from 'assets/icons/infoCircled'
-import QuestionIcon from 'assets/icons/questionCircled'
-import WarningIcon from 'assets/icons/warningCircled'
-
+import CheckmarkIcon from '../assets/icons/checkmarkCircled'
+import CloseIcon from '../assets/icons/closeCircled'
+import InfoIcon from '../assets/icons/infoCircled'
+import QuestionIcon from '../assets/icons/questionCircled'
+import WarningIcon from '../assets/icons/warningCircled'
 import { Spinner, Text, View } from '..'
 
 // =======================================================
-// Types
+// Notification Types
 // =======================================================
 
 const notificationTypes = {
    error: {
-      color: 'rgba(249, 80, 70, 0.9)',
+      backgroundColor: 'rgba(236, 78, 68, 0.9)',
       icon: CloseIcon
    },
    info: {
-      color: 'rgb(43, 159, 255)',
+      backgroundColor: 'rgb(43, 159, 255)',
       icon: InfoIcon
    },
    loading: {
-      color: 'rgb(255, 255, 255)',
+      backgroundColor: 'rgb(255, 255, 255)',
       icon: Spinner
    },
    prompt: {
-      color: 'rgb(38, 213, 192)',
+      backgroundColor: 'rgb(56, 207, 179)',
       icon: QuestionIcon
    },
    success: {
-      color: 'rgb(39, 221, 122)',
+      backgroundColor: 'rgb(60, 193, 120)',
       icon: CheckmarkIcon
    },
    warning: {
-      color: 'rgb(252, 185, 53)',
+      backgroundColor: 'rgb(255, 164, 60)',
       icon: WarningIcon
    }
 }
@@ -53,35 +43,30 @@ const notificationTypes = {
 // =======================================================
 
 const NotificationInline = ({
-/* eslint-disable react/prop-types */
-   autoHide,
-   autoHideAfterDuration,
    backgroundColor,
    borderRadius,
+   buttonPlacement,
+   buttons,
    children,
-   height,
-   iconGutter,
+   iconColor,
+   iconSpacing,
    iconSize,
    message,
    paddingHorizontal,
    paddingVertical,
+   textColor,
+   textSize,
    title,
-   type,
-   width
-/* eslint-enable react/prop-types */
-}, ref) => {
-   const notificationDialog = useRef(null)
-   const iconColor = notificationTypes[type].color
-   const Icon = notificationTypes[type].icon
-   const icon = (
-      <Icon
-         width="60%"
-         height="60%"
-         strokeWidth="2px"
-         color={iconColor}
-      />
-   )
+   type
+}) => {
+   const notificationBackgroundColor = backgroundColor || notificationTypes[type].backgroundColor
+   const NotificationIcon = notificationTypes[type].icon
 
+   const notificationButtons = buttons && buttons.length > 0 && (
+      <View>
+         {buttons.map(button => button)}
+      </View>
+   )
    // const notificationButtons = React.Children.map(children, (child, index) => (
    //    React.cloneElement(child, {
    //       color: iconColor,
@@ -92,15 +77,13 @@ const NotificationInline = ({
 
    return (
       <View
-         ref={notificationDialog}
+         display="block"
          alignItems="center"
-         float="left"
          width="100%"
-         paddingHorizontal={paddingHorizontal || '18px[a-d] 24px[e-f]'}
-         paddingVertical={paddingVertical || '18px[a-d] 24px[e-f]'}
+         paddingHorizontal={paddingHorizontal}
+         paddingVertical={paddingVertical}
          borderRadius={borderRadius}
-         backgroundColor={backgroundColor || tinycolor(iconColor).setAlpha('.2')
-         }>
+         backgroundColor={notificationBackgroundColor}>
          <View display="flex" flex="1 1 auto">
             <View
                flex="0 0 auto"
@@ -111,61 +94,68 @@ const NotificationInline = ({
                width="30px[a-d] 36px[e-f]"
                height="30px[a-d] 36px[e-f]"
                borderRadius="50%"
-               marginRight="18px[a-d] 24px[e-f]"
-               backgroundColor={tinycolor(iconColor).setAlpha('.25')}>
-               {icon}
+               marginRight={iconSpacing}>
+               <NotificationIcon
+                  width="60%"
+                  height="60%"
+                  strokeWidth="2px"
+                  color={iconColor}
+               />
             </View>
             <View
                flex="1 1 auto"
                display="flex"
-               flexFlow="column[a-b] row[c-f]"
+               flexFlow="column[a-b] row[e-f]"
+               alignItems="flex-start[a-b] center[e-f]"
                justifyContent="space-between">
-               <View>
+               <View paddingRight="12px">
                   <Text
-                     size="2"
+                     size={textSize}
                      weight="bold"
-                     color={tinycolor(iconColor).saturate(30).darken(30)}>
+                     color={textColor}>
                      {title}
                   </Text>
-                  <View float="left" width="100%" height="1px[a-d] 3px[e-f]" />
+                  <View display="block" width="100%" height="1px" />
                   <Text
-                     size="1.5"
+                     size={textSize}
                      lineHeight="140%"
-                     color={tinycolor(iconColor).saturate(30).darken(30)}
+                     color={textColor}
+                     sizeMultiplier="0.95"
                      style={{ opacity: 0.7 }}>
                      {message}
                   </Text>
+                  {children}
+                  {notificationButtons && buttonPlacement === 'bottom' && (
+                     <View marginTop={iconSpacing}>
+                        {notificationButtons}
+                     </View>
+                  )}
                </View>
-               {/* {notificationButtons && (
-                  <View
-                     flex="0 0 auto"
-                     display="flex"
-                     justifyContent="flex-end"
-                     marginTop="18px[a-b]"
-                     marginLeft="12px[c-f]">
+               {notificationButtons && buttonPlacement === 'right' && (
+                  <View flex="0 0 auto">
                      {notificationButtons}
                   </View>
-               )} */}
+               )}
             </View>
          </View>
       </View>
    )
 }
 
-const ReferenceableNotificationInline = forwardRef(NotificationInline)
-
-ReferenceableNotificationInline.propTypes = {
-   autoHide: PropTypes.bool,
-   autoHideAfterDuration: PropTypes.number,
+NotificationInline.propTypes = {
    backgroundColor: PropTypes.string,
    borderRadius: PropTypes.string,
+   buttonPlacement: PropTypes.oneOf(['bottom', 'right']),
+   buttons: PropTypes.array,
    children: PropTypes.node,
-   height: PropTypes.string,
-   iconGutter: PropTypes.string,
+   iconColor: PropTypes.string,
+   iconSpacing: PropTypes.string,
    iconSize: PropTypes.string,
    message: PropTypes.string.isRequired,
    paddingHorizontal: PropTypes.string,
    paddingVertical: PropTypes.string,
+   textColor: PropTypes.string,
+   textSize: PropTypes.string,
    title: PropTypes.string.isRequired,
    type: PropTypes.oneOf([
       'error',
@@ -174,22 +164,22 @@ ReferenceableNotificationInline.propTypes = {
       'prompt',
       'success',
       'warning'
-   ]).isRequired,
-   width: PropTypes.string
+   ]).isRequired
 }
 
-ReferenceableNotificationInline.defaultProps = {
-   autoHide: false,
-   autoHideAfterDuration: 5000,
+NotificationInline.defaultProps = {
    backgroundColor: undefined,
    borderRadius: undefined,
+   buttonPlacement: 'bottom',
+   buttons: undefined,
    children: undefined,
-   height: undefined,
-   iconGutter: undefined,
+   iconColor: '#fff',
+   iconSpacing: '12px',
    iconSize: undefined,
-   paddingHorizontal: undefined,
-   paddingVertical: undefined,
-   width: undefined
+   paddingHorizontal: '18px',
+   paddingVertical: '18px',
+   textColor: '#fff',
+   textSize: '2'
 }
 
-export default ReferenceableNotificationInline
+export default React.memo(NotificationInline)
