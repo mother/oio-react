@@ -32,6 +32,6 @@ export default [{
    name: 'Standard attributes',
    type: 'String',
    default: '-',
-   description: 'In addition to the above properties, this component will also accept any attributes available to the standard <code>input</code> html element.',
+   description: 'In addition to the above properties, this component will also accept any attributes available to the standard <code>input="text"</code> html element.',
    responsive: false
 }]

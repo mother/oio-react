@@ -17,6 +17,12 @@ export default [{
    description: 'Text label to display next to <code>Select</code>',
    responsive: false
 }, {
+   name: 'size',
+   type: 'String (Enum)',
+   default: '<code>sm</code>',
+   description: 'This value can be one of: <code>xl</code>, <code>lg</code>, <code>md</code>, <code>sm</code> or <code>xs</code>. This will automatically set the component\'s height and font size.',
+   responsive: false
+}, {
    name: 'Standard attributes',
    type: 'String',
    default: '-',

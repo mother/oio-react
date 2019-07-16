@@ -102,7 +102,7 @@ const Select = ({
                fontFamily: oioContext.fontFamily,
                width: '100%',
                transition: '200ms',
-               '-webkit-appearance': 'none'
+               WebkitAppearance: 'none'
             }}
          />
       </View>
