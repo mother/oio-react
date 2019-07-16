@@ -4,5 +4,6 @@ export { default as generateResponsiveObject } from './utils/generateResponsiveO
 export { default as Grid } from './Grid'
 export { default as GridCell } from './GridCell'
 export { default as OIOProvider } from './OIOProvider'
+export { default as Spinner } from './Spinner'
 export { default as Text } from './Text'
 export { default as View } from './View'
