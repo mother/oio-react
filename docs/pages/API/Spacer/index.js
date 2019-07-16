@@ -26,7 +26,7 @@ export default class SpacerPage extends PureComponent {
                   <br />
                   <Text>
                      {/* eslint-disable max-len */}
-                     The following example shows <code>Spacer</code> component used in <code>horizontal</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows as an html element with <code>display</code>set to <code>block</code>. Note that the sibling <code>View</code> components in this exmample, <code>display</code> is set to <code>block</code>.
+                     The following example shows <code>Spacer</code> component used in <code>horizontal</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows as an html element with <code>display</code>set to <code>block</code>. Note that the sibling <code>View</code> components in this example, <code>display</code> is set to <code>block</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />

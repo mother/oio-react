@@ -6,10 +6,10 @@ export default [{
    responsive: false
 }, {
    name: 'orientation',
-   type: 'String (Enum)',
+   type: 'OIO Responsive String (Enum)',
    default: '-',
    description: 'Available values are: <code>horizontal</code> and <code>vertical</code>',
-   responsive: false
+   responsive: true
 }, {
    name: 'size',
    type: 'OIO Responsive String',
