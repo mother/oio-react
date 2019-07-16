@@ -6,7 +6,7 @@ const ViewBasicSpecimen = () => (
       <View display="inline-block" backgroundColor="#ddd">
          <Text>View A</Text>
       </View>
-      <Spacer size="3" orientation="vertical" />
+      <Spacer size="3[a-d] 5[e-f]" orientation="vertical" />
       <View display="inline-block" backgroundColor="#ddd">
          <Text>View B</Text>
       </View>
@@ -19,7 +19,7 @@ ViewBasicSpecimen.codeSnippet = `
    <Text>View A</Text>
 </View>
 
-<Spacer size="3" orientation="vertical" />
+<Spacer size="3[a-d] 5[e-f]" orientation="vertical" />
 
 <View display="inline-block" backgroundColor="#ddd">
    <Text>View B</Text>

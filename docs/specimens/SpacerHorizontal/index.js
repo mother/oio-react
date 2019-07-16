@@ -6,7 +6,7 @@ const SpacerHorizontalSpecimen = () => (
       <View display="block" backgroundColor="#ddd">
          <Text>View A</Text>
       </View>
-      <Spacer size="3" />
+      <Spacer size="3[a-d] 5[e-f]" />
       <View display="block" backgroundColor="#ddd">
          <Text>View B</Text>
       </View>
@@ -19,7 +19,7 @@ SpacerHorizontalSpecimen.codeSnippet = `
    <Text>View A</Text>
 </View>
 
-<Spacer size="3" />
+<Spacer size="3[a-d] 5[e-f]" />
 
 <View display="block" backgroundColor="#ddd">
    <Text>View B</Text>

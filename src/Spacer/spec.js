@@ -7,7 +7,7 @@ export default [{
 }, {
    name: 'orientation',
    type: 'OIO Responsive String (Enum)',
-   default: '-',
+   default: '<code>horizontal</code>',
    description: 'Available values are: <code>horizontal</code> and <code>vertical</code>',
    responsive: true
 }, {

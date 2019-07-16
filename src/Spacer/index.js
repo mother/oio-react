@@ -22,7 +22,11 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { orientation } = props
+   const orientation = props.orientation[breakpoint]
+   if (!['horizontal', 'vertical'].includes(orientation)) {
+      throw new Error(`Invalid Orientation value: ${orientation}`)
+   }
+
    const size = parseInt(props.size[breakpoint], 10)
    const calculatedSpacerSize = `${size * 6}px`
 
