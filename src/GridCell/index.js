@@ -18,20 +18,55 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // ============================================================================
 
 @withGridContext
-@withResponsiveObjectProps(['colspan'])
+@withResponsiveObjectProps([
+   'backgroundColor',
+   'backgroundImage',
+   'backgroundPosition',
+   'backgroundRepeat',
+   'backgroundSize',
+   'border',
+   'borderBottom',
+   'borderLeft',
+   'borderRadius',
+   'borderRight',
+   'borderTop',
+   'boxShadow',
+   'colspan',
+   'padding',
+   'paddingBottom',
+   'paddingLeft',
+   'paddingRight',
+   'paddingTop',
+   'paddingHorizontal',
+   'paddingVertical',
+   'textAlign'
+])
+
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { gridContext } = props
+   const { paddingHorizontal, paddingVertical, gridContext } = props
 
    const colspan = props.colspan[breakpoint]
    const numGridColumns = gridContext.columns[breakpoint]
    const spacing = gridContext.spacing[breakpoint]
    const cellWidth = (colspan / numGridColumns) * 100
 
-   return ({
-      width: `calc(${cellWidth}% - ${spacing})`,
-      marginBottom: spacing,
-      marginLeft: spacing
-   })
+   const styleObject = {
+      marginLeft: spacing,
+      marginTop: spacing,
+      width: `calc(${cellWidth}% - ${spacing})`
+   }
+
+   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
+      styleObject.paddingLeft = paddingHorizontal[breakpoint]
+      styleObject.paddingRight = paddingHorizontal[breakpoint]
+   }
+
+   if (paddingVertical && paddingVertical[breakpoint]) {
+      styleObject.paddingTop = paddingVertical[breakpoint]
+      styleObject.paddingBottom = paddingVertical[breakpoint]
+   }
+
+   return styleObject
 })
 
 // ============================================================================
@@ -40,11 +75,31 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
 export default class GridCell extends React.Component {
    static propTypes = {
+      backgroundColor: OIOResponsiveObjectPropType,
+      backgroundImage: OIOResponsiveObjectPropType,
+      backgroundPosition: OIOResponsiveObjectPropType,
+      backgroundRepeat: OIOResponsiveObjectPropType,
+      backgroundSize: OIOResponsiveObjectPropType,
+      border: OIOResponsiveObjectPropType,
+      borderTop: OIOResponsiveObjectPropType,
+      borderRadius: OIOResponsiveObjectPropType,
+      borderRight: OIOResponsiveObjectPropType,
+      borderBottom: OIOResponsiveObjectPropType,
+      borderLeft: OIOResponsiveObjectPropType,
+      boxShadow: OIOResponsiveObjectPropType,
       children: PropTypes.node,
       className: PropTypes.string,
       colspan: OIOResponsiveObjectPropType,
       id: PropTypes.string,
-      style: PropTypes.object
+      padding: OIOResponsiveObjectPropType,
+      paddingTop: OIOResponsiveObjectPropType,
+      paddingLeft: OIOResponsiveObjectPropType,
+      paddingRight: OIOResponsiveObjectPropType,
+      paddingBottom: OIOResponsiveObjectPropType,
+      paddingHorizontal: OIOResponsiveObjectPropType,
+      paddingVertical: OIOResponsiveObjectPropType,
+      style: PropTypes.object,
+      textAlign: OIOResponsiveObjectPropType
    }
 
    static defaultProps = {
@@ -55,15 +110,28 @@ export default class GridCell extends React.Component {
    }
 
    render() {
-      const { className, id, marginBottom, marginLeft, width } = this.props
+      const {
+         className, id,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
+         border, borderBottom, borderLeft, borderRadius, borderRight, borderTop,
+         marginTop, marginLeft,
+         padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
+         boxShadow, textAlign,
+         width
+      } = this.props
+
+      /* eslint-disable object-property-newline */
       const responsiveStyles = generateResponsiveStyles({
-         marginBottom,
-         marginLeft,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
+         border, borderBottom, borderLeft, borderRadius, borderRight, borderTop,
+         marginTop, marginLeft,
+         padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
+         boxShadow, textAlign,
          width
       })
+      /* eslint-enable object-property-newline */
 
       const style = {
-         float: 'left',
          ...this.props.style,
          ...responsiveStyles
       }

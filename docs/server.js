@@ -23,6 +23,8 @@ app.use(webpackHotMiddleware(compiler, {
    heartbeat: 10 * 1000
 }))
 
+app.use('/assets', express.static('docs/assets'))
+
 app.get('*', (req, res, next) => {
    res.sendFile('index.html', { root: `${__dirname}/` })
 })
