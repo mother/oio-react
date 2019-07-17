@@ -13,6 +13,8 @@ import FormInputUnderlineSpecimen from '../../specimens/FormInputUnderline'
 import GridCellBackgroundImage from '../../specimens/GridCellBackgroundImage'
 import GridResponsive from '../../specimens/GridResponsive'
 import OIOProvider from '../../specimens/OIOProvider'
+import SpacerHorizontal from '../../specimens/SpacerHorizontal'
+import SpacerVertical from '../../specimens/SpacerVertical'
 import TextColors from '../../specimens/TextColors'
 import TextSizes from '../../specimens/TextSizes'
 import TextTransforms from '../../specimens/TextTransforms'
@@ -43,6 +45,10 @@ export default class Tests extends Component {
             <Route path={`${match.url}/grid-cell-bg-img`} component={GridCellBackgroundImage} />
             <Route path={`${match.url}/grid-responsive`} component={GridResponsive} />
             <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
+
+            <Route path={`${match.url}/spacer-horizontal`} component={SpacerHorizontal} />
+            <Route path={`${match.url}/spacer-vertical`} component={SpacerVertical} />
+
             <Route path={`${match.url}/text-colors`} component={TextColors} />
             <Route path={`${match.url}/text-sizes`} component={TextSizes} />
             <Route path={`${match.url}/text-transforms`} component={TextTransforms} />
