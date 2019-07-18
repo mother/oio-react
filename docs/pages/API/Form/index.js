@@ -3,6 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
 import checkboxSpec from '../../../../src/Form/Checkbox/spec'
+import formSpec from '../../../../src/Form/spec'
 import inputSpec from '../../../../src/Form/Input/spec'
 import labelSpec from '../../../../src/Form/Label/spec'
 import radioSpec from '../../../../src/Form/Radio/spec'
@@ -35,7 +36,7 @@ export default class FormPage extends PureComponent {
                   <br />
                   <Text size="2[a-e] 3[f]" lineHeight="140%">
                      {/* eslint-disable max-len */}
-                     The following is a form styled with the <code>outline</code> appearance (the default). Note that the appearance for all these elements are set through an <code>OIOProvider</code>, and not set individually on each component.
+                     The following is a form styled with the <code>outline</code> appearance (the default). Note that the appearance for all these elements are set through the <code>Form</code> component, and not set individually on each component.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
@@ -57,7 +58,7 @@ export default class FormPage extends PureComponent {
                   <br />
                   <Text size="2[a-e] 3[f]" lineHeight="140%">
                      {/* eslint-disable max-len */}
-                     The following is a form styled with the <code>plain</code> appearance. Note that the appearance for all these elements are set through an <code>OIOProvider</code>, and not set individually on each component. Also note that the <code>Switch</code> component&apos;s appearance is the same as when <code>appearance</code> is set to <code>outline</code>. The following example also has customizations for the form labels.
+                     The following is a form styled with the <code>plain</code> appearance. Note that the appearance for all these elements are set through the <code>Form</code> component, and not set individually on each component. Also note that the <code>Switch</code> component&apos;s appearance is the same as when <code>appearance</code> is set to <code>outline</code>. The following example also has customizations for the form labels.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
@@ -105,7 +106,7 @@ export default class FormPage extends PureComponent {
                   <br />
                   <Text size="2[a-e] 3[f]" lineHeight="140%">
                      {/* eslint-disable max-len */}
-                     The <code>Input</code> component (and only this component) has an additional <code>appearance</code> option called <code>underline</code>. This must be set on the <code>Input</code> components themselves. Note: this appearance option is not available through the <code>OIOProvider</code>. <code>Input</code> components with the <code>underline</code> <code>appearance</code> will look harmonious next to OIO Form elements with the <code>appearance</code> set to <code>outline</code>.
+                     The <code>Input</code> component (and only this component) has an additional <code>appearance</code> option called <code>underline</code>. This must be set on the <code>Input</code> components themselves. Note: this appearance option is not available through the <code>Form</code> component. <code>Input</code> components with the <code>underline</code> <code>appearance</code> will look harmonious next to OIO Form elements with the <code>appearance</code> set to <code>outline</code>.
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
@@ -121,6 +122,7 @@ export default class FormPage extends PureComponent {
                   </SyntaxHighlighter>
                </div>
             </div>
+            <APITableBlock spec={formSpec} title="Form API Options" />
             <APITableBlock spec={checkboxSpec} title="Checkbox API Options" />
             <APITableBlock spec={inputSpec} title="Input API Options" />
             <APITableBlock spec={labelSpec} title="Label API Options" />

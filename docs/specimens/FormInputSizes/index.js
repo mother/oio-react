@@ -1,17 +1,17 @@
 import React from 'react'
 import {
+   Form,
    Grid,
    GridCell,
    Input,
-   OIOProvider,
    Select
 } from '../../../src'
 
 const FormInputSizesSpecimen = () => (
-   <OIOProvider
-      formElementAppearance="plain"
-      formElementBackgroundColor="#eee"
-      formElementFocusBackgroundColor="#e5e5e5">
+   <Form
+      elementAppearance="plain"
+      elementBackgroundColor="#eee"
+      elementFocusBackgroundColor="#e5e5e5">
       <Grid columns="2" spacing="12px">
          <GridCell>
             <Grid columns="1">
@@ -82,15 +82,15 @@ const FormInputSizesSpecimen = () => (
             </Grid>
          </GridCell>
       </Grid>
-   </OIOProvider>
+   </Form>
 )
 
 FormInputSizesSpecimen.codeSnippet = `
 // Form Input sizes
-<OIOProvider
-   formElementAppearance="plain"
-   formElementBackgroundColor="#eee"
-   formElementFocusBackgroundColor="#e5e5e5">
+<Form
+   elementAppearance="plain"
+   elementBackgroundColor="#eee"
+   elementFocusBackgroundColor="#e5e5e5">
    <Grid columns="2" spacing="12px">
       <GridCell>
          <Grid columns="1">
@@ -161,7 +161,7 @@ FormInputSizesSpecimen.codeSnippet = `
          </Grid>
       </GridCell>
    </Grid>
-</OIOProvider>
+</Form>
 `
 
 export default FormInputSizesSpecimen

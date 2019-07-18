@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { Label, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext } from '..'
 import selectArrowIcon from './selectArrowIcon.svg'
 
 // ============================================================================
@@ -66,16 +67,17 @@ const Select = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearance
+   const formContext = useContext(OIOFormContext)
 
+   const inputAppearance = appearance || formContext.elementAppearance
    const appearanceStyles = {
       outline: {
-         borderColor: oioContext.formElementBorderColor,
+         borderColor: formContext.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: oioContext.formElementBorderWidth,
+         borderWidth: formContext.elementBorderWidth,
          '&:focus': {
-            borderColor: oioContext.focusBorderColor,
-            backgroundColor: oioContext.focusBackgroundColor
+            borderColor: formContext.elementFocusBorderColor,
+            backgroundColor: formContext.elementFocusBackgroundColor
          }
       },
       plain: {
@@ -92,11 +94,11 @@ const Select = ({
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
-               backgroundColor: oioContext.formElementBackgroundColor,
-               borderRadius: oioContext.formElementBorderRadius,
+               backgroundColor: formContext.elementBackgroundColor,
+               borderRadius: formContext.elementBorderRadius,
                backgroundRepeat: 'no-repeat',
                backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
-               color: oioContext.formElementTextColor,
+               color: formContext.elementTextColor,
                outline: 'none',
                float: 'left',
                fontFamily: oioContext.fontFamily,

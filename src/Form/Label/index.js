@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import OIOContext from '../../OIOProvider/context'
 import { Text, View } from '../../../src'
+import { OIOFormContext } from '..'
 
 // ============================================================================
 // Component
@@ -13,15 +13,14 @@ const Label = ({
    required,
    ...props
 }) => {
-   const oioContext = useContext(OIOContext)
-
+   const formContext = useContext(OIOFormContext)
    return (
       <View width="100%" marginBottom="3px[a-d] 9px[e-f]">
          <Text
-            size={oioContext.formLabelTextSize}
-            color={oioContext.formLabelTextColor}
-            weight={oioContext.formLabelTextWeight}
-            transform={oioContext.formLabelTextTransform}>
+            size={formContext.labelTextSize}
+            color={formContext.labelTextColor}
+            weight={formContext.labelTextWeight}
+            transform={formContext.labelTextTransform}>
             {/* There is a bug in jsx-a11y
             TODO: update https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/455 */}
             {/* eslint-disable jsx-a11y/label-has-for */}
