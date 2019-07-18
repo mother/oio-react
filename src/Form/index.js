@@ -5,7 +5,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const formContextDefaults = {
+// =======================================================
+// Context Creation & Context Provider Defaults
+// =======================================================
+
+const formContextDefaults = {
    elementAppearance: 'outline',
    elementBorderColor: '#ddd',
    elementBorderRadius: '3px',
@@ -20,7 +24,18 @@ export const formContextDefaults = {
    labelTextWeight: 'bold'
 }
 
-export const OIOFormContext = React.createContext()
+// Passing these defaults to `createContext` will ensure that
+// even if there is no Form provider, consumers will still access
+// these default values. In other words, this will allow form elements
+// to be used with or without a Form component, and the defaults will
+// still be inherited properly regardless.
+// See https://reactjs.org/docs/context.html#reactcreatecontext for
+// more details about the default arg.
+const OIOFormContext = React.createContext(formContextDefaults)
+
+// =======================================================
+// Component
+// =======================================================
 
 const OIOForm = ({
    children,
@@ -81,4 +96,9 @@ OIOForm.propTypes = {
 
 OIOForm.defaultProps = formContextDefaults
 
+// =======================================================
+// Exports
+// =======================================================
+
+export { OIOFormContext }
 export default OIOForm

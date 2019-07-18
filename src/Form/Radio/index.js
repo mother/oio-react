@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Text, View } from '../../../src'
 import OIOContext from '../../OIOProvider/context'
-import { OIOFormContext, formContextDefaults } from '..'
+import { OIOFormContext } from '..'
 
 // ============================================================================
 // Component
@@ -19,19 +19,15 @@ const Radio = ({
 }) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
-   const formProps = {
-      ...formContextDefaults,
-      ...formContext
-   }
 
    const inputHighlightColor = highlightColor || oioContext.highlightColor
-   const inputAppearance = appearance || formProps.elementAppearance
+   const inputAppearance = appearance || formContext.elementAppearance
 
    const appearanceStyles = {
       outline: {
-         borderColor: formProps.elementBorderColor,
+         borderColor: formContext.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.elementBorderWidth
+         borderWidth: formContext.elementBorderWidth
       },
       plain: {}
    }
@@ -49,7 +45,7 @@ const Radio = ({
             type="radio"
             css={{
                ...appearanceStyles[inputAppearance],
-               backgroundColor: formProps.elementBackgroundColor,
+               backgroundColor: formContext.elementBackgroundColor,
                borderRadius: '50%',
                flex: '0 0 auto',
                float: 'left',
@@ -73,7 +69,7 @@ const Radio = ({
                flex="1 1 auto"
                float="left"
                padding="0 15px">
-               <Text size="2" color={formProps.elementTextColor}>
+               <Text size="2" color={formContext.elementTextColor}>
                   {label}
                </Text>
             </View>

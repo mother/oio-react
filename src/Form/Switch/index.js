@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
 
 // ============================================================================
 // Component

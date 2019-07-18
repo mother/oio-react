@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Label, View } from '../../../src'
 import OIOContext from '../../OIOProvider/context'
-import { OIOFormContext, formContextDefaults } from '..'
+import { OIOFormContext } from '..'
 
 // ============================================================================
 // Size Specific Styles
@@ -56,27 +56,23 @@ const Input = ({
 }) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
-   const formProps = {
-      ...formContextDefaults,
-      ...formContext
-   }
 
-   const inputAppearance = appearance || formProps.elementAppearance
-   const borderRadius = formProps.elementBorderRadius
+   const inputAppearance = appearance || formContext.elementAppearance
+   const borderRadius = formContext.elementBorderRadius
 
    const appearanceStyles = {
       outline: {
          borderRadius,
-         borderColor: formProps.elementBorderColor,
+         borderColor: formContext.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.elementBorderWidth
+         borderWidth: formContext.elementBorderWidth
       },
       plain: {
          borderRadius
       },
       underline: {
-         borderBottomWidth: formProps.elementBorderWidth,
-         borderColor: formProps.elementBorderColor,
+         borderBottomWidth: formContext.elementBorderWidth,
+         borderColor: formContext.elementBorderColor,
          borderStyle: 'solid',
          padding: '0px'
       }
@@ -92,16 +88,16 @@ const Input = ({
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
-               backgroundColor: formProps.elementBackgroundColor,
-               color: formProps.elementTextColor,
+               backgroundColor: formContext.elementBackgroundColor,
+               color: formContext.elementTextColor,
                fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
                width: '100%',
                transition: '200ms',
                '&:focus': {
-                  borderColor: formProps.elementFocusBorderColor,
-                  backgroundColor: formProps.elementFocusBackgroundColor
+                  borderColor: formContext.elementFocusBorderColor,
+                  backgroundColor: formContext.elementFocusBackgroundColor
                }
             }}
          />

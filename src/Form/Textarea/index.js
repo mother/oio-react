@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { Label, View } from '../../../src'
 import OIOContext from '../../OIOProvider/context'
-import { OIOFormContext, formContextDefaults } from '..'
+import { OIOFormContext } from '..'
 
 // ============================================================================
 // Size Specific Styles
@@ -42,12 +42,8 @@ const Textarea = ({
 }) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
-   const formProps = {
-      ...formContextDefaults,
-      ...formContext
-   }
 
-   const textareaAppearance = appearance || formProps.elementAppearance
+   const textareaAppearance = appearance || formContext.elementAppearance
    const appearanceStyles = {
       outline: {
          border: '2px solid #ddd',
@@ -91,9 +87,9 @@ const Textarea = ({
             css={{
                ...appearanceStyles[textareaAppearance],
                ...sizeStyles[size],
-               backgroundColor: formProps.elementBackgroundColor,
-               borderRadius: formProps.elementBorderRadius,
-               color: formProps.elementTextColor,
+               backgroundColor: formContext.elementBackgroundColor,
+               borderRadius: formContext.elementBorderRadius,
+               color: formContext.elementTextColor,
                fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
@@ -101,8 +97,8 @@ const Textarea = ({
                transition: '200ms',
                resize: 'none',
                '&:focus': {
-                  borderColor: formProps.elementFocusBorderColor,
-                  backgroundColor: formProps.elementFocusBackgroundColor
+                  borderColor: formContext.elementFocusBorderColor,
+                  backgroundColor: formContext.elementFocusBackgroundColor
                }
             }}
          />
