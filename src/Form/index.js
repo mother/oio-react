@@ -22,65 +22,63 @@ export const formContextDefaults = {
 
 export const OIOFormContext = React.createContext()
 
-export default class OIOForm extends React.Component {
-   static propTypes = {
-      children: PropTypes.node.isRequired,
-      elementAppearance: PropTypes.oneOf(['outline', 'plain']),
-      elementBorderColor: PropTypes.string,
-      elementBorderRadius: PropTypes.string,
-      elementBorderWidth: PropTypes.string,
-      elementBackgroundColor: PropTypes.string,
-      elementFocusBackgroundColor: PropTypes.string,
-      elementFocusBorderColor: PropTypes.string,
-      elementTextColor: PropTypes.string,
-      labelTextColor: PropTypes.string,
-      labelTextSize: PropTypes.string,
-      labelTextTransform: PropTypes.string,
-      labelTextWeight: PropTypes.string
+const OIOForm = ({
+   children,
+   elementAppearance,
+   elementBorderColor,
+   elementBorderRadius,
+   elementBorderWidth,
+   elementBackgroundColor,
+   elementFocusBackgroundColor,
+   elementFocusBorderColor,
+   elementTextColor,
+   labelTextColor,
+   labelTextSize,
+   labelTextTransform,
+   labelTextWeight,
+   ...formProps
+}) => {
+   // Props available to OIO Context Consumer
+   const contextProps = {
+      elementAppearance,
+      elementBorderColor,
+      elementBorderRadius,
+      elementBorderWidth,
+      elementBackgroundColor,
+      elementFocusBackgroundColor,
+      elementFocusBorderColor,
+      elementTextColor,
+      labelTextColor,
+      labelTextSize,
+      labelTextTransform,
+      labelTextWeight
    }
 
-   static defaultProps = formContextDefaults
-
-   render() {
-      const {
-         children,
-         elementAppearance,
-         elementBorderColor,
-         elementBorderRadius,
-         elementBorderWidth,
-         elementBackgroundColor,
-         elementFocusBackgroundColor,
-         elementFocusBorderColor,
-         elementTextColor,
-         labelTextColor,
-         labelTextSize,
-         labelTextTransform,
-         labelTextWeight,
-         ...formProps
-      } = this.props
-
-      // Props available to OIO Context Consumer
-      const contextProps = {
-         elementAppearance,
-         elementBorderColor,
-         elementBorderRadius,
-         elementBorderWidth,
-         elementBackgroundColor,
-         elementFocusBackgroundColor,
-         elementFocusBorderColor,
-         elementTextColor,
-         labelTextColor,
-         labelTextSize,
-         labelTextTransform,
-         labelTextWeight
-      }
-
-      return (
-         <OIOFormContext.Provider value={contextProps}>
-            <form {...formProps}>
-               {children}
-            </form>
-         </OIOFormContext.Provider>
-      )
-   }
+   return (
+      <OIOFormContext.Provider value={contextProps}>
+         <form {...formProps}>
+            {children}
+         </form>
+      </OIOFormContext.Provider>
+   )
 }
+
+OIOForm.propTypes = {
+   children: PropTypes.node.isRequired,
+   elementAppearance: PropTypes.oneOf(['outline', 'plain']),
+   elementBorderColor: PropTypes.string,
+   elementBorderRadius: PropTypes.string,
+   elementBorderWidth: PropTypes.string,
+   elementBackgroundColor: PropTypes.string,
+   elementFocusBackgroundColor: PropTypes.string,
+   elementFocusBorderColor: PropTypes.string,
+   elementTextColor: PropTypes.string,
+   labelTextColor: PropTypes.string,
+   labelTextSize: PropTypes.string,
+   labelTextTransform: PropTypes.string,
+   labelTextWeight: PropTypes.string
+}
+
+OIOForm.defaultProps = formContextDefaults
+
+export default OIOForm
