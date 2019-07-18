@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { Text, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext, formContextDefaults } from '..'
 import checkboxIcon from './checkboxIcon.svg'
 
 // ============================================================================
@@ -18,14 +19,20 @@ const Checkbox = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearance
+   const formContext = useContext(OIOFormContext)
+   const formProps = {
+      ...formContextDefaults,
+      ...formContext
+   }
+
+   const inputAppearance = appearance || formProps.formElementAppearance
    const inputHighlightColor = highlightColor || oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {
-         borderColor: oioContext.formElementBorderColor,
+         borderColor: formProps.formElementBorderColor,
          borderStyle: 'solid',
-         borderWidth: oioContext.formElementBorderWidth
+         borderWidth: formProps.formElementBorderWidth
       },
       plain: {}
    }
@@ -51,7 +58,7 @@ const Checkbox = ({
                height: '20px',
                transition: '100ms',
                zIndex: '2',
-               backgroundColor: oioContext.formElementBackgroundColor,
+               backgroundColor: formProps.formElementBackgroundColor,
                backgroundRepeat: 'no-repeat',
                backgroundPosition: 'center center',
                '&:hover': {
@@ -71,7 +78,7 @@ const Checkbox = ({
                flex="1 1 auto"
                float="left"
                padding="0 15px">
-               <Text size="2" color={oioContext.formElementTextColor}>
+               <Text size="2" color={formProps.formElementTextColor}>
                   {label}
                </Text>
             </View>

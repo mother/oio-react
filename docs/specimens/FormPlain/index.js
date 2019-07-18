@@ -3,9 +3,9 @@ import {
    Checkbox,
    Grid,
    GridCell,
+   Form,
    Input,
    Label,
-   OIOProvider,
    Radio,
    Select,
    Switch,
@@ -13,7 +13,7 @@ import {
 } from '../../../src'
 
 const FormPlainSpecimen = () => (
-   <OIOProvider
+   <Form
       formElementAppearance="plain"
       formElementBackgroundColor="#eee"
       formElementBorderRadius="4px"
@@ -54,12 +54,12 @@ const FormPlainSpecimen = () => (
             <Radio name="species" label="Human" />
          </GridCell>
       </Grid>
-   </OIOProvider>
+   </Form>
 )
 
 FormPlainSpecimen.codeSnippet = `
 // Form elements with plain appearance
-<OIOProvider
+<Form
    formElementAppearance="plain"
    formElementBackgroundColor="#eee"
    formElementBorderRadius="4px"
@@ -100,7 +100,7 @@ FormPlainSpecimen.codeSnippet = `
          <Radio name="species" label="Human" />
       </GridCell>
    </Grid>
-</OIOProvider>
+</Form>
 `
 
 export default FormPlainSpecimen

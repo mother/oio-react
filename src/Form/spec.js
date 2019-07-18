@@ -1,0 +1,79 @@
+export default [{
+   name: 'formElementAppearance',
+   type: 'String (Enum)',
+   default: '<code>outline</code>',
+   description: 'This value can be one of: <code>outline</code> or <code>plain</code>.',
+   responsive: false
+}, {
+   name: 'formElementBorderColor',
+   type: 'String',
+   default: '<code>#ddd</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementBorderRadius',
+   type: 'String',
+   default: '<code>3px</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementBorderWidth',
+   type: 'String',
+   default: '<code>2px</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementBackgroundColor',
+   type: 'String',
+   default: '<code>transparent</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementFocusBackgroundColor',
+   type: 'String',
+   default: '<code>rgba(0,0,0,0.01)</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementFocusBorderColor',
+   type: 'String',
+   default: '<code>#888</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formElementTextColor',
+   type: 'String',
+   default: '<code>#333</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formLabelTextColor',
+   type: 'String',
+   default: '<code>#444</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formLabelTextSize',
+   type: 'String',
+   default: '<code>0.8</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formLabelTextTransform',
+   type: 'String',
+   default: '<code>uppercase</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'formLabelTextWeight',
+   type: 'String',
+   default: '<code>bold</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'Standard attributes',
+   type: 'String',
+   default: '-',
+   description: 'In addition to the above properties, this component will also accept any attributes available to the standard <code>form</code> html element.',
+   responsive: false
+}]

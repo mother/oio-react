@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { Label, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext, formContextDefaults } from '..'
 
 // ============================================================================
 // Size Specific Styles
@@ -40,8 +41,13 @@ const Textarea = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const textareaAppearance = appearance || oioContext.formElementAppearance
+   const formContext = useContext(OIOFormContext)
+   const formProps = {
+      ...formContextDefaults,
+      ...formContext
+   }
 
+   const textareaAppearance = appearance || formProps.formElementAppearance
    const appearanceStyles = {
       outline: {
          border: '2px solid #ddd',
@@ -85,9 +91,9 @@ const Textarea = ({
             css={{
                ...appearanceStyles[textareaAppearance],
                ...sizeStyles[size],
-               backgroundColor: oioContext.formElementBackgroundColor,
-               borderRadius: oioContext.formElementBorderRadius,
-               color: oioContext.formElementTextColor,
+               backgroundColor: formProps.formElementBackgroundColor,
+               borderRadius: formProps.formElementBorderRadius,
+               color: formProps.formElementTextColor,
                fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
@@ -95,8 +101,8 @@ const Textarea = ({
                transition: '200ms',
                resize: 'none',
                '&:focus': {
-                  borderColor: oioContext.formElementFocusBorderColor,
-                  backgroundColor: oioContext.formElementFocusBackgroundColor
+                  borderColor: formProps.formElementFocusBorderColor,
+                  backgroundColor: formProps.formElementFocusBackgroundColor
                }
             }}
          />

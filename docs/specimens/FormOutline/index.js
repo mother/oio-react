@@ -5,7 +5,7 @@ import {
    GridCell,
    Input,
    Label,
-   OIOProvider,
+   Form,
    Radio,
    Select,
    Switch,
@@ -13,7 +13,7 @@ import {
 } from '../../../src'
 
 const FormOutlineSpecimen = () => (
-   <OIOProvider formElementAppearance="outline">
+   <Form formElementAppearance="outline">
       <Grid columns="2">
          <GridCell>
             <Input label="First Name" />
@@ -46,7 +46,7 @@ const FormOutlineSpecimen = () => (
             <Radio name="species" label="Human" />
          </GridCell>
       </Grid>
-   </OIOProvider>
+   </Form>
 )
 
 FormOutlineSpecimen.codeSnippet = `
@@ -54,7 +54,7 @@ FormOutlineSpecimen.codeSnippet = `
 
 
 // Form elements with outline appearance (default)
-<OIOProvider formElementAppearance="outline">
+<Form formElementAppearance="outline">
    <Grid columns="2">
       <GridCell>
          <Input label="First Name" />
@@ -87,7 +87,7 @@ FormOutlineSpecimen.codeSnippet = `
          <Radio name="species" label="Human" />
       </GridCell>
    </Grid>
-</OIOProvider>
+</Form>
 `
 
 export default FormOutlineSpecimen

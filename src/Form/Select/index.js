@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { Label, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext, formContextDefaults } from '..'
 import selectArrowIcon from './selectArrowIcon.svg'
 
 // ============================================================================
@@ -66,16 +67,21 @@ const Select = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearance
+   const formContext = useContext(OIOFormContext)
+   const formProps = {
+      ...formContextDefaults,
+      ...formContext
+   }
 
+   const inputAppearance = appearance || formProps.formElementAppearance
    const appearanceStyles = {
       outline: {
-         borderColor: oioContext.formElementBorderColor,
+         borderColor: formProps.formElementBorderColor,
          borderStyle: 'solid',
-         borderWidth: oioContext.formElementBorderWidth,
+         borderWidth: formProps.formElementBorderWidth,
          '&:focus': {
-            borderColor: oioContext.focusBorderColor,
-            backgroundColor: oioContext.focusBackgroundColor
+            borderColor: formProps.formElementFocusBorderColor,
+            backgroundColor: formProps.formElementFocusBackgroundColor
          }
       },
       plain: {
@@ -92,11 +98,11 @@ const Select = ({
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
-               backgroundColor: oioContext.formElementBackgroundColor,
-               borderRadius: oioContext.formElementBorderRadius,
+               backgroundColor: formProps.formElementBackgroundColor,
+               borderRadius: formProps.formElementBorderRadius,
                backgroundRepeat: 'no-repeat',
                backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
-               color: oioContext.formElementTextColor,
+               color: formProps.formElementTextColor,
                outline: 'none',
                float: 'left',
                fontFamily: oioContext.fontFamily,
