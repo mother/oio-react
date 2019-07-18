@@ -13,7 +13,7 @@ import {
 } from '../../../src'
 
 const FormOutlineSpecimen = () => (
-   <Form formElementAppearance="outline">
+   <Form elementAppearance="outline">
       <Grid columns="2">
          <GridCell>
             <Input label="First Name" />
@@ -54,7 +54,7 @@ FormOutlineSpecimen.codeSnippet = `
 
 
 // Form elements with outline appearance (default)
-<Form formElementAppearance="outline">
+<Form elementAppearance="outline">
    <Grid columns="2">
       <GridCell>
          <Input label="First Name" />

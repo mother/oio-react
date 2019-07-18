@@ -9,9 +9,9 @@ import {
 
 const FormInputSizesSpecimen = () => (
    <Form
-      formElementAppearance="plain"
-      formElementBackgroundColor="#eee"
-      formElementFocusBackgroundColor="#e5e5e5">
+      elementAppearance="plain"
+      elementBackgroundColor="#eee"
+      elementFocusBackgroundColor="#e5e5e5">
       <Grid columns="2" spacing="12px">
          <GridCell>
             <Grid columns="1">
@@ -88,9 +88,9 @@ const FormInputSizesSpecimen = () => (
 FormInputSizesSpecimen.codeSnippet = `
 // Form Input sizes
 <Form
-   formElementAppearance="plain"
-   formElementBackgroundColor="#eee"
-   formElementFocusBackgroundColor="#e5e5e5">
+   elementAppearance="plain"
+   elementBackgroundColor="#eee"
+   elementFocusBackgroundColor="#e5e5e5">
    <Grid columns="2" spacing="12px">
       <GridCell>
          <Grid columns="1">

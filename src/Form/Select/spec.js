@@ -2,7 +2,7 @@ export default [{
    name: 'appearance',
    type: 'String (Enum)',
    default: '-',
-   description: 'This value can be one of: <code>outline</code>, <code>plain</code> or <code>underline</code>. <br /><br />By default, the appearance of the component is set through the value of the nearest <code>Form</code>\'s <code>formElementAppearance</code> prop. If the <code>appearance</code> prop is set on this component, it will take precedence over the <code>appearance</code> value provided by the <code>Form</code>.',
+   description: 'This value can be one of: <code>outline</code>, <code>plain</code> or <code>underline</code>. <br /><br />By default, the appearance of the component is set through the value of the nearest <code>Form</code>\'s <code>elementAppearance</code> prop. If the <code>appearance</code> prop is set on this component, it will take precedence over the <code>appearance</code> value provided by the <code>Form</code>.',
    responsive: false
 }, {
    name: 'id',

@@ -14,14 +14,14 @@ import {
 
 const FormPlainSpecimen = () => (
    <Form
-      formElementAppearance="plain"
-      formElementBackgroundColor="#eee"
-      formElementBorderRadius="4px"
-      formElementFocusBackgroundColor="#e5e5e5"
-      formLabelTextColor="#666"
-      formLabelTextSize="1"
-      formLabelTextTransform="none"
-      formLabelTextWeight="semibold">
+      elementAppearance="plain"
+      elementBackgroundColor="#eee"
+      elementBorderRadius="4px"
+      elementFocusBackgroundColor="#e5e5e5"
+      labelTextColor="#666"
+      labelTextSize="1"
+      labelTextTransform="none"
+      labelTextWeight="semibold">
       <Grid columns="2">
          <GridCell>
             <Input label="First Name" />
@@ -60,14 +60,14 @@ const FormPlainSpecimen = () => (
 FormPlainSpecimen.codeSnippet = `
 // Form elements with plain appearance
 <Form
-   formElementAppearance="plain"
-   formElementBackgroundColor="#eee"
-   formElementBorderRadius="4px"
-   formElementFocusBackgroundColor="#e5e5e5"
-   formLabelTextColor="#666"
-   formLabelTextSize="1"
-   formLabelTextTransform="none"
-   formLabelTextWeight="semibold">
+   elementAppearance="plain"
+   elementBackgroundColor="#eee"
+   elementBorderRadius="4px"
+   elementFocusBackgroundColor="#e5e5e5"
+   labelTextColor="#666"
+   labelTextSize="1"
+   labelTextTransform="none"
+   labelTextWeight="semibold">
    <Grid columns="2">
       <GridCell>
          <Input label="First Name" />

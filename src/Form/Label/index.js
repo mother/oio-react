@@ -22,10 +22,10 @@ const Label = ({
    return (
       <View width="100%" marginBottom="3px[a-d] 9px[e-f]">
          <Text
-            size={formProps.formLabelTextSize}
-            color={formProps.formLabelTextColor}
-            weight={formProps.formLabelTextWeight}
-            transform={formProps.formLabelTextTransform}>
+            size={formProps.labelTextSize}
+            color={formProps.labelTextColor}
+            weight={formProps.labelTextWeight}
+            transform={formProps.labelTextTransform}>
             {/* There is a bug in jsx-a11y
             TODO: update https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/455 */}
             {/* eslint-disable jsx-a11y/label-has-for */}

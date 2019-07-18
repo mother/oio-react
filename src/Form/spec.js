@@ -1,71 +1,71 @@
 export default [{
-   name: 'formElementAppearance',
+   name: 'elementAppearance',
    type: 'String (Enum)',
    default: '<code>outline</code>',
    description: 'This value can be one of: <code>outline</code> or <code>plain</code>.',
    responsive: false
 }, {
-   name: 'formElementBorderColor',
+   name: 'elementBorderColor',
    type: 'String',
    default: '<code>#ddd</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementBorderRadius',
+   name: 'elementBorderRadius',
    type: 'String',
    default: '<code>3px</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementBorderWidth',
+   name: 'elementBorderWidth',
    type: 'String',
    default: '<code>2px</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementBackgroundColor',
+   name: 'elementBackgroundColor',
    type: 'String',
    default: '<code>transparent</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementFocusBackgroundColor',
+   name: 'elementFocusBackgroundColor',
    type: 'String',
    default: '<code>rgba(0,0,0,0.01)</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementFocusBorderColor',
+   name: 'elementFocusBorderColor',
    type: 'String',
    default: '<code>#888</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formElementTextColor',
+   name: 'elementTextColor',
    type: 'String',
    default: '<code>#333</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formLabelTextColor',
+   name: 'labelTextColor',
    type: 'String',
    default: '<code>#444</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formLabelTextSize',
+   name: 'labelTextSize',
    type: 'String',
    default: '<code>0.8</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formLabelTextTransform',
+   name: 'labelTextTransform',
    type: 'String',
    default: '<code>uppercase</code>',
    description: '',
    responsive: false
 }, {
-   name: 'formLabelTextWeight',
+   name: 'labelTextWeight',
    type: 'String',
    default: '<code>bold</code>',
    description: '',

@@ -25,13 +25,13 @@ const Radio = ({
    }
 
    const inputHighlightColor = highlightColor || oioContext.highlightColor
-   const inputAppearance = appearance || formProps.formElementAppearance
+   const inputAppearance = appearance || formProps.elementAppearance
 
    const appearanceStyles = {
       outline: {
-         borderColor: formProps.formElementBorderColor,
+         borderColor: formProps.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.formElementBorderWidth
+         borderWidth: formProps.elementBorderWidth
       },
       plain: {}
    }
@@ -49,7 +49,7 @@ const Radio = ({
             type="radio"
             css={{
                ...appearanceStyles[inputAppearance],
-               backgroundColor: formProps.formElementBackgroundColor,
+               backgroundColor: formProps.elementBackgroundColor,
                borderRadius: '50%',
                flex: '0 0 auto',
                float: 'left',
@@ -73,7 +73,7 @@ const Radio = ({
                flex="1 1 auto"
                float="left"
                padding="0 15px">
-               <Text size="2" color={formProps.formElementTextColor}>
+               <Text size="2" color={formProps.elementTextColor}>
                   {label}
                </Text>
             </View>

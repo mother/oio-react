@@ -47,7 +47,7 @@ const Textarea = ({
       ...formContext
    }
 
-   const textareaAppearance = appearance || formProps.formElementAppearance
+   const textareaAppearance = appearance || formProps.elementAppearance
    const appearanceStyles = {
       outline: {
          border: '2px solid #ddd',
@@ -91,9 +91,9 @@ const Textarea = ({
             css={{
                ...appearanceStyles[textareaAppearance],
                ...sizeStyles[size],
-               backgroundColor: formProps.formElementBackgroundColor,
-               borderRadius: formProps.formElementBorderRadius,
-               color: formProps.formElementTextColor,
+               backgroundColor: formProps.elementBackgroundColor,
+               borderRadius: formProps.elementBorderRadius,
+               color: formProps.elementTextColor,
                fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
@@ -101,8 +101,8 @@ const Textarea = ({
                transition: '200ms',
                resize: 'none',
                '&:focus': {
-                  borderColor: formProps.formElementFocusBorderColor,
-                  backgroundColor: formProps.formElementFocusBackgroundColor
+                  borderColor: formProps.elementFocusBorderColor,
+                  backgroundColor: formProps.elementFocusBackgroundColor
                }
             }}
          />

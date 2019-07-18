@@ -25,14 +25,14 @@ const Checkbox = ({
       ...formContext
    }
 
-   const inputAppearance = appearance || formProps.formElementAppearance
+   const inputAppearance = appearance || formProps.elementAppearance
    const inputHighlightColor = highlightColor || oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {
-         borderColor: formProps.formElementBorderColor,
+         borderColor: formProps.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.formElementBorderWidth
+         borderWidth: formProps.elementBorderWidth
       },
       plain: {}
    }
@@ -58,7 +58,7 @@ const Checkbox = ({
                height: '20px',
                transition: '100ms',
                zIndex: '2',
-               backgroundColor: formProps.formElementBackgroundColor,
+               backgroundColor: formProps.elementBackgroundColor,
                backgroundRepeat: 'no-repeat',
                backgroundPosition: 'center center',
                '&:hover': {
@@ -78,7 +78,7 @@ const Checkbox = ({
                flex="1 1 auto"
                float="left"
                padding="0 15px">
-               <Text size="2" color={formProps.formElementTextColor}>
+               <Text size="2" color={formProps.elementTextColor}>
                   {label}
                </Text>
             </View>

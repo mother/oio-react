@@ -6,18 +6,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export const formContextDefaults = {
-   formElementAppearance: 'outline',
-   formElementBorderColor: '#ddd',
-   formElementBorderRadius: '3px',
-   formElementBorderWidth: '2px',
-   formElementBackgroundColor: 'transparent',
-   formElementFocusBackgroundColor: 'rgba(0,0,0,0.01)',
-   formElementFocusBorderColor: '#888',
-   formElementTextColor: '#333',
-   formLabelTextColor: '#444',
-   formLabelTextSize: '0.8',
-   formLabelTextTransform: 'uppercase',
-   formLabelTextWeight: 'bold'
+   elementAppearance: 'outline',
+   elementBorderColor: '#ddd',
+   elementBorderRadius: '3px',
+   elementBorderWidth: '2px',
+   elementBackgroundColor: 'transparent',
+   elementFocusBackgroundColor: 'rgba(0,0,0,0.01)',
+   elementFocusBorderColor: '#888',
+   elementTextColor: '#333',
+   labelTextColor: '#444',
+   labelTextSize: '0.8',
+   labelTextTransform: 'uppercase',
+   labelTextWeight: 'bold'
 }
 
 export const OIOFormContext = React.createContext()
@@ -25,18 +25,18 @@ export const OIOFormContext = React.createContext()
 export default class OIOForm extends React.Component {
    static propTypes = {
       children: PropTypes.node.isRequired,
-      formElementAppearance: PropTypes.oneOf(['outline', 'plain']),
-      formElementBorderColor: PropTypes.string,
-      formElementBorderRadius: PropTypes.string,
-      formElementBorderWidth: PropTypes.string,
-      formElementBackgroundColor: PropTypes.string,
-      formElementFocusBackgroundColor: PropTypes.string,
-      formElementFocusBorderColor: PropTypes.string,
-      formElementTextColor: PropTypes.string,
-      formLabelTextColor: PropTypes.string,
-      formLabelTextSize: PropTypes.string,
-      formLabelTextTransform: PropTypes.string,
-      formLabelTextWeight: PropTypes.string
+      elementAppearance: PropTypes.oneOf(['outline', 'plain']),
+      elementBorderColor: PropTypes.string,
+      elementBorderRadius: PropTypes.string,
+      elementBorderWidth: PropTypes.string,
+      elementBackgroundColor: PropTypes.string,
+      elementFocusBackgroundColor: PropTypes.string,
+      elementFocusBorderColor: PropTypes.string,
+      elementTextColor: PropTypes.string,
+      labelTextColor: PropTypes.string,
+      labelTextSize: PropTypes.string,
+      labelTextTransform: PropTypes.string,
+      labelTextWeight: PropTypes.string
    }
 
    static defaultProps = formContextDefaults
@@ -44,35 +44,35 @@ export default class OIOForm extends React.Component {
    render() {
       const {
          children,
-         formElementAppearance,
-         formElementBorderColor,
-         formElementBorderRadius,
-         formElementBorderWidth,
-         formElementBackgroundColor,
-         formElementFocusBackgroundColor,
-         formElementFocusBorderColor,
-         formElementTextColor,
-         formLabelTextColor,
-         formLabelTextSize,
-         formLabelTextTransform,
-         formLabelTextWeight,
+         elementAppearance,
+         elementBorderColor,
+         elementBorderRadius,
+         elementBorderWidth,
+         elementBackgroundColor,
+         elementFocusBackgroundColor,
+         elementFocusBorderColor,
+         elementTextColor,
+         labelTextColor,
+         labelTextSize,
+         labelTextTransform,
+         labelTextWeight,
          ...formProps
       } = this.props
 
       // Props available to OIO Context Consumer
       const contextProps = {
-         formElementAppearance,
-         formElementBorderColor,
-         formElementBorderRadius,
-         formElementBorderWidth,
-         formElementBackgroundColor,
-         formElementFocusBackgroundColor,
-         formElementFocusBorderColor,
-         formElementTextColor,
-         formLabelTextColor,
-         formLabelTextSize,
-         formLabelTextTransform,
-         formLabelTextWeight
+         elementAppearance,
+         elementBorderColor,
+         elementBorderRadius,
+         elementBorderWidth,
+         elementBackgroundColor,
+         elementFocusBackgroundColor,
+         elementFocusBorderColor,
+         elementTextColor,
+         labelTextColor,
+         labelTextSize,
+         labelTextTransform,
+         labelTextWeight
       }
 
       return (

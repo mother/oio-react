@@ -73,15 +73,15 @@ const Select = ({
       ...formContext
    }
 
-   const inputAppearance = appearance || formProps.formElementAppearance
+   const inputAppearance = appearance || formProps.elementAppearance
    const appearanceStyles = {
       outline: {
-         borderColor: formProps.formElementBorderColor,
+         borderColor: formProps.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.formElementBorderWidth,
+         borderWidth: formProps.elementBorderWidth,
          '&:focus': {
-            borderColor: formProps.formElementFocusBorderColor,
-            backgroundColor: formProps.formElementFocusBackgroundColor
+            borderColor: formProps.elementFocusBorderColor,
+            backgroundColor: formProps.elementFocusBackgroundColor
          }
       },
       plain: {
@@ -98,11 +98,11 @@ const Select = ({
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
-               backgroundColor: formProps.formElementBackgroundColor,
-               borderRadius: formProps.formElementBorderRadius,
+               backgroundColor: formProps.elementBackgroundColor,
+               borderRadius: formProps.elementBorderRadius,
                backgroundRepeat: 'no-repeat',
                backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
-               color: formProps.formElementTextColor,
+               color: formProps.elementTextColor,
                outline: 'none',
                float: 'left',
                fontFamily: oioContext.fontFamily,

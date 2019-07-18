@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Label, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
 import { OIOFormContext, formContextDefaults } from '..'
 
 // ============================================================================
@@ -53,28 +54,29 @@ const Input = ({
    size,
    ...props
 }) => {
+   const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
    const formProps = {
       ...formContextDefaults,
       ...formContext
    }
 
-   const inputAppearance = appearance || formProps.formElementAppearance
-   const borderRadius = formProps.formElementBorderRadius
+   const inputAppearance = appearance || formProps.elementAppearance
+   const borderRadius = formProps.elementBorderRadius
 
    const appearanceStyles = {
       outline: {
          borderRadius,
-         borderColor: formProps.formElementBorderColor,
+         borderColor: formProps.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: formProps.formElementBorderWidth
+         borderWidth: formProps.elementBorderWidth
       },
       plain: {
          borderRadius
       },
       underline: {
-         borderBottomWidth: formProps.formElementBorderWidth,
-         borderColor: formProps.formElementBorderColor,
+         borderBottomWidth: formProps.elementBorderWidth,
+         borderColor: formProps.elementBorderColor,
          borderStyle: 'solid',
          padding: '0px'
       }
@@ -90,16 +92,16 @@ const Input = ({
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
-               backgroundColor: formProps.formElementBackgroundColor,
-               color: formProps.formElementTextColor,
-               fontFamily: formProps.fontFamily,
+               backgroundColor: formProps.elementBackgroundColor,
+               color: formProps.elementTextColor,
+               fontFamily: oioContext.fontFamily,
                fontWeight: 'inherit',
                letterSpacing: 'inherit',
                width: '100%',
                transition: '200ms',
                '&:focus': {
-                  borderColor: formProps.formElementFocusBorderColor,
-                  backgroundColor: formProps.formElementFocusBackgroundColor
+                  borderColor: formProps.elementFocusBorderColor,
+                  backgroundColor: formProps.elementFocusBackgroundColor
                }
             }}
          />
