@@ -4,14 +4,15 @@
    a {
       float: left;
       width: 100%;
-      color: #666;
+      color: #888;
       padding: 12px 12px;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 500;
    }
 
    .active {
       background: #eee;
-      color: #333;
+      color: #222;
    }
 }
 
@@ -31,7 +32,7 @@
    float: left;
    position: relative;
    width: 100%;
-   padding: 60px 60px 60px 0px;
+   padding: 48px 48px 48px 0px;
    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
@@ -39,7 +40,7 @@
    float: left;
    position: relative;
    width: 50%;
-   padding: 60px 60px 60px 0px;
+   padding: 48px 48px 48px 0px;
    flex: 0 0 auto;
    border-bottom: 1px solid rgba(0,0,0,0.1);
 
@@ -62,12 +63,15 @@
 }
 
 .columnHalfCode {
-   flex: 1 1 auto;
-   padding: 60px;
+   float: left;
+   position: relative;
+   width: 50%;
+   padding: 30px;
    background: #1e2124;
    font-size: 13px;
    font-family: 'Monaco','courier';
    border-bottom: 1px solid #111;
+   overflow: auto;
 
    pre {
       margin: 0px;
@@ -102,9 +106,8 @@
          color: #F44336;
       }
 
-
       th {
-         padding: 12px 30px;
+         padding: 12px;
          font-size: 11px;
          background: #CFD8DC;
          background: #f8f8f8;
@@ -123,8 +126,8 @@
 
       td {
          color: #466371;
-         padding: 12px 30px;
-         font-size: 0.9em;
+         padding: 9px;
+         font-size: 0.8em;
          border-right: 1px solid #ECEFF1;
 
          a {

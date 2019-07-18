@@ -4,6 +4,9 @@ import { Button, View } from '../../../src'
 const ButtonSizesSpecimen = () => (
    <div>
       <View float="left" width="100%" marginBottom="3px">
+         <Button name="Button (xl)" size="xl" />
+      </View>
+      <View float="left" width="100%" marginBottom="3px">
          <Button name="Button (lg)" size="lg" />
       </View>
       <View float="left" width="100%" marginBottom="3px">

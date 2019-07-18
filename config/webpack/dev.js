@@ -21,6 +21,10 @@ module.exports = {
             use: ['babel-loader']
          },
          {
+            test: /\.svg$/,
+            loader: 'svg-inline-loader'
+         },
+         {
             test: /\.less$/,
             include: path.join(__dirname, '../../docs'),
             use: [

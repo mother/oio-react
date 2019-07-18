@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
+import { Text, View } from '../../../src'
 import ButtonPage from './Button'
+import FormPage from './Form'
 import GridPage from './Grid'
 import OIOProviderPage from './OIOProvider'
 import SpacerPage from './Spacer'
@@ -19,23 +21,24 @@ export default class API extends Component {
 
       return (
          <div>
-            <div
-               style={{
-                  position: 'absolute',
-                  top: '48px',
-                  bottom: '48px',
-                  width: '240px',
-                  padding: '12px 0px 0px 30px',
-                  borderRight: '1px solid #ddd',
-                  overflow: 'auto'
-               }}>
-               <h1>OIO</h1>
+            <View
+               position="absolute"
+               top="0px"
+               bottom="0px"
+               width="210px"
+               padding="60px 0px 0px 30px"
+               borderRight="1px solid #ddd"
+               scroll="on">
+               <Text size="8" weight="medium">OIO</Text>
                <div className={style.nav}>
                   <NavLink exact to={match.url} activeClassName={style.active}>
                      OIOProvider
                   </NavLink>
                   <NavLink to={`${match.url}/button`} activeClassName={style.active}>
                      Button
+                  </NavLink>
+                  <NavLink to={`${match.url}/form`} activeClassName={style.active}>
+                     Forms
                   </NavLink>
                   <NavLink to={`${match.url}/spacer`} activeClassName={style.active}>
                      Spacer
@@ -50,22 +53,22 @@ export default class API extends Component {
                      Grid
                   </NavLink>
                </div>
-            </div>
-            <div
-               style={{
-                  position: 'absolute',
-                  left: '300px',
-                  right: '0px',
-                  height: '100%',
-                  overflow: 'auto'
-               }}>
+            </View>
+            <View
+               position="absolute"
+               left="210px"
+               right="0px"
+               height="100%"
+               paddingLeft="60px"
+               scroll="on">
                <Route path={`${match.url}/button`} component={ButtonPage} />
+               <Route path={`${match.url}/form`} component={FormPage} />
                <Route exact path={match.url} component={OIOProviderPage} />
                <Route path={`${match.url}/spacer`} component={SpacerPage} />
                <Route path={`${match.url}/text`} component={TextPage} />
                <Route path={`${match.url}/view`} component={ViewPage} />
                <Route path={`${match.url}/grid`} component={GridPage} />
-            </div>
+            </View>
          </div>
       )
    }

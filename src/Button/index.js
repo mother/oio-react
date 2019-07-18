@@ -26,16 +26,20 @@ const buttonStyleDefaults = {
 }
 
 const buttonSizeDefaults = {
-   lg: {
+   xl: {
       height: '54px',
       textSize: '3'
    },
-   md: {
+   lg: {
       height: '42px',
       textSize: '1.5'
    },
-   sm: {
+   md: {
       height: '36px',
+      textSize: '0.9'
+   },
+   sm: {
+      height: '30px',
       textSize: '0.9'
    },
    xs: {
@@ -169,7 +173,7 @@ export default class Button extends React.Component {
       onClick: undefined,
       outline: false,
       rounded: false,
-      size: r`md`,
+      size: r`sm`,
       style: {},
       tagName: 'button',
       textColor: r`#fff`,
