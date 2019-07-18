@@ -13,6 +13,7 @@ export { default as View } from './View'
 
 // Form Components
 export { default as Checkbox } from './Form/Checkbox'
+export { default as Form } from './Form'
 export { default as Input } from './Form/Input'
 export { default as Label } from './Form/Label'
 export { default as Radio } from './Form/Radio'

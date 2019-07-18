@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
-import OIOContext from '../../OIOProvider/context'
 import { Text, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext } from '..'
 import checkboxIcon from './checkboxIcon.svg'
 
 // ============================================================================
@@ -18,14 +19,16 @@ const Checkbox = ({
    ...props
 }) => {
    const oioContext = useContext(OIOContext)
-   const inputAppearance = appearance || oioContext.formElementAppearance
+   const formContext = useContext(OIOFormContext)
+
+   const inputAppearance = appearance || formContext.elementAppearance
    const inputHighlightColor = highlightColor || oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {
-         borderColor: oioContext.formElementBorderColor,
+         borderColor: formContext.elementBorderColor,
          borderStyle: 'solid',
-         borderWidth: oioContext.formElementBorderWidth
+         borderWidth: formContext.elementBorderWidth
       },
       plain: {}
    }
@@ -51,7 +54,7 @@ const Checkbox = ({
                height: '20px',
                transition: '100ms',
                zIndex: '2',
-               backgroundColor: oioContext.formElementBackgroundColor,
+               backgroundColor: formContext.elementBackgroundColor,
                backgroundRepeat: 'no-repeat',
                backgroundPosition: 'center center',
                '&:hover': {
@@ -71,7 +74,7 @@ const Checkbox = ({
                flex="1 1 auto"
                float="left"
                padding="0 15px">
-               <Text size="2" color={oioContext.formElementTextColor}>
+               <Text size="2" color={formContext.elementTextColor}>
                   {label}
                </Text>
             </View>
