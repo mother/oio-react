@@ -20,6 +20,7 @@ import TextSizes from '../../specimens/TextSizes'
 import TextTransforms from '../../specimens/TextTransforms'
 import TextWeights from '../../specimens/TextWeights'
 import ViewKitchenSink from '../../specimens/ViewKitchenSink'
+import NotificationAnim from '../../specimens/NotificationAnim'
 
 export default class Tests extends Component {
    static propTypes = {
@@ -54,6 +55,8 @@ export default class Tests extends Component {
             <Route path={`${match.url}/text-transforms`} component={TextTransforms} />
             <Route path={`${match.url}/text-weights`} component={TextWeights} />
             <Route path={`${match.url}/view-kitchen-sink`} component={ViewKitchenSink} />
+
+            <Route path={`${match.url}/notification-anim`} component={NotificationAnim} />
          </Switch>
       )
    }
