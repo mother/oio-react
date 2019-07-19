@@ -29,4 +29,14 @@ ButtonSizesSpecimen.codeSnippet = `
 <Button name="Button (xs)" size="xs" />
 `
 
+ButtonSizesSpecimen.title = 'The Basics: Name and Size'
+
+ButtonSizesSpecimen.description = `The text that appears in the <code>Button</code> component is set with the
+prop <code>name</code>.
+You can set the size of the <code>Button</code> component by using the
+prop <code>size</code>
+The default size for the Button component is <code>sm</code>. Availalble
+  sizes are: <code>xl</code>, <code>lg</code>, <code>md</code>,
+<code>sm</code>, <code>xs</code>`
+
 export default ButtonSizesSpecimen

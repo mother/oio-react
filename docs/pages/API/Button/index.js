@@ -4,11 +4,14 @@ import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Text } from '../../../../src'
 import buttonSpec from '../../../../src/Button/spec'
 import ButtonChildrenSpecimen from '../../../specimens/ButtonChildren'
-import ButtonCustomizationsSpecimen from '../../../specimens/ButtonCustomizations'
+// import ButtonCustomizationsSpecimen from '../../../specimens/ButtonCustomizations'
 import ButtonModesSpecimen from '../../../specimens/ButtonModes'
 import ButtonSizesSpecimen from '../../../specimens/ButtonSizes'
 import ButtonStylesSpecimen from '../../../specimens/ButtonStyles'
+import { ButtonCustomizationsSpecimen } from '../../../specimens'
 import style from '../style.less'
+
+import Specimen from '../../../specimen'
 
 export default class ButtonPage extends Component {
    render() {
@@ -19,35 +22,20 @@ export default class ButtonPage extends Component {
                   <Text size="10" weight="medium">
                      Button
                   </Text>
-                  <br />
-                  <Text size="5" weight="medium">
-                     The Basics: Name and Size
-                  </Text>
-                  <br />
-                  <Text>
-                     The text that appears in the <code>Button</code> component is set with the
-                      prop <code>name</code>.
-                     You can set the size of the <code>Button</code> component by using the
-                      prop <code>size</code>
-                      The default size for the Button component is <code>sm</code>. Availalble
-                       sizes are: <code>xl</code>, <code>lg</code>, <code>md</code>,
-                     <code>sm</code>, <code>xs</code>
-                  </Text>
-                  <br />
-                  <br />
-                  <div className={style.exampleContainer}>
-                     <ButtonSizesSpecimen />
-                  </div>
-               </div>
-               <div className={style.columnHalfCode}>
-                  <SyntaxHighlighter
-                     language="jsx"
-                     style={duotoneEarth}
-                     customStyle={{ background: 'transparent' }}>
-                     {ButtonSizesSpecimen.codeSnippet}
-                  </SyntaxHighlighter>
                </div>
             </div>
+
+
+
+
+
+
+            <Specimen component={ButtonSizesSpecimen} />
+
+
+
+
+
             <div className={style.block}>
                <div className={style.columnHalfText}>
                   <Text size="5" weight="medium">
