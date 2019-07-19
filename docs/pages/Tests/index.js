@@ -30,15 +30,19 @@ export default class Tests extends Component {
                      component={specimens[name]}
                   />
                ))}
-               <Route render={() => "Specimen Not Found"} />
+               <Route render={() => (
+                  <>
+                     Specimen Not Found
+                     <br />
+                     {Object.keys(specimens).map(name => (
+                        <>
+                           <br />
+                           <Link key={name} to={`${match.url}/${toDashCase(name)}`}>{name}</Link>
+                        </>
+                     ))}
+                  </>
+               )} />
             </Switch>
-            <br />
-            {Object.keys(specimens).map(name => (
-               <>
-                  <br />
-                  <Link key={name} to={`${match.url}/${toDashCase(name)}`}>{name}</Link>
-               </>
-            ))}
          </>
       )
    }
