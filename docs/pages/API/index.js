@@ -5,6 +5,7 @@ import { Text, View } from '../../../src'
 import ButtonPage from './Button'
 import FormPage from './Form'
 import GridPage from './Grid'
+import NotificationPage from './Notification'
 import OIOProviderPage from './OIOProvider'
 import SpacerPage from './Spacer'
 import TextPage from './Text'
@@ -40,6 +41,9 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/form`} activeClassName={style.active}>
                      Forms
                   </NavLink>
+                  <NavLink to={`${match.url}/notifications`} activeClassName={style.active}>
+                     Notifications
+                  </NavLink>
                   <NavLink to={`${match.url}/spacer`} activeClassName={style.active}>
                      Spacer
                   </NavLink>
@@ -63,6 +67,7 @@ export default class API extends Component {
                scroll="on">
                <Route path={`${match.url}/button`} component={ButtonPage} />
                <Route path={`${match.url}/form`} component={FormPage} />
+               <Route path={`${match.url}/notifications`} component={NotificationPage} />
                <Route exact path={match.url} component={OIOProviderPage} />
                <Route path={`${match.url}/spacer`} component={SpacerPage} />
                <Route path={`${match.url}/text`} component={TextPage} />

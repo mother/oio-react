@@ -11,6 +11,9 @@ export { default as Spacer } from './Spacer'
 export { default as Text } from './Text'
 export { default as View } from './View'
 
+// Notifications
+export { NotificationContext, NotificationProvider } from './Notification'
+
 // Form Components
 export { default as Checkbox } from './Form/Checkbox'
 export { default as Form } from './Form'
