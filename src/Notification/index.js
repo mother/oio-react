@@ -1,4 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Transition, TransitionGroup } from 'react-transition-group'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
@@ -53,12 +54,27 @@ const Notification = ({ message }) => {
 }
 
 // =================================================
-// Context Stuff
+// Context Meat Sauce
 // =================================================
 
 export const NotificationContext = createContext()
 
 export const NotificationProvider = ({ children }) => {
+   const notificationElem = useRef(document.createElement('div'))
+
+   useEffect(() => {
+      notificationElem.current.setAttribute('id', 'notification-container')
+      notificationElem.current.style.backgroundColor = 'rgba(255, 0, 0, 0.2)'
+      notificationElem.current.style.position = 'absolute'
+      notificationElem.current.style.top = 0
+      notificationElem.current.style.bottom = 0
+      notificationElem.current.style.width = '550px'
+      notificationElem.current.style.right = 0
+      document.body.appendChild(notificationElem.current)
+
+      return () => notificationElem.current.remove()
+   }, [])
+
    const [notifications, setNotifications] = useState([])
    const showNotification = ({ message }) => {
       const newId = `${Date.now()}`
@@ -75,32 +91,37 @@ export const NotificationProvider = ({ children }) => {
    return (
       <NotificationContext.Provider value={{ showNotification }}>
          {children}
-         <div style={{ padding: '36px' }}>
-            <View float="left" width="100%" marginBottom="16px">
-               <TransitionGroup>
-                  {notifications.map(notification => (
-                     <Transition key={notification.id} timeout={{ appear: 0, enter: 0, exit: duration }}>
-                        {state => {
-                           console.log(state)
-                           return (
-                              <View
-                                 marginBottom="3px"
-                                 css={css`
-                                    transition: ${duration}ms ease-in-out;
-                                    opacity: ${state === 'entering' || state === 'exiting' || status === 'entered' ? '0' : '1'};
-                                    transform: translateX(
-                                       ${state === 'entering' || state === 'exiting' || status === 'entered' ? '120%' : 'calc(100% - 375px)'}
-                                    );
-                                 `}>
-                                 <Notification message={notification.message} />
-                              </View>
-                           )
-                        }}
-                     </Transition>
-                  ))}
-               </TransitionGroup>
-            </View>
-         </div>
+         {createPortal(
+            <div style={{ padding: '36px' }}>
+               <View float="left" width="100%" marginBottom="16px">
+                  <TransitionGroup>
+                     {/* TODO: Use CSSTransition */}
+                     {notifications.map(notification => (
+                        <Transition key={notification.id} timeout={{ appear: 0, enter: 0, exit: duration }}>
+                           {state => {
+                              // console.log(state)
+                              return (
+                                 <View
+                                    marginBottom="3px"
+                                    css={css`
+                                       transition: ${duration}ms ease-in-out;
+                                       opacity: ${state === 'entering' || state === 'exiting' || status === 'entered' ? '0' : '1'};
+                                       transform: translateX(
+                                          ${state === 'entering' || state === 'exiting' || status === 'entered' ? '120%' : 'calc(100% - 375px)'}
+                                       );
+                                    `}>
+                                    <Notification message={notification.message} />
+                                 </View>
+                              )
+                           }}
+                        </Transition>
+                     ))}
+                  </TransitionGroup>
+               </View>
+            </div>,
+            notificationElem.current
+         )}
+
       </NotificationContext.Provider>
    )
 }
