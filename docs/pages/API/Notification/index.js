@@ -27,7 +27,7 @@ const NotificationPage = () => {
                   <br />
                   <Text size="2[a-e] 3[f]" lineHeight="140%">
                      {/* eslint-disable max-len */}
-                     <Button name="Cucumber" onClick={handleShowNotification} />
+                     <Button name="Show Notification" onClick={handleShowNotification} />
                      {/* eslint-enable max-len */}
                   </Text>
                   <br />
