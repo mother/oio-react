@@ -145,7 +145,7 @@ const NotificationInline = ({
                   )}
                </View>
                {notificationButtons && buttonPlacement === 'right' && (
-                  <View flex="0 0 auto">
+                  <View marginTop="12px[a-b]" flex="0 0 auto">
                      {notificationButtons}
                   </View>
                )}

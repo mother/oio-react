@@ -14,7 +14,7 @@ export default [{
    name: 'buttonPlacement',
    type: 'String (Enum)',
    default: 'bottom',
-   description: 'Determines the position of <code>buttons</code> (if present). Available values are: <code>bottom</code> and <code>right</code>',
+   description: 'Determines the position of <code>buttons</code> (if present). Available values are: <code>bottom</code> and <code>right</code>. Only applies to breakpoints <code>c</code> through <code>f</code>, as buttons will always be on the bottom for smaller resolutions.',
    responsive: false
 }, {
    name: 'buttons',
