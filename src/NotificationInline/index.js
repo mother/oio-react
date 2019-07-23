@@ -172,14 +172,7 @@ NotificationInline.propTypes = {
    textColor: PropTypes.string,
    textSize: PropTypes.string,
    title: PropTypes.string.isRequired,
-   type: PropTypes.oneOf([
-      'error',
-      'info',
-      'loading',
-      'prompt',
-      'success',
-      'warning'
-   ]).isRequired
+   type: PropTypes.oneOf(Object.keys(notificationTypes)).isRequired
 }
 
 NotificationInline.defaultProps = {

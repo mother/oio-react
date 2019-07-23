@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const InfoIcon = ({
+const InfoCircledIcon = ({
    className,
    color,
    width,
@@ -23,18 +23,18 @@ const InfoIcon = ({
    </svg>
 )
 
-InfoIcon.propTypes = {
+InfoCircledIcon.propTypes = {
    className: PropTypes.string,
    color: PropTypes.string,
    height: PropTypes.string,
    width: PropTypes.string
 }
 
-InfoIcon.defaultProps = {
+InfoCircledIcon.defaultProps = {
    className: undefined,
    color: '#444',
    height: '24px',
    width: '24px'
 }
 
-export default React.memo(InfoIcon)
+export default React.memo(InfoCircledIcon)

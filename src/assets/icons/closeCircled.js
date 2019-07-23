@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CloseIcon = ({
+const CloseCircledIcon = ({
    className,
    color,
    width,
@@ -23,18 +23,18 @@ const CloseIcon = ({
    </svg>
 )
 
-CloseIcon.propTypes = {
+CloseCircledIcon.propTypes = {
    className: PropTypes.string,
    color: PropTypes.string,
    height: PropTypes.string,
    width: PropTypes.string
 }
 
-CloseIcon.defaultProps = {
+CloseCircledIcon.defaultProps = {
    className: undefined,
    color: '#444',
    height: '24px',
    width: '24px'
 }
 
-export default React.memo(CloseIcon)
+export default React.memo(CloseCircledIcon)

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const WarningIcon = ({
+const WarningCircledIcon = ({
    className,
    color,
    width,
@@ -23,18 +23,18 @@ const WarningIcon = ({
    </svg>
 )
 
-WarningIcon.propTypes = {
+WarningCircledIcon.propTypes = {
    className: PropTypes.string,
    color: PropTypes.string,
    height: PropTypes.string,
    width: PropTypes.string
 }
 
-WarningIcon.defaultProps = {
+WarningCircledIcon.defaultProps = {
    className: undefined,
    color: '#444',
    height: '24px',
    width: '24px'
 }
 
-export default React.memo(WarningIcon)
+export default React.memo(WarningCircledIcon)

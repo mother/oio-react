@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const CheckmarkIcon = ({
+const CheckmarkCircledIcon = ({
    className,
    color,
    width,
@@ -23,18 +23,18 @@ const CheckmarkIcon = ({
    </svg>
 )
 
-CheckmarkIcon.propTypes = {
+CheckmarkCircledIcon.propTypes = {
    className: PropTypes.string,
    color: PropTypes.string,
    height: PropTypes.string,
    width: PropTypes.string
 }
 
-CheckmarkIcon.defaultProps = {
+CheckmarkCircledIcon.defaultProps = {
    className: undefined,
    color: '#444',
    height: '24px',
    width: '24px'
 }
 
-export default React.memo(CheckmarkIcon)
+export default React.memo(CheckmarkCircledIcon)
