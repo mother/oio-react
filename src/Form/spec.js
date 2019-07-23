@@ -1,0 +1,79 @@
+export default [{
+   name: 'elementAppearance',
+   type: 'String (Enum)',
+   default: '<code>outline</code>',
+   description: 'This value can be one of: <code>outline</code> or <code>plain</code>.',
+   responsive: false
+}, {
+   name: 'elementBorderColor',
+   type: 'String',
+   default: '<code>#ddd</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementBorderRadius',
+   type: 'String',
+   default: '<code>3px</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementBorderWidth',
+   type: 'String',
+   default: '<code>2px</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementBackgroundColor',
+   type: 'String',
+   default: '<code>transparent</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementFocusBackgroundColor',
+   type: 'String',
+   default: '<code>rgba(0,0,0,0.01)</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementFocusBorderColor',
+   type: 'String',
+   default: '<code>#888</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'elementTextColor',
+   type: 'String',
+   default: '<code>#333</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'labelTextColor',
+   type: 'String',
+   default: '<code>#444</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'labelTextSize',
+   type: 'String',
+   default: '<code>0.8</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'labelTextTransform',
+   type: 'String',
+   default: '<code>uppercase</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'labelTextWeight',
+   type: 'String',
+   default: '<code>bold</code>',
+   description: '',
+   responsive: false
+}, {
+   name: 'Standard attributes',
+   type: 'String',
+   default: '-',
+   description: 'In addition to the above properties, this component will also accept any attributes available to the standard <code>form</code> html element.',
+   responsive: false
+}]

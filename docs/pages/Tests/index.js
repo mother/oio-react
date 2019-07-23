@@ -6,6 +6,10 @@ import ButtonCustomizationsSpecimen from '../../specimens/ButtonCustomizations'
 import ButtonModesSpecimen from '../../specimens/ButtonModes'
 import ButtonSizesSpecimen from '../../specimens/ButtonSizes'
 import ButtonStylesSpecimen from '../../specimens/ButtonStyles'
+import FormOutlineSpecimen from '../../specimens/FormOutline'
+import FormPlainSpecimen from '../../specimens/FormPlain'
+import FormInputSizesSpecimen from '../../specimens/FormInputSizes'
+import FormInputUnderlineSpecimen from '../../specimens/FormInputUnderline'
 import GridCellBackgroundImage from '../../specimens/GridCellBackgroundImage'
 import GridResponsive from '../../specimens/GridResponsive'
 import NotificationInlineCustomizedSpecimen from '../../specimens/NotificationInlineCustomized'
@@ -34,6 +38,11 @@ export default class Tests extends Component {
             <Route path={`${match.url}/button-modes`} component={ButtonModesSpecimen} />
             <Route path={`${match.url}/button-sizes`} component={ButtonSizesSpecimen} />
             <Route path={`${match.url}/button-styles`} component={ButtonStylesSpecimen} />
+
+            <Route path={`${match.url}/form-outine-appearance`} component={FormOutlineSpecimen} />
+            <Route path={`${match.url}/form-plain-appearance`} component={FormPlainSpecimen} />
+            <Route path={`${match.url}/form-input-size`} component={FormInputSizesSpecimen} />
+            <Route path={`${match.url}/form-input-underline`} component={FormInputUnderlineSpecimen} />
 
             <Route path={`${match.url}/grid-cell-bg-img`} component={GridCellBackgroundImage} />
             <Route path={`${match.url}/grid-responsive`} component={GridResponsive} />

@@ -14,7 +14,7 @@ const GridCellBackgroundImageSpecimen = () => (
       <GridCell
          backgroundImage="url(/assets/land.jpeg)"
          backgroundSize="cover"
-         padding="72px 0px"
+         padding="90px 0px"
          textAlign="center">
          <Text color="#fafffe" size="6" weight="medium">Earth</Text>
       </GridCell>
@@ -47,7 +47,7 @@ GridCellBackgroundImageSpecimen.codeSnippet = `
    <GridCell
       backgroundImage="url(/assets/land.jpeg)"
       backgroundSize="cover"
-      padding="72px 0px"
+      padding="90px 0px"
       textAlign="center">
       <Text color="#fafffe" size="6" weight="medium">Earth</Text>
    </GridCell>
