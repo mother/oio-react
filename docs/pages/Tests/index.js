@@ -12,6 +12,8 @@ import FormInputSizesSpecimen from '../../specimens/FormInputSizes'
 import FormInputUnderlineSpecimen from '../../specimens/FormInputUnderline'
 import GridCellBackgroundImage from '../../specimens/GridCellBackgroundImage'
 import GridResponsive from '../../specimens/GridResponsive'
+import NotificationInlineCustomizedSpecimen from '../../specimens/NotificationInlineCustomized'
+import NotificationInlineTypesSpecimen from '../../specimens/NotificationInlineTypes'
 import OIOProvider from '../../specimens/OIOProvider'
 import SpacerHorizontal from '../../specimens/SpacerHorizontal'
 import SpacerVertical from '../../specimens/SpacerVertical'
@@ -44,6 +46,16 @@ export default class Tests extends Component {
 
             <Route path={`${match.url}/grid-cell-bg-img`} component={GridCellBackgroundImage} />
             <Route path={`${match.url}/grid-responsive`} component={GridResponsive} />
+
+            <Route
+               path={`${match.url}/notification-inline-customized`}
+               component={NotificationInlineCustomizedSpecimen}
+            />
+            <Route
+               path={`${match.url}/notification-inline-types`}
+               component={NotificationInlineTypesSpecimen}
+            />
+
             <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
 
             <Route path={`${match.url}/spacer-horizontal`} component={SpacerHorizontal} />
