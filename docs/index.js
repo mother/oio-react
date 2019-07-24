@@ -8,7 +8,7 @@ import { OIOProvider } from '../src'
 
 ReactDOM.render((
    <BrowserRouter>
-      <OIOProvider fontFamily="Helvetica Neue, sans-serif">
+      <OIOProvider fontFamily="Helvetica Neue, sans-serif" zoom={0.5}>
          <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/api" component={API} />

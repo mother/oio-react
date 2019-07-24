@@ -7,6 +7,7 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import r from '../../macro'
+import { withOIOContext } from '../OIOProvider/context'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
@@ -16,6 +17,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 // Decorators
 // ============================================================================
 
+@withOIOContext
 @withResponsiveObjectProps([
    'orientation',
    'size'
@@ -27,7 +29,8 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
       throw new Error(`Invalid Orientation value: ${orientation}`)
    }
 
-   const size = parseInt(props.size[breakpoint], 10)
+   const zoom = props.OIOContext.zoom
+   const size = parseInt(props.size[breakpoint], 10) * zoom
    const calculatedSpacerSize = `${size * 6}px`
 
    return ({

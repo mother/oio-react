@@ -6,6 +6,7 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { withOIOContext } from '../OIOProvider/context'
 import forwardRefToWrappedComponent from '../utils/forwardRef'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import r from '../../macro'
@@ -14,6 +15,7 @@ import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 
 @forwardRefToWrappedComponent
+@withOIOContext
 @withResponsiveObjectProps([
    'display', 'float', 'position', 'top', 'left', 'right', 'bottom', 'scroll',
    'flex', 'flexFlow', 'justifyContent', 'alignItems', 'order',

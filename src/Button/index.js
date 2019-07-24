@@ -80,6 +80,9 @@ const pulsingAnimation = keyframes`
       rounded
    } = props
 
+   // OIO Context
+   const zoom = OIOContext.zoom
+
    // Responsive Props
    const borderRadius = props.borderRadius && props.borderRadius[breakpoint]
    const color = props.color && props.color[breakpoint]
@@ -93,7 +96,7 @@ const pulsingAnimation = keyframes`
       throw new Error(`OIO Button: Invalid size prop provided. Valid values include: ${sizeOptions.join(', ')}`)
    }
 
-   const height = buttonSizeDefaults[size].height
+   const height = buttonSizeDefaults[size].height * zoom
    const width = props.width[breakpoint]
 
    const textColor = props.textColor && props.textColor[breakpoint]

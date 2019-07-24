@@ -49,7 +49,7 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
    // text size, scaling ratios and multipliers (multipliers are useful for theming)
    const textSizeScaleRatio = OIOContext.textSizeScaleRatio
    const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * OIOContext.zoom
    const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
    const fontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
       ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
