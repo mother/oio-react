@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-len
 const cssNumValRegex = /(\D*)(-?[0-9]+(?:\.[0-9]+)?)(cm|mm|in|px|pt|pc|em|ex|ch|rem|vw|vh|vmin|vmax|%|deg|rad)?(\D*)/gi
 const unitsToIgnore = ['%', 'deg', 'rad']
 
