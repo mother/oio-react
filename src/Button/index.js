@@ -81,11 +81,11 @@ const pulsingAnimation = keyframes`
    } = props
 
    // Responsive Props
-   const borderRadius = props.borderRadius && props.borderRadius[breakpoint]
-   const color = props.color && props.color[breakpoint]
-   const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
-   const padding = props.padding && props.padding[breakpoint]
-   const size = props.size && props.size[breakpoint]
+   const borderRadius = props.borderRadius?.[breakpoint]
+   const color = props.color?.[breakpoint]
+   const fontFamily = props.fontFamily?.[breakpoint]
+   const padding = props.padding?.[breakpoint]
+   const size = props.size?.[breakpoint]
 
    // If user passes invalid button 'size'
    const sizeOptions = Object.keys(buttonSizeDefaults)
@@ -96,10 +96,10 @@ const pulsingAnimation = keyframes`
    const height = buttonSizeDefaults[size].height
    const width = props.width[breakpoint]
 
-   const textColor = props.textColor && props.textColor[breakpoint]
-   const textSize = props.textSize && props.textSize[breakpoint]
-   const textTransform = props.textTransform && props.textTransform[breakpoint]
-   const textWeight = props.textWeight && props.textWeight[breakpoint]
+   const textColor = props.textColor?.[breakpoint]
+   const textSize = props.textSize?.[breakpoint]
+   const textTransform = props.textTransform?.[breakpoint]
+   const textWeight = props.textWeight?.[breakpoint]
 
    const primaryButtonColor = color || OIOContext.highlightColor
    const defaultButtonPadding = width === 'auto' ? `0px ${height}` : '0px'
