@@ -7,19 +7,22 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { GridContext } from './context'
+import applyMultiplier from '../utils/applyMultiplier'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import { withZoomContext } from '../ZoomProvider/context'
 
 // ============================================================================
 // Decorators
 // ============================================================================
 
+@withZoomContext
 @withResponsiveObjectProps(['columns', 'spacing'])
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const spacing = props.spacing[breakpoint]
+   const spacing = applyMultiplier(props.spacing[breakpoint], props.ZoomContext.zoom)
 
    return ({
       width: `calc(100% + ${spacing})`,

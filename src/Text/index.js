@@ -2,7 +2,6 @@
 // Text
 // Foundational component that is used as Root
 // component for may other OIO components
-// Fairly feature-complete, needs to be field-tested
 // =======================================================
 
 import React from 'react'
@@ -15,12 +14,14 @@ import r from '../../macro'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import { withZoomContext } from '../ZoomProvider/context'
 
 // ============================================================================
 // Decorators
 // ============================================================================
 
 @withOIOContext
+@withZoomContext
 @withResponsiveObjectProps([
    'baseAutoScaleFontSize',
    'baseFontSize',
@@ -35,25 +36,34 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { autoScale, OIOContext } = props
+   const { autoScale, OIOContext, ZoomContext } = props
 
-   // Responsive Props
-   const baseAutoScaleFontSize = parseFloat(props.baseAutoScaleFontSize[breakpoint])
-   const baseFontSize = parseFloat(props.baseFontSize[breakpoint])
    const size = props.size[breakpoint]
-   const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
    const weight = props.weight[breakpoint]
 
-   // Calculate real font size
-   // Dynamically calculate font size - this is a number based on a combination of
-   // text size, scaling ratios and multipliers (multipliers are useful for theming)
-   const textSizeScaleRatio = OIOContext.textSizeScaleRatio
-   const scaledTextSize = size > 1 ? textSizeScaleRatio ** size : textSizeScaleRatio * size
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * OIOContext.zoom
-   const baseTextSize = autoScale ? baseAutoScaleFontSize : baseFontSize
-   const fontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
-      ? `${baseTextSize * scaledTextSize * multiplier}${autoScale ? 'vw' : 'px'}`
-      : undefined
+   // Dynamically calculate actual CSS font size
+   // 1. Get base Text size (depending on static vs autoscaled)
+   // (Autoscaled text scales proportionally to screen size - uses vw units)
+   // (non-autoscaled text sizes use static px sizes)
+   const baseTextSize = autoScale
+      ? parseFloat(props.baseAutoScaleFontSize[breakpoint])
+      : parseFloat(props.baseFontSize[breakpoint])
+
+   // 2. Calculate Text's size relative to OIOContext.textSizeScaleRatio
+   // This assumes Text sizes can be any decimal number
+   const scaledTextSize = size > 1
+      ? OIOContext.textSizeScaleRatio ** size
+      : OIOContext.textSizeScaleRatio * size
+
+   // 3. Calculate Multiplier for text size
+   // Multipliers may come from: Text component, OIOContext or ZoomContext
+   const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * ZoomContext.zoom
+
+   // 4. Calculate Font Size based on above values
+   const calculatedFontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
+   const fontSizeUnit = autoScale ? 'vw' : 'px'
+   const fontSize = `${calculatedFontSize}${fontSizeUnit}`
 
    // Adjust line-height based on text size
    let calculatedLineHeight = '130%'

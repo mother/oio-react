@@ -7,17 +7,29 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { withGridContext } from '../Grid/context'
+import applyMultiplier from '../utils/applyMultiplier'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import r from '../../macro'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import { withZoomContext } from '../ZoomProvider/context'
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const zoomeableProps = [
+   'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
+   'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop', 'borderRadius'
+]
 
 // ============================================================================
 // Decorators
 // ============================================================================
 
 @withGridContext
+@withZoomContext
 @withResponsiveObjectProps([
    'backgroundColor',
    'backgroundImage',
@@ -43,27 +55,42 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { paddingHorizontal, paddingVertical, gridContext } = props
+   const { paddingHorizontal, paddingVertical, gridContext, ZoomContext } = props
 
    const colspan = props.colspan[breakpoint]
    const numGridColumns = gridContext.columns[breakpoint]
-   const spacing = gridContext.spacing[breakpoint]
+   const spacing = applyMultiplier(gridContext.spacing[breakpoint], ZoomContext.zoom)
    const cellWidth = (colspan / numGridColumns) * 100
 
+   // Handle Zoom
+   const zoom = ZoomContext.zoom
+   const zoomProps = {}
+
+   if (zoom !== 1) {
+      zoomeableProps.forEach(prop => {
+         const propBreakpointValue = props[prop]?.[breakpoint]
+
+         if (propBreakpointValue) {
+            zoomProps[prop] = applyMultiplier(propBreakpointValue, zoom)
+         }
+      })
+   }
+
    const styleObject = {
+      ...zoomProps,
       marginLeft: spacing,
       marginTop: spacing,
       width: `calc(${cellWidth}% - ${spacing})`
    }
 
-   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
-      styleObject.paddingLeft = paddingHorizontal[breakpoint]
-      styleObject.paddingRight = paddingHorizontal[breakpoint]
+   if (paddingHorizontal?.[breakpoint]) {
+      styleObject.paddingLeft = applyMultiplier(paddingHorizontal[breakpoint], zoom)
+      styleObject.paddingRight = applyMultiplier(paddingHorizontal[breakpoint], zoom)
    }
 
-   if (paddingVertical && paddingVertical[breakpoint]) {
-      styleObject.paddingTop = paddingVertical[breakpoint]
-      styleObject.paddingBottom = paddingVertical[breakpoint]
+   if (paddingVertical?.[breakpoint]) {
+      styleObject.paddingTop = applyMultiplier(paddingVertical[breakpoint], zoom)
+      styleObject.paddingBottom = applyMultiplier(paddingVertical[breakpoint], zoom)
    }
 
    return styleObject

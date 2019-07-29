@@ -26,8 +26,7 @@ export default class OIOProvider extends React.Component {
       highlightColor: PropTypes.string,
       style: PropTypes.object,
       textSizeScaleRatio: PropTypes.number,
-      textSizeMultiplier: PropTypes.number,
-      zoom: PropTypes.number
+      textSizeMultiplier: PropTypes.number
    }
 
    static defaultProps = {
@@ -43,8 +42,7 @@ export default class OIOProvider extends React.Component {
       highlightColor: '#2a383e',
       style: {},
       textSizeScaleRatio: 1.125,
-      textSizeMultiplier: 1,
-      zoom: 1
+      textSizeMultiplier: 1
    }
 
    render() {
@@ -61,8 +59,7 @@ export default class OIOProvider extends React.Component {
          highlightColor,
          style,
          textSizeMultiplier,
-         textSizeScaleRatio,
-         zoom
+         textSizeScaleRatio
       } = this.props
 
       // Props available to OIO Context Consumer
@@ -76,8 +73,7 @@ export default class OIOProvider extends React.Component {
          fontWeightBold,
          highlightColor,
          textSizeMultiplier,
-         textSizeScaleRatio,
-         zoom
+         textSizeScaleRatio
       }
 
       return (
