@@ -63,7 +63,9 @@ import { withZoomContext } from '../ZoomProvider/context'
    // 4. Calculate Font Size based on above values
    const calculatedFontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
    const fontSizeUnit = autoScale ? 'vw' : 'px'
-   const fontSize = `${calculatedFontSize}${fontSizeUnit}`
+   const fontSize = calculatedFontSize
+      ? `${calculatedFontSize}${fontSizeUnit}`
+      : undefined
 
    // Adjust line-height based on text size
    let calculatedLineHeight = '130%'
