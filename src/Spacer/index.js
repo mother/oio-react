@@ -30,7 +30,7 @@ import { withZoomContext } from '../ZoomProvider/context'
       throw new Error(`Invalid Orientation value: ${orientation}`)
    }
 
-   const zoom = props.ZoomContext.zoom
+   const { zoom } = props.zoomContext
    const sizeAsInteger = parseInt(props.size[breakpoint], 10)
    const size = applyMultiplier(sizeAsInteger, zoom)
    const calculatedSpacerSize = `${size * 6}px`

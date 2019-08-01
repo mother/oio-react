@@ -22,7 +22,7 @@ import { GridContext } from './context'
 @withZoomContext
 @withResponsiveObjectProps(['columns', 'spacing'])
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const spacing = applyMultiplier(props.spacing[breakpoint], props.ZoomContext.zoom)
+   const spacing = applyMultiplier(props.spacing[breakpoint], props.zoomContext.zoom)
 
    return ({
       width: `calc(100% + ${spacing})`,

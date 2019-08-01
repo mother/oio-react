@@ -20,7 +20,7 @@ import { withZoomContext } from '../ZoomProvider/context'
 // Constants
 // ============================================================================
 
-const zoomeableProps = [
+const zoomableProps = [
    'top', 'left', 'right', 'bottom',
    'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
    'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
@@ -49,19 +49,15 @@ const zoomeableProps = [
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { paddingHorizontal, paddingVertical, scroll, ZoomContext } = props
+   const { paddingHorizontal, paddingVertical, scroll, zoomContext } = props
+   const { zoom } = zoomContext
 
    // Handle Zoom
-   const zoom = ZoomContext.zoom
    const zoomProps = {}
-
    if (zoom !== 1) {
-      zoomeableProps.forEach(prop => {
+      zoomableProps.forEach((prop) => {
          const propBreakpointValue = props[prop]?.[breakpoint]
-
-         if (propBreakpointValue) {
-            zoomProps[prop] = applyMultiplier(propBreakpointValue, zoom)
-         }
+         zoomProps[prop] = applyMultiplier(propBreakpointValue, zoom)
       })
    }
 

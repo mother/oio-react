@@ -7,7 +7,7 @@ const ZoomContext = React.createContext({
 const withZoomContext = WrappedComponent => React.forwardRef((props, ref) => (
    <ZoomContext.Consumer>
       {context => (
-         <WrappedComponent {...props} ZoomContext={context} ref={ref} />
+         <WrappedComponent {...props} zoomContext={context} ref={ref} />
       )}
    </ZoomContext.Consumer>
 ))

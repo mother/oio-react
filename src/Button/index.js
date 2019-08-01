@@ -81,11 +81,11 @@ const pulsingAnimation = keyframes`
       OIOContext,
       outline,
       rounded,
-      ZoomContext
+      zoomContext
    } = props
 
    // Zoom Context
-   const zoom = ZoomContext.zoom
+   const { zoom } = zoomContext
 
    // Responsive Props
    const borderRadius = applyMultiplier(props.borderRadius?.[breakpoint], zoom)

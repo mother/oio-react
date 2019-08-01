@@ -9,7 +9,7 @@ import {
    ZoomProvider
 } from '../../../src'
 
-const ZoomPRoviderSpecimen = () => (
+const ZoomProviderSpecimen = () => (
    <View>
       <Text size="2" weight="medium">
          With Zoom value: 1 (no ZoomProvider)
@@ -69,7 +69,7 @@ const ZoomPRoviderSpecimen = () => (
    </View>
 )
 
-ZoomPRoviderSpecimen.codeSnippet = `
+ZoomProviderSpecimen.codeSnippet = `
 // Default with no ZoomProvider
 <Text size="2" weight="medium">
    With Zoom value: 1 (no ZoomProvider)
@@ -131,4 +131,4 @@ ZoomPRoviderSpecimen.codeSnippet = `
 </ZoomProvider>
 `
 
-export default ZoomPRoviderSpecimen
+export default ZoomProviderSpecimen

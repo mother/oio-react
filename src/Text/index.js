@@ -36,7 +36,8 @@ import { withZoomContext } from '../ZoomProvider/context'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { autoScale, OIOContext, ZoomContext } = props
+   const { autoScale, OIOContext, zoomContext } = props
+   const { zoom } = zoomContext
 
    const size = props.size[breakpoint]
    const weight = props.weight[breakpoint]
@@ -58,7 +59,7 @@ import { withZoomContext } from '../ZoomProvider/context'
    // 3. Calculate Multiplier for text size
    // Multipliers may come from: Text component, OIOContext or ZoomContext
    const sizeMultiplier = parseFloat(props.sizeMultiplier[breakpoint])
-   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * ZoomContext.zoom
+   const multiplier = sizeMultiplier * OIOContext.textSizeMultiplier * zoom
 
    // 4. Calculate Font Size based on above values
    const calculatedFontSize = parseFloat(baseTextSize * scaledTextSize * multiplier)
