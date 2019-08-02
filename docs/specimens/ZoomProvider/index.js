@@ -69,6 +69,10 @@ const ZoomProviderSpecimen = () => (
    </View>
 )
 
+ZoomProviderSpecimen.title = 'Basic Usage'
+
+ZoomProviderSpecimen.description = 'The <code>ZoomProvider</code> component will scale the following OIO components when nested: <code>Button</code>, <code>Grid</code>, <code>GridCell</code>, <code>Spacer</code>, <code>Text</code>, <code>View</code>.'
+
 ZoomProviderSpecimen.codeSnippet = `
 // Default with no ZoomProvider
 <Text size="2" weight="medium">

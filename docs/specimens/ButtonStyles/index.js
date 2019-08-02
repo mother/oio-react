@@ -12,6 +12,12 @@ const ButtonStylesSpecimen = () => (
    </div>
 )
 
+ButtonStylesSpecimen.title = 'Button Color and Text Color'
+
+ButtonStylesSpecimen.description = `You can set customize both the background and text color of
+the <code>Button</code> component by using the
+prop <code>color</code> and <code>textColor</code>.`
+
 ButtonStylesSpecimen.codeSnippet = `
 // Color Styles
 <Button name="Button Outline" color="#3a3045" textColor="#b4435e" />

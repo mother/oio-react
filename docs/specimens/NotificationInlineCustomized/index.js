@@ -63,6 +63,10 @@ const NotificationInlineTypes = () => (
    </div>
 )
 
+NotificationInlineTypes.title = 'NotificationInline (with customizations)'
+
+NotificationInlineTypes.description = 'For advanced use-cases, you can customize the <code>NotificationInline</code> component&apos;s <code>backgroundColor</code>, <code>iconColor</code>, <code>textColor</code>, provide <code>buttons</code> as well as pass additional content through <code>children</code>. Content passed through <code>children</code> will appear below the <code>NotificationInline</code> <code>message</code>. You can also set the placement of the <code>buttons</code> with the <code>buttonPlacement</code> prop.'
+
 NotificationInlineTypes.codeSnippet = `
 <NotificationInline
    backgroundColor="#6230cd"

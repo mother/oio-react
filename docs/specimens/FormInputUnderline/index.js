@@ -42,6 +42,10 @@ const FormInputUnderlineSpecimen = () => (
    </View>
 )
 
+FormInputUnderlineSpecimen.title = 'Form Input (with underline appearance)'
+
+FormInputUnderlineSpecimen.description = 'The <code>Input</code> component (and only this component) has an additional <code>appearance</code> option called <code>underline</code>. This must be set on the <code>Input</code> components themselves. Note: this appearance option is not available through the <code>Form</code> component. <code>Input</code> components with the <code>underline</code> <code>appearance</code> will look harmonious next to OIO Form elements with the <code>appearance</code> set to <code>outline</code>.'
+
 FormInputUnderlineSpecimen.codeSnippet = `
 // Form Input with underline style
 <View float="left" width="100%" padding="60px" backgroundColor="#f5f5f5">

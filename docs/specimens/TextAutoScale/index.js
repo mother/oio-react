@@ -1,17 +1,21 @@
 import React from 'react'
-import { Text } from '../../../src'
+import { Text, View } from '../../../src'
 
 const TextAutoScaleSpecimen = () => (
-   <div>
-      <Text size="9" color="#111" weight="medium" autoScale>Salmon Leek Pasta</Text>
+   <View padding="30px" backgroundColor="#f5f5f5">
+      <Text size="7" color="#111" weight="medium" autoScale>Salmon Leek Pasta</Text>
       <Text size="3" autoScale>For cozy winter nights</Text>
-   </div>
+   </View>
 )
+
+TextAutoScaleSpecimen.title = 'Text Sizes with Autoscale'
+
+TextAutoScaleSpecimen.description = 'Sometimes, you might want to have text that scales proportionally to the current browser window size. This is especially useful for larger text elements like titles and headings. <br /><br /> You can make the <code>Text</code> component scale proportionally by setting the prop <code>autoScale</code> to <code>true</code>. Resize your browser window and you can see how the text below scales accordingly.'
 
 TextAutoScaleSpecimen.codeSnippet = `
 // Text with autoScale
 
-<Text size="9" color="#111" weight="medium" autoScale>
+<Text size="7" color="#111" weight="medium" autoScale>
    Salmon Leek Pasta
 </Text>
 <Text size="3" autoScale>

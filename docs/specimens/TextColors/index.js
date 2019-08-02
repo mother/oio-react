@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text } from '../../../src'
+import { Text, View } from '../../../src'
 
 const TextColorsSpecimen = () => (
-   <div>
+   <View padding="30px" backgroundColor="#f5f5f5">
       <Text size="6" color="#4DB6AC" weight="medium">
          Rainy Spring Day
       </Text>
@@ -15,8 +15,12 @@ const TextColorsSpecimen = () => (
       <Text size="6" color="teal" weight="medium">
          Cold Winds of Winter
       </Text>
-   </div>
+   </View>
 )
+
+TextColorsSpecimen.title = 'Text Color'
+
+TextColorsSpecimen.description = 'You can set the color of the <code>Text</code> component by using the prop <code>color</code>. Any css compatible color values are valid.'
 
 TextColorsSpecimen.codeSnippet = `
 // Using hex color

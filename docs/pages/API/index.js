@@ -67,7 +67,6 @@ export default class API extends Component {
                left="210px"
                right="0px"
                height="100%"
-               paddingLeft="60px"
                scroll="on">
                <Route path={`${match.url}/button`} component={ButtonPage} />
                <Route path={`${match.url}/form`} component={FormPage} />
