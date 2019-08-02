@@ -1,74 +1,46 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { Route, Switch } from 'react-router-dom'
-import ButtonChildrenSpecimen from '../../specimens/ButtonChildren'
-import ButtonCustomizationsSpecimen from '../../specimens/ButtonCustomizations'
-import ButtonModesSpecimen from '../../specimens/ButtonModes'
-import ButtonSizesSpecimen from '../../specimens/ButtonSizes'
-import ButtonStylesSpecimen from '../../specimens/ButtonStyles'
-import FormOutlineSpecimen from '../../specimens/FormOutline'
-import FormPlainSpecimen from '../../specimens/FormPlain'
-import FormInputSizesSpecimen from '../../specimens/FormInputSizes'
-import FormInputUnderlineSpecimen from '../../specimens/FormInputUnderline'
-import GridCellBackgroundImage from '../../specimens/GridCellBackgroundImage'
-import GridResponsive from '../../specimens/GridResponsive'
-import NotificationInlineCustomizedSpecimen from '../../specimens/NotificationInlineCustomized'
-import NotificationInlineTypesSpecimen from '../../specimens/NotificationInlineTypes'
-import OIOProvider from '../../specimens/OIOProvider'
-import SpacerHorizontal from '../../specimens/SpacerHorizontal'
-import SpacerVertical from '../../specimens/SpacerVertical'
-import TextColors from '../../specimens/TextColors'
-import TextSizes from '../../specimens/TextSizes'
-import TextTransforms from '../../specimens/TextTransforms'
-import TextWeights from '../../specimens/TextWeights'
-import ViewKitchenSink from '../../specimens/ViewKitchenSink'
-import ZoomProvider from '../../specimens/ZoomProvider'
+import { Link, Route, Switch } from 'react-router-dom'
+import * as specimens from '../../specimens'
 
-export default class Tests extends Component {
-   static propTypes = {
-      match: PropTypes.object.isRequired
-   }
+const toDashCase = specimenNameStr => (
+   specimenNameStr
+      .replace('Specimen', '')
+      // weird if kept as all caps
+      .replace('OIO', 'Oio')
+      .split(/(?=[A-Z])/)
+      .join('-')
+      .toLowerCase()
+)
 
-   render() {
-      const { match } = this.props
+const Tests = ({ match }) => (
+   <Switch>
+      {Object.keys(specimens).map(name => (
+         <Route
+            key={name}
+            path={`${match.url}/${toDashCase(name)}`}
+            component={specimens[name]}
+         />
+      ))}
+      <Route
+         render={() => (
+            <div>
+               Specimen Not Found
+               <br />
+               {Object.keys(specimens).map(name => (
+                  <div>
+                     <br />
+                     <Link key={name} to={`${match.url}/${toDashCase(name)}`}>{name}</Link>
+                  </div>
+               ))}
+            </div>
+         )}
+      />
+   </Switch>
+)
 
-      return (
-         <Switch>
-            <Route path={`${match.url}/button-children`} component={ButtonChildrenSpecimen} />
-            <Route path={`${match.url}/button-customizations`} component={ButtonCustomizationsSpecimen} />
-            <Route path={`${match.url}/button-modes`} component={ButtonModesSpecimen} />
-            <Route path={`${match.url}/button-sizes`} component={ButtonSizesSpecimen} />
-            <Route path={`${match.url}/button-styles`} component={ButtonStylesSpecimen} />
-
-            <Route path={`${match.url}/form-outine-appearance`} component={FormOutlineSpecimen} />
-            <Route path={`${match.url}/form-plain-appearance`} component={FormPlainSpecimen} />
-            <Route path={`${match.url}/form-input-size`} component={FormInputSizesSpecimen} />
-            <Route path={`${match.url}/form-input-underline`} component={FormInputUnderlineSpecimen} />
-
-            <Route path={`${match.url}/grid-cell-bg-img`} component={GridCellBackgroundImage} />
-            <Route path={`${match.url}/grid-responsive`} component={GridResponsive} />
-
-            <Route
-               path={`${match.url}/notification-inline-customized`}
-               component={NotificationInlineCustomizedSpecimen}
-            />
-            <Route
-               path={`${match.url}/notification-inline-types`}
-               component={NotificationInlineTypesSpecimen}
-            />
-
-            <Route path={`${match.url}/oio-provider`} component={OIOProvider} />
-
-            <Route path={`${match.url}/spacer-horizontal`} component={SpacerHorizontal} />
-            <Route path={`${match.url}/spacer-vertical`} component={SpacerVertical} />
-
-            <Route path={`${match.url}/text-colors`} component={TextColors} />
-            <Route path={`${match.url}/text-sizes`} component={TextSizes} />
-            <Route path={`${match.url}/text-transforms`} component={TextTransforms} />
-            <Route path={`${match.url}/text-weights`} component={TextWeights} />
-            <Route path={`${match.url}/view-kitchen-sink`} component={ViewKitchenSink} />
-            <Route path={`${match.url}/zoom-provider`} component={ZoomProvider} />
-         </Switch>
-      )
-   }
+Tests.propTypes = {
+   match: PropTypes.object.isRequired
 }
+
+export default Tests

@@ -4,17 +4,17 @@ context('Form', () => {
    })
 
    it('Renders with outline appearance as expected', () => {
-      cy.visit('/tests/form-outine-appearance')
+      cy.visit('/tests/form-outline')
       cy.testImageSnapshot('Form - Outline Appearance')
    })
 
    it('Renders with plain appearance as expected', () => {
-      cy.visit('/tests/form-plain-appearance')
+      cy.visit('/tests/form-plain')
       cy.testImageSnapshot('Form - Plain Appearance')
    })
 
    it('Renders input at different sizes as expected', () => {
-      cy.visit('/tests/form-input-size')
+      cy.visit('/tests/form-input-sizes')
       cy.testImageSnapshot('Input - Sizes')
    })
 

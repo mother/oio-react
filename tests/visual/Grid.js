@@ -15,7 +15,7 @@ context('Grid', () => {
 
    it('Renders different GridCell background image option combinations as expected', () => {
       cy.viewport(breakpoints[1].width, breakpoints[1].height)
-      cy.visit('/tests/grid-cell-bg-img')
+      cy.visit('/tests/grid-cell-background-image')
       cy.testImageSnapshot('GridCell Background Image')
    })
 })
