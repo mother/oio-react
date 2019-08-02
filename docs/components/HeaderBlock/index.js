@@ -14,7 +14,7 @@ const HeaderBlock = ({ title, subtitle }) => (
          width="100%[a-d] 50%[e-f]"
          padding="48px"
          borderBottom="1px solid rgba(0,0,0,0.1)">
-         <Text size="10[a-d] 9[e-f]" weight="medium">
+         <Text size="10[a-d] 9[e] 10[f]" weight="medium">
             {title}
          </Text>
          {subtitle && (

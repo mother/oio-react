@@ -10,7 +10,7 @@ const APITableBlock = ({ spec, title }) => (
       padding="48px"
       borderBottom="1px solid rgba(0,0,0,0.1)">
       <div>
-         <Text size="4" weight="bold">
+         <Text size="4" weight="medium">
             {title}
          </Text>
          <br />

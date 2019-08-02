@@ -15,7 +15,7 @@ const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
             className={style.textColumn}
             float="left"
             width="100%[a-d] 50%[e-f]"
-            padding="36px 48px"
+            padding="48px[a-d] 36px 48px[e-f]"
             borderBottom="1px solid rgba(0,0,0,0.1)">
             <Text size="4" weight="medium">
                {title || specimen.title}

@@ -29,7 +29,7 @@ export default class API extends Component {
                bottom="0px"
                width="210px"
                padding="60px 0px 0px 30px"
-               borderRight="1px solid #ddd"
+               borderRight="1px solid rgba(0,0,0,0.1)"
                scroll="on">
                <Text size="8" weight="medium">OIO</Text>
                <div className={style.nav}>
