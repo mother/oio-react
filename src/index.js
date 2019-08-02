@@ -12,6 +12,7 @@ export { default as Spacer } from './Spacer'
 export { default as Spinner } from './Spinner'
 export { default as Text } from './Text'
 export { default as View } from './View'
+export { default as ZoomProvider } from './ZoomProvider'
 
 // Form Components
 export { default as Checkbox } from './Form/Checkbox'

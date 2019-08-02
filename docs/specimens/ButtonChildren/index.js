@@ -19,7 +19,7 @@ const addIcon = (
 const ButtonChildrenSpecimen = () => (
    <div>
       <View float="left" marginRight="6px">
-         <Button size="md" width="42px" rounded>
+         <Button size="md" width="36px" rounded>
             {addIcon}
          </Button>
       </View>

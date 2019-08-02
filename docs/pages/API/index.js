@@ -10,6 +10,7 @@ import OIOProviderPage from './OIOProvider'
 import SpacerPage from './Spacer'
 import TextPage from './Text'
 import ViewPage from './View'
+import ZoomProviderPage from './ZoomProvider'
 import style from './style.less'
 
 export default class API extends Component {
@@ -56,6 +57,9 @@ export default class API extends Component {
                   <NavLink to={`${match.url}/view`} activeClassName={style.active}>
                      View
                   </NavLink>
+                  <NavLink to={`${match.url}/zoom-provider`} activeClassName={style.active}>
+                     ZoomProvider
+                  </NavLink>
                </div>
             </View>
             <View
@@ -73,6 +77,7 @@ export default class API extends Component {
                <Route path={`${match.url}/spacer`} component={SpacerPage} />
                <Route path={`${match.url}/text`} component={TextPage} />
                <Route path={`${match.url}/view`} component={ViewPage} />
+               <Route path={`${match.url}/zoom-provider`} component={ZoomProviderPage} />
             </View>
          </div>
       )
