@@ -5,6 +5,9 @@ import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Spacer, Text, View } from '../../../src'
 import style from './style.less'
 
+// Title, description and codeSnippet will usually come from the specimen
+// But props have been added for special cases where we want to use this component
+// but do not have a Specimen (ie. the Supported Events for View in docs)
 const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
    const Specimen = specimen
    const specimenDescription = description || specimen.description

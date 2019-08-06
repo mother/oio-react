@@ -9,7 +9,7 @@ import ButtonModesSpecimen from '../../../specimens/ButtonModes'
 import ButtonSizesSpecimen from '../../../specimens/ButtonSizes'
 import ButtonStylesSpecimen from '../../../specimens/ButtonStyles'
 
-const ButtonPage = ({ ...props }) => (
+const ButtonPage = () => (
    <div>
       <HeaderBlock title="Button" />
       <SpecimenBlock specimen={ButtonSizesSpecimen} />
@@ -17,10 +17,7 @@ const ButtonPage = ({ ...props }) => (
       <SpecimenBlock specimen={ButtonStylesSpecimen} />
       <SpecimenBlock specimen={ButtonModesSpecimen} />
       <SpecimenBlock specimen={ButtonChildrenSpecimen} />
-      <APITableBlock
-         spec={buttonSpec}
-         title="Component API"
-      />
+      <APITableBlock spec={buttonSpec} title="Component API" />
    </div>
 )
 
