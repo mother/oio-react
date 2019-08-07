@@ -151,6 +151,7 @@ export default class View extends React.Component {
       position: OIOResponsiveObjectPropType,
       scroll: OIOResponsiveObjectPropType,
       style: PropTypes.object,
+      tabIndex: PropTypes.string,
       textAlign: OIOResponsiveObjectPropType,
       top: OIOResponsiveObjectPropType,
       transform: OIOResponsiveObjectPropType,
@@ -187,7 +188,8 @@ export default class View extends React.Component {
       onTouchStart: undefined,
       onTransitionEnd: undefined,
       position: r`relative`,
-      style: {}
+      style: {},
+      tabIndex: undefined
    }
 
    render() {
@@ -202,9 +204,10 @@ export default class View extends React.Component {
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
          borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling,
-         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
-         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
+         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
+         tabIndex
       } = this.props
 
       // Generate CSS responsive styles with Emotion
@@ -222,7 +225,7 @@ export default class View extends React.Component {
       })
 
       const eventHandlers = {
-         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
          onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
       }
@@ -238,7 +241,8 @@ export default class View extends React.Component {
                ...this.props.style,
                ...responsiveStyles
             }}
-            className={className}>
+            className={className}
+            tabIndex={tabIndex}>
             {children}
          </div>
       )
