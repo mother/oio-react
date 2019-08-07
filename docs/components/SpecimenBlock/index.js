@@ -5,13 +5,8 @@ import { duotoneEarth } from 'react-syntax-highlighter/dist/styles/prism'
 import { Spacer, Text, View } from '../../../src'
 import style from './style.less'
 
-// Title, description and codeSnippet will usually come from the specimen
-// But props have been added for special cases where we want to use this component
-// but do not have a Specimen (ie. the Supported Events for View in docs)
-const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
+const SpecimenBlock = ({ specimen }) => {
    const Specimen = specimen
-   const specimenDescription = description || specimen.description
-
    return (
       <View display="block[a-d] flex[e-f]" float="left" width="100%">
          <View
@@ -21,15 +16,15 @@ const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
             padding="48px[a-d] 36px 48px[e-f]"
             borderBottom="1px solid rgba(0,0,0,0.1)">
             <Text size="4" weight="medium">
-               {title || specimen.title}
+               {specimen.title}
             </Text>
-            {specimenDescription && (
+            {specimen.description && (
                <View>
                   <Spacer size="1" />
                   <Text size="2" color="#555">
                      <div
                         dangerouslySetInnerHTML={{
-                           __html: specimenDescription
+                           __html: specimen.description
                         }}
                      />
                   </Text>
@@ -50,7 +45,7 @@ const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
                   language="jsx"
                   style={duotoneEarth}
                   customStyle={{ background: 'transparent' }}>
-                  {codeSnippet || Specimen.codeSnippet}
+                  {specimen.codeSnippet}
                </SyntaxHighlighter>
             </Text>
          </View>
@@ -59,20 +54,10 @@ const SpecimenBlock = ({ codeSnippet, description, specimen, title }) => {
 }
 
 SpecimenBlock.propTypes = {
-   codeSnippet: PropTypes.string,
-   description: PropTypes.string,
    specimen: PropTypes.oneOfType([
       PropTypes.func,
       PropTypes.object
-   ]),
-   title: PropTypes.string
-}
-
-SpecimenBlock.defaultProps = {
-   codeSnippet: undefined,
-   description: undefined,
-   specimen: undefined,
-   title: undefined
+   ]).isRequired
 }
 
 export default SpecimenBlock
