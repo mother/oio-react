@@ -12,10 +12,10 @@ const ViewPage = () => (
    <div>
       <HeaderBlock title="View" />
       <SpecimenBlock specimen={ViewBasicSpecimen} />
-      <SpecimenBlock
-         title="Supported Events"
-         codeSnippet={'<View onClick={doSomething}>Synthetic Events</View>'}
-         description={`
+      <SpecimenBlock specimen={{
+         title: 'Supported Events',
+         codeSnippet: '<View onClick={doSomething}>Synthetic Events</View>',
+         description: `
             The <code>View</code> component supports the following React  events:<br /><br />
             <code>
                onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
@@ -24,8 +24,8 @@ const ViewPage = () => (
             </code>
             <br /><br />
             (Visit <a href="https://reactjs.org/docs/events.html">https://reactjs.org/docs/events.html</a> for more information about React SyntheticEvents)
-         `}
-      />
+         `
+      }} />
       <APITableBlock spec={viewSpec} title="Basic Formatting API Options" />
       <APITableBlock spec={viewSpecAppearance} title="Appearance API Options" />
       <APITableBlock spec={viewSpecFlexbox} title="FlexBox API Options" />
