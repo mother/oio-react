@@ -89,6 +89,12 @@ export default [{
    description: 'css equivalent value',
    responsive: true
 }, {
+   name: 'scroll',
+   type: 'String',
+   default: '-',
+   description: '<code>on</code> to make it scrollable, omit otherwise',
+   responsive: true
+}, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
