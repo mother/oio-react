@@ -49,10 +49,11 @@ const FormOutlineSpecimen = () => (
    </Form>
 )
 
+FormOutlineSpecimen.title = 'Outline Appearance'
+
+FormOutlineSpecimen.description = 'The following is a form styled with the <code>outline</code> appearance (the default). Note that the appearance for all these elements are set through the <code>Form</code> component, and not set individually on each component.'
+
 FormOutlineSpecimen.codeSnippet = `
-
-
-
 // Form elements with outline appearance (default)
 <Form elementAppearance="outline">
    <Grid columns="2">

@@ -18,6 +18,8 @@ const ButtonModesSpecimen = () => (
    </div>
 )
 
+ButtonModesSpecimen.title = 'Button Modes'
+
 ButtonModesSpecimen.codeSnippet = `
 // Button modes
 <Button size="sm" name="Disabled" mode="disabled" />

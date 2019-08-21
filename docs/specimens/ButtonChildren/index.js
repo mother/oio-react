@@ -36,6 +36,9 @@ const ButtonChildrenSpecimen = () => (
    </div>
 )
 
+ButtonChildrenSpecimen.title = 'Button with Children'
+ButtonChildrenSpecimen.description = 'Nest <code>children</code> inside <code>Button</code> component.'
+
 ButtonChildrenSpecimen.codeSnippet = `
 // Button with nested children
 const addIcon = (

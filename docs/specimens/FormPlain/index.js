@@ -57,6 +57,10 @@ const FormPlainSpecimen = () => (
    </Form>
 )
 
+FormPlainSpecimen.title = 'Plain Appearance'
+
+FormPlainSpecimen.description = 'The following is a form styled with the <code>plain</code> appearance. Note that the appearance for all these elements are set through the <code>Form</code> component, and not set individually on each component. Also note that the <code>Switch</code> component&apos;s appearance is the same as when <code>appearance</code> is set to <code>outline</code>. The following example also has customizations for the form labels.'
+
 FormPlainSpecimen.codeSnippet = `
 // Form elements with plain appearance
 <Form

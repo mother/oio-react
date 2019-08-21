@@ -34,6 +34,10 @@ const GridCellBackgroundImageSpecimen = () => (
    </Grid>
 )
 
+GridCellBackgroundImageSpecimen.title = 'Grid Cell Backgrounds'
+
+GridCellBackgroundImageSpecimen.description = 'You can set various background options for the <code>GridCell</code> component.'
+
 GridCellBackgroundImageSpecimen.codeSnippet = `
 <Grid columns="1[a] 2[b-f]" spacing="0px">
    <GridCell

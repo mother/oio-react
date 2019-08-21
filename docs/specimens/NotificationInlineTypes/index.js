@@ -47,6 +47,10 @@ const NotificationInlineTypes = () => (
    </div>
 )
 
+NotificationInlineTypes.title = 'Basic Usage'
+
+NotificationInlineTypes.description = 'The <code>NotificationInline</code> component is a message or alert designed to flow inline with other content. It comes in 6 different types: <code>info</code>, <code>loading</code>, <code>prompt</code>, <code>success</code>, <code>warning</code> and <code>error</code>. Setting the <code>type</code> will also automatically set the component&apos;s icon, <code>backgroundColor</code>, <code>iconColor</code> and <code>textColor</code>. In basic usage, you can set the <code>title</code> and <code>message</code> of the notification. More customization options are shown in the examples below.'
+
 NotificationInlineTypes.codeSnippet = `
    // Info Notification
 <NotificationInline
