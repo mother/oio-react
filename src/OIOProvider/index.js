@@ -80,6 +80,7 @@ export default class OIOProvider extends React.Component {
          <OIOContext.Provider value={contextProps}>
             <Global styles={normalizationStyles} />
             <div
+               id="oio-container"
                className={className}
                css={{ fontFamily, fontSize, ...style }}>
                {children}

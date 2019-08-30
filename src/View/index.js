@@ -207,6 +207,7 @@ export default class View extends React.Component {
          onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
          onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
+         onAnimationEnd,
          tabIndex
       } = this.props
 
@@ -227,7 +228,8 @@ export default class View extends React.Component {
       const eventHandlers = {
          onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
-         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
+         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
+         onAnimationEnd
       }
 
       /* eslint-enable object-property-newline */
