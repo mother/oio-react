@@ -25,6 +25,7 @@ exports[`OIO Provider renders as expected 1`] = `
   <div>
     <div
       class="emotion-0"
+      id="oio-container"
     >
       Hello World
     </div>

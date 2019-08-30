@@ -119,6 +119,9 @@ export default class View extends React.Component {
       maxHeight: OIOResponsiveObjectPropType,
       minWidth: OIOResponsiveObjectPropType,
       maxWidth: OIOResponsiveObjectPropType,
+      onAnimationEnd: PropTypes.func,
+      onAnimationStart: PropTypes.func,
+      onAnimationIteration: PropTypes.func,
       onClick: PropTypes.func,
       onCopy: PropTypes.func,
       onCut: PropTypes.func,
@@ -168,6 +171,9 @@ export default class View extends React.Component {
       className: '',
       display: r`block`,
       id: undefined,
+      onAnimationEnd: undefined,
+      onAnimationStart: undefined,
+      onAnimationIteration: undefined,
       onClick: undefined,
       onCopy: undefined,
       onCut: undefined,
@@ -207,7 +213,7 @@ export default class View extends React.Component {
          onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
          onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
-         onAnimationEnd,
+         onAnimationEnd, onAnimationStart, onAnimationIteration,
          tabIndex
       } = this.props
 
@@ -229,7 +235,7 @@ export default class View extends React.Component {
          onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
          onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
-         onAnimationEnd
+         onAnimationEnd, onAnimationStart, onAnimationIteration
       }
 
       /* eslint-enable object-property-newline */

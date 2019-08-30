@@ -72,6 +72,7 @@ const Modal = ({
       modalPortalElement.id = 'oio-modal-container'
 
       // Append Modal Portal to OIO Container
+      // If no OIO Container exists, we append to body
       const oioContainer = document.getElementById('oio-container') || document.body
       oioContainer.appendChild(modalPortalElement)
    }
