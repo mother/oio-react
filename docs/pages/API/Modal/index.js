@@ -5,7 +5,7 @@ import SpecimenBlock from '../../../components/SpecimenBlock'
 import modalSpec from '../../../../src/Modal/spec'
 import ModalBasicSpecimen from '../../../specimens/ModalBasic'
 
-const SpacerPage = () => (
+const ModalPage = () => (
    <div>
       <HeaderBlock
          title="Modal"
@@ -16,4 +16,4 @@ const SpacerPage = () => (
    </div>
 )
 
-export default SpacerPage
+export default ModalPage
