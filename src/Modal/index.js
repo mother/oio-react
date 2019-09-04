@@ -43,10 +43,10 @@ const Modal = ({
    // We only animate if modal's last state was open
    const wasPreviouslyOpen = usePrevious(open)
 
-   // Modal should be visible if it is open or in the process of closing
-   // We also want to know if modal was JUST open to prevent any flickering
+   // Modal is active at any point that it is open or in the process of opening or closing
+   // wasPreviouslyOpen indicates if modal was JUST open - knowing this prevents any flickering
    // between when the modal is no longer open and when the closing animation starts
-   const modalIsVisible = open || isClosing || wasPreviouslyOpen
+   const modalIsActive = open || isClosing || wasPreviouslyOpen
 
    const animationType = isClosing
       ? 'close'
@@ -159,7 +159,7 @@ const Modal = ({
    }, [open])
 
    // Cleanup on unmount
-   useEffect(() => portal.remove(), [])
+   useEffect(() => () => portal.remove(), [])
 
    // =======================================================
    // Render
@@ -167,8 +167,7 @@ const Modal = ({
 
    return ReactDOM.createPortal(
       <View
-         display={modalIsVisible ? 'flex' : 'none'}
-         transform={modalIsVisible ? 'translate3d(0, 0, 0)' : 'translate3d(-10000%, 0, 0)'}
+         display={modalIsActive ? 'flex' : 'none'}
          css={{ pointerEvents: shouldPropagatePointerEvents ? 'none' : 'auto' }}
          justifyContent="center"
          alignItems="center"
@@ -180,7 +179,7 @@ const Modal = ({
          zIndex={zIndex}>
 
          {/* When Modal is Open, we need to prevent body from scrolling */}
-         {modalIsVisible && <Global styles={{ body: { overflow: 'hidden' } }} />}
+         {modalIsActive && <Global styles={{ body: { overflow: 'hidden' } }} />}
 
          {/* Modal Overlay */}
          <View
