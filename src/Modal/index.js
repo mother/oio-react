@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Global } from '@emotion/core'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import View from '../View'
-import usePrevious from '../utils/usePrevious'
 import style from './style'
 
 // =======================================================
@@ -39,14 +38,15 @@ const Modal = ({
 }) => {
    const [isClosing, setIsClosing] = useState(false)
 
-   // Used primarily to determine wether to animate Modal closing
-   // We only animate if modal's last state was open
-   const wasPreviouslyOpen = usePrevious(open)
-
-   // Modal is active at any point that it is open or in the process of opening or closing
-   // wasPreviouslyOpen indicates if modal was JUST open - knowing this prevents any flickering
-   // between when the modal is no longer open and when the closing animation starts
-   const modalIsActive = open || isClosing || wasPreviouslyOpen
+   // Modal is active at any point that it is open or in the process of opening or closing.
+   // This uses a ref, as opposed to state, because changes to it do not need to trigger a
+   // re-render.
+   // It is necessary for 2 reasons:
+   // - To prevent animating the modal closed if it isn't currently open (eg during initial render)
+   // - To prevent flickers during the transition from when `open` is set to false and `isClosing`
+   //   is set to true.
+   const modalIsActiveRef = useRef(open)
+   modalIsActiveRef.current = open || modalIsActiveRef.current
 
    const animationType = isClosing
       ? 'close'
@@ -108,6 +108,7 @@ const Modal = ({
 
    // When Close Animation has completed
    const handleCloseComplete = () => {
+      modalIsActiveRef.current = false
       setIsClosing(false)
       portal.removeAttribute('style')
 
@@ -145,7 +146,7 @@ const Modal = ({
 
       // If Modal open changes from true to false,
       // begin close animation only if Modal was previously open
-      } else if (wasPreviouslyOpen) {
+      } else if (modalIsActiveRef.current) {
          setIsClosing(true)
 
          if (onClose) {
@@ -167,7 +168,7 @@ const Modal = ({
 
    return ReactDOM.createPortal(
       <View
-         display={modalIsActive ? 'flex' : 'none'}
+         display={modalIsActiveRef.current ? 'flex' : 'none'}
          css={{ pointerEvents: shouldPropagatePointerEvents ? 'none' : 'auto' }}
          justifyContent="center"
          alignItems="center"
@@ -179,7 +180,7 @@ const Modal = ({
          zIndex={zIndex}>
 
          {/* When Modal is Open, we need to prevent body from scrolling */}
-         {modalIsActive && <Global styles={{ body: { overflow: 'hidden' } }} />}
+         {modalIsActiveRef.current && <Global styles={{ body: { overflow: 'hidden' } }} />}
 
          {/* Modal Overlay */}
          <View
