@@ -45,8 +45,8 @@ const Modal = ({
    // - To prevent animating the modal closed if it isn't currently open (eg during initial render)
    // - To prevent flickers during the transition from when `open` is set to false and `isClosing`
    //   is set to true.
-   const modalIsActiveRef = useRef(open)
-   modalIsActiveRef.current = open || modalIsActiveRef.current
+   const modalIsActive = useRef(open)
+   modalIsActive.current = open || modalIsActive.current
 
    const animationType = isClosing
       ? 'close'
@@ -108,7 +108,7 @@ const Modal = ({
 
    // When Close Animation has completed
    const handleCloseComplete = () => {
-      modalIsActiveRef.current = false
+      modalIsActive.current = false
       setIsClosing(false)
       portal.removeAttribute('style')
 
@@ -146,7 +146,7 @@ const Modal = ({
 
       // If Modal open changes from true to false,
       // begin close animation only if Modal was previously open
-      } else if (modalIsActiveRef.current) {
+      } else if (modalIsActive.current) {
          setIsClosing(true)
 
          if (onClose) {
@@ -168,7 +168,7 @@ const Modal = ({
 
    return ReactDOM.createPortal(
       <View
-         display={modalIsActiveRef.current ? 'flex' : 'none'}
+         display={modalIsActive.current ? 'flex' : 'none'}
          css={{ pointerEvents: shouldPropagatePointerEvents ? 'none' : 'auto' }}
          justifyContent="center"
          alignItems="center"
@@ -180,7 +180,7 @@ const Modal = ({
          zIndex={zIndex}>
 
          {/* When Modal is Open, we need to prevent body from scrolling */}
-         {modalIsActiveRef.current && <Global styles={{ body: { overflow: 'hidden' } }} />}
+         {modalIsActive.current && <Global styles={{ body: { overflow: 'hidden' } }} />}
 
          {/* Modal Overlay */}
          <View
