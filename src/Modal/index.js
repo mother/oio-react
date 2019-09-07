@@ -158,7 +158,10 @@ const Modal = ({
       }
    }, [open])
 
+   // =======================================================
    // Cleanup on unmount
+   // =======================================================
+
    useEffect(() => () => portal.remove(), [])
 
    // =======================================================
@@ -213,6 +216,7 @@ Modal.propTypes = {
    backgroundColor: PropTypes.string,
    boxShadow: PropTypes.string,
    borderRadius: PropTypes.string,
+   children: PropTypes.node,
    closeAnimationDuration: PropTypes.number,
    closeAnimationName: PropTypes.oneOf(['fadeOut', 'scaleOut', 'moveToRight']),
    height: PropTypes.string,
@@ -226,6 +230,7 @@ Modal.propTypes = {
    onCloseTrigger: PropTypes.func,
    onOpen: PropTypes.func,
    onOpenComplete: PropTypes.func,
+   open: PropTypes.bool,
    openAnimationDuration: PropTypes.number,
    openAnimationName: PropTypes.oneOf(['appear', 'fadeIn', 'moveFromBottom', 'scaleIn']),
    overlayBackgroundColor: PropTypes.string,
@@ -238,11 +243,12 @@ Modal.propTypes = {
 }
 
 Modal.defaultProps = {
-   closeAnimationDuration: 200,
-   closeAnimationName: 'scaleOut',
    backgroundColor: '#fff',
    borderRadius: '0px',
    boxShadow: '0px 3px 30px rgba(0,0,0,0.25)',
+   children: undefined,
+   closeAnimationDuration: 200,
+   closeAnimationName: 'scaleOut',
    height: 'auto',
    margin: '0px',
    maxHeight: undefined,
@@ -254,6 +260,7 @@ Modal.defaultProps = {
    onCloseTrigger: undefined,
    onOpen: undefined,
    onOpenComplete: undefined,
+   open: false,
    openAnimationDuration: 400,
    openAnimationName: 'scaleIn',
    overlayBackgroundColor: 'rgba(0,0,0,0.4)',

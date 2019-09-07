@@ -89,6 +89,12 @@ export default [{
    description: 'Function that will be called when <code>Modal</code> opening animation is finished.',
    responsive: false
 }, {
+   name: 'open',
+   type: 'Boolean',
+   default: '<code>false</code>',
+   description: 'Set to <code>true</code> to make <code>Modal</code> visible. Set to <code>false</code> to close.',
+   responsive: false
+}, {
    name: 'openAnimationDuration',
    type: 'Number',
    default: '<code>400</code>',
@@ -115,13 +121,13 @@ export default [{
 }, {
    name: 'width',
    type: 'OIO Responsive String',
-   default: '<code>rgba(0,0,0,0.4)</code>',
+   default: '-',
    description: 'css equivalent value. This is the width of the <code>Modal</code> window.',
    responsive: true
 }, {
    name: 'zIndex',
    type: 'OIO Responsive String',
-   default: '<code>rgba(0,0,0,0.4)</code>',
+   default: '<code>10000</code>',
    description: 'css equivalent value. This is the zIndex of the entire <code>Modal</code> component.',
    responsive: true
 }]
