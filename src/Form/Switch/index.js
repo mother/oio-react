@@ -9,7 +9,7 @@ import OIOContext from '../../OIOProvider/context'
 // Component
 // ============================================================================
 
-const Switch = ({ highlightColor, ...props }) => {
+const Switch = React.forwardRef(({ highlightColor, ...props }, ref) => {
    const oioContext = useContext(OIOContext)
    const inputHighlightColor = highlightColor || oioContext.highlightColor
 
@@ -24,6 +24,7 @@ const Switch = ({ highlightColor, ...props }) => {
          marginBottom="6px">
          <input
             {...props}
+            ref={ref}
             type="checkbox"
             css={{
                position: 'relative',
@@ -59,7 +60,7 @@ const Switch = ({ highlightColor, ...props }) => {
          />
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export

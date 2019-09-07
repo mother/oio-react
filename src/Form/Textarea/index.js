@@ -32,14 +32,14 @@ const sizeStyles = {
 // Component
 // ============================================================================
 
-const Textarea = ({
+const Textarea = React.forwardRef(({
    appearance,
    id,
    label,
    required,
    size,
    ...props
-}) => {
+}, ref) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
@@ -83,6 +83,7 @@ const Textarea = ({
          <textarea
             {...props}
             id={id}
+            ref={ref}
             required={required}
             css={{
                ...appearanceStyles[textareaAppearance],
@@ -104,7 +105,7 @@ const Textarea = ({
          />
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export

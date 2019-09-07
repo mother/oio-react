@@ -59,13 +59,13 @@ const sizeSpecificStyles = {
 // Component
 // ============================================================================
 
-const Select = ({
+const Select = React.forwardRef(({
    appearance,
    id,
    label,
    size,
    ...props
-}) => {
+}, ref) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
@@ -91,6 +91,7 @@ const Select = ({
          <select
             {...props}
             id={id}
+            ref={ref}
             css={{
                ...sizeSpecificStyles[size],
                ...appearanceStyles[inputAppearance],
@@ -109,7 +110,7 @@ const Select = ({
          />
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export
