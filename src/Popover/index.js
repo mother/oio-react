@@ -32,8 +32,6 @@ const Popover = ({
    open,
    openAnimationDuration,
    openAnimationName,
-   overlayBackgroundColor,
-   shouldPropagatePointerEvents,
    width,
    zIndex
 }) => {
@@ -178,9 +176,7 @@ const Popover = ({
             ? 'translate3d(0,0,0)'
             : 'translate3d(-10000%,0,0)'
          }
-         css={{ pointerEvents: shouldPropagatePointerEvents ? 'none' : 'auto' }}
          position="absolute"
-         t2op={open ? '12px' : '30px'}
          top="30px"
          left="0px"
          zIndex={zIndex}>
@@ -206,7 +202,7 @@ Popover.propTypes = {
    borderRadius: PropTypes.string,
    children: PropTypes.node,
    closeAnimationDuration: PropTypes.number,
-   closeAnimationName: PropTypes.oneOf(['fadeOut', 'scaleOut', 'moveToRight']),
+   closeAnimationName: PropTypes.oneOf(['fadeOut', 'scaleOut']),
    height: PropTypes.string,
    margin: PropTypes.string,
    maxHeight: PropTypes.string,
@@ -220,12 +216,7 @@ Popover.propTypes = {
    onOpenComplete: PropTypes.func,
    open: PropTypes.bool,
    openAnimationDuration: PropTypes.number,
-   openAnimationName: PropTypes.oneOf(['appear', 'fadeIn', 'moveFromBottom', 'scaleIn']),
-   overlayBackgroundColor: PropTypes.string,
-   // This is for rare cases (like notifications)
-   // where we want the user to be able to interact with elements
-   // behind the modal overlay
-   shouldPropagatePointerEvents: PropTypes.bool,
+   openAnimationName: PropTypes.oneOf(['appear', 'fadeIn', 'scaleIn']),
    width: PropTypes.string.isRequired,
    zIndex: PropTypes.number
 }
@@ -236,7 +227,7 @@ Popover.defaultProps = {
    boxShadow: '6px 6px 30px rgba(0,0,0,0.15)',
    children: undefined,
    closeAnimationDuration: 200,
-   closeAnimationName: 'scaleOut',
+   closeAnimationName: 'fadeOut',
    height: 'auto',
    margin: '0px',
    maxHeight: undefined,
@@ -251,8 +242,6 @@ Popover.defaultProps = {
    open: false,
    openAnimationDuration: 400,
    openAnimationName: 'scaleIn',
-   overlayBackgroundColor: 'rgba(0,0,0,0.4)',
-   shouldPropagatePointerEvents: false,
    width: undefined,
    zIndex: 10000
 }

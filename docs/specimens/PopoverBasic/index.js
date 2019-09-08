@@ -14,7 +14,7 @@ const PopoverBasicSpecimen = () => {
          <Popover
             anchorElementId="open-modal-button"
             borderRadius="6px"
-            width="90%[a-b] 300px[c-f]"
+            width="90%[a-b] 240px[c-f]"
             onBodyClick={() => setPopoverIsOpen(false)}
             onCloseTrigger={() => setPopoverIsOpen(false)}
             open={modalIsOpen}>
@@ -23,7 +23,6 @@ const PopoverBasicSpecimen = () => {
                padding="30px"
                onClick={() => setPopoverIsOpen(false)}>
                <Text size="2">
-                  // <u>Click to Close</u>
                   The popover content. Click anywhere to close.
                </Text>
             </View>

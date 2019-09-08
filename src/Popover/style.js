@@ -8,20 +8,6 @@ const animations = {
            0% { opacity: 1; }
            100% { opacity: 0; }
          `
-      },
-      scaleOut: {
-         baseStyle: 'transform: translate3d(0, 18px, 0) scale(0.99); opacity: 0;',
-         keyframes: keyframes`
-           0% { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
-           100% { transform: translate3d(0, 18px, 0) scale(0.99); opacity: 0; }
-         `
-      },
-      moveToRight: {
-         baseStyle: 'transform: translate3d(10%, 0, 0); opacity: 0;',
-         keyframes: keyframes`
-            0% { transform: translate3d(0, 0, 0); opacity: 1; }
-            100% { transform: translate3d(10%, 0, 0); opacity: 0; }
-         `
       }
    },
    open: {
@@ -38,13 +24,6 @@ const animations = {
          keyframes: keyframes`
            0% { opacity: 0; }
            100% { opacity: 1; }
-         `
-      },
-      moveFromBottom: {
-         baseStyle: '',
-         keyframes: keyframes`
-           0% { transform: translate3d(0, 10%, 0); }
-           100% { transform: translate3d(0, 0, 0); }
          `
       },
       scaleIn: {
