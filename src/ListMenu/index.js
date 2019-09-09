@@ -1,16 +1,16 @@
 import React from 'react'
-import { View } from 'oio-react'
 import PropTypes from 'prop-types'
+import View from '../View'
 
 const ListMenu = ({
+   activeBackgroundColor,
+   activeTextColor,
    children,
-   highlightColor,
    buttonBorderRadius,
    buttonPadding,
    dividerLineStyle,
-   selectionBackgroundColor,
-   showSelectionArrow,
-   showSelectionMarker,
+   showActiveArrow,
+   showActiveMarker,
    textColor
 }) => {
    // Clone TabButton children and pass props
@@ -20,10 +20,10 @@ const ListMenu = ({
          return (
             <>
                {React.cloneElement(child, {
-                  highlightColor,
-                  selectionBackgroundColor,
-                  showSelectionArrow,
-                  showSelectionMarker,
+                  activeBackgroundColor,
+                  activeTextColor,
+                  showActiveArrow,
+                  showActiveMarker,
                   textColor,
                   borderRadius: buttonBorderRadius,
                   padding: buttonPadding
@@ -51,25 +51,27 @@ const ListMenu = ({
 }
 
 ListMenu.propTypes = {
+   activeBackgroundColor: PropTypes.string,
+   activeTextColor: PropTypes.string,
    children: PropTypes.node.isRequired,
    highlightColor: PropTypes.string,
    buttonBorderRadius: PropTypes.string,
    buttonPadding: PropTypes.string,
    dividerLineStyle: PropTypes.string,
-   selectionBackgroundColor: PropTypes.string,
-   showSelectionArrow: PropTypes.bool,
-   showSelectionMarker: PropTypes.bool,
+   showActiveArrow: PropTypes.bool,
+   showActiveMarker: PropTypes.bool,
    textColor: PropTypes.string
 }
 
 ListMenu.defaultProps = {
+   activeBackgroundColor: 'rgba(0,0,0,0.04)',
+   activeTextColor: '#333',
    highlightColor: '#000',
    buttonBorderRadius: undefined,
    buttonPadding: undefined,
    dividerLineStyle: '1px solid #eee',
-   selectionBackgroundColor: undefined,
-   showSelectionArrow: false,
-   showSelectionMarker: false,
+   showActiveArrow: false,
+   showActiveMarker: false,
    textColor: undefined
 }
 

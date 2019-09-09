@@ -38,7 +38,7 @@ const buttonSizeDefaults = {
    },
    md: {
       height: '36px',
-      textSize: '0.9'
+      textSize: '1'
    },
    sm: {
       height: '30px',
@@ -151,7 +151,7 @@ const pulsingAnimation = keyframes`
 // Component
 // ============================================================================
 
-export default class Button extends React.Component {
+class Button extends React.Component {
    static propTypes = {
       borderRadius: OIOResponsiveObjectPropType,
       children: PropTypes.node,
@@ -300,4 +300,9 @@ export default class Button extends React.Component {
          </ButtonElement>
       )
    }
+}
+
+export {
+   Button as default,
+   buttonSizeDefaults
 }
