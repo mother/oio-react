@@ -45,7 +45,7 @@ exports[`Invalid prop values passed to Text component will be ignored 1`] = `
 <div>
   <div
     class="emotion-1"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
@@ -113,7 +113,7 @@ exports[`Text will render at autoScale sizes correctly 1`] = `
 <div>
   <div
     class="emotion-1"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
@@ -181,7 +181,7 @@ exports[`Text will render at different font weights correctly 1`] = `
 <div>
   <div
     class="emotion-1"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
@@ -249,7 +249,7 @@ exports[`Text will render at different sizes correctly 1`] = `
 <div>
   <div
     class="emotion-1"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
@@ -323,7 +323,7 @@ exports[`Text will render color correctly 1`] = `
 <div>
   <div
     class="emotion-1"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
@@ -499,7 +499,7 @@ exports[`Text will render text transforms correctly 1`] = `
 <div>
   <div
     class="emotion-3"
-    id="oio-container"
+    id="oio"
   >
     <div
       class=" emotion-0"
