@@ -52,7 +52,10 @@ const NotificationManagerProvider = ({ children }) => {
       <NotificationManagerContext.Provider value={{ showNotification }}>
          {children}
          {createPortal(
-            <View float="left" width="100%" padding="30px">
+            <View
+               float="left"
+               width="100%"
+               padding="30px">
                <TransitionGroup>
                   {/* TODO: Use CSSTransition */}
                   {notifications.map(notification => (
@@ -78,8 +81,11 @@ const NotificationManagerProvider = ({ children }) => {
                                        : 'translateX(0)'
                                  }}>
                                  <NotificationInline
+                                    backgroundColor="rgba(40,40,40,0.95)"
                                     borderRadius="6px"
                                     message={notification.message}
+                                    paddingVertical="18px"
+                                    textColor="#fff"
                                     title={notification.title}
                                     type={notification.type}
                                  />
