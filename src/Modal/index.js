@@ -1,13 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 /** @jsx jsx */
 import { jsx, Global } from '@emotion/core'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { oioContainerId } from '../../config/constants'
+import OIOContext from '../OIOProvider/context'
 import View from '../View'
 import style from './style'
-
-const modalContainerId = 'oio-modal-container'
 
 // =======================================================
 // Component
@@ -39,6 +38,9 @@ const Modal = ({
    width,
    zIndex
 }) => {
+   const oioContext = useContext(OIOContext)
+   const modalContainerId = `${oioContext.containerId}-modal-container`
+   const modalContainerPortal = useRef(document.getElementById(modalContainerId))
    const [isClosing, setIsClosing] = useState(false)
 
    // Modal is active at any point that it is open or in the process of opening or closing.
@@ -66,20 +68,18 @@ const Modal = ({
       : `${closeAnimationDuration}ms`
 
    // =======================================================
-   // Create Modal Portal Container
+   // Create Modal Portal Container (if not existent already)
    // =======================================================
 
-   if (!document.getElementById(modalContainerId)) {
+   if (!modalContainerPortal.current) {
       const modalPortalElement = document.createElement('div')
       modalPortalElement.id = modalContainerId
+      modalPortalElement.style.fontFamily = oioContext.fontFamily
+      modalPortalElement.style.fontSize = oioContext.fontSize
 
-      // Append Modal Portal to OIO Container
-      // If no OIO Container exists, we append to body
-      const oioContainer = document.getElementById(oioContainerId) || document.body
-      oioContainer.appendChild(modalPortalElement)
+      document.body.appendChild(modalPortalElement)
+      modalContainerPortal.current = modalPortalElement
    }
-
-   const portal = document.getElementById(modalContainerId)
 
    // =======================================================
    // Styles for Modal Window
@@ -113,7 +113,12 @@ const Modal = ({
    const handleCloseComplete = () => {
       modalIsActive.current = false
       setIsClosing(false)
-      portal.removeAttribute('style')
+
+      modalContainerPortal.current.style.position = null
+      modalContainerPortal.current.style.top = null
+      modalContainerPortal.current.style.left = null
+      modalContainerPortal.current.style.right = null
+      modalContainerPortal.current.style.bottom = null
 
       if (onCloseComplete) {
          onCloseComplete()
@@ -138,10 +143,11 @@ const Modal = ({
          // to ensure that the modal displays correctly and fills the entire screen
          // Note: we ONLY want it to have this style when modal is open,
          // otherwise it may cover content  while modal is closed
-         portal.setAttribute(
-            'style',
-            'position: fixed; top: 0; left: 0; right: 0; bottom: 0;'
-         )
+         modalContainerPortal.current.style.position = 'fixed'
+         modalContainerPortal.current.style.top = '0'
+         modalContainerPortal.current.style.left = '0'
+         modalContainerPortal.current.style.right = '0'
+         modalContainerPortal.current.style.bottom = '0'
 
          if (onOpen) {
             onOpen()
@@ -156,17 +162,13 @@ const Modal = ({
             onClose()
          }
       }
-
-      return () => {
-         portal.removeAttribute('style')
-      }
    }, [open])
 
    // =======================================================
    // Cleanup on unmount
    // =======================================================
 
-   useEffect(() => () => portal.remove(), [])
+   useEffect(() => () => modalContainerPortal.current.remove(), [])
 
    // =======================================================
    // Render
@@ -208,7 +210,7 @@ const Modal = ({
             {children}
          </View>
       </View>,
-      portal
+      modalContainerPortal.current
    )
 }
 
