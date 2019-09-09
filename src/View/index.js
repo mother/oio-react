@@ -6,14 +6,36 @@ import React from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import r from '../../macro'
+import { withOIOContext } from '../OIOProvider/context'
+import applyMultiplier from '../utils/applyMultiplier'
 import forwardRefToWrappedComponent from '../utils/forwardRef'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
-import r from '../../macro'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import { withZoomContext } from '../ZoomProvider/context'
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+const zoomableProps = [
+   'top', 'left', 'right', 'bottom',
+   'height', 'width', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth',
+   'margin', 'marginBottom', 'marginLeft', 'marginRight', 'marginTop',
+   'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
+   'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
+   'borderRadius'
+]
+
+// ============================================================================
+// Decorators
+// ============================================================================
 
 @forwardRefToWrappedComponent
+@withOIOContext
+@withZoomContext
 @withResponsiveObjectProps([
    'display', 'float', 'position', 'top', 'left', 'right', 'bottom', 'scroll',
    'flex', 'flexFlow', 'justifyContent', 'alignItems', 'order',
@@ -27,26 +49,43 @@ import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
 ])
 
 @withDynamicResponsiveProps((props, breakpoint) => {
-   const { paddingHorizontal, paddingVertical, scroll } = props
-   const styleObject = {}
+   const { paddingHorizontal, paddingVertical, scroll, zoomContext } = props
+   const { zoom } = zoomContext
+
+   // Handle Zoom
+   const zoomProps = {}
+   if (zoom !== 1) {
+      zoomableProps.forEach((prop) => {
+         const propBreakpointValue = props[prop]?.[breakpoint]
+         zoomProps[prop] = applyMultiplier(propBreakpointValue, zoom)
+      })
+   }
+
+   const styleObject = {
+      ...zoomProps
+   }
 
    if (scroll && scroll[breakpoint] === 'on') {
       styleObject.overflow = 'auto'
       styleObject.WebkitOverflowScrolling = 'touch'
    }
 
-   if (paddingHorizontal && paddingHorizontal[breakpoint]) {
-      styleObject.paddingLeft = paddingHorizontal[breakpoint]
-      styleObject.paddingRight = paddingHorizontal[breakpoint]
+   if (paddingHorizontal?.[breakpoint]) {
+      styleObject.paddingLeft = applyMultiplier(paddingHorizontal[breakpoint], zoom)
+      styleObject.paddingRight = applyMultiplier(paddingHorizontal[breakpoint], zoom)
    }
 
-   if (paddingVertical && paddingVertical[breakpoint]) {
-      styleObject.paddingTop = paddingVertical[breakpoint]
-      styleObject.paddingBottom = paddingVertical[breakpoint]
+   if (paddingVertical?.[breakpoint]) {
+      styleObject.paddingTop = applyMultiplier(paddingVertical[breakpoint], zoom)
+      styleObject.paddingBottom = applyMultiplier(paddingVertical[breakpoint], zoom)
    }
 
    return styleObject
 })
+
+// ============================================================================
+// Component
+// ============================================================================
 
 export default class View extends React.Component {
    static propTypes = {
@@ -112,6 +151,7 @@ export default class View extends React.Component {
       position: OIOResponsiveObjectPropType,
       scroll: OIOResponsiveObjectPropType,
       style: PropTypes.object,
+      tabIndex: PropTypes.string,
       textAlign: OIOResponsiveObjectPropType,
       top: OIOResponsiveObjectPropType,
       transform: OIOResponsiveObjectPropType,
@@ -148,7 +188,8 @@ export default class View extends React.Component {
       onTouchStart: undefined,
       onTransitionEnd: undefined,
       position: r`relative`,
-      style: {}
+      style: {},
+      tabIndex: undefined
    }
 
    render() {
@@ -163,9 +204,10 @@ export default class View extends React.Component {
          backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
          borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling,
-         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
-         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
+         onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd,
+         tabIndex
       } = this.props
 
       // Generate CSS responsive styles with Emotion
@@ -183,7 +225,7 @@ export default class View extends React.Component {
       })
 
       const eventHandlers = {
-         onClick, onCopy, onCut, onPaste, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
+         onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
          onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
          onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
       }
@@ -199,7 +241,8 @@ export default class View extends React.Component {
                ...this.props.style,
                ...responsiveStyles
             }}
-            className={className}>
+            className={className}
+            tabIndex={tabIndex}>
             {children}
          </div>
       )

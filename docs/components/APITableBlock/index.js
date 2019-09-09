@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Text } from '../../../src'
-import style from '../../pages/API/style.less'
+import { Text, View } from '../../../src'
+import style from './style.less'
 
 const APITableBlock = ({ spec, title }) => (
-   <div className={style.block}>
-      <div className={style.columnFull}>
-         <Text size="4" weight="bold">
+   <View
+      float="left"
+      width="100%"
+      padding="48px"
+      borderBottom="1px solid rgba(0,0,0,0.1)">
+      <div>
+         <Text size="4" weight="medium">
             {title}
          </Text>
          <br />
@@ -39,7 +43,7 @@ const APITableBlock = ({ spec, title }) => (
             </tbody>
          </table>
       </div>
-   </div>
+   </View>
 )
 
 APITableBlock.propTypes = {

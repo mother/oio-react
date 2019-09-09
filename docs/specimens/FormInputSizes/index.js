@@ -85,6 +85,10 @@ const FormInputSizesSpecimen = () => (
    </Form>
 )
 
+FormInputSizesSpecimen.title = 'Form Input Sizes'
+
+FormInputSizesSpecimen.description = 'You can set the size for the <code>Input</code>, <code>Select</code> , and <code>Textarea</code> components by using the prop <code>size</code>. The <code>size</code> prop may be available to other form components in the future. The default size for these components is <code>sm</code>. Availalble sizes are: <code>xl</code>, <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>'
+
 FormInputSizesSpecimen.codeSnippet = `
 // Form Input sizes
 <Form

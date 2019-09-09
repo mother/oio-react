@@ -19,7 +19,7 @@ const addIcon = (
 const ButtonChildrenSpecimen = () => (
    <div>
       <View float="left" marginRight="6px">
-         <Button size="md" width="42px" rounded>
+         <Button size="md" width="36px" rounded>
             {addIcon}
          </Button>
       </View>
@@ -35,6 +35,9 @@ const ButtonChildrenSpecimen = () => (
       </View>
    </div>
 )
+
+ButtonChildrenSpecimen.title = 'Button with Children'
+ButtonChildrenSpecimen.description = 'Nest <code>children</code> inside <code>Button</code> component.'
 
 ButtonChildrenSpecimen.codeSnippet = `
 // Button with nested children

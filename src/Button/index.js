@@ -3,12 +3,14 @@ import React from 'react'
 import { jsx, keyframes } from '@emotion/core'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
+import r from '../../macro'
 import { withOIOContext } from '../OIOProvider/context'
+import applyMultiplier from '../utils/applyMultiplier'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
-import r from '../../macro'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import { withZoomContext } from '../ZoomProvider/context'
 import Spinner from '../Spinner'
 import Text from '../Text'
 import View from '../View'
@@ -59,6 +61,7 @@ const pulsingAnimation = keyframes`
 // ============================================================================
 
 @withOIOContext
+@withZoomContext
 @withResponsiveObjectProps([
    'borderRadius',
    'color',
@@ -77,15 +80,19 @@ const pulsingAnimation = keyframes`
    const {
       OIOContext,
       outline,
-      rounded
+      rounded,
+      zoomContext
    } = props
 
+   // Zoom Context
+   const { zoom } = zoomContext
+
    // Responsive Props
-   const borderRadius = props.borderRadius && props.borderRadius[breakpoint]
-   const color = props.color && props.color[breakpoint]
-   const fontFamily = props.fontFamily && props.fontFamily[breakpoint]
-   const padding = props.padding && props.padding[breakpoint]
-   const size = props.size && props.size[breakpoint]
+   const borderRadius = applyMultiplier(props.borderRadius?.[breakpoint], zoom)
+   const color = props.color?.[breakpoint]
+   const fontFamily = props.fontFamily?.[breakpoint]
+   const padding = applyMultiplier(props.padding?.[breakpoint], zoom)
+   const size = props.size?.[breakpoint]
 
    // If user passes invalid button 'size'
    const sizeOptions = Object.keys(buttonSizeDefaults)
@@ -93,13 +100,13 @@ const pulsingAnimation = keyframes`
       throw new Error(`OIO Button: Invalid size prop provided. Valid values include: ${sizeOptions.join(', ')}`)
    }
 
-   const height = buttonSizeDefaults[size].height
-   const width = props.width[breakpoint]
+   const height = applyMultiplier(buttonSizeDefaults[size].height, zoom)
+   const width = applyMultiplier(props.width[breakpoint], zoom)
 
-   const textColor = props.textColor && props.textColor[breakpoint]
-   const textSize = props.textSize && props.textSize[breakpoint]
-   const textTransform = props.textTransform && props.textTransform[breakpoint]
-   const textWeight = props.textWeight && props.textWeight[breakpoint]
+   const textColor = props.textColor?.[breakpoint]
+   const textSize = props.textSize?.[breakpoint]
+   const textTransform = props.textTransform?.[breakpoint]
+   const textWeight = props.textWeight?.[breakpoint]
 
    const primaryButtonColor = color || OIOContext.highlightColor
    const defaultButtonPadding = width === 'auto' ? `0px ${height}` : '0px'
@@ -113,7 +120,9 @@ const pulsingAnimation = keyframes`
       textWeight,
       width,
       backgroundColor: primaryButtonColor,
-      border: 'none',
+      borderColor: 'none',
+      borderStyle: 'none',
+      borderWidth: 'none',
       textSize: textSize || buttonSizeDefaults[size].textSize,
       hoverBackgroundColor: tinycolor(primaryButtonColor).lighten(7).toString(),
       hoverBorder: '',
@@ -126,10 +135,12 @@ const pulsingAnimation = keyframes`
    }
 
    if (outline) {
-      buttonStyle.border = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.5).toString()}`
+      buttonStyle.borderWidth = applyMultiplier('2px', zoom)
+      buttonStyle.borderStyle = 'solid'
+      buttonStyle.borderColor = tinycolor(primaryButtonColor).setAlpha(0.5).toString()
       buttonStyle.backgroundColor = 'transparent'
       buttonStyle.hoverBackgroundColor = 'transparent'
-      buttonStyle.hoverBorder = `2px solid ${tinycolor(primaryButtonColor).setAlpha(0.8).toString()}`
+      buttonStyle.hoverBorderColor = tinycolor(primaryButtonColor).setAlpha(0.8).toString()
       buttonStyle.textColor = primaryButtonColor
    }
 
@@ -188,20 +199,20 @@ export default class Button extends React.Component {
       const {
          children, className, id, mode, name, tagName, type,
          textColor, textSize, textTransform, textWeight, onClick,
-         backgroundColor, border, borderRadius, color, fontFamily,
+         backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width,
-         hoverBackgroundColor, hoverBorder
+         hoverBackgroundColor, hoverBorderColor
       } = this.props
 
       /* eslint-disable object-property-newline */
       const responsiveStyles = generateResponsiveStyles({
-         backgroundColor, border, borderRadius, color, fontFamily,
+         backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width
       })
 
       const hoverResponsiveStyles = generateResponsiveStyles({
          backgroundColor: hoverBackgroundColor,
-         border: hoverBorder
+         borderColor: hoverBorderColor
       })
       /* eslint-enable object-property-newline */
 

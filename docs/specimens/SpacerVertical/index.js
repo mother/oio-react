@@ -13,6 +13,10 @@ const ViewBasicSpecimen = () => (
    </div>
 )
 
+ViewBasicSpecimen.title = 'Vertical Orientation'
+
+ViewBasicSpecimen.description = 'The following example shows <code>Spacer</code> component used in <code>vertical</code> <code>orientation</code>. When the <code>Spacer</code> component is in this orientation, it flows like an html element with <code>display</code> set to <code>inline-block</code>. Note that the sibling <code>View</code> components in this exmample, <code>display</code> is set to <code>inline-block</code>.'
+
 ViewBasicSpecimen.codeSnippet = `
 // Spacer between 2 views with vertical orientaion
 <View display="inline-block" backgroundColor="#ddd">

@@ -28,6 +28,10 @@ const ButtonCustomizationsSpecimen = () => (
    </div>
 )
 
+ButtonCustomizationsSpecimen.title = 'Button Customizations: Add a little style and flavour'
+
+ButtonCustomizationsSpecimen.description = 'You can set customize both the background and text color of the <code>Button</code> component by using the prop <code>color</code> and <code>textColor</code>.'
+
 ButtonCustomizationsSpecimen.codeSnippet = `
 // Some button styles
 <Button name="Button (no radius)" size="sm" borderRadius="0px" />
