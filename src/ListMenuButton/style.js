@@ -1,29 +1,22 @@
 export default {
    listMenuButton: ({
+      activeBackgroundColor,
       activeTextColor,
       borderRadius,
       isActive,
-      selectionBackgroundColor,
-      showSelectionMarker,
       textColor
    }) => ({
-      float: 'left',
-      width: '100%',
       color: isActive
          ? activeTextColor
          : textColor,
       backgroundColor: isActive
-         ? selectionBackgroundColor
+         ? activeBackgroundColor
          : 'transparent',
-      borderRadius,
-      borderLeft: showSelectionMarker
-         ? '5px solid transparent'
-         : 'none',
       transition: '100ms',
       cursor: 'pointer',
       '&:hover': {
          backgroundColor: isActive
-            ? selectionBackgroundColor
+            ? activeBackgroundColor
             : 'rgba(0,0,0,0.02)',
          color: '#444'
       },

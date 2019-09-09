@@ -7,10 +7,9 @@ const ListMenu = ({
    activeTextColor,
    children,
    buttonBorderRadius,
-   buttonPadding,
+   buttonPaddingHorizontal,
    dividerLineStyle,
    showActiveArrow,
-   showActiveMarker,
    textColor
 }) => {
    // Clone TabButton children and pass props
@@ -23,10 +22,9 @@ const ListMenu = ({
                   activeBackgroundColor,
                   activeTextColor,
                   showActiveArrow,
-                  showActiveMarker,
                   textColor,
                   borderRadius: buttonBorderRadius,
-                  padding: buttonPadding
+                  paddingHorizontal: buttonPaddingHorizontal
                })}
                {i < (children.length - 1) && (
                   <View
@@ -54,25 +52,21 @@ ListMenu.propTypes = {
    activeBackgroundColor: PropTypes.string,
    activeTextColor: PropTypes.string,
    children: PropTypes.node.isRequired,
-   highlightColor: PropTypes.string,
    buttonBorderRadius: PropTypes.string,
-   buttonPadding: PropTypes.string,
+   buttonPaddingHorizontal: PropTypes.string,
    dividerLineStyle: PropTypes.string,
    showActiveArrow: PropTypes.bool,
-   showActiveMarker: PropTypes.bool,
    textColor: PropTypes.string
 }
 
 ListMenu.defaultProps = {
    activeBackgroundColor: 'rgba(0,0,0,0.04)',
    activeTextColor: '#333',
-   highlightColor: '#000',
    buttonBorderRadius: undefined,
-   buttonPadding: undefined,
+   buttonPaddingHorizontal: undefined,
    dividerLineStyle: '1px solid #eee',
    showActiveArrow: false,
-   showActiveMarker: false,
-   textColor: undefined
+   textColor: '#666'
 }
 
 export default ListMenu

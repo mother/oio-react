@@ -15,19 +15,19 @@ const ListMenuButton = ({
    isActive,
    name,
    onClick,
-   padding,
+   paddingHorizontal,
    showActiveArrow,
-   showActiveMarker,
    textColor
 }) => (
    <View
+      float="left"
+      width="100%"
       onClick={onClick}
+      borderRadius={borderRadius}
       css={style.listMenuButton({
          activeBackgroundColor,
          activeTextColor,
-         borderRadius,
          isActive,
-         showActiveMarker,
          textColor
       })}>
       <View
@@ -37,7 +37,7 @@ const ListMenuButton = ({
          float="left"
          width="100%"
          minHeight={buttonSizeDefaults.lg.height}
-         paddingHorizontal={padding}>
+         paddingHorizontal={paddingHorizontal}>
          <View
             flex="1 1 auto"
             display="flex"
@@ -79,9 +79,8 @@ ListMenuButton.propTypes = {
    isActive: PropTypes.bool,
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
-   padding: PropTypes.string,
+   paddingHorizontal: PropTypes.string,
    showActiveArrow: PropTypes.bool,
-   showActiveMarker: PropTypes.bool,
    textColor: PropTypes.string
 }
 
@@ -91,9 +90,8 @@ ListMenuButton.defaultProps = {
    borderRadius: '0px',
    isActive: false,
    onClick: undefined,
-   padding: '18px',
+   paddingHorizontal: '18px',
    showActiveArrow: false,
-   showActiveMarker: false,
    textColor: '#666'
 }
 
