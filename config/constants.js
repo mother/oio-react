@@ -1,4 +1,10 @@
 // =======================================================
+// OIO Container Dom Element Id
+// =======================================================
+
+const oioContainerId = 'oio-container'
+
+// =======================================================
 // Breakpoint Keys
 // =======================================================
 
@@ -36,9 +42,14 @@ const breakpointMediaQueries = {
 
 const responsiveStrFragmentRegexPattern = `(.*?)\\[([${breakpointKeys.join('')}-]+)\\]`
 
+// =======================================================
+// Export
+// =======================================================
+
 module.exports = {
    breakpoints,
    breakpointKeys,
    breakpointMediaQueries,
+   oioContainerId,
    responsiveStrFragmentRegexPattern
 }

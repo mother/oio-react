@@ -3,8 +3,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import { jsx, Global } from '@emotion/core'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { oioContainerId } from '../../config/constants'
 import View from '../View'
 import style from './style'
+
+const modalContainerId = 'oio-modal-container'
 
 // =======================================================
 // Component
@@ -66,17 +69,17 @@ const Modal = ({
    // Create Modal Portal Container
    // =======================================================
 
-   if (!document.getElementById('oio-modal-container')) {
+   if (!document.getElementById(modalContainerId)) {
       const modalPortalElement = document.createElement('div')
-      modalPortalElement.id = 'oio-modal-container'
+      modalPortalElement.id = modalContainerId
 
       // Append Modal Portal to OIO Container
       // If no OIO Container exists, we append to body
-      const oioContainer = document.getElementById('oio-container') || document.body
+      const oioContainer = document.getElementById(oioContainerId) || document.body
       oioContainer.appendChild(modalPortalElement)
    }
 
-   const portal = document.getElementById('oio-modal-container')
+   const portal = document.getElementById(modalContainerId)
 
    // =======================================================
    // Styles for Modal Window

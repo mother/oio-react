@@ -9,6 +9,7 @@ import React from 'react'
 /** @jsx jsx */
 import { Global, jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import { oioContainerId } from '../../config/constants'
 import OIOContext from './context'
 import normalizationStyles from './normalizationStyles'
 
@@ -80,7 +81,7 @@ export default class OIOProvider extends React.Component {
          <OIOContext.Provider value={contextProps}>
             <Global styles={normalizationStyles} />
             <div
-               id="oio-container"
+               id={oioContainerId}
                className={className}
                css={{ fontFamily, fontSize, ...style }}>
                {children}
