@@ -28,7 +28,7 @@ const OIOProvider = ({
    textSizeMultiplier,
    textSizeScaleRatio
 }) => {
-   const containerId = useRef(id || `oio-container-${Date.now()}`)
+   const containerId = useRef(id || `oio-container-${Math.floor(Math.random() * Math.floor(100000))}`)
 
    // Props available to OIO Context Consumer
    const contextProps = {

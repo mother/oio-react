@@ -39,8 +39,7 @@ const Modal = ({
    zIndex
 }) => {
    const oioContext = useContext(OIOContext)
-   const modalContainerId = `${oioContext.containerId}-modal-container`
-   const modalContainerPortal = useRef(document.getElementById(modalContainerId))
+   const modalContainerPortal = useRef(document.createElement('div'))
    const [isClosing, setIsClosing] = useState(false)
 
    // Modal is active at any point that it is open or in the process of opening or closing.
@@ -68,18 +67,21 @@ const Modal = ({
       : `${closeAnimationDuration}ms`
 
    // =======================================================
-   // Create Modal Portal Container (if not existent already)
+   // Initialize Modal Container Portal
    // =======================================================
 
-   if (!modalContainerPortal.current) {
-      const modalPortalElement = document.createElement('div')
-      modalPortalElement.id = modalContainerId
-      modalPortalElement.style.fontFamily = oioContext.fontFamily
-      modalPortalElement.style.fontSize = oioContext.fontSize
+   useEffect(() => {
+      const random = Math.floor(Math.random() * Math.floor(100000))
+      const modalContainerId = `modal-container-${random}`
+      modalContainerPortal.current.setAttribute('id', modalContainerId)
+      modalContainerPortal.current.style.fontFamily = oioContext.fontFamily
+      modalContainerPortal.current.style.fontSize = oioContext.fontSize
+      modalContainerPortal.current.style.zIndex = zIndex
+      document.body.appendChild(modalContainerPortal.current)
 
-      document.body.appendChild(modalPortalElement)
-      modalContainerPortal.current = modalPortalElement
-   }
+      // Remove container on unmount
+      return () => modalContainerPortal.current.remove()
+   }, [])
 
    // =======================================================
    // Styles for Modal Window
@@ -165,12 +167,6 @@ const Modal = ({
    }, [open])
 
    // =======================================================
-   // Cleanup on unmount
-   // =======================================================
-
-   useEffect(() => () => modalContainerPortal.current.remove(), [])
-
-   // =======================================================
    // Render
    // =======================================================
 
@@ -184,8 +180,7 @@ const Modal = ({
          top="0px"
          left="0px"
          right="0px"
-         bottom="0px"
-         zIndex={zIndex}>
+         bottom="0px">
 
          {/* When Modal is Open, we need to prevent body from scrolling */}
          {modalIsActive.current && <Global styles={{ body: { overflow: 'hidden' } }} />}
