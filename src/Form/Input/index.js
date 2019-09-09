@@ -46,14 +46,14 @@ const sizeSpecificStyles = {
 // Component
 // ============================================================================
 
-const Input = ({
+const Input = React.forwardRef(({
    appearance,
    id,
    label,
    required,
    size,
    ...props
-}) => {
+}, ref) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
@@ -84,6 +84,7 @@ const Input = ({
          <input
             {...props}
             id={id}
+            ref={ref}
             required={required}
             css={{
                ...sizeSpecificStyles[size],
@@ -103,7 +104,7 @@ const Input = ({
          />
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export
