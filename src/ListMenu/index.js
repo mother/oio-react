@@ -8,6 +8,7 @@ const ListMenu = ({
    children,
    buttonBorderRadius,
    buttonPaddingHorizontal,
+   buttonSize,
    dividerLineStyle,
    showActiveArrow,
    textColor
@@ -24,7 +25,8 @@ const ListMenu = ({
                   showActiveArrow,
                   textColor,
                   borderRadius: buttonBorderRadius,
-                  paddingHorizontal: buttonPaddingHorizontal
+                  paddingHorizontal: buttonPaddingHorizontal,
+                  size: buttonSize
                })}
                {i < (children.length - 1) && (
                   <View
@@ -54,6 +56,7 @@ ListMenu.propTypes = {
    children: PropTypes.node.isRequired,
    buttonBorderRadius: PropTypes.string,
    buttonPaddingHorizontal: PropTypes.string,
+   buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
    dividerLineStyle: PropTypes.string,
    showActiveArrow: PropTypes.bool,
    textColor: PropTypes.string
@@ -64,6 +67,7 @@ ListMenu.defaultProps = {
    activeTextColor: '#333',
    buttonBorderRadius: undefined,
    buttonPaddingHorizontal: undefined,
+   buttonSize: 'lg',
    dividerLineStyle: '1px solid #eee',
    showActiveArrow: false,
    textColor: '#666'

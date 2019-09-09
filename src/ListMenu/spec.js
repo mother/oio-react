@@ -23,6 +23,12 @@ export default [{
    description: 'Sets the left and right <code>padding</code> for all <code>ListMenuButton</code> components.',
    responsive: true
 }, {
+   name: 'buttonSize',
+   type: 'String (Enum)',
+   default: '<code>lg</code>',
+   description: 'Set the <code>ListMenuButton</code> component size. Available values include:  <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>.',
+   responsive: true
+}, {
    name: 'dividerLineStyle',
    type: 'String',
    default: '<code>1px solid #eee</code>',

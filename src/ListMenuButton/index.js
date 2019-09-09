@@ -16,6 +16,7 @@ const ListMenuButton = ({
    name,
    onClick,
    paddingHorizontal,
+   size,
    showActiveArrow,
    textColor
 }) => (
@@ -36,14 +37,14 @@ const ListMenuButton = ({
          alignItems="fill"
          float="left"
          width="100%"
-         minHeight={buttonSizeDefaults.lg.height}
+         minHeight={buttonSizeDefaults[size].height}
          paddingHorizontal={paddingHorizontal}>
          <View
             flex="1 1 auto"
             display="flex"
             alignItems="center">
             <Text
-               size={buttonSizeDefaults.lg.textSize}
+               size={buttonSizeDefaults[size].textSize}
                weight={isActive ? 'bold' : 'medium'}>
                {name}
             </Text>
@@ -80,6 +81,7 @@ ListMenuButton.propTypes = {
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
    paddingHorizontal: PropTypes.string,
+   size: PropTypes.string,
    showActiveArrow: PropTypes.bool,
    textColor: PropTypes.string
 }
@@ -91,6 +93,7 @@ ListMenuButton.defaultProps = {
    isActive: false,
    onClick: undefined,
    paddingHorizontal: '18px',
+   size: 'lg',
    showActiveArrow: false,
    textColor: '#666'
 }
