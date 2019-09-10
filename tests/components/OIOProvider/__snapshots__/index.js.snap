@@ -2,6 +2,7 @@
 
 exports[`OIO Provider context props are received as expected from context consumer 1`] = `
 Object {
+  "containerId": "oio",
   "fontFamily": "sans-serif",
   "fontSize": "16px",
   "fontWeightBold": "700",
@@ -25,6 +26,7 @@ exports[`OIO Provider renders as expected 1`] = `
   <div>
     <div
       class="emotion-0"
+      id="oio"
     >
       Hello World
     </div>

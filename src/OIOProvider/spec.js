@@ -14,6 +14,11 @@ export default [{
    default: '<code>16px</code>',
    description: 'Default font-size used inside this OIOProvider component'
 }, {
+   name: 'id',
+   type: 'String',
+   default: '<code>oio-container-{timestamp}</code>',
+   description: 'Container DOM Element ID'
+}, {
    name: 'style',
    type: 'Object',
    default: '<code>{}</code>',
