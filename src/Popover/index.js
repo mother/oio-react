@@ -11,6 +11,7 @@ import style from './style'
 // =======================================================
 
 const Popover = ({
+   anchorElementId,
    backgroundColor,
    borderRadius,
    boxShadow,
@@ -44,8 +45,8 @@ const Popover = ({
    // - To prevent animating the modal closed if it isn't currently open (eg during initial render)
    // - To prevent flickers during the transition from when `open` is set to false and `isClosing`
    //   is set to true.
-   const modalIsActive = useRef(open)
-   modalIsActive.current = open || modalIsActive.current
+   const popoverIsActive = useRef(open)
+   popoverIsActive.current = open || popoverIsActive.current
 
    const animationType = isClosing
       ? 'close'
@@ -62,20 +63,10 @@ const Popover = ({
       : `${closeAnimationDuration}ms`
 
    // =======================================================
-   // Create Popover Portal Container
+   // Set Popover Portal
    // =======================================================
 
-   // if (!document.getElementById('oio-modal-container')) {
-   //    const modalPortalElement = document.createElement('div')
-   //    modalPortalElement.id = 'oio-modal-container'
-   //
-   //    // Append Popover Portal to OIO Container
-   //    // If no OIO Container exists, we append to body
-   //    const oioContainer = document.getElementById('oio-container') || document.body
-   //    oioContainer.appendChild(modalPortalElement)
-   // }
-
-   const portal = document.getElementById('open-modal-button') || document.body
+   const portal = document.getElementById(anchorElementId) || document.body
 
    // =======================================================
    // Styles for Popover Window
@@ -115,7 +106,7 @@ const Popover = ({
 
    // When Close Animation has completed
    const handleCloseComplete = () => {
-      modalIsActive.current = false
+      popoverIsActive.current = false
       setIsClosing(false)
       // portal.removeAttribute('style')
 
@@ -131,14 +122,6 @@ const Popover = ({
    useEffect(() => {
       if (open) {
          window.addEventListener('click', handleBodyClick, false)
-         // We need to ensure the portal container has the following style
-         // to ensure that the modal displays correctly and fills the entire screen
-         // Note: we ONLY want it to have this style when modal is open,
-         // otherwise it may cover content  while modal is closed
-         // portal.setAttribute(
-         //    'style',
-         //    'position: fixed; top: 0; left: 0; right: 0; bottom: 0;'
-         // )
 
          if (onOpen) {
             onOpen()
@@ -146,7 +129,7 @@ const Popover = ({
 
       // If Popover open changes from true to false,
       // begin close animation only if Popover was previously open
-      } else if (modalIsActive.current) {
+      } else if (popoverIsActive.current) {
          setIsClosing(true)
 
          if (onClose) {
@@ -156,7 +139,6 @@ const Popover = ({
 
       return () => {
          window.removeEventListener('click', handleBodyClick, false)
-         // portal.removeAttribute('style')
       }
    }, [open])
 
@@ -202,7 +184,7 @@ Popover.propTypes = {
    borderRadius: PropTypes.string,
    children: PropTypes.node,
    closeAnimationDuration: PropTypes.number,
-   closeAnimationName: PropTypes.oneOf(['fadeOut', 'scaleOut']),
+   closeAnimationName: PropTypes.oneOf(['fadeOut']),
    height: PropTypes.string,
    margin: PropTypes.string,
    maxHeight: PropTypes.string,
@@ -216,7 +198,7 @@ Popover.propTypes = {
    onOpenComplete: PropTypes.func,
    open: PropTypes.bool,
    openAnimationDuration: PropTypes.number,
-   openAnimationName: PropTypes.oneOf(['appear', 'fadeIn', 'scaleIn']),
+   openAnimationName: PropTypes.oneOf(['appear', 'fadeIn']),
    width: PropTypes.string.isRequired,
    zIndex: PropTypes.number
 }
@@ -241,7 +223,7 @@ Popover.defaultProps = {
    onOpenComplete: undefined,
    open: false,
    openAnimationDuration: 400,
-   openAnimationName: 'scaleIn',
+   openAnimationName: 'fadeIn',
    width: undefined,
    zIndex: 10000
 }

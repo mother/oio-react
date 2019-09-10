@@ -25,13 +25,6 @@ const animations = {
            0% { opacity: 0; }
            100% { opacity: 1; }
          `
-      },
-      scaleIn: {
-         baseStyle: '',
-         keyframes: keyframes`
-           0% { transform: translate3d(0, 18px, 0) scale(0.99); }
-           100% { transform: translate3d(0, 0, 0) scale(1); }
-         `
       }
    }
 }
