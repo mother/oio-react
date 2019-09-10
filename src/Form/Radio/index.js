@@ -10,13 +10,13 @@ import { OIOFormContext } from '..'
 // Component
 // ============================================================================
 
-const Radio = ({
+const Radio = React.forwardRef(({
    appearance,
    highlightColor,
    id,
    label,
    ...props
-}) => {
+}, ref) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
@@ -42,6 +42,7 @@ const Radio = ({
          <input
             {...props}
             id={id}
+            ref={ref}
             type="radio"
             css={{
                ...appearanceStyles[inputAppearance],
@@ -76,7 +77,7 @@ const Radio = ({
          )}
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export

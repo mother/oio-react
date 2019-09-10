@@ -5,7 +5,7 @@ import Text from '../../../src/Text'
 
 test('Text will render at different sizes correctly', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text size="1[a] 2[b] 3[c] 4[d] 5[e] 6[f]">
             Responsive Sizes
          </Text>
@@ -17,7 +17,7 @@ test('Text will render at different sizes correctly', () => {
 
 test('Text will render at autoScale sizes correctly', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text size="1[a] 2[b] 3[c] 4[d] 5[e] 6[f]" autoScale>
             AutoScaled Responsive Sizes
          </Text>
@@ -29,7 +29,7 @@ test('Text will render at autoScale sizes correctly', () => {
 
 test('Text will render at different font weights correctly', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text weight="bold[a] semibold[b] medium[c] normal[d] light[e-f]">
             Text Weights
          </Text>
@@ -41,7 +41,7 @@ test('Text will render at different font weights correctly', () => {
 
 test('Text will render color correctly', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text color="red[a-b] #ff0000[c-d] rgba(255,0,0,1)[e-f]">Red Text</Text>
       </OIOProvider>
    )
@@ -51,7 +51,7 @@ test('Text will render color correctly', () => {
 
 test('Text will render text transforms correctly', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text transform="uppercase">Uppercase Text</Text>
          <Text transform="capitalize">capitalized text</Text>
          <Text>Standard Case Text</Text>
@@ -63,7 +63,7 @@ test('Text will render text transforms correctly', () => {
 
 test('Invalid prop values passed to Text component will be ignored', () => {
    const { container } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <Text
             size="The Wrong Size"
             weight="fakeWeight">

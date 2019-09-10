@@ -5,7 +5,7 @@ import OIOProvider from '../../../src/OIOProvider'
 
 test('OIO Provider renders as expected', () => {
    const { baseElement } = render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          Hello World
       </OIOProvider>
    )
@@ -17,7 +17,7 @@ test('OIO Provider context props are received as expected from context consumer'
    let contextProps = ''
 
    render(
-      <OIOProvider>
+      <OIOProvider id="oio">
          <OIOContext.Consumer>
             {(context) => {
                contextProps = context

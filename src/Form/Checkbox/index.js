@@ -11,13 +11,13 @@ import checkboxIcon from './checkboxIcon.svg'
 // Component
 // ============================================================================
 
-const Checkbox = ({
+const Checkbox = React.forwardRef(({
    appearance,
    highlightColor,
    id,
    label,
    ...props
-}) => {
+}, ref) => {
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
@@ -43,6 +43,7 @@ const Checkbox = ({
          <input
             {...props}
             id={id}
+            ref={ref}
             type="checkbox"
             css={{
                ...appearanceStyles[inputAppearance],
@@ -81,7 +82,7 @@ const Checkbox = ({
          )}
       </View>
    )
-}
+})
 
 // ============================================================================
 // PropTypes + Export
