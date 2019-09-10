@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { View } from '../../../src'
 
 const supportedEvents = [
+   'onAnimationEnd', 'onAnimationStart', 'onAnimationIteration',
    'onClick', 'onDoubleClick', 'onKeyDown', 'onKeyPress', 'onKeyUp',
    'onMouseDown', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp', 'onScroll',
    'onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart', 'onTransitionEnd'
@@ -44,6 +45,7 @@ ViewEventsSpecimen.title = 'Supported Events'
 ViewEventsSpecimen.description = `
 The <code>View</code> component supports the following React  events:<br /><br />
 <code>
+   onAnimationEnd, onAnimationStart, onAnimationIteration,
    onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
    onMouseDown, onMouseMove, onMouseOut, onMouseOver, onMouseUp, onScroll,
    onTouchCancel, onTouchEnd, onTouchMove, onTouchStart, onTransitionEnd
@@ -54,6 +56,7 @@ The <code>View</code> component supports the following React  events:<br /><br /
 
 ViewEventsSpecimen.codeSnippet = `
 const supportedEvents = [
+   'onAnimationEnd', 'onAnimationStart', 'onAnimationIteration',
    'onClick', 'onDoubleClick', 'onKeyDown', 'onKeyPress', 'onKeyUp',
    'onMouseDown', 'onMouseMove', 'onMouseOut', 'onMouseOver', 'onMouseUp', 'onScroll',
    'onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart', 'onTransitionEnd'

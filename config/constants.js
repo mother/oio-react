@@ -36,6 +36,10 @@ const breakpointMediaQueries = {
 
 const responsiveStrFragmentRegexPattern = `(.*?)\\[([${breakpointKeys.join('')}-]+)\\]`
 
+// =======================================================
+// Export
+// =======================================================
+
 module.exports = {
    breakpoints,
    breakpointKeys,
