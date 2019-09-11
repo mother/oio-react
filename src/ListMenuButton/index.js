@@ -4,8 +4,7 @@ import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import ArrowRightIcon from './arrowRightIcon'
 import { buttonSizeDefaults } from '../Button'
-import Text from '../Text'
-import View from '../View'
+import { Text, View } from '../../src'
 import style from './style'
 
 const ListMenuButton = ({
@@ -64,7 +63,7 @@ const ListMenuButton = ({
                      width="8px"
                      height="8px"
                      strokeWidth="4px"
-                     color="#888"
+                     color={activeTextColor}
                   />
                </View>
             </View>

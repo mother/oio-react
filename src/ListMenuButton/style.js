@@ -17,8 +17,7 @@ export default {
       '&:hover': {
          backgroundColor: isActive
             ? activeBackgroundColor
-            : 'rgba(0,0,0,0.02)',
-         color: '#444'
+            : 'rgba(0,0,0,0.02)'
       },
       '&:active': {
          transform: 'translate3d(2px, 0, 0)'

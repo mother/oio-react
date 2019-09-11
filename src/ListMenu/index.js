@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import View from '../View'
+import { View } from '../../src'
 
 const ListMenu = ({
    activeBackgroundColor,
@@ -13,7 +13,7 @@ const ListMenu = ({
    showActiveArrow,
    textColor
 }) => {
-   // Clone TabButton children and pass props
+   // Clone ListMenuButton children and pass props
    const listMenuButtons = React.Children.map(children, (child, i) => {
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {

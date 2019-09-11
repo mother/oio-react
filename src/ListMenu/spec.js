@@ -41,12 +41,6 @@ export default [{
    description: 'Set to <code>true</code> to show arrow icon on <code>ListMenuButton</code>s where <code>isActive</code> is set to <code>true</code>',
    responsive: false
 }, {
-   name: 'showActiveMarker',
-   type: 'Boolean',
-   default: '<code>false</code>',
-   description: 'Set to <code>true</code> to show color marker on <code>ListMenuButton</code>s where <code>isActive</code> is set to <code>true</code>',
-   responsive: false
-}, {
    name: 'textColor',
    type: 'String',
    default: '<code>#666</code>',
