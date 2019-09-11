@@ -2,16 +2,17 @@ import React from 'react'
 import APITableBlock from '../../../components/APITableBlock'
 import HeaderBlock from '../../../components/HeaderBlock'
 import SpecimenBlock from '../../../components/SpecimenBlock'
-// import modalSpec from '../../../../src/Modal/spec'
+import spec from '../../../../src/Popover/spec'
 import PopoverBasicSpecimen from '../../../specimens/PopoverBasic'
 
 const PopoverPage = () => (
    <div>
       <HeaderBlock
          title="Popover"
-         subtitle="This component displays content in a layer that sits above the rest of the page content. Users won't be able to interact with the page until the dialog is closed."
+         subtitle="This component displays content in a small window that is positioned next to another anchored UI element such as a <code>Button</code>."
       />
       <SpecimenBlock specimen={PopoverBasicSpecimen} />
+      <APITableBlock spec={spec} title="Popover API Options" />
    </div>
 )
 

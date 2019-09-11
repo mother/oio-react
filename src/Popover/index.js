@@ -42,7 +42,8 @@ const Popover = ({
    // This uses a ref, as opposed to state, because changes to it do not need to trigger a
    // re-render.
    // It is necessary for 2 reasons:
-   // - To prevent animating the modal closed if it isn't currently open (eg during initial render)
+   // - To prevent animating the popover closed if it isn't currently open
+   // (eg during initial render)
    // - To prevent flickers during the transition from when `open` is set to false and `isClosing`
    //   is set to true.
    const popoverIsActive = useRef(open)
@@ -72,7 +73,7 @@ const Popover = ({
    // Styles for Popover Window
    // =======================================================
 
-   const windowProps = {
+   const popoverProps = {
       width,
       height,
       backgroundColor,
@@ -163,7 +164,7 @@ const Popover = ({
          left="0px"
          zIndex={zIndex}>
          <View
-            {...windowProps}
+            {...popoverProps}
             onAnimationEnd={open ? handleOpenComplete : handleCloseComplete}
             textAlign="left"
             css={style.window({ animationType, animationName, animationDuration })}>
@@ -191,9 +192,9 @@ Popover.propTypes = {
    maxWidth: PropTypes.string,
    minHeight: PropTypes.string,
    minWidth: PropTypes.string,
+   onBodyClick: PropTypes.func,
    onClose: PropTypes.func,
    onCloseComplete: PropTypes.func,
-   onCloseTrigger: PropTypes.func,
    onOpen: PropTypes.func,
    onOpenComplete: PropTypes.func,
    open: PropTypes.bool,
@@ -216,16 +217,16 @@ Popover.defaultProps = {
    maxWidth: undefined,
    minHeight: undefined,
    minWidth: undefined,
+   onBodyClick: undefined,
    onClose: undefined,
    onCloseComplete: undefined,
-   onCloseTrigger: undefined,
    onOpen: undefined,
    onOpenComplete: undefined,
    open: false,
    openAnimationDuration: 400,
    openAnimationName: 'fadeIn',
    width: undefined,
-   zIndex: 10000
+   zIndex: 10001
 }
 
 export default Popover

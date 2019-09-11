@@ -6,23 +6,19 @@ const PopoverBasicSpecimen = () => {
 
    return (
       <View>
-         <View id="open-modal-button">
-            <Button
-               onClick={() => setPopoverIsOpen(true)}
-               name="Open Popover"
-            />
-         </View>
+         <Button
+            id="open-popover-button"
+            onClick={() => setPopoverIsOpen(true)}
+            name="Open Popover"
+         />
          <Popover
-            anchorElementId="open-modal-button"
+            anchorElementId="open-popover-button"
             borderRadius="6px"
-            width="90%[a-b] 240px[c-f]"
+            width="240px"
             onBodyClick={() => setPopoverIsOpen(false)}
             onCloseTrigger={() => setPopoverIsOpen(false)}
             open={popoverIsOpen}>
-            <View
-               id="close-modal-control"
-               padding="30px"
-               onClick={() => setPopoverIsOpen(false)}>
+            <View padding="24px">
                <Text size="2">
                   The popover content. Click anywhere to close.
                </Text>
@@ -34,7 +30,7 @@ const PopoverBasicSpecimen = () => {
 
 PopoverBasicSpecimen.title = 'Basic Usage'
 
-PopoverBasicSpecimen.description = 'The following example shows a <code>Popover</code> component that is set to <code>open</code> through a <code>Button</code> using <code>useState</code>. The modal can be closed by clicking its overlay or the close link inside the modal. Note the <code>onCloseTrigger</code> prop. This prop is used to define a function that will be fired when the user clicks on the <code>Popover</code>\'s overlay. Also note that the following example is responsive.'
+PopoverBasicSpecimen.description = 'The following example shows a <code>Popover</code> component that is set to <code>open</code> through a <code>Button</code> using <code>useState</code>. The popover can be closed by clicking anywhere on the body. Note the <code>onBodyClick</code> prop.'
 
 PopoverBasicSpecimen.codeSnippet = `
 const [popoverIsOpen, setPopoverIsOpen] = useState(false)
@@ -42,18 +38,20 @@ const [popoverIsOpen, setPopoverIsOpen] = useState(false)
 return (
    <View>
       <Button
+         id="open-popover-button"
          onClick={() => setPopoverIsOpen(true)}
          name="Open Popover"
       />
       <Popover
+         anchorElementId="open-popover-button"
          borderRadius="6px"
-         width="100%[a-b] 480px[c-f]"
-         height="100%[a-b] 300px[c-f]"
+         width="240px"
+         onBodyClick={() => setPopoverIsOpen(false)}
          onCloseTrigger={() => setPopoverIsOpen(false)}
          open={popoverIsOpen}>
-         <View padding="30px" onClick={() => setPopoverIsOpen(false)}>
+         <View padding="24px">
             <Text size="2">
-               <u>Click to Close</u>
+               The popover content. Click anywhere to close.
             </Text>
          </View>
       </Popover>
