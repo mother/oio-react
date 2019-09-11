@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import tinycolor from 'tinycolor2'
 import CheckmarkIcon from '../assets/icons/checkmarkCircled'
 import CloseIcon from '../assets/icons/closeCircled'
 import InfoIcon from '../assets/icons/infoCircled'
@@ -15,13 +16,13 @@ import View from '../View'
 
 const notificationTypes = {
    error: {
-      backgroundColor: 'rgba(247, 145, 132, 0.9)',
+      backgroundColor: 'rgba(247, 196, 190, 0.9)',
       icon: CloseIcon,
-      iconColor: 'rgb(198, 73, 60)',
-      textColor: 'rgb(102, 36, 36)'
+      iconColor: 'rgb(232, 84, 68)',
+      textColor: 'rgb(131, 37, 37)'
    },
    info: {
-      backgroundColor: 'rgb(161, 212, 255)',
+      backgroundColor: 'rgb(204, 230, 250)',
       icon: InfoIcon,
       iconColor: 'rgb(66, 134, 238)',
       textColor: 'rgb(34, 74, 129)'
@@ -29,26 +30,26 @@ const notificationTypes = {
    loading: {
       backgroundColor: 'rgb(84, 84, 84)',
       icon: Spinner,
-      iconColor: 'rgb(134, 134, 134)',
+      iconColor: 'rgb(200, 200, 200)',
       textColor: 'rgb(255, 255, 255)'
    },
    prompt: {
-      backgroundColor: 'rgb(111, 231, 216)',
+      backgroundColor: 'rgb(189, 249, 242)',
       icon: QuestionIcon,
       iconColor: 'rgb(11, 181, 181)',
       textColor: 'rgb(17, 93, 89)'
    },
    success: {
-      backgroundColor: 'rgb(134, 240, 180)',
+      backgroundColor: 'rgb(188, 246, 213)',
       icon: CheckmarkIcon,
-      iconColor: 'rgb(45, 193, 100)',
+      iconColor: 'rgb(45, 193, 126)',
       textColor: 'rgb(16, 65, 42)'
    },
    warning: {
-      backgroundColor: 'rgb(255, 200, 136)',
+      backgroundColor: 'rgb(255, 234, 159)',
       icon: WarningIcon,
-      iconColor: 'rgb(215, 143, 76)',
-      textColor: 'rgb(102, 66, 19)'
+      iconColor: 'rgb(242, 163, 28)',
+      textColor: 'rgb(134, 83, 17)'
    }
 }
 
@@ -108,6 +109,11 @@ const NotificationInline = ({
                height={iconSize}
                borderRadius="50%"
                marginTop="3px"
+               backgroundColor={type === 'loading'
+                  ? 'transparent'
+                  : tinycolor(notificationIconColor).setAlpha('.2').toString()
+               }
+               padding="4px"
                marginRight={iconSpacing}>
                <NotificationIcon
                   width="100%"
@@ -183,9 +189,9 @@ NotificationInline.defaultProps = {
    children: undefined,
    iconColor: undefined,
    iconSpacing: '18px',
-   iconSize: '18px',
+   iconSize: '30px',
    id: undefined,
-   paddingHorizontal: '24px',
+   paddingHorizontal: '18px',
    paddingVertical: '18px',
    style: undefined,
    textColor: undefined,

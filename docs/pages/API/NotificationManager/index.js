@@ -1,21 +1,19 @@
 import React from 'react'
+import APITableBlock from '../../../components/APITableBlock'
 import HeaderBlock from '../../../components/HeaderBlock'
 import SpecimenBlock from '../../../components/SpecimenBlock'
 import NotificationManagerSpecimen from '../../../specimens/NotificationManager'
-import { NotificationManagerProvider } from '../../../../src'
+import spec from '../../../../src/NotificationManager/spec'
 
 const NotificationManagerPage = () => (
    <div>
       <HeaderBlock
          title="NotificationManager"
-         subtitle="The Spacer component provides a convenient way to create whitespace between elements. The <code>Spacer</code> component is designed to work in both <code>vertical</code> and <code>horizontal</code> orientations."
+         subtitle="The NotificationManager consists of a <code>Context</code> and <code>Provider</code> designed to manage and centralize groups of banner-style notifications. The NotificationManager uses <code>NotificationInline</code> under the hood."
       />
       <SpecimenBlock specimen={NotificationManagerSpecimen} />
+      <APITableBlock spec={spec} title="showNotification Options" />
    </div>
 )
 
-export default () => (
-   <NotificationManagerProvider>
-      <NotificationManagerPage />
-   </NotificationManagerProvider>
-)
+export default NotificationManagerPage

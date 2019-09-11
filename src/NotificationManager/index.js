@@ -1,9 +1,16 @@
-import React, { createContext, useEffect, useRef, useState } from 'react'
+import React, {
+   createContext,
+   useContext,
+   useEffect,
+   useRef,
+   useState
+} from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { Transition, TransitionGroup } from 'react-transition-group'
+import OIOContext from '../OIOProvider/context'
 import { NotificationInline, View } from '..'
 
 const ANIMATION_DURATION = 600
@@ -19,6 +26,7 @@ const NotificationManagerContext = createContext()
 // =================================================
 
 const NotificationManagerProvider = ({ children }) => {
+   const oioContext = useContext(OIOContext)
    const notificationElem = useRef(document.createElement('div'))
 
    useEffect(() => {
@@ -30,6 +38,8 @@ const NotificationManagerProvider = ({ children }) => {
       notificationElem.current.style.width = '400px'
       notificationElem.current.style.right = 0
       notificationElem.current.style.pointerEvents = 'none'
+      notificationElem.current.style.fontFamily = oioContext.fontFamily
+      notificationElem.current.style.fontSize = oioContext.fontSize
       document.body.appendChild(notificationElem.current)
 
       return () => notificationElem.current.remove()
@@ -55,9 +65,8 @@ const NotificationManagerProvider = ({ children }) => {
             <View
                float="left"
                width="100%"
-               padding="30px">
+               padding="24px">
                <TransitionGroup>
-                  {/* TODO: Use CSSTransition */}
                   {notifications.map(notification => (
                      <Transition
                         key={notification.id}
@@ -73,6 +82,8 @@ const NotificationManagerProvider = ({ children }) => {
                               <View
                                  width="100%"
                                  marginTop="3px"
+                                 borderRadius="8px"
+                                 boxShadow="6px 6px 30px rgba(0,0,0,0.5)"
                                  css={{
                                     transition: `${ANIMATION_DURATION}ms ease-in-out`,
                                     opacity: animating ? '0' : '1',
@@ -82,9 +93,11 @@ const NotificationManagerProvider = ({ children }) => {
                                  }}>
                                  <NotificationInline
                                     backgroundColor="rgba(40,40,40,0.95)"
-                                    borderRadius="6px"
+                                    borderRadius="8px"
                                     message={notification.message}
-                                    paddingVertical="18px"
+                                    iconSpacing="24px"
+                                    paddingHorizontal="24px"
+                                    paddingVertical="24px"
                                     textColor="#fff"
                                     title={notification.title}
                                     type={notification.type}
