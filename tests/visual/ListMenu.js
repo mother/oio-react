@@ -8,7 +8,7 @@ context('ListMenu', () => {
       cy.testImageSnapshot('ListMenu - Basic')
    })
 
-   it('Renders with active arrow and style cusotmizations as expected', () => {
+   it('Renders with active arrow and style customizations as expected', () => {
       cy.visit('/tests/list-menu-active-arrow')
       cy.testImageSnapshot('ListMenu - with active arrow')
    })
