@@ -74,7 +74,7 @@ export default [{
    name: 'size',
    type: 'String (Enum)',
    default: '<code>md</code>',
-   description: 'Set the <code>Button</code> component size. Available values include:  <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>',
+   description: 'Set the <code>Button</code> component size. Available values include:  <code>xl</code>, <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>',
    responsive: true
 }, {
    name: 'style',

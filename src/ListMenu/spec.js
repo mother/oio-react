@@ -26,7 +26,7 @@ export default [{
    name: 'buttonSize',
    type: 'String (Enum)',
    default: '<code>lg</code>',
-   description: 'Set the <code>ListMenuButton</code> component size. Available values include:  <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>.',
+   description: 'Set the <code>ListMenuButton</code> component size. Available values include:  <code>xl</code>, <code>lg</code>, <code>md</code>, <code>sm</code>, <code>xs</code>.',
    responsive: true
 }, {
    name: 'dividerLineStyle',
