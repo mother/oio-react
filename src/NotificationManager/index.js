@@ -1,7 +1,6 @@
 import React, {
    createContext,
    useContext,
-   useEffect,
    useRef,
    useState
 } from 'react'
@@ -13,7 +12,12 @@ import { Transition, TransitionGroup } from 'react-transition-group'
 import OIOContext from '../OIOProvider/context'
 import { NotificationInline, View } from '..'
 
-const ANIMATION_DURATION = 600
+// =================================================
+// Constants
+// =================================================
+
+const animationDuration = 600
+const notificationContainerId = 'oio-notification-container'
 
 // =================================================
 // Context
@@ -27,27 +31,31 @@ const NotificationManagerContext = createContext()
 
 const NotificationManagerProvider = ({ children }) => {
    const oioContext = useContext(OIOContext)
-   const notificationElem = useRef(document.createElement('div'))
+   const notificationContainer = useRef(document.getElementById(notificationContainerId))
 
-   useEffect(() => {
-      notificationElem.current.setAttribute('id', 'notification-container')
-      notificationElem.current.style.display = 'flex'
-      notificationElem.current.style.alignItems = 'flex-end'
-      notificationElem.current.style.position = 'absolute'
-      notificationElem.current.style.bottom = 0
-      notificationElem.current.style.width = '400px'
-      notificationElem.current.style.right = 0
-      notificationElem.current.style.pointerEvents = 'none'
-      notificationElem.current.style.fontFamily = oioContext.fontFamily
-      notificationElem.current.style.fontSize = oioContext.fontSize
-      document.body.appendChild(notificationElem.current)
+   if (!notificationContainer.current) {
+      notificationContainer.current = document.createElement('div')
+      notificationContainer.current.setAttribute('id', notificationContainerId)
+      notificationContainer.current.style.display = 'flex'
+      notificationContainer.current.style.alignItems = 'flex-end'
+      notificationContainer.current.style.position = 'absolute'
+      notificationContainer.current.style.bottom = 0
+      notificationContainer.current.style.width = '400px'
+      notificationContainer.current.style.right = 0
+      notificationContainer.current.style.pointerEvents = 'none'
+      notificationContainer.current.style.fontFamily = oioContext.fontFamily
+      notificationContainer.current.style.fontSize = oioContext.fontSize
+      document.body.appendChild(notificationContainer.current)
 
-      return () => notificationElem.current.remove()
-   }, [])
+      // Don't bother unmounting the container when this component unmounts,
+      // because it is shared for all NotificationManager components
+   }
 
    const [notifications, setNotifications] = useState([])
    const showNotification = ({ message, title, type }) => {
-      const newId = `${Date.now()}`
+      const rand = Math.floor(Math.random() * Math.floor(1000))
+      const newId = `${Date.now()}-${rand}`
+
       setNotifications([
          { id: newId, message, title, type },
          ...notifications
@@ -73,7 +81,7 @@ const NotificationManagerProvider = ({ children }) => {
                         timeout={{
                            appear: 0,
                            enter: 0,
-                           exit: ANIMATION_DURATION
+                           exit: animationDuration
                         }}>
                         {(state) => {
                            const animating = state === 'entering' || state === 'exiting'
@@ -85,7 +93,7 @@ const NotificationManagerProvider = ({ children }) => {
                                  borderRadius="8px"
                                  boxShadow="6px 6px 30px rgba(0,0,0,0.5)"
                                  css={{
-                                    transition: `${ANIMATION_DURATION}ms ease-in-out`,
+                                    transition: `${animationDuration}ms ease-in-out`,
                                     opacity: animating ? '0' : '1',
                                     transform: animating
                                        ? 'translateX(120%)'
@@ -109,7 +117,7 @@ const NotificationManagerProvider = ({ children }) => {
                   ))}
                </TransitionGroup>
             </View>,
-            notificationElem.current
+            notificationContainer.current
          )}
       </NotificationManagerContext.Provider>
    )
