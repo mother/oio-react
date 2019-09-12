@@ -17,6 +17,7 @@ import { NotificationInline, View } from '..'
 // =================================================
 
 const animationDuration = 600
+const notificationDisplayDuration = 3500
 const notificationContainerId = 'oio-notification-container'
 
 // =================================================
@@ -56,16 +57,16 @@ const NotificationManagerProvider = ({ children }) => {
    const [notifications, setNotifications] = useState([])
    const showNotification = ({ message, title, type }) => {
       const rand = Math.floor(Math.random() * Math.floor(1000))
-      const newId = `${Date.now()}-${rand}`
+      const id = `${Date.now()}-${rand}`
 
       setNotifications([
-         { id: newId, message, title, type },
+         { id, message, title, type },
          ...notifications
       ])
 
       setTimeout(() => {
-         setNotifications(activeNotifications => activeNotifications.filter(n => n.id !== newId))
-      }, 3500)
+         setNotifications(activeNotifications => activeNotifications.filter(n => n.id !== id))
+      }, notificationDisplayDuration)
    }
 
    return (
@@ -82,7 +83,7 @@ const NotificationManagerProvider = ({ children }) => {
                         exit: animationDuration
                      }}>
                      {(state) => {
-                        const animating = state === 'entering' || state === 'exiting'
+                        const isAnimating = state === 'entering' || state === 'exiting'
                         return (
                            <View
                               float="left"
@@ -93,8 +94,8 @@ const NotificationManagerProvider = ({ children }) => {
                               boxShadow="6px 6px 30px rgba(0,0,0,0.5)"
                               css={{
                                  transition: `${animationDuration}ms ease-in-out`,
-                                 opacity: animating ? '0' : '1',
-                                 transform: animating
+                                 opacity: isAnimating ? '0' : '1',
+                                 transform: isAnimating
                                     ? 'translateX(120%)'
                                     : 'translateX(0)'
                               }}>
