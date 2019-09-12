@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListMenu, ListMenuButton, View } from '../../../src'
 
-const SpacerHorizontalSpecimen = () => (
+const ListMenuBasicSpecimen = () => (
    <View
       float="left"
       width="210px"
@@ -16,11 +16,11 @@ const SpacerHorizontalSpecimen = () => (
    </View>
 )
 
-SpacerHorizontalSpecimen.title = 'Basic Usage'
+ListMenuBasicSpecimen.title = 'Basic Usage'
 
-SpacerHorizontalSpecimen.description = 'This example shows <code>ListMenu</code> for typical usage as a menu.'
+ListMenuBasicSpecimen.description = 'This example shows <code>ListMenu</code> for typical usage as a menu.'
 
-SpacerHorizontalSpecimen.codeSnippet = `
+ListMenuBasicSpecimen.codeSnippet = `
 <View
    float="left"
    width="210px"
@@ -35,4 +35,4 @@ SpacerHorizontalSpecimen.codeSnippet = `
 </View>
 `
 
-export default SpacerHorizontalSpecimen
+export default ListMenuBasicSpecimen

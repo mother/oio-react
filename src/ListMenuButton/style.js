@@ -22,9 +22,6 @@ export default {
       '&:active': {
          transform: 'translate3d(2px, 0, 0)'
       },
-      '.badge': {
-         backgroundColor: 'rgba(0,0,0,0.05)'
-      },
       '.arrow': {
          display: isActive ? 'block' : 'none'
       }

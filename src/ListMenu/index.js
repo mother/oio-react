@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { View } from '../../src'
 
@@ -14,7 +14,7 @@ const ListMenu = ({
    textColor
 }) => {
    // Clone ListMenuButton children and pass props
-   const listMenuButtons = React.Children.map(children, (child, i) => {
+   const listMenuButtons = useMemo(() => React.Children.map(children, (child, i) => {
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {
          return (
@@ -41,7 +41,7 @@ const ListMenu = ({
       }
 
       return null
-   })
+   }), [children])
 
    return (
       <View float="left" width="100%">

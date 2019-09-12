@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListMenu, ListMenuButton, View } from '../../../src'
 
-const SpacerHorizontalSpecimen = () => (
+const ListMenuActiveArrowSpecimen = () => (
    <View
       float="left"
       width="210px"
@@ -22,11 +22,11 @@ const SpacerHorizontalSpecimen = () => (
    </View>
 )
 
-SpacerHorizontalSpecimen.title = 'ListMenu with active arrow and style customizations'
+ListMenuActiveArrowSpecimen.title = 'ListMenu with active arrow and style customizations'
 
-SpacerHorizontalSpecimen.description = 'This example shows <code>ListMenu</code> where the <code>ListMenuButton</code> with <code>isActive</code> set to <code>true</code> shows an arrow icon. Note also the background color and the text color of the active <code>ListMenuButton</code>.'
+ListMenuActiveArrowSpecimen.description = 'This example shows <code>ListMenu</code> where the <code>ListMenuButton</code> with <code>isActive</code> set to <code>true</code> shows an arrow icon. Note also the background color and the text color of the active <code>ListMenuButton</code>.'
 
-SpacerHorizontalSpecimen.codeSnippet = `
+ListMenuActiveArrowSpecimen.codeSnippet = `
 <View
    float="left"
    width="210px"
@@ -47,4 +47,4 @@ SpacerHorizontalSpecimen.codeSnippet = `
 </View>
 `
 
-export default SpacerHorizontalSpecimen
+export default ListMenuActiveArrowSpecimen
