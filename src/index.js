@@ -9,13 +9,16 @@ export { default as GridCell } from './GridCell'
 export { default as ListMenu } from './ListMenu'
 export { default as ListMenuButton } from './ListMenuButton'
 export { default as Modal } from './Modal'
-export { default as NotificationInline } from './NotificationInline'
 export { default as OIOProvider } from './OIOProvider'
 export { default as Spacer } from './Spacer'
 export { default as Spinner } from './Spinner'
 export { default as Text } from './Text'
 export { default as View } from './View'
 export { default as ZoomProvider } from './ZoomProvider'
+
+// Notifications
+export { default as NotificationInline } from './NotificationInline'
+export { NotificationManagerContext, NotificationManagerProvider } from './NotificationManager'
 
 // Form Components
 export { default as Checkbox } from './Form/Checkbox'

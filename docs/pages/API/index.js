@@ -7,6 +7,7 @@ import FormPage from './Form'
 import GridPage from './Grid'
 import ListMenuPage from './ListMenu'
 import ModalPage from './Modal'
+import NotificationManagerPage from './NotificationManager'
 import NotificationInlinePage from './NotificationInline'
 import OIOProviderPage from './OIOProvider'
 import SpacerPage from './Spacer'
@@ -48,6 +49,9 @@ const API = ({ match }) => (
             <NavLink to={`${match.url}/notification-inline`} activeClassName={style.active}>
                NotificationInline
             </NavLink>
+            <NavLink to={`${match.url}/notification-manager`} activeClassName={style.active}>
+               NotificationManager
+            </NavLink>
             <NavLink to={`${match.url}/spacer`} activeClassName={style.active}>
                Spacer
             </NavLink>
@@ -75,6 +79,7 @@ const API = ({ match }) => (
          <Route path={`${match.url}/list-menu`} component={ListMenuPage} />
          <Route path={`${match.url}/modal`} component={ModalPage} />
          <Route path={`${match.url}/notification-inline`} component={NotificationInlinePage} />
+         <Route path={`${match.url}/notification-manager`} component={NotificationManagerPage} />
          <Route path={`${match.url}/spacer`} component={SpacerPage} />
          <Route path={`${match.url}/text`} component={TextPage} />
          <Route path={`${match.url}/view`} component={ViewPage} />
