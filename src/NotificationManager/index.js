@@ -16,8 +16,6 @@ import { NotificationInline, View } from '..'
 // Constants
 // =================================================
 
-const animationDuration = 600
-const notificationDisplayDuration = 3500
 const notificationContainerId = 'oio-notification-container'
 
 // =================================================
@@ -30,7 +28,12 @@ const NotificationManagerContext = createContext()
 // Provider
 // =================================================
 
-const NotificationManagerProvider = ({ children, zIndex }) => {
+const NotificationManagerProvider = ({
+   animationDuration,
+   children,
+   notificationDisplayDuration,
+   zIndex
+}) => {
    const oioContext = useContext(OIOContext)
    const notificationContainer = useRef(document.getElementById(notificationContainerId))
 
@@ -124,12 +127,16 @@ const NotificationManagerProvider = ({ children, zIndex }) => {
 }
 
 NotificationManagerProvider.propTypes = {
+   animationDuration: PropTypes.number,
    children: PropTypes.node,
+   notificationDisplayDuration: PropTypes.number,
    zIndex: PropTypes.number
 }
 
 NotificationManagerProvider.defaultProps = {
+   animationDuration: 600,
    children: undefined,
+   notificationDisplayDuration: 3500,
    zIndex: 10001
 }
 
