@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { jsx, Global } from '@emotion/core'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { oioContainerId } from '../../config/constants'
 import OIOContext from '../OIOProvider/context'
 import View from '../View'
 import style from './style'
@@ -77,6 +76,10 @@ const Modal = ({
       modalContainerPortal.current.style.fontFamily = oioContext.fontFamily
       modalContainerPortal.current.style.fontSize = oioContext.fontSize
       modalContainerPortal.current.style.zIndex = zIndex
+      modalContainerPortal.current.style.pointerEvents = shouldPropagatePointerEvents
+         ? 'none'
+         : 'auto'
+
       document.body.appendChild(modalContainerPortal.current)
 
       // Remove container on unmount

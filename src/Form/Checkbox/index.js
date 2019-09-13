@@ -37,7 +37,6 @@ const Checkbox = React.forwardRef(({
       <View
          display="flex"
          alignItems="center"
-         float="left"
          width="100%"
          margin="5px 0px">
          <input

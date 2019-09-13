@@ -30,7 +30,7 @@ const NotificationManagerContext = createContext()
 // Provider
 // =================================================
 
-const NotificationManagerProvider = ({ children }) => {
+const NotificationManagerProvider = ({ children, zIndex }) => {
    const oioContext = useContext(OIOContext)
    const notificationContainer = useRef(document.getElementById(notificationContainerId))
 
@@ -40,7 +40,7 @@ const NotificationManagerProvider = ({ children }) => {
       notificationContainer.current.style.display = 'flex'
       notificationContainer.current.style.flexFlow = 'column'
       notificationContainer.current.style.alignItems = 'flex-end'
-      notificationContainer.current.style.position = 'absolute'
+      notificationContainer.current.style.position = 'fixed'
       notificationContainer.current.style.bottom = 0
       notificationContainer.current.style.width = '400px'
       notificationContainer.current.style.right = 0
@@ -48,6 +48,7 @@ const NotificationManagerProvider = ({ children }) => {
       notificationContainer.current.style.pointerEvents = 'none'
       notificationContainer.current.style.fontFamily = oioContext.fontFamily
       notificationContainer.current.style.fontSize = oioContext.fontSize
+      notificationContainer.current.style.zIndex = zIndex
       document.body.appendChild(notificationContainer.current)
 
       // Don't bother unmounting the container when this component unmounts,
@@ -88,7 +89,7 @@ const NotificationManagerProvider = ({ children }) => {
                            <View
                               float="left"
                               flex="0 0 auto"
-                              width="400px"
+                              width="360px"
                               marginTop="3px"
                               borderRadius="8px"
                               boxShadow="6px 6px 30px rgba(0,0,0,0.5)"
@@ -123,11 +124,13 @@ const NotificationManagerProvider = ({ children }) => {
 }
 
 NotificationManagerProvider.propTypes = {
-   children: PropTypes.node
+   children: PropTypes.node,
+   zIndex: PropTypes.number
 }
 
 NotificationManagerProvider.defaultProps = {
-   children: undefined
+   children: undefined,
+   zIndex: 10001
 }
 
 // =================================================
