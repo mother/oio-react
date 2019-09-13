@@ -7,12 +7,14 @@ import useWindowResizeSensor from '../../src/utils/useWindowResizeSensor'
 
 const OIOTransformer = ({ render, ...commonProps }) => {
    const { currentBreakpoint } = useWindowResizeSensor()
-   const rendered = render(commonProps, currentBreakpoint)
-   const currentBreakpointRange = Object.keys(rendered).find(breakpointKeys =>
-      breakpointKeys.includes(currentBreakpoint))
+   const hydratedRenderObject = render(commonProps, currentBreakpoint)
 
-   const result = rendered[currentBreakpointRange]
-   return result
+   // Identify which object key be used
+   const currentBreakpointRange = Object.keys(hydratedRenderObject)
+      .find(breakpointKeys => breakpointKeys.includes(currentBreakpoint))
+
+   // Render appropriate element
+   return hydratedRenderObject[currentBreakpointRange]
 }
 
 OIOTransformer.propTypes = {
