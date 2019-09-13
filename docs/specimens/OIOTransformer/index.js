@@ -3,13 +3,14 @@ import { Button, Modal, Popover, Text, View } from '../../../src'
 import OIOTransformer from '../../../src/OIOTransformer'
 
 const OIOTransformerSpecimen = () => {
-   const triggerButton = useRef()
+   const openButton = useRef()
    const [dialogIsOpen, setDialogIsOpen] = useState(false)
 
    return (
       <View>
          <Button
-            ref={triggerButton}
+            id="dialog-open-button"
+            ref={openButton}
             onClick={() => setDialogIsOpen(true)}
             name="Open Dialog"
          />
@@ -21,7 +22,7 @@ const OIOTransformerSpecimen = () => {
                def: (
                   <Popover
                      {...commonProps}
-                     anchorElement={triggerButton.current}
+                     anchorElement={openButton.current}
                      borderRadius="6px"
                      onBodyClick={() => setDialogIsOpen(false)}
                      width="240px"
