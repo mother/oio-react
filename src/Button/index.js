@@ -10,6 +10,7 @@ import generateResponsiveStyles from '../utils/generateResponsiveStyles'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
+import forwardRef from '../utils/forwardRef'
 import { withZoomContext } from '../ZoomProvider/context'
 import Spinner from '../Spinner'
 import Text from '../Text'
@@ -201,7 +202,8 @@ class Button extends React.Component {
          textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width,
-         hoverBackgroundColor, hoverBorderColor
+         hoverBackgroundColor, hoverBorderColor,
+         forwardedRef
       } = this.props
 
       /* eslint-disable object-property-newline */
@@ -268,6 +270,7 @@ class Button extends React.Component {
       return (
          <ButtonElement
             {...buttonProps}
+            ref={forwardedRef}
             id={id}
             css={buttonStyle}
             className={className}>
@@ -302,7 +305,9 @@ class Button extends React.Component {
    }
 }
 
+const ButtonWithForwardedRef = forwardRef(Button)
+
 export {
-   Button as default,
+   ButtonWithForwardedRef as default,
    buttonSizeDefaults
 }
