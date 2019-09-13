@@ -67,7 +67,7 @@ const Popover = ({
    // Set Popover Portal
    // =======================================================
 
-   const portal = anchorElement || document.body
+   const portalContainer = anchorElement || document.body
 
    // =======================================================
    // Styles for Popover Window
@@ -109,7 +109,6 @@ const Popover = ({
    const handleCloseComplete = () => {
       popoverIsActive.current = false
       setIsClosing(false)
-      // portal.removeAttribute('style')
 
       if (onCloseComplete) {
          onCloseComplete()
@@ -138,16 +137,11 @@ const Popover = ({
          }
       }
 
+      // Remove event listener on component unmount
       return () => {
          window.removeEventListener('click', handleBodyClick, false)
       }
    }, [open])
-
-   // =======================================================
-   // Cleanup on unmount
-   // =======================================================
-
-   // useEffect(() => () => portal.remove(), [])
 
    // =======================================================
    // Render
@@ -171,7 +165,7 @@ const Popover = ({
             {children}
          </View>
       </View>,
-      portal
+      portalContainer
    )
 }
 
