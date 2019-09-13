@@ -86,7 +86,7 @@ const Select = React.forwardRef(({
    }
 
    return (
-      <View float="left" width="100%">
+      <View width="100%">
          {label && <Label htmlFor={id}>{label}</Label>}
          <select
             {...props}
