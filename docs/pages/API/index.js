@@ -10,6 +10,7 @@ import ModalPage from './Modal'
 import NotificationManagerPage from './NotificationManager'
 import NotificationInlinePage from './NotificationInline'
 import OIOProviderPage from './OIOProvider'
+import OIOTransformerPage from './OIOTransformer'
 import PopoverPage from './Popover'
 import SpacerPage from './Spacer'
 import TextPage from './Text'
@@ -53,6 +54,9 @@ const API = ({ match }) => (
             <NavLink to={`${match.url}/notification-manager`} activeClassName={style.active}>
                NotificationManager
             </NavLink>
+            <NavLink to={`${match.url}/oio-transformer`} activeClassName={style.active}>
+               OIOTransformer
+            </NavLink>
             <NavLink to={`${match.url}/popover`} activeClassName={style.active}>
                Popover
             </NavLink>
@@ -84,6 +88,7 @@ const API = ({ match }) => (
          <Route path={`${match.url}/modal`} component={ModalPage} />
          <Route path={`${match.url}/notification-inline`} component={NotificationInlinePage} />
          <Route path={`${match.url}/notification-manager`} component={NotificationManagerPage} />
+         <Route path={`${match.url}/oio-transformer`} component={OIOTransformerPage} />
          <Route path={`${match.url}/popover`} component={PopoverPage} />
          <Route path={`${match.url}/spacer`} component={SpacerPage} />
          <Route path={`${match.url}/text`} component={TextPage} />
