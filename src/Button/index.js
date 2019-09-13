@@ -7,6 +7,7 @@ import r from '../../macro'
 import { withOIOContext } from '../OIOProvider/context'
 import applyMultiplier from '../utils/applyMultiplier'
 import generateResponsiveStyles from '../utils/generateResponsiveStyles'
+import forwardRef from '../utils/forwardRef'
 import OIOResponsiveObjectPropType from '../utils/PropType'
 import withResponsiveObjectProps from '../utils/withResponsiveObjectProps'
 import withDynamicResponsiveProps from '../utils/withDynamicResponsiveProps'
@@ -201,7 +202,8 @@ class Button extends React.Component {
          textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width,
-         hoverBackgroundColor, hoverBorderColor
+         hoverBackgroundColor, hoverBorderColor,
+         forwardedRef
       } = this.props
 
       /* eslint-disable object-property-newline */
@@ -268,6 +270,7 @@ class Button extends React.Component {
       return (
          <ButtonElement
             {...buttonProps}
+            ref={forwardedRef}
             id={id}
             css={buttonStyle}
             className={className}>
@@ -302,7 +305,9 @@ class Button extends React.Component {
    }
 }
 
+const ButtonWithForwardedRef = forwardRef(Button)
+
 export {
-   Button as default,
+   ButtonWithForwardedRef as default,
    buttonSizeDefaults
 }

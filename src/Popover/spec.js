@@ -1,4 +1,10 @@
 export default [{
+   name: 'anchorElement',
+   type: 'DOM Element',
+   default: '<code>document.body</code>',
+   description: 'A valid DOM element that the popover is attached to',
+   responsive: false
+}, {
    name: 'backgroundColor',
    type: 'OIO Responsive String',
    default: '-',

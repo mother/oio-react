@@ -11,7 +11,7 @@ import style from './style'
 // =======================================================
 
 const Popover = ({
-   anchorElementId,
+   anchorElement,
    backgroundColor,
    borderRadius,
    boxShadow,
@@ -67,7 +67,7 @@ const Popover = ({
    // Set Popover Portal
    // =======================================================
 
-   const portal = document.getElementById(anchorElementId) || document.body
+   const portal = anchorElement || document.body
 
    // =======================================================
    // Styles for Popover Window
