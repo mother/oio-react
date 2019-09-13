@@ -69,6 +69,7 @@ export default {
    }),
    window: (({ animationType, animationName, animationDuration }) => ({
       ...animations[animationType][animationName].baseStyle,
-      animation: `${animations[animationType][animationName].keyframes} ${animationDuration} ease`
+      animation: `${animations[animationType][animationName].keyframes} ${animationDuration} ease`,
+      pointerEvents: 'auto'
    }))
 }

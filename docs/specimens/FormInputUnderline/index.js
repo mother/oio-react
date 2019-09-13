@@ -3,12 +3,17 @@ import {
    Grid,
    GridCell,
    Input,
+   Spacer,
    Text,
    View
 } from '../../../src'
 
 const FormInputUnderlineSpecimen = () => (
-   <View float="left" width="100%" padding="60px" backgroundColor="#f5f5f5">
+   <View
+      float="left"
+      width="100%"
+      padding="60px"
+      backgroundColor="#f5f5f5">
       <Grid columns="1">
          <GridCell>
             <Text size="6" weight="medium">
@@ -19,7 +24,7 @@ const FormInputUnderlineSpecimen = () => (
             <Text size="2.5" color="#666" lineHeight="140%">
                {'Welcome to the OIO Community! After you login, youll be able to explore our Products, Projects, Labs, Groups, and Events.'}
             </Text>
-            <View float="left" width="100%" height="12px" />
+            <Spacer size="2" />
          </GridCell>
          <GridCell>
             <Input
@@ -39,6 +44,7 @@ const FormInputUnderlineSpecimen = () => (
             />
          </GridCell>
       </Grid>
+      <Spacer size="2" />
    </View>
 )
 
@@ -48,7 +54,11 @@ FormInputUnderlineSpecimen.description = 'The <code>Input</code> component (and 
 
 FormInputUnderlineSpecimen.codeSnippet = `
 // Form Input with underline style
-<View float="left" width="100%" padding="60px" backgroundColor="#f5f5f5">
+<View
+   float="left"
+   width="100%"
+   padding="60px"
+   backgroundColor="#f5f5f5">
    <Grid columns="1">
       <GridCell>
          <Text size="6" weight="medium">
@@ -59,7 +69,7 @@ FormInputUnderlineSpecimen.codeSnippet = `
          <Text size="2.5" color="#666" lineHeight="140%">
             {'Welcome to the OIO Community! After you login, youll be able to explore our Products, Projects, Labs, Groups, and Events.'}
          </Text>
-         <View float="left" width="100%" height="12px" />
+         <Spacer size="2" />
       </GridCell>
       <GridCell>
          <Input
@@ -79,6 +89,7 @@ FormInputUnderlineSpecimen.codeSnippet = `
          />
       </GridCell>
    </Grid>
+   <Spacer size="2" />
 </View>
 `
 

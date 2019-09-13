@@ -41,6 +41,12 @@ export default [{
    description: 'css equivalent value',
    responsive: true
 }, {
+   name: 'borderRadius',
+   type: 'String',
+   default: '-',
+   description: 'css equivalent value',
+   responsive: true
+}, {
    name: 'borderRight',
    type: 'String',
    default: '-',
