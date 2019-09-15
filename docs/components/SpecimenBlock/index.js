@@ -8,7 +8,10 @@ import style from './style.less'
 const SpecimenBlock = ({ specimen }) => {
    const Specimen = specimen
    return (
-      <View display="block[a-d] flex[e-f]" float="left" width="100%">
+      <View
+         display="block[a-d] flex[e-f]"
+         float="left"
+         width="100%">
          <View
             className={style.textColumn}
             float="left"
