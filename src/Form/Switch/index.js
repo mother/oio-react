@@ -15,6 +15,7 @@ const Switch = React.forwardRef(({ highlightColor, ...props }, ref) => {
 
    return (
       <View
+         position="relative"
          display="inline-flex"
          alignItems="center"
          width="54px"

@@ -51,6 +51,7 @@ const ViewKitchenSinkSpecimen = () => (
          right="0px"
          bottom="0px">
          <View
+            position="relative"
             float="left"
             width="500px"
             height="500px"
@@ -79,9 +80,11 @@ const ViewKitchenSinkSpecimen = () => (
             </View>
          </View>
          <View
+            position="relative"
             float="left"
             width="500px">
             <View
+               position="relative"
                float="left"
                flexFlow="column"
                display="flex"
@@ -90,6 +93,7 @@ const ViewKitchenSinkSpecimen = () => (
                height="300px"
                backgroundColor="rgba(0,0,0,0.2)">
                <View
+                  position="relative"
                   order="2"
                   flex="0 0 auto"
                   width="200px"
@@ -97,6 +101,7 @@ const ViewKitchenSinkSpecimen = () => (
                   backgroundColor="rgba(255,255,255,0.4)"
                   style={{ overflow: 'hidden' }}>
                   <View
+                     position="relative"
                      float="left"
                      width="100%"
                      padding="30px 30px 30px 60px"
@@ -122,6 +127,7 @@ const ViewKitchenSinkSpecimen = () => (
                   />
                </View>
                <View
+                  position="relative"
                   order="1"
                   flex="1 1 auto"
                   display="flex"
@@ -152,6 +158,7 @@ const ViewKitchenSinkSpecimen = () => (
                </View>
             </View>
             <View
+               position="relative"
                float="right"
                width="300px"
                height="300px"

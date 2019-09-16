@@ -19,8 +19,8 @@ export default [{
 }, {
    name: 'position',
    type: 'String',
-   default: '<code>relative</code>',
-   description: 'Any css position options can be used including: <code>relative</code>, <code>absolute</code>, <code>fixed</code>',
+   default: '<code>static</code>',
+   description: 'Any css position options can be used including: <code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>',
    responsive: true
 }, {
    name: 'top',
