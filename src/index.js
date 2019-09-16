@@ -1,6 +1,7 @@
 // Constants + Utils
 export { breakpoints } from '../config/constants'
 export { default as generateResponsiveObject } from './utils/generateResponsiveObject'
+export { default as useWindowResizeSensor } from './utils/useWindowResizeSensor'
 
 // Standard OIO Components
 export { default as Button } from './Button'
@@ -10,6 +11,7 @@ export { default as ListMenu } from './ListMenu'
 export { default as ListMenuButton } from './ListMenuButton'
 export { default as Modal } from './Modal'
 export { default as OIOProvider } from './OIOProvider'
+export { default as OIOTransformer } from './OIOTransformer'
 export { default as Popover } from './Popover'
 export { default as Spacer } from './Spacer'
 export { default as Spinner } from './Spinner'
