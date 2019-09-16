@@ -193,7 +193,7 @@ export default class View extends React.Component {
       onTouchMove: undefined,
       onTouchStart: undefined,
       onTransitionEnd: undefined,
-      position: r`relative`,
+      position: r`static`,
       style: {},
       tabIndex: undefined
    }

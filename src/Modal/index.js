@@ -204,7 +204,8 @@ const Modal = ({
          <View
             {...windowProps}
             onAnimationEnd={open ? handleOpenComplete : handleCloseComplete}
-            css={style.window({ animationType, animationName, animationDuration })}>
+            css={style.window({ animationType, animationName, animationDuration })}
+            position="relative">
             {children}
          </View>
       </View>,

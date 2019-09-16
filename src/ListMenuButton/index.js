@@ -54,6 +54,7 @@ const ListMenuButton = ({
                display="flex"
                alignItems="center">
                <View
+                  position="relative"
                   className="arrow"
                   flex="0 0 auto"
                   marginLeft="12px"
