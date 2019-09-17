@@ -50,7 +50,6 @@ const PopoverBasicSpecimen = () => {
             borderRadius="6px"
             width="210px"
             onBodyClick={() => setPopoverIsOpen(false)}
-            onCloseTrigger={() => setPopoverIsOpen(false)}
             open={popoverIsOpen}>
             <View padding="12px">
                <Text size="2">
@@ -110,7 +109,6 @@ return (
          borderRadius="6px"
          width="210px"
          onBodyClick={() => setPopoverIsOpen(false)}
-         onCloseTrigger={() => setPopoverIsOpen(false)}
          open={popoverIsOpen}>
          <View padding="12px">
             <Text size="2">

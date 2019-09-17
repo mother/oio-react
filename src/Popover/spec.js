@@ -139,7 +139,7 @@ export default [{
 }, {
    name: 'zIndex',
    type: 'OIO Responsive String',
-   default: '<code>10000</code>',
+   default: '<code>10001</code>',
    description: 'css equivalent value. This is the zIndex of the entire <code>Popover</code> component.',
    responsive: true
 }]

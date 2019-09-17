@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Button, Popover, Text, View } from '../../../src'
 
 const PopoverOpenSpecimen = () => {
@@ -20,7 +20,6 @@ const PopoverOpenSpecimen = () => {
                borderRadius="6px"
                width="240px"
                onBodyClick={() => setPopoverIsOpen(false)}
-               onCloseTrigger={() => setPopoverIsOpen(false)}
                open={popoverIsOpen}>
                <View padding="24px">
                   <Text size="2">
@@ -56,7 +55,6 @@ return (
             borderRadius="6px"
             width="240px"
             onBodyClick={() => setPopoverIsOpen(false)}
-            onCloseTrigger={() => setPopoverIsOpen(false)}
             open={popoverIsOpen}>
             <View padding="24px">
                <Text size="2">

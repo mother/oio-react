@@ -29,7 +29,6 @@ const Popover = ({
    onBodyClick,
    onClose,
    onCloseComplete,
-   onCloseTrigger,
    onOpen,
    onOpenComplete,
    open,
