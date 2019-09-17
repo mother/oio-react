@@ -35,6 +35,18 @@ export default [{
    description: '',
    responsive: false
 }, {
+   name: 'linkTo',
+   type: 'Mixed',
+   default: '-',
+   description: 'Passed to <code>OIOProvider</code> button link adapater. See OIOProvider docs for details.',
+   responsive: false
+}, {
+   name: 'linkReplace',
+   type: 'Boolean',
+   default: '<code>false</code>',
+   description: 'Passed to <code>OIOProvider</code> button link adapater. See OIOProvider docs for details.',
+   responsive: false
+}, {
    name: 'mode',
    type: 'String (Enum)',
    default: '<code>normal</code>',

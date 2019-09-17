@@ -13,7 +13,7 @@ export default [{
 }, {
    name: 'linkReplace',
    type: 'Boolean',
-   default: 'false',
+   default: '<code>false</code>',
    description: 'Passed to <code>OIOProvider</code> button link adapater. See OIOProvider docs for details.',
    responsive: false
 }, {

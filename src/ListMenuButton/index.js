@@ -79,10 +79,8 @@ const ListMenuButton = ({
       </View>
    )
 
-   if (linkTo) {
-      if (buttonLinkAdapter) {
-         return buttonLinkAdapter.render({ linkTo, linkReplace, children: listMenuButtonJSX })
-      }
+   if (linkTo && buttonLinkAdapter) {
+      return buttonLinkAdapter.render({ linkTo, linkReplace, children: listMenuButtonJSX })
    }
 
    return listMenuButtonJSX
