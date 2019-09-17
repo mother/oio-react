@@ -1,6 +1,3 @@
-// import React from 'react'
-// import { Button, View } from '../../../src'
-
 const OIOProviderComponentSpecimen = {}
 
 OIOProviderComponentSpecimen.title = 'OIOProvider Component'
