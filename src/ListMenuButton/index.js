@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
@@ -13,23 +13,16 @@ const ListMenuButton = ({
    activeTextColor,
    borderRadius,
    isActive,
+   linkTo,
+   linkReplace,
    name,
    onClick,
    paddingHorizontal,
    size,
    showActiveArrow,
-   textColor,
-   linkTo,
-   linkReplace
+   textColor
 }) => {
    const { buttonLinkAdapter } = useContext(OIOContext)
-   //
-   // let isActiveComputed = isActive || false
-   // if (linkTo && typeof isActive === 'undefined') {
-   //    if (buttonLinkAdapter) {
-   //       isActiveComputed = buttonLinkAdapter({ linkTo, linkReplace, children: listMenuButtonJSX }).isActive
-   //    }
-   // }
 
    const listMenuButtonJSX = (
       <View
@@ -89,12 +82,10 @@ const ListMenuButton = ({
    if (linkTo) {
       if (buttonLinkAdapter) {
          return buttonLinkAdapter.render({ linkTo, linkReplace, children: listMenuButtonJSX })
-      } else {
-         return <a href={linkTo}>{listMenuButtonJSX}</a>
       }
-   } else {
-      return listMenuButtonJSX
    }
+
+   return listMenuButtonJSX
 }
 
 ListMenuButton.propTypes = {
@@ -102,6 +93,8 @@ ListMenuButton.propTypes = {
    activeTextColor: PropTypes.string,
    borderRadius: PropTypes.string,
    isActive: PropTypes.bool,
+   linkTo: PropTypes.any,
+   linkReplace: PropTypes.bool,
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
    paddingHorizontal: PropTypes.string,
@@ -115,6 +108,8 @@ ListMenuButton.defaultProps = {
    activeTextColor: '#333',
    borderRadius: '0px',
    isActive: undefined,
+   linkTo: undefined,
+   linkReplace: false,
    onClick: undefined,
    paddingHorizontal: '18px',
    size: 'lg',

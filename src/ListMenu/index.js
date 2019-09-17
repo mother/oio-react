@@ -19,18 +19,18 @@ const ListMenu = ({
 
    // Clone ListMenuButton children and pass props
    const listMenuButtons = React.Children.map(children, (child, i) => {
-      const childIsActive = !linkHasAlreadyMatched && child.props.linkTo && typeof child.props.isActive === 'undefined'
-         ? buttonLinkAdapter.isActive(child.props.linkTo)
-         : child.props.isActive
-
-      if (childIsActive) {
-         linkHasAlreadyMatched = true
+      let childIsActive = child.props.isActive
+      if (!linkHasAlreadyMatched && child.props.linkTo && typeof childIsActive === 'undefined') {
+         childIsActive = buttonLinkAdapter.isActive(child.props.linkTo)
+         if (childIsActive) {
+            linkHasAlreadyMatched = true
+         }
       }
 
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {
          return (
-            <>
+            <React.Fragment>
                {React.cloneElement(child, {
                   activeBackgroundColor,
                   activeTextColor,
@@ -39,7 +39,7 @@ const ListMenu = ({
                   borderRadius: buttonBorderRadius,
                   paddingHorizontal: buttonPaddingHorizontal,
                   size: buttonSize,
-                  isActive: childIsActive
+                  isActive: childIsActive || false
                })}
                {i < (children.length - 1) && (
                   <View
@@ -49,7 +49,7 @@ const ListMenu = ({
                      borderTop={dividerLineStyle}
                   />
                )}
-            </>
+            </React.Fragment>
          )
       }
 
