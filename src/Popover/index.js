@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import ReactDOM from 'react-dom'
@@ -12,6 +12,8 @@ import style from './style'
 
 const Popover = ({
    anchorElement,
+   anchorOriginHorizontal,
+   anchorOriginVertical,
    backgroundColor,
    borderRadius,
    boxShadow,
@@ -87,6 +89,17 @@ const Popover = ({
    }
 
    // =======================================================
+   // Popover Position
+   // =======================================================
+
+   const popoverPositionProps = {
+      [anchorOriginHorizontal]: '0px',
+      [anchorOriginVertical]: anchorElement
+         ? `${anchorElement.offsetHeight}px`
+         : '0px'
+   }
+
+   // =======================================================
    // Open and Close Events
    // =======================================================
 
@@ -149,13 +162,12 @@ const Popover = ({
 
    return ReactDOM.createPortal(
       <View
+         {...popoverPositionProps}
+         position="absolute"
          transform={open
             ? 'translate3d(0,0,0)'
             : 'translate3d(-10000%,0,0)'
          }
-         position="absolute"
-         top="30px"
-         left="0px"
          zIndex={zIndex}>
          <View
             {...popoverProps}
@@ -174,6 +186,9 @@ const Popover = ({
 // =======================================================
 
 Popover.propTypes = {
+   anchorElement: PropTypes.object,
+   anchorOriginHorizontal: PropTypes.oneOf(['left', 'right']),
+   anchorOriginVertical: PropTypes.oneOf(['bottom', 'top']),
    backgroundColor: PropTypes.string,
    boxShadow: PropTypes.string,
    borderRadius: PropTypes.string,
@@ -199,6 +214,9 @@ Popover.propTypes = {
 }
 
 Popover.defaultProps = {
+   anchorElement: undefined,
+   anchorOriginHorizontal: 'left',
+   anchorOriginVertical: 'top',
    backgroundColor: '#fff',
    borderRadius: '0px',
    boxShadow: '6px 6px 30px rgba(0,0,0,0.15)',

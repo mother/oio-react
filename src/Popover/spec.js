@@ -5,6 +5,18 @@ export default [{
    description: 'A valid DOM element that the popover is attached to',
    responsive: false
 }, {
+   name: 'anchorOriginHorizontal',
+   type: 'String (Enum)',
+   default: '<code>left</code>',
+   description: 'Available values include: <code>left</code>, <code>right</code>.',
+   responsive: false
+}, {
+   name: 'anchorOriginVertical',
+   type: 'String (Enum)',
+   default: '<code>top</code>',
+   description: 'Available values include: <code>bottom</code>, <code>top</code>.',
+   responsive: false
+}, {
    name: 'backgroundColor',
    type: 'OIO Responsive String',
    default: '-',
