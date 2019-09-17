@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { View } from '../../src'
+import OIOContext from '../OIOProvider/context'
 
 const ListMenu = ({
    activeBackgroundColor,
@@ -13,8 +14,19 @@ const ListMenu = ({
    showActiveArrow,
    textColor
 }) => {
+   const { buttonLinkAdapter } = useContext(OIOContext)
+   let linkHasAlreadyMatched = false
+
    // Clone ListMenuButton children and pass props
    const listMenuButtons = React.Children.map(children, (child, i) => {
+      const childIsActive = !linkHasAlreadyMatched && child.props.linkTo && typeof child.props.isActive === 'undefined'
+         ? buttonLinkAdapter.isActive(child.props.linkTo)
+         : child.props.isActive
+
+      if (childIsActive) {
+         linkHasAlreadyMatched = true
+      }
+
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {
          return (
@@ -26,7 +38,8 @@ const ListMenu = ({
                   textColor,
                   borderRadius: buttonBorderRadius,
                   paddingHorizontal: buttonPaddingHorizontal,
-                  size: buttonSize
+                  size: buttonSize,
+                  isActive: childIsActive
                })}
                {i < (children.length - 1) && (
                   <View
