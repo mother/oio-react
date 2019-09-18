@@ -14,6 +14,7 @@ const buttonLinkAdapter = {
    // specify whether the current link is active
    // isActive: link => matchPath(link)
 }
+
 const myComponent = () => (
    <OIOProvider buttonLinkAdapter={buttonLinkAdapter}>
       <Button linkTo="/" name="Home" />
