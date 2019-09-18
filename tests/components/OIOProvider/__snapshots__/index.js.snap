@@ -2,6 +2,10 @@
 
 exports[`OIO Provider context props are received as expected from context consumer 1`] = `
 Object {
+  "buttonLinkAdapter": Object {
+    "isActive": [Function],
+    "render": [Function],
+  },
   "containerId": "oio",
   "fontFamily": "sans-serif",
   "fontSize": "16px",

@@ -160,8 +160,11 @@ class Button extends React.Component {
       color: OIOResponsiveObjectPropType,
       fontFamily: OIOResponsiveObjectPropType,
       id: PropTypes.string,
+      linkTo: PropTypes.any,
+      linkReplace: PropTypes.bool,
       mode: PropTypes.oneOf(['disabled', 'normal', 'pulsing', 'loading']),
       name: PropTypes.node,
+      OIOContext: PropTypes.object.isRequired,
       onClick: PropTypes.func,
       outline: PropTypes.bool,
       padding: OIOResponsiveObjectPropType,
@@ -181,6 +184,8 @@ class Button extends React.Component {
       borderRadius: r`4px`,
       children: undefined,
       id: undefined,
+      linkTo: undefined,
+      linkReplace: false,
       mode: 'normal',
       onClick: undefined,
       outline: false,
@@ -198,12 +203,13 @@ class Button extends React.Component {
 
    render() {
       const {
+         OIOContext,
          children, className, id, mode, name, tagName, type,
          textColor, textSize, textTransform, textWeight, onClick,
          backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width,
          hoverBackgroundColor, hoverBorderColor,
-         forwardedRef
+         forwardedRef, linkTo, linkReplace
       } = this.props
 
       /* eslint-disable object-property-newline */
@@ -223,6 +229,8 @@ class Button extends React.Component {
          ...this.props.style,
          ...responsiveStyles
       }
+
+      const { buttonLinkAdapter } = OIOContext
 
       // ====================================================
       // Element
@@ -267,7 +275,7 @@ class Button extends React.Component {
          }
       }
 
-      return (
+      const buttonJSX = (
          <ButtonElement
             {...buttonProps}
             ref={forwardedRef}
@@ -302,6 +310,12 @@ class Button extends React.Component {
             )}
          </ButtonElement>
       )
+
+      if (linkTo && !['disabled', 'loading'].includes(mode) && buttonLinkAdapter) {
+         return buttonLinkAdapter.render({ linkTo, linkReplace, children: buttonJSX })
+      }
+
+      return buttonJSX
    }
 }
 

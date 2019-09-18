@@ -13,6 +13,7 @@ import OIOContext from './context'
 import normalizationStyles from './normalizationStyles'
 
 const OIOProvider = ({
+   buttonLinkAdapter,
    children,
    className,
    fontFamily,
@@ -42,7 +43,12 @@ const OIOProvider = ({
       highlightColor,
       textSizeMultiplier,
       textSizeScaleRatio,
-      containerId: containerId.current
+      containerId: containerId.current,
+      buttonLinkAdapter: {
+         isActive: linkTo => linkTo.startsWith(window.location.pathname),
+         render: ({ linkTo, children }) => <a href={linkTo}>{children}</a>,
+         ...buttonLinkAdapter
+      }
    }
 
    return (

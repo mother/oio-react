@@ -1,4 +1,9 @@
 export default [{
+   name: 'buttonLinkAdapter',
+   type: 'Object',
+   default: '-',
+   description: 'See below'
+}, {
    name: 'className',
    type: 'String',
    default: '-',

@@ -8,6 +8,11 @@ context('Button', () => {
       cy.testImageSnapshot('Button Sizes')
    })
 
+   it('Renders Button with links as expected', () => {
+      cy.visit('/tests/button-link')
+      cy.testImageSnapshot('Button Link')
+   })
+
    it('Renders Button with children as expected', () => {
       cy.visit('/tests/button-children')
       cy.testImageSnapshot('Button Children')

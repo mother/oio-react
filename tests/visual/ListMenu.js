@@ -12,4 +12,9 @@ context('ListMenu', () => {
       cy.visit('/tests/list-menu-active-arrow')
       cy.testImageSnapshot('ListMenu - with active arrow')
    })
+
+   it('Renders with menu button links as expected', () => {
+      cy.visit('/tests/list-menu-links')
+      cy.testImageSnapshot('ListMenu - with menu button links')
+   })
 })
