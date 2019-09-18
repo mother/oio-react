@@ -25,7 +25,7 @@ const ListMenuLinksSpecimen = ({ match }) => (
 
 ListMenuLinksSpecimen.title = 'ListMenuButtons with links'
 
-ListMenuLinksSpecimen.description = 'This example shows how <code>ListMenuButton</code> can be used with links.</code>.'
+ListMenuLinksSpecimen.description = 'This example shows how <code>ListMenuButton</code> can be used with links</code>.'
 
 ListMenuLinksSpecimen.codeSnippet = `
 <View
