@@ -185,7 +185,7 @@ const Popover = ({
 // =======================================================
 
 Popover.propTypes = {
-   anchorElement: PropTypes.object,
+   anchorElement: PropTypes.instanceOf(window.Element),
    anchorOriginHorizontal: PropTypes.oneOf(['left', 'right']),
    anchorOriginVertical: PropTypes.oneOf(['bottom', 'top']),
    backgroundColor: PropTypes.string,
