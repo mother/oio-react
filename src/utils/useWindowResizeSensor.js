@@ -1,26 +1,27 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { breakpoints } from '../../config/constants'
 
-const getSizeData = () => {
-   const windowWidth = window.innerWidth
-   const windowHeight = window.innerHeight
-   const currentBreakpoint = Object.keys(breakpoints).find(key => breakpoints[key] > windowWidth)
-   return {
-      currentBreakpoint,
-      windowWidth,
-      windowHeight
-   }
-}
+const breakpointKeys = Object.keys(breakpoints)
+const getBreakpoint = width => breakpointKeys.find(key => width <= breakpoints[key])
 
 const useWindowResizeSensor = ({ refreshRate = 16 } = {}) => {
-   const [sizeData, setSizeData] = useState(getSizeData())
+   const [sizeData, setSizeData] = useState({
+      currentBreakpoint: getBreakpoint(window.innerWidth),
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight
+   })
+
    const timer = useRef()
 
    // Use a timer to debounce setting state data to prevent overly frequently re-renders
    const handleWindowResize = useCallback(() => {
       clearTimeout(timer.current)
       timer.current = setTimeout(() => {
-         setSizeData(getSizeData())
+         setSizeData({
+            currentBreakpoint: getBreakpoint(window.innerWidth),
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight
+         })
       }, refreshRate)
    }, [])
 
@@ -34,4 +35,7 @@ const useWindowResizeSensor = ({ refreshRate = 16 } = {}) => {
    return sizeData
 }
 
-export default useWindowResizeSensor
+export {
+   getBreakpoint,
+   useWindowResizeSensor as default
+}
