@@ -2,13 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { breakpoints } from '../../config/constants'
 
 const breakpointKeys = Object.keys(breakpoints)
-
-const getCurrentBreakpoint = width =>
-   breakpointKeys.find(key => width <= breakpoints[key]) || 'f'
+const getBreakpoint = width => breakpointKeys.find(key => width <= breakpoints[key])
 
 const useWindowResizeSensor = ({ refreshRate = 16 } = {}) => {
    const [sizeData, setSizeData] = useState({
-      currentBreakpoint: getCurrentBreakpoint(window.innerWidth),
+      currentBreakpoint: getBreakpoint(window.innerWidth),
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight
    })
@@ -20,7 +18,7 @@ const useWindowResizeSensor = ({ refreshRate = 16 } = {}) => {
       clearTimeout(timer.current)
       timer.current = setTimeout(() => {
          setSizeData({
-            currentBreakpoint: getCurrentBreakpoint(window.innerWidth),
+            currentBreakpoint: getBreakpoint(window.innerWidth),
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight
          })
@@ -38,6 +36,6 @@ const useWindowResizeSensor = ({ refreshRate = 16 } = {}) => {
 }
 
 export {
-   getCurrentBreakpoint,
+   getBreakpoint,
    useWindowResizeSensor as default
 }
