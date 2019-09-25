@@ -13,6 +13,7 @@ import OIOProviderPage from './OIOProvider'
 import OIOTransformerPage from './OIOTransformer'
 import PopoverPage from './Popover'
 import SpacerPage from './Spacer'
+import TabMenuPage from './TabMenu'
 import TextPage from './Text'
 import ViewPage from './View'
 import ZoomProviderPage from './ZoomProvider'
@@ -63,6 +64,9 @@ const API = ({ match }) => (
             <NavLink to={`${match.url}/spacer`} activeClassName={style.active}>
                Spacer
             </NavLink>
+            <NavLink to={`${match.url}/tab-menu`} activeClassName={style.active}>
+               TabMenu
+            </NavLink>
             <NavLink to={`${match.url}/text`} activeClassName={style.active}>
                Text
             </NavLink>
@@ -91,6 +95,7 @@ const API = ({ match }) => (
          <Route path={`${match.url}/oio-transformer`} component={OIOTransformerPage} />
          <Route path={`${match.url}/popover`} component={PopoverPage} />
          <Route path={`${match.url}/spacer`} component={SpacerPage} />
+         <Route path={`${match.url}/tab-menu`} component={TabMenuPage} />
          <Route path={`${match.url}/text`} component={TextPage} />
          <Route path={`${match.url}/view`} component={ViewPage} />
          <Route path={`${match.url}/zoom-provider`} component={ZoomProviderPage} />
