@@ -9,7 +9,7 @@ export default [{
    type: 'String',
    default: '-',
    description: 'Sets the left and right <code>padding</code> for all <code>TabMenuButton</code> components.',
-   responsive: true
+   responsive: false
 }, {
    name: 'buttonSize',
    type: 'String (Enum)',
@@ -21,7 +21,7 @@ export default [{
    type: 'String',
    default: '<code>0px</code>',
    description: 'Set spacing between <code>TabMenuButton</code> components.',
-   responsive: true
+   responsive: false
 }, {
    name: 'highlightColor',
    type: 'Boolean',

@@ -59,14 +59,16 @@ const TabMenu = ({
 
    // Calculate Tab Container Width
    // Calculate Initiative type tabs container width by using the combined number of characters
-   // of all initiative types. We assume that each character occupies 7px and each tab
-   // (except the last child) has a 30px margin
+   // of all initiative types. We assume that each character occupies 7px
    const characterWidth = 7
-   const tabMargin = 30
+   const tabContainerPadding = parseInt(paddingHorizontal, 10) * 2
+   const buttonPadding = parseInt(buttonPaddingHorizontal, 10) * 2
    const linkNamesAsCombinedString = children.map(child => child.props.name).join('')
-   const combinedTabWidths = (linkNamesAsCombinedString.length) * characterWidth
-   const combinedTabMargins = children.length * tabMargin
-   const tabsContainerWidth = combinedTabMargins + combinedTabWidths + 120
+   const combinedButtonWidths = (linkNamesAsCombinedString.length) * characterWidth
+   const combinedButtonPadding = children.length * buttonPadding
+   const combinedButtonSpacing = (children.length - 1) * parseInt(buttonSpacing, 10)
+   const tabsContainerWidth = combinedButtonPadding + combinedButtonWidths +
+      tabContainerPadding + combinedButtonSpacing
 
    // Tab Overflow
    // If there are more tabs than can be visible at once on screen,
@@ -147,11 +149,10 @@ const TabMenu = ({
             ref={tabContainer}
             display={tabsDoOverflow ? 'block' : 'flex'}
             justifyContent={flexboxAlignmentConversion[align]}
-            paddingHorizontal={paddingHorizontal}
             onScroll={tabsDoOverflow ? handleScroll : undefined}
             float="left"
             width="100%"
-            height={buttonSizeDefaults[buttonSize].height}
+            height={`calc(${buttonSizeDefaults[buttonSize].height} + 6px)`}
             style={{
                overflow: 'hidden',
                overflowX: isPlatformWithSafeScrollbars ? 'auto' : 'hidden',
@@ -160,6 +161,7 @@ const TabMenu = ({
             <View
                float="left"
                width={tabsDoOverflow ? `${tabsContainerWidth}px` : 'auto'}
+               paddingHorizontal={paddingHorizontal}
                height="100%">
                {tabMenuButtons}
             </View>
@@ -228,7 +230,7 @@ TabMenu.propTypes = {
 TabMenu.defaultProps = {
    align: 'left',
    buttonSize: 'lg',
-   buttonPaddingHorizontal: '12px[a-d] 18px[e-f]',
+   buttonPaddingHorizontal: '12px',
    buttonSpacing: '0px',
    highlightColor: '#000',
    paddingHorizontal: '0px'
