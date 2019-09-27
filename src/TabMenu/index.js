@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import animateScrollTo from 'animated-scroll-to'
@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { withSize } from 'react-sizeme'
 import { View } from '../../src'
 import { buttonSizeDefaults } from '../Button'
+import OIOContext from '../OIOProvider/context'
 import ArrowLeftIcon from './arrowLeft'
 import ArrowRightIcon from './arrowRight'
 
@@ -54,6 +55,9 @@ const TabMenu = ({
    const tabContainer = useRef(null)
    const [currentScrollIndex, setCurrentScrollIndex] = useState(0)
 
+   const { buttonLinkAdapter } = useContext(OIOContext)
+   let linkHasAlreadyMatched = false
+
    // Calculate Component's width using react-sizeme
    const componentWidth = size.width
 
@@ -92,12 +96,21 @@ const TabMenu = ({
 
    // Clone TabButton children and pass props
    const tabMenuButtons = React.Children.map(children, (child, i) => {
+      let childIsActive = child.props.isActive
+      if (!linkHasAlreadyMatched && child.props.linkTo && typeof childIsActive === 'undefined') {
+         childIsActive = buttonLinkAdapter.isActive(child.props.linkTo)
+         if (childIsActive) {
+            linkHasAlreadyMatched = true
+         }
+      }
+
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {
          return (
             <React.Fragment>
                {React.cloneElement(child, {
                   highlightColor,
+                  isActive: childIsActive || false,
                   paddingHorizontal: buttonPaddingHorizontal,
                   size: buttonSize
                })}
