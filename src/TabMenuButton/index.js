@@ -3,6 +3,7 @@ import React from 'react'
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
 import { Text, View } from '../../src'
+import { buttonSizeDefaults } from '../Button'
 import style from './style'
 
 // =======================================================
@@ -13,17 +14,20 @@ const TabButton = ({
    badgeNumber,
    highlightColor,
    isActive,
-   name
+   name,
+   onClick,
+   paddingHorizontal,
+   size
 }) => (
    <View
-      css={style.tabButton({ highlightColor, isActive })}
       float="left"
       height="100%"
-      padding2="0px 12px[a-d] 0 18px[e-f]"
       display="flex"
-      alignItems="center">
+      alignItems="center"
+      css={style.tabButton({ highlightColor, isActive })}
+      paddingHorizontal={paddingHorizontal}>
       <Text
-         size="1.5[a-b] 2[c] 1.5[d] 2[e] 2[f]"
+         size={buttonSizeDefaults[size].textSize}
          weight="medium"
          style={{
             height: '18px',
@@ -35,16 +39,16 @@ const TabButton = ({
          {typeof badgeNumber === 'number' && (
             <View
                display="inline-block"
-               marginLeft="12px">
+               marginLeft="6px">
                <View
                   className="badge"
                   display="flex"
-                  height="18px"
+                  height="16px"
                   justifyContent="center"
                   alignItems="center"
                   padding="0 6px"
                   borderRadius="12px">
-                  <Text size="1" weight="medium">
+                  <Text size="0.8" weight="medium">
                      {badgeNumber}
                   </Text>
                </View>
@@ -58,13 +62,19 @@ TabButton.propTypes = {
    badgeNumber: PropTypes.number,
    highlightColor: PropTypes.string,
    isActive: PropTypes.bool,
-   name: PropTypes.string.isRequired
+   name: PropTypes.string.isRequired,
+   onClick: PropTypes.func,
+   paddingHorizontal: PropTypes.string,
+   size: PropTypes.string
 }
 
 TabButton.defaultProps = {
    badgeNumber: undefined,
    highlightColor: '#000',
-   isActive: false
+   isActive: false,
+   onClick: undefined,
+   paddingHorizontal: undefined,
+   size: undefined
 }
 
 export default React.memo(TabButton)

@@ -5,22 +5,16 @@ const TabMenuBasicSpecimen = () => (
    <View
       float="left"
       width="100%"
-      padding2="0px 18px"
       border="1px solid #eee"
       borderRadius="3px">
       <TabMenu>
-         <TabMenuButton name="Home" isActive />
-         <TabMenuButton name="Explore" />
-         <TabMenuButton name="About" />
-         <TabMenuButton name="Contact" />
-         <TabMenuButton name="Afgsdfg" />
-         <TabMenuButton name="Bsdfgsdfg" />
-         <TabMenuButton name="Csdfgsdfg" />
-         <TabMenuButton name="Dsdfg" />
-         <TabMenuButton name="Esdfgsd" />
-         <TabMenuButton name="Explore" />
-         <TabMenuButton name="4235" />
-         <TabMenuButton name="Contact" />
+         <TabMenuButton name="Tab Button 1" isActive />
+         <TabMenuButton name="Tab Button 2" />
+         <TabMenuButton name="Tab Button 3" />
+         <TabMenuButton name="Tab Button 4" />
+         <TabMenuButton name="Tab Button 5" />
+         <TabMenuButton name="Tab Button 6" />
+         <TabMenuButton name="Tab Button 7" />
       </TabMenu>
    </View>
 )
@@ -32,14 +26,17 @@ TabMenuBasicSpecimen.description = 'This example shows <code>TabMenu</code> for 
 TabMenuBasicSpecimen.codeSnippet = `
 <View
    float="left"
-   width="210px"
+   width="100%"
    border="1px solid #eee"
    borderRadius="3px">
    <TabMenu>
-      <TabMenuButton name="Home" isActive />
-      <TabMenuButton name="Explore" />
-      <TabMenuButton name="Notifications" />
-      <TabMenuButton name="Profile" />
+      <TabMenuButton name="Tab Button 1" isActive />
+      <TabMenuButton name="Tab Button 2" />
+      <TabMenuButton name="Tab Button 3" />
+      <TabMenuButton name="Tab Button 4" />
+      <TabMenuButton name="Tab Button 5" />
+      <TabMenuButton name="Tab Button 6" />
+      <TabMenuButton name="Tab Button 7" />
    </TabMenu>
 </View>
 `

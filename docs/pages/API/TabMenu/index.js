@@ -2,10 +2,10 @@ import React from 'react'
 import APITableBlock from '../../../components/APITableBlock'
 import HeaderBlock from '../../../components/HeaderBlock'
 import SpecimenBlock from '../../../components/SpecimenBlock'
-import listMenuSpec from '../../../../src/ListMenu/spec'
-import listMenuButtonSpec from '../../../../src/ListMenuButton/spec'
+import tabMenuSpec from '../../../../src/TabMenu/spec'
+import tabMenuButtonSpec from '../../../../src/TabMenuButton/spec'
 import TabMenuBasicSpecimen from '../../../specimens/TabMenuBasic'
-import ListMenuLinksSpecimen from '../../../specimens/ListMenuLinks'
+import TabMenuCustomizedSpecimen from '../../../specimens/TabMenuCustomized'
 
 const ListMenuPage = () => (
    <div>
@@ -14,9 +14,9 @@ const ListMenuPage = () => (
          subtitle="The TabMenu and TabMenuButton are a components family designed for horizontally-oriented navigation"
       />
       <SpecimenBlock specimen={TabMenuBasicSpecimen} />
-      <SpecimenBlock specimen={ListMenuLinksSpecimen} />
-      <APITableBlock spec={listMenuSpec} title="TabMenu API Options" />
-      <APITableBlock spec={listMenuButtonSpec} title="TabMenuButton API Options" />
+      <SpecimenBlock specimen={TabMenuCustomizedSpecimen} />
+      <APITableBlock spec={tabMenuSpec} title="TabMenu API Options" />
+      <APITableBlock spec={tabMenuButtonSpec} title="TabMenuButton API Options" />
    </div>
 )
 

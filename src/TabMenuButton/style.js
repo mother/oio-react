@@ -10,6 +10,7 @@ export default {
          ? `4px solid ${highlightColor}`
          : '4px solid transparent',
       transition: '300ms',
+      cursor: 'pointer',
       '&:hover': {
          color: '#222'
       },
@@ -17,19 +18,8 @@ export default {
          transform: 'translate3d(0, -2px, 0)'
       },
       '.badge': {
-         backgroundColor: '#eee',
-         color: '#666'
+         backgroundColor: isActive ? highlightColor : '#eee',
+         color: isActive ? '#fff' : '#666'
       }
    })
-   // tabButtonActive: highlightColor => (
-   //    css`
-   //       border-bottom:  !important;
-   //       color: ${highlightColor} !important;
-   //
-   //       .badge {
-   //          background-color: ${highlightColor} !important;
-   //          color: #fff !important;
-   //       }
-   //    `
-   // )
 }

@@ -5,6 +5,7 @@ import animateScrollTo from 'animated-scroll-to'
 import PropTypes from 'prop-types'
 import { withSize } from 'react-sizeme'
 import { View } from '../../src'
+import { buttonSizeDefaults } from '../Button'
 import ArrowLeftIcon from './arrowLeft'
 import ArrowRightIcon from './arrowRight'
 
@@ -42,9 +43,12 @@ const flexboxAlignmentConversion = {
 
 const TabMenu = ({
    align,
+   buttonPaddingHorizontal,
+   buttonSize,
+   buttonSpacing,
    children,
    highlightColor,
-   padding,
+   paddingHorizontal,
    size
 }) => {
    const tabContainer = useRef(null)
@@ -91,12 +95,14 @@ const TabMenu = ({
          return (
             <React.Fragment>
                {React.cloneElement(child, {
-                  highlightColor
+                  highlightColor,
+                  paddingHorizontal: buttonPaddingHorizontal,
+                  size: buttonSize
                })}
                {i < (children.length - 1) && (
                   <View
                      float="left"
-                     width="21px"
+                     width={buttonSpacing}
                      height="100%"
                   />
                )}
@@ -141,11 +147,11 @@ const TabMenu = ({
             ref={tabContainer}
             display={tabsDoOverflow ? 'block' : 'flex'}
             justifyContent={flexboxAlignmentConversion[align]}
-            paddingHorizontal={padding}
+            paddingHorizontal={paddingHorizontal}
             onScroll={tabsDoOverflow ? handleScroll : undefined}
             float="left"
             width="100%"
-            height="42px"
+            height={buttonSizeDefaults[buttonSize].height}
             style={{
                overflow: 'hidden',
                overflowX: isPlatformWithSafeScrollbars ? 'auto' : 'hidden',
@@ -209,19 +215,23 @@ const TabMenu = ({
 }
 
 TabMenu.propTypes = {
-   align: PropTypes.string,
+   align: PropTypes.oneOf(['left', 'center', 'right']),
+   buttonPaddingHorizontal: PropTypes.string,
+   buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+   buttonSpacing: PropTypes.string,
    children: PropTypes.node.isRequired,
    highlightColor: PropTypes.string,
-   padding: PropTypes.string,
-   size: PropTypes.shape({
-      width: PropTypes.number.isRequired
-   }).isRequired
+   paddingHorizontal: PropTypes.string,
+   size: PropTypes.object.isRequired
 }
 
 TabMenu.defaultProps = {
    align: 'left',
+   buttonSize: 'lg',
+   buttonPaddingHorizontal: '12px[a-d] 18px[e-f]',
+   buttonSpacing: '0px',
    highlightColor: '#000',
-   padding: '0px'
+   paddingHorizontal: '0px'
 }
 
 export default withSize()(TabMenu)
