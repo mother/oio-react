@@ -32,7 +32,7 @@ const TabMenuBasicSpecimen = () => (
 
 TabMenuBasicSpecimen.title = 'Customized & Compact TabMenu'
 
-TabMenuBasicSpecimen.description = 'This example shows how to make <code>TabMenu</code> look more compact with customizations including: <code>buttonSize</code>, <code>badgeNumber</code>, <code>highlightColor</code>. <b>Note that at this time, none of the props are responsive.</b>'
+TabMenuBasicSpecimen.description = 'This example shows how to make <code>TabMenu</code> look more compact with customizations including: <code>align</code>, <code>buttonSize</code>, <code>badgeNumber</code>, <code>highlightColor</code>. <b>Note that at this time, none of the props are responsive.</b>'
 
 TabMenuBasicSpecimen.codeSnippet = `
 <View

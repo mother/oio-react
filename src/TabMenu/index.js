@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import animateScrollTo from 'animated-scroll-to'
 import PropTypes from 'prop-types'
 import { withSize } from 'react-sizeme'
+import tinycolor from 'tinycolor2'
 import { View } from '../../src'
 import { buttonSizeDefaults } from '../Button'
 import OIOContext from '../OIOProvider/context'
@@ -20,10 +21,10 @@ const arrowButtonStyleProps = {
    justifyContent: 'center',
    alignItems: 'center',
    position: 'absolute',
-   backgroundColor: '#fff',
    height: '100%',
    width: '42px',
-   top: '0px'
+   top: '0px',
+   transition: '300ms'
 }
 
 // =======================================================
@@ -44,6 +45,7 @@ const flexboxAlignmentConversion = {
 
 const TabMenu = ({
    align,
+   backgroundColor,
    buttonPaddingHorizontal,
    buttonSize,
    buttonSpacing,
@@ -157,6 +159,7 @@ const TabMenu = ({
          position="relative"
          float="left"
          width="100%"
+         backgroundColor={backgroundColor}
          style={{ overflow: 'hidden' }}>
          <View
             ref={tabContainer}
@@ -183,17 +186,17 @@ const TabMenu = ({
             <View
                {...arrowButtonStyleProps}
                id="tabsPrevButton"
+               backgroundColor={backgroundColor}
                css={{
                   cursor: 'pointer',
-                  transition: '300ms',
                   '&:hover': {
-                     backgroundColor: '#eee'
+                     backgroundColor: tinycolor(backgroundColor).darken(10).toString()
                   }
                }}
                onKeyUp={() => setCurrentScrollIndex(currentScrollIndex - 1)}
                onClick={() => setCurrentScrollIndex(currentScrollIndex - 1)}
                left="0px"
-               boxShadow="6px 0px 18px rgba(255,255,255,1)">
+               boxShadow={`6px 0px 18px ${tinycolor(backgroundColor).toRgbString()}`}>
                <ArrowLeftIcon
                   width="9px"
                   height="9px"
@@ -206,17 +209,17 @@ const TabMenu = ({
             <View
                {...arrowButtonStyleProps}
                id="tabsNextButton"
+               backgroundColor={backgroundColor}
                css={{
                   cursor: 'pointer',
-                  transition: '300ms',
                   '&:hover': {
-                     backgroundColor: '#eee'
+                     backgroundColor: tinycolor(backgroundColor).darken(10).toString()
                   }
                }}
                onKeyUp={() => setCurrentScrollIndex(currentScrollIndex + 1)}
                onClick={() => setCurrentScrollIndex(currentScrollIndex + 1)}
                right="0px"
-               boxShadow="-6px 0px 18px rgba(255,255,255,1)">
+               boxShadow={`-6px 0px 18px ${tinycolor(backgroundColor).toRgbString()}`}>
                <ArrowRightIcon
                   width="9px"
                   height="9px"
@@ -231,6 +234,7 @@ const TabMenu = ({
 
 TabMenu.propTypes = {
    align: PropTypes.oneOf(['left', 'center', 'right']),
+   backgroundColor: PropTypes.string,
    buttonPaddingHorizontal: PropTypes.string,
    buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
    buttonSpacing: PropTypes.string,
@@ -242,6 +246,7 @@ TabMenu.propTypes = {
 
 TabMenu.defaultProps = {
    align: 'left',
+   backgroundColor: '#fff',
    buttonSize: 'lg',
    buttonPaddingHorizontal: '12px',
    buttonSpacing: '0px',

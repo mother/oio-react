@@ -5,6 +5,12 @@ export default [{
    description: 'Configure the alignment of the <code>TabMenuButton</code>s with <code>TabMenu</code>. Available options are: <code>left</code>, <code>center</code>, <code>right</code>',
    responsive: false
 }, {
+   name: 'backgroundColor',
+   type: 'String',
+   default: '<code>#fff</code>',
+   description: 'Use any css compatible values',
+   responsive: false
+}, {
    name: 'buttonPaddingHorizontal',
    type: 'String',
    default: '-',
