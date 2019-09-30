@@ -19,16 +19,17 @@ const ListMenu = ({
 
    // Clone ListMenuButton children and pass props
    const listMenuButtons = React.Children.map(children, (child, i) => {
-      let childIsActive = child.props.isActive
-      if (!linkHasAlreadyMatched && child.props.linkTo && typeof childIsActive === 'undefined') {
-         childIsActive = buttonLinkAdapter.isActive(child.props.linkTo)
-         if (childIsActive) {
-            linkHasAlreadyMatched = true
-         }
-      }
-
       // This is to handle the cases where if buttons are mapped, there may be null values
       if (child) {
+         // Determine if child should have active link (if applicable)
+         let childIsActive = child.props.isActive
+         if (!linkHasAlreadyMatched && child.props.linkTo && typeof childIsActive === 'undefined') {
+            childIsActive = buttonLinkAdapter.isActive(child.props.linkTo)
+            if (childIsActive) {
+               linkHasAlreadyMatched = true
+            }
+         }
+
          return (
             <React.Fragment>
                {React.cloneElement(child, {
