@@ -12,6 +12,15 @@ import ArrowLeftIcon from './arrowLeft'
 import ArrowRightIcon from './arrowRight'
 
 // =======================================================
+// UI Constants
+// =======================================================
+
+// Character Width is used to calculate tab width
+const characterWidth = 7
+// The amount in pixels to scroll x-position when clicking prev/next arrow buttons
+const scrollIncrement = 270
+
+// =======================================================
 // Arrow Button Style
 // =======================================================
 
@@ -66,10 +75,9 @@ const TabMenu = ({
    // Calculate Tab Container Width
    // Calculate Initiative type tabs container width by using the combined number of characters
    // of all initiative types. We assume that each character occupies 7px
-   const characterWidth = 7
    const tabContainerPadding = parseInt(paddingHorizontal, 10) * 2
    const buttonPadding = parseInt(buttonPaddingHorizontal, 10) * 2
-   const linkNamesAsCombinedString = children.map(child => child.props.name).join('')
+   const linkNamesAsCombinedString = children.map(child => child?.props?.name).join('')
    const combinedButtonWidths = (linkNamesAsCombinedString.length) * characterWidth
    const combinedButtonPadding = children.length * buttonPadding
    const combinedButtonSpacing = (children.length - 1) * parseInt(buttonSpacing, 10)
@@ -80,8 +88,6 @@ const TabMenu = ({
    // If there are more tabs than can be visible at once on screen,
    // we automatically add scroll (arrow) buttons
    const tabsDoOverflow = tabsContainerWidth > componentWidth
-   // The amount in pixels to scroll x-position when clicking prev/next arrow buttons
-   const scrollIncrement = 270
    const currentScrollPosition = (currentScrollIndex * scrollIncrement) + componentWidth
    const isScrolledToBeginning = currentScrollIndex === 0
    const isScrolledToEnd = currentScrollPosition >= tabsContainerWidth
