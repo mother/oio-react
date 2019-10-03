@@ -20,16 +20,9 @@ const CarouselBasic = () => {
    return (
       <View>
          <Carousel
-            onRotate={(currentPaneIndex, numPanes) => {
-               setCarouselInfo({ currentPaneIndex, numPanes })
-            }}
-            numSlidesPerPane={{
-               a: 1,
-               b: 2,
-               c: 3,
-               d: 3,
-               e: 3,
-               f: 4
+            numSlidesPerPane="1[a] 2[b] 3[c-e] 4[f]"
+            onRotate={(currentPaneIndex, totalNumPanes) => {
+               setCarouselInfo({ currentPaneIndex, totalNumPanes })
             }}>
             {placeholderSlides.map((slide, index) => (
                <View
@@ -92,16 +85,9 @@ const handleNumSlidesChange = (e) => {
 return (
    <View>
       <Carousel
-         onRotate={(currentPaneIndex, numPanes) => {
-            setCarouselInfo({ currentPaneIndex, numPanes })
-         }}
-         numSlidesPerPane={{
-            a: 1,
-            b: 2,
-            c: 3,
-            d: 3,
-            e: 3,
-            f: 4
+         numSlidesPerPane="1[a] 2[b] 3[c-e] 4[f]"
+         onRotate={(currentPaneIndex, totalNumPanes) => {
+            setCarouselInfo({ currentPaneIndex, totalNumPanes })
          }}>
          {placeholderSlides.map((slide, index) => (
             <View

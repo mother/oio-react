@@ -9,7 +9,7 @@ const SpacerPage = () => (
    <div>
       <HeaderBlock
          title="Carousel"
-         subtitle="The Spacer component provides a convenient way to create whitespace between elements. The <code>Spacer</code> component is designed to work in both <code>vertical</code> and <code>horizontal</code> orientations."
+         subtitle="The Carousel component is slideshow-style component for rotating through dynamic slides. This is useful for things like image galleries and featured content."
       />
       <SpecimenBlock specimen={CarouselBasicSpecimen} />
       <APITableBlock spec={carouselSpec} title="Carousel API Options" />

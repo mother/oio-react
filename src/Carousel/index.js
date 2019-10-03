@@ -7,6 +7,7 @@ import useDimensions from 'react-use-dimensions'
 import { Grid, GridCell, View, useWindowResizeSensor } from '../'
 import ArrowLeftIcon from '../assets/icons/arrowLeft'
 import ArrowRightIcon from '../assets/icons/arrowRight'
+import generateResponsiveObject from '../utils/generateResponsiveObject'
 import style from './style'
 
 // =======================================================
@@ -24,13 +25,15 @@ const Carousel = ({
    const paneContainerRef = useRef(null)
    const [currentPaneIndex, setCurrentPaneIndex] = useState(0)
    const { currentBreakpoint } = useWindowResizeSensor()
+   const numSlidesPerPaneResponsive = generateResponsiveObject(numSlidesPerPane)
+   const currentNumSlidesPerPane = numSlidesPerPaneResponsive[currentBreakpoint]
    const numItems = children.length
 
    // The Carousel component distributes all slide into 'rotatable' panes
    // Only one pane is visible at a time
-   const numPanes = Math.ceil(numItems / numSlidesPerPane[currentBreakpoint])
+   const numPanes = Math.ceil(numItems / currentNumSlidesPerPane)
    const paneContainerWidth = `calc(${numPanes}00% + ${(numPanes - 1) * spacing}px)`
-   const gridColumns = numPanes * numSlidesPerPane[currentBreakpoint]
+   const gridColumns = numPanes * currentNumSlidesPerPane
 
    // Prev / Next Arrow Buttons
    const nextSlideIndex = currentPaneIndex + 1
@@ -139,21 +142,14 @@ const Carousel = ({
 Carousel.propTypes = {
    arrowOffsetFromTop: PropTypes.string,
    children: PropTypes.node.isRequired,
+   numSlidesPerPane: PropTypes.string,
    onRotate: PropTypes.func,
-   spacing: PropTypes.number,
-   // TODO: Restructure to use OIOResponsiveObject
-   numSlidesPerPane: PropTypes.shape({
-      a: PropTypes.number.isRequired,
-      b: PropTypes.number.isRequired,
-      c: PropTypes.number.isRequired,
-      d: PropTypes.number.isRequired,
-      e: PropTypes.number.isRequired,
-      f: PropTypes.number.isRequired
-   }).isRequired
+   spacing: PropTypes.number
 }
 
 Carousel.defaultProps = {
    arrowOffsetFromTop: '50%',
+   numSlidesPerPane: '1',
    onRotate: undefined,
    spacing: 12
 }

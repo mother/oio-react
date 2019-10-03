@@ -1,25 +1,25 @@
 export default [{
-   name: 'className',
+   name: 'arrowOffsetFromTop',
    type: 'String',
-   default: '-',
-   description: 'Pass a <code>className</code> to customize className of the <code>Spacer</code> component',
+   default: '<code>50%</code>',
+   description: 'The distance from the top of the <code>Carousel</code> component that the previous and next arrows appear. You can use any valid css unit. It is recommended to use either a <code>%</code> or <code>px</code> based value.',
    responsive: false
 }, {
-   name: 'orientation',
-   type: 'OIO Responsive String (Enum)',
-   default: '<code>horizontal</code>',
-   description: 'Available values are: <code>horizontal</code> and <code>vertical</code>',
-   responsive: true
-}, {
-   name: 'size',
+   name: 'numSlidesPerPane',
    type: 'OIO Responsive String',
-   default: '-',
-   description: 'This value can be any integer larger than <code>1</code>. The <code>Spacer</code>\'s real calculated size is effectively <code>6px</code> multiplied by this <code>size</code> value. (ie. a <code>Spacer</code> of size <code>3</code> will have a real size of 18 pixels)',
+   default: '<code>1</code>',
+   description: 'Number of slides per sliding pane that are visible within <code>Carousel</code> at a given moment.',
    responsive: true
 }, {
-   name: 'style',
-   type: 'Object',
-   default: '<code>{}</code>',
-   description: 'Pass a style <code>object</code> to customize inline style',
+   name: 'onRotate',
+   type: 'Function',
+   default: '-',
+   description: 'Function that will fire when Carousel slides between previous and next panes. <code>(currentPaneIndex, totalNumPanes) => ...</code>',
+   responsive: false
+}, {
+   name: 'spacing',
+   type: 'Number',
+   default: '<code>12</code>',
+   description: 'The spacing between <code>Carousel</code> slides. Currently, this prop must be a pixel-based value and is not responsive.',
    responsive: false
 }]
