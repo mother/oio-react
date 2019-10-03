@@ -5,7 +5,7 @@ const CarouselBasic = () => {
    const [placeholderSlides, setPlaceholderSlides] = useState(Array(12).fill('slide'))
    const [carouselInfo, setCarouselInfo] = useState({
       currentPaneIndex: 0,
-      numPanes: 0
+      totalNumPanes: 0
    })
 
    const handleNumSlidesChange = (e) => {
@@ -42,7 +42,7 @@ const CarouselBasic = () => {
          </Carousel>
          <Spacer size="2" />
          <Text color="#777" size="2" weight="medium">
-            {`${carouselInfo.currentPaneIndex} / ${carouselInfo.numPanes}`}
+            {`${carouselInfo.currentPaneIndex} / ${carouselInfo.totalNumPanes}`}
          </Text>
          <Spacer size="6" />
          <View width="100%" backgroundColor="#e6edec" padding="24px" borderRadius="6px">
@@ -70,7 +70,7 @@ CarouselBasic.codeSnippet = `
 const [placeholderSlides, setPlaceholderSlides] = useState(Array(12).fill('slide'))
 const [carouselInfo, setCarouselInfo] = useState({
    currentPaneIndex: 0,
-   numPanes: 0
+   totalNumPanes: 0
 })
 
 const handleNumSlidesChange = (e) => {
@@ -105,7 +105,7 @@ return (
       </Carousel>
       <Spacer size="2" />
       <Text color="#777" size="2" weight="medium">
-         {carouselInfo.currentPaneIndex} / {carouselInfo.numPanes}
+         {carouselInfo.currentPaneIndex} / {carouselInfo.totalNumPanes}
       </Text>
       <Spacer size="6" />
       <View width="100%" backgroundColor="#e6edec" padding="24px" borderRadius="6px">
