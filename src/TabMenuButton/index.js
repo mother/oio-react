@@ -11,7 +11,7 @@ import style from './style'
 // Arrow Button Style
 // =======================================================
 
-const TabButton = ({
+const TabMenuButton = ({
    badgeNumber,
    highlightColor,
    isActive,
@@ -29,6 +29,7 @@ const TabButton = ({
          height="100%"
          display="flex"
          alignItems="center"
+         onClick={onClick}
          css={style.tabButton({ highlightColor, isActive })}
          paddingHorizontal={paddingHorizontal}>
          <Text
@@ -70,7 +71,7 @@ const TabButton = ({
    return tabButtonJSX
 }
 
-TabButton.propTypes = {
+TabMenuButton.propTypes = {
    badgeNumber: PropTypes.number,
    highlightColor: PropTypes.string,
    isActive: PropTypes.bool,
@@ -80,7 +81,7 @@ TabButton.propTypes = {
    size: PropTypes.string
 }
 
-TabButton.defaultProps = {
+TabMenuButton.defaultProps = {
    badgeNumber: undefined,
    highlightColor: '#000',
    isActive: false,
@@ -89,4 +90,4 @@ TabButton.defaultProps = {
    size: undefined
 }
 
-export default React.memo(TabButton)
+export default React.memo(TabMenuButton)
