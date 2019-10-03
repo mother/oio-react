@@ -5,6 +5,7 @@ export { default as useWindowResizeSensor } from './utils/useWindowResizeSensor'
 
 // Standard OIO Components
 export { default as Button } from './Button'
+export { default as Carousel } from './Carousel'
 export { default as Grid } from './Grid'
 export { default as GridCell } from './GridCell'
 export { default as ListMenu } from './ListMenu'
