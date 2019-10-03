@@ -93,7 +93,7 @@ const Carousel = ({
          </View>
          {showPrevArrowButton && (
             <View
-               id="carouselLeftArrowButton"
+               id="oio-carousel-left-arrow-button"
                role="button"
                onKeyUp={() => setCurrentPaneIndex(prevSlideIndex)}
                onClick={() => setCurrentPaneIndex(prevSlideIndex)}
@@ -113,7 +113,7 @@ const Carousel = ({
          )}
          {showNextArrowButton && (
             <View
-               id="carouselRightArrowButton"
+               id="oio-carousel-right-arrow-button"
                role="button"
                onKeyUp={() => setCurrentPaneIndex(nextSlideIndex)}
                onClick={() => setCurrentPaneIndex(nextSlideIndex)}

@@ -3,16 +3,16 @@ context('Carousel', () => {
       cy.visit('/tests/carousel-basic')
    })
 
-   it('renders as expected after viewport resize and clicking right and left arrow buttons', () => {
+   it('renders as expected after viewport resize and clicking arrow buttons', () => {
       cy.viewport(420, 270)
       // Allow for initial setup
       // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.wait(500)
 
       // Click Right (Next) arrow button 3 times (to go to pane 4 of 12)
-      cy.get('#carouselRightArrowButton').click({ waitForAnimations: true })
-      cy.get('#carouselRightArrowButton').click({ waitForAnimations: true })
-      cy.get('#carouselRightArrowButton').click({ waitForAnimations: true })
+      cy.get('#oio-carousel-right-arrow-button').click({ waitForAnimations: true })
+      cy.get('#oio-carousel-right-arrow-button').click({ waitForAnimations: true })
+      cy.get('#oio-carousel-right-arrow-button').click({ waitForAnimations: true })
 
       // We wait for 500ms to account for scroll-to animation duration (animate from pane 1 to 4)
       // eslint-disable-next-line cypress/no-unnecessary-waiting
