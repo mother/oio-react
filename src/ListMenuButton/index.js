@@ -2,10 +2,10 @@ import { useContext } from 'react'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import PropTypes from 'prop-types'
+import ArrowRightIcon from '../assets/icons/arrowRight'
 import OIOContext from '../OIOProvider/context'
 import { buttonSizeDefaults } from '../Button'
 import { Text, View } from '../../src'
-import ArrowRightIcon from './arrowRightIcon'
 import style from './style'
 
 const ListMenuButton = ({
