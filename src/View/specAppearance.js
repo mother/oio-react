@@ -17,6 +17,12 @@ export default [{
    description: 'Use valid CSS <code>background-position</code> values',
    responsive: true
 }, {
+   name: 'backgroundRepeat',
+   type: 'String',
+   default: '-',
+   description: 'Use valid CSS <code>background-repeat</code> values',
+   responsive: true
+}, {
    name: 'backgroundSize',
    type: 'String',
    default: '-',
