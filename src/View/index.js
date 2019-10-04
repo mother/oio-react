@@ -44,7 +44,7 @@ const zoomableProps = [
    'padding', 'paddingBottom', 'paddingLeft', 'paddingRight', 'paddingTop',
    'paddingHorizontal', 'paddingVertical',
    'border', 'borderBottom', 'borderLeft', 'borderRight', 'borderTop',
-   'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize',
+   'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundRepeat', 'backgroundSize',
    'borderRadius', 'boxShadow', 'opacity', 'textAlign', 'transform', 'transition', 'zIndex'
 ])
 
@@ -93,6 +93,7 @@ export default class View extends React.Component {
       backgroundColor: OIOResponsiveObjectPropType,
       backgroundImage: OIOResponsiveObjectPropType,
       backgroundPosition: OIOResponsiveObjectPropType,
+      backgroundRepeat: OIOResponsiveObjectPropType,
       backgroundSize: OIOResponsiveObjectPropType,
       border: OIOResponsiveObjectPropType,
       borderTop: OIOResponsiveObjectPropType,
@@ -207,7 +208,7 @@ export default class View extends React.Component {
          margin, marginBottom, marginLeft, marginRight, marginTop,
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
-         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
          borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling,
          onClick, onDoubleClick, onKeyDown, onKeyPress, onKeyUp,
@@ -226,7 +227,7 @@ export default class View extends React.Component {
          margin, marginBottom, marginLeft, marginRight, marginTop,
          padding, paddingBottom, paddingLeft, paddingRight, paddingTop,
          border, borderBottom, borderLeft, borderRight, borderTop,
-         backgroundColor, backgroundImage, backgroundPosition, backgroundSize,
+         backgroundColor, backgroundImage, backgroundPosition, backgroundRepeat, backgroundSize,
          borderRadius, boxShadow, opacity, textAlign, transform, transition, zIndex,
          overflow, WebkitOverflowScrolling
       })
