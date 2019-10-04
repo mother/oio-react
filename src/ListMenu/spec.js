@@ -55,7 +55,7 @@ export default [{
 }, {
    name: 'buttonTextWeight',
    type: 'OIO Responsive String',
-   default: '-',
+   default: '<code>medium</code>',
    description: 'Set the <code>fontWeight</code> of the text inside <code>ListMenuButton</code> when <code>isActive</code> is set to <code>false</code>',
    responsive: true
 }, {
