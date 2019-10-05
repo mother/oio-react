@@ -6,13 +6,17 @@ import OIOContext from '../OIOProvider/context'
 const ListMenu = ({
    activeBackgroundColor,
    activeTextColor,
+   activeTextWeight,
    children,
    buttonBorderRadius,
    buttonPaddingHorizontal,
    buttonSize,
+   buttonTextColor,
+   buttonTextFontFamily,
+   buttonTextSize,
+   buttonTextWeight,
    dividerLineStyle,
-   showActiveArrow,
-   textColor
+   showActiveArrow
 }) => {
    const { buttonLinkAdapter } = useContext(OIOContext)
    let linkHasAlreadyMatched = false
@@ -35,11 +39,15 @@ const ListMenu = ({
                {React.cloneElement(child, {
                   activeBackgroundColor,
                   activeTextColor,
+                  activeTextWeight,
                   showActiveArrow,
-                  textColor,
                   borderRadius: buttonBorderRadius,
                   paddingHorizontal: buttonPaddingHorizontal,
                   size: buttonSize,
+                  textColor: buttonTextColor,
+                  textFontFamily: buttonTextFontFamily,
+                  textSize: buttonTextSize,
+                  textWeight: buttonTextWeight,
                   isActive: childIsActive || false
                })}
                {i < (children.length - 1) && (
@@ -67,24 +75,32 @@ const ListMenu = ({
 ListMenu.propTypes = {
    activeBackgroundColor: PropTypes.string,
    activeTextColor: PropTypes.string,
+   activeTextWeight: PropTypes.string,
    children: PropTypes.node.isRequired,
    buttonBorderRadius: PropTypes.string,
    buttonPaddingHorizontal: PropTypes.string,
    buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+   buttonTextColor: PropTypes.string,
+   buttonTextFontFamily: PropTypes.string,
+   buttonTextSize: PropTypes.string,
+   buttonTextWeight: PropTypes.string,
    dividerLineStyle: PropTypes.string,
-   showActiveArrow: PropTypes.bool,
-   textColor: PropTypes.string
+   showActiveArrow: PropTypes.bool
 }
 
 ListMenu.defaultProps = {
    activeBackgroundColor: 'rgba(0,0,0,0.04)',
    activeTextColor: '#333',
+   activeTextWeight: undefined,
    buttonBorderRadius: undefined,
    buttonPaddingHorizontal: undefined,
    buttonSize: 'lg',
+   buttonTextColor: '#666',
+   buttonTextFontFamily: undefined,
+   buttonTextSize: undefined,
+   buttonTextWeight: undefined,
    dividerLineStyle: '1px solid #eee',
-   showActiveArrow: false,
-   textColor: '#666'
+   showActiveArrow: false
 }
 
 export default ListMenu

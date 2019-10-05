@@ -15,7 +15,13 @@ import style from './style'
 // =======================================================
 
 const Carousel = ({
-   arrowOffsetFromTop,
+   buttonBackgroundColor,
+   buttonIconColor,
+   buttonIconSize,
+   buttonIconStrokeWidth,
+   buttonOffsetFromSides,
+   buttonOffsetFromTop,
+   buttonSize,
    children,
    onRotate,
    numSlidesPerPane,
@@ -35,11 +41,25 @@ const Carousel = ({
    const paneContainerWidth = `calc(${numPanes}00% + ${(numPanes - 1) * spacing}px)`
    const gridColumns = numPanes * currentNumSlidesPerPane
 
+   // =======================================================
    // Prev / Next Arrow Buttons
+   // =======================================================
+
+   const buttonIconProps = {
+      width: buttonIconSize,
+      height: buttonIconSize,
+      color: buttonIconColor,
+      strokeWidth: buttonIconStrokeWidth
+   }
+
    const nextSlideIndex = currentPaneIndex + 1
    const prevSlideIndex = currentPaneIndex - 1
    const showPrevArrowButton = currentPaneIndex > 0
    const showNextArrowButton = currentPaneIndex + 1 < numPanes
+
+   // =======================================================
+   // useEffect
+   // =======================================================
 
    useEffect(() => {
       // When window is resized, the currentPaneIndex and total number of panes
@@ -97,18 +117,13 @@ const Carousel = ({
                role="button"
                onKeyUp={() => setCurrentPaneIndex(prevSlideIndex)}
                onClick={() => setCurrentPaneIndex(prevSlideIndex)}
-               top={`
-                  calc(${arrowOffsetFromTop} - 18px - ${spacing / 2}px)[a]
-                  calc(${arrowOffsetFromTop} - 24px - ${spacing / 2}px)[b-f]
-               `}
-               left="-12px[a] -24px[b-f]"
+               backgroundColor={buttonBackgroundColor}
+               width={buttonSize}
+               height={buttonSize}
+               top={buttonOffsetFromTop}
+               left={buttonOffsetFromSides}
                {...style.arrowButton}>
-               <ArrowLeftIcon
-                  width="12px"
-                  height="12px"
-                  strokeWidth="4px"
-                  color="#555"
-               />
+               <ArrowLeftIcon {...buttonIconProps} />
             </View>
          )}
          {showNextArrowButton && (
@@ -117,18 +132,13 @@ const Carousel = ({
                role="button"
                onKeyUp={() => setCurrentPaneIndex(nextSlideIndex)}
                onClick={() => setCurrentPaneIndex(nextSlideIndex)}
-               top={`
-                  calc(${arrowOffsetFromTop} - 18px - ${spacing / 2}px)[a]
-                  calc(${arrowOffsetFromTop} - 24px - ${spacing / 2}px)[b-f]
-               `}
-               right="-12px[a] -24px[b-f]"
+               backgroundColor={buttonBackgroundColor}
+               width={buttonSize}
+               height={buttonSize}
+               top={buttonOffsetFromTop}
+               right={buttonOffsetFromSides}
                {...style.arrowButton}>
-               <ArrowRightIcon
-                  width="12px"
-                  height="12px"
-                  strokeWidth="4px"
-                  color="#555"
-               />
+               <ArrowRightIcon {...buttonIconProps} />
             </View>
          )}
       </View>
@@ -140,7 +150,13 @@ const Carousel = ({
 // =======================================================
 
 Carousel.propTypes = {
-   arrowOffsetFromTop: PropTypes.string,
+   buttonBackgroundColor: PropTypes.string,
+   buttonIconColor: PropTypes.string,
+   buttonIconSize: PropTypes.string,
+   buttonIconStrokeWidth: PropTypes.string,
+   buttonOffsetFromSides: PropTypes.string,
+   buttonOffsetFromTop: PropTypes.string,
+   buttonSize: PropTypes.string,
    children: PropTypes.node.isRequired,
    numSlidesPerPane: PropTypes.string,
    onRotate: PropTypes.func,
@@ -148,7 +164,13 @@ Carousel.propTypes = {
 }
 
 Carousel.defaultProps = {
-   arrowOffsetFromTop: '50%',
+   buttonBackgroundColor: '#fff',
+   buttonIconColor: '#555',
+   buttonIconSize: '12px',
+   buttonIconStrokeWidth: '4px',
+   buttonOffsetFromSides: '-12px[a] -24px[b-f]',
+   buttonOffsetFromTop: 'calc(50% - 18px)[a] calc(50% - 24px)[b-f]',
+   buttonSize: '36px[a] 48px[b-f]',
    numSlidesPerPane: '1',
    onRotate: undefined,
    spacing: 12

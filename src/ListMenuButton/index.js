@@ -11,6 +11,7 @@ import style from './style'
 const ListMenuButton = ({
    activeBackgroundColor,
    activeTextColor,
+   activeTextWeight,
    borderRadius,
    isActive,
    linkTo,
@@ -20,7 +21,10 @@ const ListMenuButton = ({
    paddingHorizontal,
    size,
    showActiveArrow,
-   textColor
+   textColor,
+   textFontFamily,
+   textSize,
+   textWeight
 }) => {
    const { buttonLinkAdapter } = useContext(OIOContext)
 
@@ -49,8 +53,9 @@ const ListMenuButton = ({
                display="flex"
                alignItems="center">
                <Text
-                  size={buttonSizeDefaults[size].textSize}
-                  weight={isActive ? 'bold' : 'medium'}>
+                  fontFamily={textFontFamily}
+                  size={textSize || buttonSizeDefaults[size].textSize}
+                  weight={isActive ? activeTextWeight : textWeight}>
                   {name}
                </Text>
             </View>
@@ -89,6 +94,7 @@ const ListMenuButton = ({
 ListMenuButton.propTypes = {
    activeBackgroundColor: PropTypes.string,
    activeTextColor: PropTypes.string,
+   activeTextWeight: PropTypes.string,
    borderRadius: PropTypes.string,
    isActive: PropTypes.bool,
    linkTo: PropTypes.any,
@@ -98,12 +104,16 @@ ListMenuButton.propTypes = {
    paddingHorizontal: PropTypes.string,
    size: PropTypes.string,
    showActiveArrow: PropTypes.bool,
-   textColor: PropTypes.string
+   textColor: PropTypes.string,
+   textFontFamily: PropTypes.string,
+   textSize: PropTypes.string,
+   textWeight: PropTypes.string
 }
 
 ListMenuButton.defaultProps = {
    activeBackgroundColor: 'rgba(0,0,0,0.04)',
    activeTextColor: '#333',
+   activeTextWeight: 'bold',
    borderRadius: '0px',
    isActive: undefined,
    linkTo: undefined,
@@ -112,7 +122,10 @@ ListMenuButton.defaultProps = {
    paddingHorizontal: '18px',
    size: 'lg',
    showActiveArrow: false,
-   textColor: '#666'
+   textColor: '#666',
+   textFontFamily: undefined,
+   textSize: undefined,
+   textWeight: 'medium'
 }
 
 export default ListMenuButton
