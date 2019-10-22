@@ -23,7 +23,7 @@ const ZoomProviderSpecimen = () => (
 
 ZoomProviderSpecimen.title = 'ZoomContext'
 
-ZoomProviderSpecimen.description = 'There may be scenarios where the <code>ZoomProvider</code> context value may be needed by non-OIO components for style or css purposes.'
+ZoomProviderSpecimen.description = 'There may be scenarios where the <code>ZoomProvider</code> context value may be needed by non-OIO components for style or css purposes. The <code>ZoomContext</code> <code>zoom</code> value can be accessed using React\'s <code>useContext</code> prop.'
 
 ZoomProviderSpecimen.codeSnippet = `
 const ExampleComponent = () => {
