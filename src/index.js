@@ -20,6 +20,7 @@ export { default as TabMenu } from './TabMenu'
 export { default as TabMenuButton } from './TabMenuButton'
 export { default as Text } from './Text'
 export { default as View } from './View'
+export { default as ZoomContext } from './ZoomProvider/context'
 export { default as ZoomProvider } from './ZoomProvider'
 
 // Notifications
