@@ -11,6 +11,12 @@ export default [{
    description: 'Passed to <code>OIOProvider</code> button link adapater. See OIOProvider docs for details.',
    responsive: false
 }, {
+   name: 'linkExact',
+   type: 'Boolean',
+   default: '<code>false</code>',
+   description: 'Passed to <code>OIOProvider</code> button link adapater. See OIOProvider docs for details.',
+   responsive: false
+}, {
    name: 'linkReplace',
    type: 'Boolean',
    default: '<code>false</code>',

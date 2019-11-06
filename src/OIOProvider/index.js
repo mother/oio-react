@@ -45,7 +45,9 @@ const OIOProvider = ({
       textSizeScaleRatio,
       containerId: containerId.current,
       buttonLinkAdapter: {
-         isActive: linkTo => linkTo.startsWith(window.location.pathname),
+         isActive: (linkTo, linkExact = false) => linkExact
+            ? window.location.pathname === linkTo
+            : window.location.pathname.startsWith(linkTo),
          render: ({ linkTo, children }) => <a href={linkTo}>{children}</a>,
          ...buttonLinkAdapter
       }
