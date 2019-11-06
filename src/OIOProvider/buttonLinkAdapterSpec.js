@@ -2,7 +2,7 @@ export default [{
    name: 'isActive',
    type: 'Function',
    default: 'See Description',
-   description: 'A function that is passed in a link. This function must return a boolean that represents whether the link is currently active. The default function does a simple check based on <code>window.location.pathname</code>. This is only used by <code>ListMenuButton</code>, and not <code>Button</code>.'
+   description: 'A function that is passed in a link. This function must return a boolean that represents whether the link is currently active. The default function does a simple check based on <code>window.location.pathname</code>. This is only by <code>ListMenuButton</code> and <code>TabMenuButton</code>, but not <code>Button</code>.'
 }, {
    name: 'render',
    type: 'Function',

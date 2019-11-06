@@ -15,7 +15,7 @@ const ListMenuLinksSpecimen = ({ match }) => (
          buttonBorderRadius="3px"
          dividerLineStyle="none"
          showActiveArrow>
-         <ListMenuButton name="Home" linkTo={`${match.url}`} />
+         <ListMenuButton name="Home" linkTo={`${match.url}`} linkExact />
          <ListMenuButton name="Explore" linkTo={`${match.url}/explore`} />
          <ListMenuButton name="Notifications" linkTo={`${match.url}/notifications`} />
          <ListMenuButton name="Profile" linkTo={`${match.url}/profile`} />
@@ -40,7 +40,7 @@ ListMenuLinksSpecimen.codeSnippet = `
       buttonBorderRadius="3px"
       dividerLineStyle="none"
       showActiveArrow>
-      <ListMenuButton name="Home" linkTo={\`\${match.url}\`} />
+      <ListMenuButton name="Home" linkTo={\`\${match.url}\`} linkExact />
       <ListMenuButton name="Explore" linkTo={\`\${match.url}/explore\`} />
       <ListMenuButton name="Notifications" linkTo={\`\${match.url}/notifications\`} />
       <ListMenuButton name="Profile" linkTo={\`\${match.url}/profile\`} />

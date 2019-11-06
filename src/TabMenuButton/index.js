@@ -16,6 +16,7 @@ const TabMenuButton = ({
    highlightColor,
    isActive,
    linkTo,
+   linkExact,
    linkReplace,
    name,
    onClick,
@@ -65,7 +66,12 @@ const TabMenuButton = ({
    )
 
    if (linkTo && buttonLinkAdapter) {
-      return buttonLinkAdapter.render({ linkTo, linkReplace, children: tabButtonJSX })
+      return buttonLinkAdapter.render({
+         linkTo,
+         linkExact,
+         linkReplace,
+         children: tabButtonJSX
+      })
    }
 
    return tabButtonJSX
@@ -75,6 +81,9 @@ TabMenuButton.propTypes = {
    badgeNumber: PropTypes.number,
    highlightColor: PropTypes.string,
    isActive: PropTypes.bool,
+   linkTo: PropTypes.any,
+   linkExact: PropTypes.bool,
+   linkReplace: PropTypes.bool,
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
    paddingHorizontal: PropTypes.string,
@@ -85,6 +94,9 @@ TabMenuButton.defaultProps = {
    badgeNumber: undefined,
    highlightColor: '#000',
    isActive: false,
+   linkTo: undefined,
+   linkExact: false,
+   linkReplace: false,
    onClick: undefined,
    paddingHorizontal: undefined,
    size: undefined

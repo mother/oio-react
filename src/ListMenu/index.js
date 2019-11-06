@@ -28,7 +28,7 @@ const ListMenu = ({
          // Determine if child should have active link (if applicable)
          let childIsActive = child.props.isActive
          if (!linkHasAlreadyMatched && child.props.linkTo && typeof childIsActive === 'undefined') {
-            childIsActive = buttonLinkAdapter.isActive(child.props.linkTo)
+            childIsActive = buttonLinkAdapter.isActive(child.props.linkTo, child.props.linkExact)
             if (childIsActive) {
                linkHasAlreadyMatched = true
             }

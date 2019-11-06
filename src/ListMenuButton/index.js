@@ -15,6 +15,7 @@ const ListMenuButton = ({
    borderRadius,
    isActive,
    linkTo,
+   linkExact,
    linkReplace,
    name,
    onClick,
@@ -85,7 +86,12 @@ const ListMenuButton = ({
    )
 
    if (linkTo && buttonLinkAdapter) {
-      return buttonLinkAdapter.render({ linkTo, linkReplace, children: listMenuButtonJSX })
+      return buttonLinkAdapter.render({
+         linkTo,
+         linkExact,
+         linkReplace,
+         children: listMenuButtonJSX
+      })
    }
 
    return listMenuButtonJSX
@@ -98,6 +104,7 @@ ListMenuButton.propTypes = {
    borderRadius: PropTypes.string,
    isActive: PropTypes.bool,
    linkTo: PropTypes.any,
+   linkExact: PropTypes.bool,
    linkReplace: PropTypes.bool,
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
@@ -117,6 +124,7 @@ ListMenuButton.defaultProps = {
    borderRadius: '0px',
    isActive: undefined,
    linkTo: undefined,
+   linkExact: false,
    linkReplace: false,
    onClick: undefined,
    paddingHorizontal: '18px',

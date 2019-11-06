@@ -6,13 +6,13 @@ OIOProviderReactRouterSpecimen.description = 'Some of the button components that
 
 OIOProviderReactRouterSpecimen.codeSnippet = `
 const buttonLinkAdapter = {
-   render: ({ linkTo, linkReplace, ...props }) => (
+   render: ({ linkTo, linkReplace, linkExact, ...props }) => (
       <Link to={linkTo} replace={linkReplace} {...props} />
    )
 
    // isActive can be overridden if custom logic is needed to
    // specify whether the current link is active
-   // isActive: link => matchPath(link)
+   // isActive: (linkTo, linkExact) => matchPath(linkTo, linkExact)
 }
 
 const myComponent = () => (

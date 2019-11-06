@@ -9,7 +9,7 @@ const TabMenuLinksSpecimen = ({ match }) => (
       border="1px solid #eee"
       borderRadius="3px">
       <TabMenu>
-         <TabMenuButton name="Tab Button 1" linkTo={match.url} />
+         <TabMenuButton name="Tab Button 1" linkTo={match.url} linkExact />
          <TabMenuButton name="Tab Button 2" linkTo={`${match.url}/2`} />
          <TabMenuButton name="Tab Button 3" linkTo={`${match.url}/3`} />
       </TabMenu>
@@ -27,7 +27,7 @@ TabMenuLinksSpecimen.codeSnippet = `
    border="1px solid #eee"
    borderRadius="3px">
    <TabMenu>
-      <TabMenuButton name="Tab Button 1" linkTo={match.url} />
+      <TabMenuButton name="Tab Button 1" linkTo={match.url} linkExact />
       <TabMenuButton name="Tab Button 2" linkTo={\`\${match.url}/2\`} />
       <TabMenuButton name="Tab Button 3" linkTo={\`\${match.url}/3\`} />
    </TabMenu>
