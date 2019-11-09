@@ -2,8 +2,9 @@
 // Form Provider
 // =======================================================
 
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
+import OIOContext from '../OIOProvider/context'
 
 // =======================================================
 // Context Creation & Context Provider Defaults
@@ -18,6 +19,7 @@ const formContextDefaults = {
    elementFocusBackgroundColor: 'rgba(0,0,0,0.01)',
    elementFocusBorderColor: '#888',
    elementTextColor: '#333',
+   highlightColor: undefined,
    labelTextColor: '#444',
    labelTextSize: '0.8',
    labelTextTransform: 'uppercase',
@@ -47,12 +49,15 @@ const OIOForm = ({
    elementFocusBackgroundColor,
    elementFocusBorderColor,
    elementTextColor,
+   highlightColor,
    labelTextColor,
    labelTextSize,
    labelTextTransform,
    labelTextWeight,
    ...formProps
 }) => {
+   const oioContext = useContext(OIOContext)
+
    // Props available to OIO Context Consumer
    const contextProps = {
       elementAppearance,
@@ -66,7 +71,8 @@ const OIOForm = ({
       labelTextColor,
       labelTextSize,
       labelTextTransform,
-      labelTextWeight
+      labelTextWeight,
+      highlightColor: highlightColor || oioContext.highlightColor
    }
 
    return (
@@ -88,6 +94,7 @@ OIOForm.propTypes = {
    elementFocusBackgroundColor: PropTypes.string,
    elementFocusBorderColor: PropTypes.string,
    elementTextColor: PropTypes.string,
+   highlightColor: PropTypes.string,
    labelTextColor: PropTypes.string,
    labelTextSize: PropTypes.string,
    labelTextTransform: PropTypes.string,

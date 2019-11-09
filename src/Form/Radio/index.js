@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Text, View } from '../../../src'
-import OIOContext from '../../OIOProvider/context'
 import { OIOFormContext } from '..'
 
 // ============================================================================
@@ -17,10 +16,9 @@ const Radio = React.forwardRef(({
    label,
    ...props
 }, ref) => {
-   const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
-   const inputHighlightColor = highlightColor || oioContext.highlightColor
+   const inputHighlightColor = highlightColor || formContext.highlightColor
    const inputAppearance = appearance || formContext.elementAppearance
 
    const appearanceStyles = {
