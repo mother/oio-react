@@ -125,7 +125,9 @@ const pulsingAnimation = keyframes`
       borderStyle: 'none',
       borderWidth: 'none',
       textSize: textSize || buttonSizeDefaults[size].textSize,
-      hoverBackgroundColor: tinycolor(primaryButtonColor).lighten(7).toString(),
+      hoverBackgroundColor: tinycolor(primaryButtonColor).isDark()
+         ? tinycolor(primaryButtonColor).lighten(7).toString()
+         : tinycolor(primaryButtonColor).darken(7).toString(),
       hoverBorder: '',
       minWidth: height,
       padding: padding ? `0px ${padding}` : defaultButtonPadding
