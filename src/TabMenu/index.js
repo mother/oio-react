@@ -58,6 +58,10 @@ const TabMenu = ({
    buttonPaddingHorizontal,
    buttonSize,
    buttonSpacing,
+   buttonTextColor,
+   buttonTextFontFamily,
+   buttonTextSize,
+   buttonTextWeight,
    children,
    highlightColor,
    paddingHorizontal,
@@ -120,7 +124,11 @@ const TabMenu = ({
                   highlightColor,
                   isActive: childIsActive || false,
                   paddingHorizontal: buttonPaddingHorizontal,
-                  size: buttonSize
+                  size: buttonSize,
+                  textColor: buttonTextColor,
+                  textFontFamily: buttonTextFontFamily,
+                  textSize: buttonTextSize,
+                  textWeight: buttonTextWeight
                })}
                {i < (children.length - 1) && (
                   <View
@@ -244,6 +252,10 @@ TabMenu.propTypes = {
    buttonPaddingHorizontal: PropTypes.string,
    buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
    buttonSpacing: PropTypes.string,
+   buttonTextColor: PropTypes.string,
+   buttonTextFontFamily: PropTypes.string,
+   buttonTextSize: PropTypes.string,
+   buttonTextWeight: PropTypes.string,
    children: PropTypes.node.isRequired,
    highlightColor: PropTypes.string,
    paddingHorizontal: PropTypes.string,
@@ -256,6 +268,11 @@ TabMenu.defaultProps = {
    buttonSize: 'lg',
    buttonPaddingHorizontal: '12px',
    buttonSpacing: '0px',
+   buttonSize: 'lg',
+   buttonTextColor: undefined,
+   buttonTextFontFamily: undefined,
+   buttonTextSize: undefined,
+   buttonTextWeight: undefined,
    highlightColor: '#000',
    paddingHorizontal: '0px'
 }

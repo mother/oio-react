@@ -1,10 +1,10 @@
 export default {
-   tabButton: ({ highlightColor, isActive }) => ({
+   tabButton: ({ highlightColor, isActive, textColor }) => ({
       float: 'left',
       height: '100%',
       color: isActive
          ? highlightColor
-         : '#888',
+         : textColor,
       paddingTop: '4px',
       borderBottom: isActive
          ? `4px solid ${highlightColor}`

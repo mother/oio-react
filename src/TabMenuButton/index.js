@@ -21,7 +21,11 @@ const TabMenuButton = ({
    name,
    onClick,
    paddingHorizontal,
-   size
+   size,
+   textColor,
+   textFontFamily,
+   textSize,
+   textWeight
 }) => {
    const { buttonLinkAdapter } = useContext(OIOContext)
    const tabButtonJSX = (
@@ -31,11 +35,12 @@ const TabMenuButton = ({
          display="flex"
          alignItems="center"
          onClick={onClick}
-         css={style.tabButton({ highlightColor, isActive })}
+         css={style.tabButton({ highlightColor, isActive, textColor })}
          paddingHorizontal={paddingHorizontal}>
          <Text
-            size={buttonSizeDefaults[size].textSize}
-            weight="medium"
+            fontFamily={textFontFamily}
+            size={textSize || buttonSizeDefaults[size].textSize}
+            weight={textWeight}
             style={{
                height: '18px',
                whiteSpace: 'nowrap',
@@ -87,7 +92,11 @@ TabMenuButton.propTypes = {
    name: PropTypes.string.isRequired,
    onClick: PropTypes.func,
    paddingHorizontal: PropTypes.string,
-   size: PropTypes.string
+   size: PropTypes.string,
+   textColor: PropTypes.string,
+   textFontFamily: PropTypes.string,
+   textSize: PropTypes.string,
+   textWeight: PropTypes.string
 }
 
 TabMenuButton.defaultProps = {
@@ -99,7 +108,11 @@ TabMenuButton.defaultProps = {
    linkReplace: false,
    onClick: undefined,
    paddingHorizontal: undefined,
-   size: undefined
+   size: undefined,
+   textColor: '#888',
+   textFontFamily: undefined,
+   textSize: undefined,
+   textWeight: 'medium'
 }
 
 export default React.memo(TabMenuButton)
