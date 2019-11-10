@@ -50,7 +50,7 @@ export default [{
    name: 'buttonTextWeight',
    type: 'OIO Responsive String',
    default: '<code>medium</code>',
-   description: 'Set the <code>fontWeight</code> of the text inside <code>TabMenuButton</code> when <code>isActive</code> is set to <code>false</code>',
+   description: 'Set the <code>fontWeight</code> of the text inside <code>TabMenuButton</code>',
    responsive: true
 }, {
    name: 'highlightColor',

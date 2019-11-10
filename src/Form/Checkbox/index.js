@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import { Text, View } from '../../../src'
+import OIOContext from '../../OIOProvider/context'
 import { OIOFormContext } from '..'
 import checkboxIcon from './checkboxIcon.svg'
 
@@ -17,10 +18,12 @@ const Checkbox = React.forwardRef(({
    label,
    ...props
 }, ref) => {
+   const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
    const inputAppearance = appearance || formContext.elementAppearance
-   const inputHighlightColor = highlightColor || formContext.highlightColor
+   const inputHighlightColor = highlightColor || formContext.highlightColor ||
+      oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {
