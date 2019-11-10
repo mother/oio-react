@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { jsx } from '@emotion/core'
 import { View } from '../../../src'
 import OIOContext from '../../OIOProvider/context'
+import { OIOFormContext } from '..'
 
 // ============================================================================
 // Component
@@ -11,7 +12,9 @@ import OIOContext from '../../OIOProvider/context'
 
 const Switch = React.forwardRef(({ highlightColor, ...props }, ref) => {
    const oioContext = useContext(OIOContext)
-   const inputHighlightColor = highlightColor || oioContext.highlightColor
+   const formContext = useContext(OIOFormContext)
+   const inputHighlightColor = highlightColor || formContext.highlightColor ||
+      oioContext.highlightColor
 
    return (
       <View

@@ -29,6 +29,30 @@ export default [{
    description: 'Set spacing between <code>TabMenuButton</code> components.',
    responsive: false
 }, {
+   name: 'buttonTextColor',
+   type: 'String',
+   default: '<code>#888</code>',
+   description: 'Text <code>color</code> of the <code>TabMenuButton</code> when <code>isActive</code> is set to <code>false</code>',
+   responsive: false
+}, {
+   name: 'buttonTextFontFamily',
+   type: 'OIO Responsive String',
+   default: '-',
+   description: 'Set <code>fontFamily</code> for all <code>TabMenuButton</code> components.',
+   responsive: true
+}, {
+   name: 'buttonTextSize',
+   type: 'OIO Responsive String',
+   default: '-',
+   description: 'Set the size of the text inside <code>TabMenuButton</code> using a number between <code>1-15</code>. If no value is specified, text will be sized automatically based on the <code>TabMenuButton</code> <code>size</code>',
+   responsive: true
+}, {
+   name: 'buttonTextWeight',
+   type: 'OIO Responsive String',
+   default: '<code>medium</code>',
+   description: 'Set the <code>fontWeight</code> of the text inside <code>TabMenuButton</code>',
+   responsive: true
+}, {
    name: 'highlightColor',
    type: 'Boolean',
    default: '<code>#000</code>',

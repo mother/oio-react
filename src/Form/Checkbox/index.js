@@ -22,7 +22,8 @@ const Checkbox = React.forwardRef(({
    const formContext = useContext(OIOFormContext)
 
    const inputAppearance = appearance || formContext.elementAppearance
-   const inputHighlightColor = highlightColor || oioContext.highlightColor
+   const inputHighlightColor = highlightColor || formContext.highlightColor ||
+      oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {

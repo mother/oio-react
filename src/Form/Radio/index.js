@@ -20,8 +20,9 @@ const Radio = React.forwardRef(({
    const oioContext = useContext(OIOContext)
    const formContext = useContext(OIOFormContext)
 
-   const inputHighlightColor = highlightColor || oioContext.highlightColor
    const inputAppearance = appearance || formContext.elementAppearance
+   const inputHighlightColor = highlightColor || formContext.highlightColor ||
+      oioContext.highlightColor
 
    const appearanceStyles = {
       outline: {

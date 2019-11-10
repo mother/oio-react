@@ -47,6 +47,12 @@ export default [{
    description: '',
    responsive: false
 }, {
+   name: 'highlightColor',
+   type: 'String',
+   default: '-',
+   description: 'By default, the <code>highlightColor</code> of the component is set through the value of the nearest <code>OIOProvider</code>\'s <code>highlightColor</code> prop. If the <code>highlightColor</code> prop is set on this component, it will take precedence over the <code>highlightColor</code> value provided by the <code>OIOProvider</code>.',
+   responsive: false
+}, {
    name: 'labelTextColor',
    type: 'String',
    default: '<code>#444</code>',
