@@ -101,7 +101,6 @@ const Select = React.forwardRef(({
                backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
                color: formContext.elementTextColor,
                outline: 'none',
-               float: 'left',
                fontFamily: oioContext.fontFamily,
                width: '100%',
                transition: '200ms',
