@@ -49,7 +49,6 @@ const Radio = React.forwardRef(({
                backgroundColor: formContext.elementBackgroundColor,
                borderRadius: '50%',
                flex: '0 0 auto',
-               float: 'left',
                fontSize: '14px',
                width: '20px',
                height: '20px',
@@ -68,7 +67,6 @@ const Radio = React.forwardRef(({
          {label && (
             <View
                flex="1 1 auto"
-               float="left"
                padding="0 15px">
                <Text size="2" color={formContext.elementTextColor}>
                   {label}

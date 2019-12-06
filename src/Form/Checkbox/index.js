@@ -48,7 +48,6 @@ const Checkbox = React.forwardRef(({
             css={{
                ...appearanceStyles[inputAppearance],
                flex: '0 0 auto',
-               float: 'left',
                borderRadius: '50%',
                fontSize: '14px',
                width: '20px',
@@ -73,7 +72,6 @@ const Checkbox = React.forwardRef(({
          {label && (
             <View
                flex="1 1 auto"
-               float="left"
                padding="0 15px">
                <Text size="2" color={formContext.elementTextColor}>
                   {label}
