@@ -4,8 +4,9 @@ import HeaderBlock from '../../../components/HeaderBlock'
 import SpecimenBlock from '../../../components/SpecimenBlock'
 import listMenuSpec from '../../../../src/ListMenu/spec'
 import listMenuButtonSpec from '../../../../src/ListMenuButton/spec'
-import ListMenuBasicSpecimen from '../../../specimens/ListMenuBasic'
 import ListMenuActiveArrowSpecimen from '../../../specimens/ListMenuActiveArrow'
+import ListMenuBasicSpecimen from '../../../specimens/ListMenuBasic'
+import ListMenuDetailsSpecimen from '../../../specimens/ListMenuDetails'
 import ListMenuLinksSpecimen from '../../../specimens/ListMenuLinks'
 
 const ListMenuPage = () => (
@@ -17,6 +18,7 @@ const ListMenuPage = () => (
       <SpecimenBlock specimen={ListMenuBasicSpecimen} />
       <SpecimenBlock specimen={ListMenuActiveArrowSpecimen} />
       <SpecimenBlock specimen={ListMenuLinksSpecimen} />
+      <SpecimenBlock specimen={ListMenuDetailsSpecimen} />
       <APITableBlock spec={listMenuSpec} title="ListMenu API Options" />
       <APITableBlock spec={listMenuButtonSpec} title="ListMenuButton API Options" />
    </div>

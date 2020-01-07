@@ -17,4 +17,9 @@ context('ListMenu', () => {
       cy.visit('/tests/list-menu-links')
       cy.testImageSnapshot('ListMenu - with menu button links')
    })
+
+   it('Renders with menu button details as expected', () => {
+      cy.visit('/tests/list-menu-details')
+      cy.testImageSnapshot('ListMenu - with menu button details')
+   })
 })
