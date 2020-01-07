@@ -60,7 +60,7 @@ const ListMenuButton = ({
                </View>
             )}
             <View
-               flex="2 1 auto"
+               flex="1 1 auto"
                display="flex"
                alignItems="center">
                <Text

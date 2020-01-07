@@ -5,6 +5,12 @@ export default [{
    description: 'Set to <code>true</code> to set <code>ListMenuButton</code> in active state.',
    responsive: false
 }, {
+   name: 'leftDetail',
+   type: 'Node',
+   default: '-',
+   description: 'Custom content that will appear to the left of the <code>ListMenuButton</code> <code>name</code>',
+   responsive: false
+}, {
    name: 'linkTo',
    type: 'Mixed',
    default: '-',
