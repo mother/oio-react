@@ -14,6 +14,7 @@ const ListMenuButton = ({
    activeTextWeight,
    borderRadius,
    isActive,
+   leftDetail,
    linkTo,
    linkExact,
    linkReplace,
@@ -49,8 +50,17 @@ const ListMenuButton = ({
             width="100%"
             minHeight={buttonSizeDefaults[size].height}
             paddingHorizontal={paddingHorizontal}>
+            {leftDetail && (
+               <View
+                  flex="0 0 auto"
+                  display="flex"
+                  alignItems="center"
+                  marginRight={paddingHorizontal}>
+                  {leftDetail}
+               </View>
+            )}
             <View
-               flex="1 1 auto"
+               flex="2 1 auto"
                display="flex"
                alignItems="center">
                <Text
@@ -64,7 +74,8 @@ const ListMenuButton = ({
                <View
                   flex="0 0 auto"
                   display="flex"
-                  alignItems="center">
+                  alignItems="center"
+                  marginLeft={paddingHorizontal}>
                   <View
                      position="relative"
                      className="arrow"
@@ -103,6 +114,7 @@ ListMenuButton.propTypes = {
    activeTextWeight: PropTypes.string,
    borderRadius: PropTypes.string,
    isActive: PropTypes.bool,
+   leftDetail: PropTypes.node,
    linkTo: PropTypes.any,
    linkExact: PropTypes.bool,
    linkReplace: PropTypes.bool,
@@ -123,6 +135,7 @@ ListMenuButton.defaultProps = {
    activeTextWeight: 'bold',
    borderRadius: '0px',
    isActive: undefined,
+   leftDetail: undefined,
    linkTo: undefined,
    linkExact: false,
    linkReplace: false,

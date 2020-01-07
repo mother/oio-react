@@ -12,7 +12,7 @@ export default {
       backgroundColor: isActive
          ? activeBackgroundColor
          : 'transparent',
-      transition: '100ms',
+      transition: '200ms',
       cursor: 'pointer',
       '&:hover': {
          backgroundColor: isActive
