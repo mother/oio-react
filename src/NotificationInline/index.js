@@ -63,6 +63,7 @@ const NotificationInline = ({
    buttonPlacement,
    buttons,
    children,
+   contentMaxWidth,
    iconColor,
    iconSpacing,
    iconSize,
@@ -91,14 +92,15 @@ const NotificationInline = ({
    return (
       <View
          id={id}
-         display="block"
+         display="flex"
+         justifyContent="center"
          width="100%"
          paddingHorizontal={paddingHorizontal}
          paddingVertical={paddingVertical}
          borderRadius={borderRadius}
          backgroundColor={notificationBackgroundColor}
          style={style}>
-         <View display="flex" flex="1 1 auto">
+         <View display="flex" maxWidth={contentMaxWidth} width="100%">
             <View
                flex="0 0 auto"
                display="flex"
@@ -167,6 +169,7 @@ NotificationInline.propTypes = {
    buttonPlacement: PropTypes.oneOf(['bottom', 'right']),
    buttons: PropTypes.array,
    children: PropTypes.node,
+   contentMaxWidth: PropTypes.string,
    iconColor: PropTypes.string,
    iconSpacing: PropTypes.string,
    iconSize: PropTypes.string,
@@ -187,6 +190,7 @@ NotificationInline.defaultProps = {
    buttonPlacement: 'bottom',
    buttons: undefined,
    children: undefined,
+   contentMaxWidth: '100%',
    iconColor: undefined,
    iconSpacing: '18px',
    iconSize: '30px',

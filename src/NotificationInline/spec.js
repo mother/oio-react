@@ -29,6 +29,12 @@ export default [{
    description: 'If <code>children</code> are passed, they will appear inline below the <code>NotificationInline</code>\'s message',
    responsive: false
 }, {
+   name: 'contentMaxWidth',
+   type: 'OIOResponsiveString',
+   default: '-',
+   description: 'Maximum width of the inner contents of <code>NotificationInline</code>, including the <code>icon</code>, <code>title</code>, <code>message</code> and <code>buttons</code>',
+   responsive: true
+}, {
    name: 'iconColor',
    type: 'OIOResponsiveString',
    default: '-',
