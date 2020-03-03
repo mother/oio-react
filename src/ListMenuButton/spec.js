@@ -1,4 +1,10 @@
 export default [{
+   name: 'badgeNumber',
+   type: 'Number',
+   default: '-',
+   description: 'Set a <code>badgeNumber</code> to show a number-based badge that will appear on the right side of the <code>ListMenuButton</code>',
+   responsive: false
+}, {
    name: 'isActive',
    type: 'Boolean',
    default: '<code>false</code>',
