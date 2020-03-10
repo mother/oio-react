@@ -83,7 +83,14 @@ const Modal = ({
       document.body.appendChild(modalContainerPortal.current)
 
       // Remove container on unmount
-      return () => modalContainerPortal.current.remove()
+      return () => {
+         // We can't use a simple .remove because IE is stupid
+         const modalEl = modalContainerPortal.current
+         const modalParentEl = modalEl.parentNode
+         if (modalParentEl) {
+            modalParentEl.removeChild(modalEl)
+         }
+      }
    }, [])
 
    // =======================================================
