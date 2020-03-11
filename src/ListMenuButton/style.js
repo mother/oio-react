@@ -24,6 +24,10 @@ export default {
       },
       '.arrow': {
          display: isActive ? 'block' : 'none'
+      },
+      '.badge': {
+         backgroundColor: isActive ? activeTextColor : '#eee',
+         color: isActive ? '#fff' : '#666'
       }
    })
 }

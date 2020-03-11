@@ -22,4 +22,9 @@ context('ListMenu', () => {
       cy.visit('/tests/list-menu-details')
       cy.testImageSnapshot('ListMenu - with menu button details')
    })
+
+   it('Renders with menu button badge as expected', () => {
+      cy.visit('/tests/list-menu-badges')
+      cy.testImageSnapshot('ListMenu - with menu button badge')
+   })
 })
