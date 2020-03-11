@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { ListMenu, ListMenuButton, View } from '../../../src'
 
 const ListMenuBadgesSpecimen = () => (
@@ -55,4 +54,4 @@ ListMenuBadgesSpecimen.codeSnippet = `
    </ListMenu>
 </View>`
 
-export default withRouter(ListMenuBadgesSpecimen)
+export default ListMenuBadgesSpecimen
