@@ -168,6 +168,7 @@ class Button extends React.Component {
       name: PropTypes.node,
       OIOContext: PropTypes.object.isRequired,
       onClick: PropTypes.func,
+      onMouseDown: PropTypes.func,
       outline: PropTypes.bool,
       padding: OIOResponsiveObjectPropType,
       rounded: PropTypes.bool,
@@ -190,6 +191,7 @@ class Button extends React.Component {
       linkReplace: false,
       mode: 'normal',
       onClick: undefined,
+      onMouseDown: undefined,
       outline: false,
       rounded: false,
       size: r`sm`,
@@ -207,7 +209,7 @@ class Button extends React.Component {
       const {
          OIOContext,
          children, className, id, mode, name, tagName, type,
-         textColor, textSize, textTransform, textWeight, onClick,
+         textColor, textSize, textTransform, textWeight, onClick, onMouseDown,
          backgroundColor, borderColor, borderRadius, borderStyle, borderWidth, color, fontFamily,
          height, padding, minWidth, width,
          hoverBackgroundColor, hoverBorderColor,
@@ -249,6 +251,10 @@ class Button extends React.Component {
 
       if (onClick) {
          buttonProps.onClick = onClick
+      }
+
+      if (onMouseDown) {
+         buttonProps.onMouseDown = onMouseDown
       }
 
       // ====================================================

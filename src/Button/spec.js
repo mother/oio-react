@@ -65,6 +65,12 @@ export default [{
    description: 'Function to execute on mouse click',
    responsive: false
 }, {
+   name: 'onMouseDown',
+   type: 'Function',
+   default: '-',
+   description: 'Function to execute on mouse down',
+   responsive: false
+}, {
    name: 'outline',
    type: 'Boolean',
    default: '<code>false</code>',
