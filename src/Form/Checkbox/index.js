@@ -7,6 +7,8 @@ import OIOContext from '../../OIOProvider/context'
 import { OIOFormContext } from '..'
 import checkboxIcon from './checkboxIcon.svg'
 
+const base64EncodedCheckboxIcon = window.btoa(checkboxIcon)
+
 // ============================================================================
 // Component
 // ============================================================================
@@ -63,7 +65,7 @@ const Checkbox = React.forwardRef(({
                },
                '&:checked': {
                   backgroundColor: `${inputHighlightColor}`,
-                  backgroundImage: `url('data:image/svg+xml;utf8,${checkboxIcon}')`,
+                  backgroundImage: `url('data:image/svg+xml;base64,${base64EncodedCheckboxIcon}')`,
                   backgroundSize: '50%',
                   borderColor: inputHighlightColor
                }

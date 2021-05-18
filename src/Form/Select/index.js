@@ -7,6 +7,8 @@ import OIOContext from '../../OIOProvider/context'
 import { OIOFormContext } from '..'
 import selectArrowIcon from './selectArrowIcon.svg'
 
+const base64EncodedSelectArrowIcon = window.btoa(selectArrowIcon)
+
 // ============================================================================
 // Size Specific Styles
 // ============================================================================
@@ -98,7 +100,7 @@ const Select = React.forwardRef(({
                backgroundColor: formContext.elementBackgroundColor,
                borderRadius: formContext.elementBorderRadius,
                backgroundRepeat: 'no-repeat',
-               backgroundImage: `url('data:image/svg+xml;utf8,${selectArrowIcon}')`,
+               backgroundImage: `url('data:image/svg+xml;base64,${base64EncodedSelectArrowIcon}')`,
                color: formContext.elementTextColor,
                outline: 'none',
                fontFamily: oioContext.fontFamily,
