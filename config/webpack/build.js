@@ -31,7 +31,21 @@ module.exports = {
          {
             test: /\.js$/,
             exclude: /node_modules/,
-            use: ['babel-loader']
+            loader: 'babel-loader',
+               options: {
+                presets: [
+
+                  // defines a preset with options
+                  [
+                    '@babel/preset-env', {
+                      targets: {
+                        esmodules: true
+                      }
+                    }
+                  ]
+
+                ]
+              }
          },
          {
             test: /\.svg$/,
