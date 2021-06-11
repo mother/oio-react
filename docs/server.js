@@ -8,13 +8,7 @@ const app = express()
 const compiler = webpack(webpackConfig)
 
 app.use(webpackDevMiddleware(compiler, {
-   publicPath: webpackConfig.output.publicPath,
-   // noInfo: true,
-   // quiet: false,
-   // historyApiFallback: true,
-   // stats: {
-   //    colors: true
-   // }
+   publicPath: webpackConfig.output.publicPath
 }))
 
 app.use(webpackHotMiddleware(compiler, {
