@@ -9,12 +9,12 @@ const compiler = webpack(webpackConfig)
 
 app.use(webpackDevMiddleware(compiler, {
    publicPath: webpackConfig.output.publicPath,
-   noInfo: true,
-   quiet: false,
-   historyApiFallback: true,
-   stats: {
-      colors: true
-   }
+   // noInfo: true,
+   // quiet: false,
+   // historyApiFallback: true,
+   // stats: {
+   //    colors: true
+   // }
 }))
 
 app.use(webpackHotMiddleware(compiler, {

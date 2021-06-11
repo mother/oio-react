@@ -39,8 +39,5 @@ module.exports = {
       new webpack.HotModuleReplacementPlugin(),
       new ProgressBarPlugin()
    ],
-   resolve: {
-      extensions: ['.js'],
-      enforceExtension: false
-   }
+   watch: true
 }
