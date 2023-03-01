@@ -16,7 +16,7 @@ import ArrowRightIcon from './arrowRight'
 // =======================================================
 
 // Character Width is used to calculate tab width
-const characterWidth = 7
+const characterWidth = 8
 // The amount in pixels to scroll x-position when clicking prev/next arrow buttons
 const scrollIncrement = 270
 
